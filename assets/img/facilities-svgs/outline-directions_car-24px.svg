@@ -1,0 +1,12 @@
+<svg id="outline-directions_car-24px" xmlns="http://www.w3.org/2000/svg" width="37.183" height="37.183" viewBox="0 0 37.183 37.183">
+  <g id="Bounding_Boxes">
+    <path id="Path_3191" data-name="Path 3191" d="M0,0H37.183V37.183H0Z" fill="none"/>
+  </g>
+  <g id="Outline" transform="translate(4.648 7.747)">
+    <g id="Group_300" data-name="Group 300">
+      <path id="Path_3192" data-name="Path 3192" d="M27.665,6.565A2.315,2.315,0,0,0,25.465,5H8.423a2.33,2.33,0,0,0-2.2,1.565L3,15.845V28.24a1.554,1.554,0,0,0,1.549,1.549H6.1A1.554,1.554,0,0,0,7.648,28.24V26.69H26.24V28.24a1.554,1.554,0,0,0,1.549,1.549h1.549a1.554,1.554,0,0,0,1.549-1.549V15.845ZM8.965,8.1H24.907l1.673,4.818H7.292ZM27.789,23.592H6.1V15.845h21.69Z" transform="translate(-3 -5)" fill="#585858"/>
+      <circle id="Ellipse_113" data-name="Ellipse 113" cx="2.041" cy="2.041" r="2.041" transform="translate(6.562 12.664)" fill="#585858"/>
+      <circle id="Ellipse_114" data-name="Ellipse 114" cx="2.041" cy="2.041" r="2.041" transform="translate(18.808 12.664)" fill="#585858"/>
+    </g>
+  </g>
+</svg>

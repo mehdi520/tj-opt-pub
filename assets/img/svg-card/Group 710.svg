@@ -1,0 +1,13 @@
+<svg id="Group_710" data-name="Group 710" xmlns="http://www.w3.org/2000/svg" width="9.173" height="9.173" viewBox="0 0 9.173 9.173">
+  <ellipse id="Ellipse_123" data-name="Ellipse 123" cx="1.013" cy="1.013" rx="1.013" ry="1.013" transform="translate(3.645 2.155)" fill="#11b3e1"/>
+  <g id="outline-where_to_vote-24px" transform="translate(0 0)">
+    <g id="Bounding_Boxes">
+      <path id="Path_2831" data-name="Path 2831" d="M0,0H9.173V9.173H0Z" fill="none"/>
+    </g>
+    <g id="Outline" transform="translate(1.529 0.382)">
+      <g id="Group_209" data-name="Group 209">
+        <path id="Path_2832" data-name="Path 2832" d="M7.058,1A3.062,3.062,0,0,0,4,4.058c0,2.129,2.66,5.1,2.775,5.225l.283.313.283-.313c.115-.126,2.775-3.1,2.775-5.225A3.062,3.062,0,0,0,7.058,1Zm0,7.442c-.833-1-2.293-3.031-2.293-4.384a2.293,2.293,0,0,1,4.587,0C9.351,5.522,7.727,7.635,7.058,8.442Z" transform="translate(-4 -1)" fill="#11b3e1"/>
+      </g>
+    </g>
+  </g>
+</svg>

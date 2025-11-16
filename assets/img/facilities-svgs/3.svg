@@ -1,0 +1,8 @@
+<svg id="outline-map-24px" xmlns="http://www.w3.org/2000/svg" width="33.281" height="33.281" viewBox="0 0 33.281 33.281">
+  <g id="Bounding_Boxes">
+    <path id="Path_3294" data-name="Path 3294" d="M0,0H33.281V33.281H0Z" fill="none"/>
+  </g>
+  <g id="Outline" transform="translate(4.16 4.16)">
+    <path id="Path_3295" data-name="Path 3295" d="M27.267,3l-.222.042-7.4,2.87L11.32,3,3.5,5.635A.7.7,0,0,0,3,6.3V27.267a.687.687,0,0,0,.693.693l.222-.042,7.4-2.87,8.32,2.912,7.821-2.635a.7.7,0,0,0,.5-.666V3.693A.687.687,0,0,0,27.267,3ZM12.707,6.425l5.547,1.941V24.535l-5.547-1.941ZM5.773,7.8l4.16-1.4V22.622L5.773,24.23ZM25.187,23.163l-4.16,1.4V8.353l4.16-1.609Z" transform="translate(-3 -3)" fill="#585858"/>
+  </g>
+</svg>

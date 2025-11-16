@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="22.59" height="22.59" viewBox="0 0 22.59 22.59">
+  <g id="outline-fastfood-24px" transform="translate(0 0)">
+    <g id="Bounding_Boxes" transform="translate(0 0)">
+      <path id="Path_3210" data-name="Path 3210" d="M0,0H22.59V22.59H0Z" fill="none"/>
+    </g>
+    <g id="Outline" transform="translate(0.941 0.941)">
+      <g id="Group_307" data-name="Group 307">
+        <path id="Path_3211" data-name="Path 3211" d="M1,21.922a.948.948,0,0,0,.951.951H14.178a.948.948,0,0,0,.951-.951V21H1Z" transform="translate(-1 -2.175)" fill="#11b3e1"/>
+        <path id="Path_3212" data-name="Path 3212" d="M8.059,8.99C4.53,8.99,1,10.882,1,14.647H15.119C15.119,10.882,11.589,8.99,8.059,8.99ZM3.466,12.764c1.045-1.459,3.266-1.892,4.593-1.892s3.549.433,4.593,1.892Z" transform="translate(-1 -1.469)" fill="#11b3e1"/>
+        <rect id="Rectangle_201" data-name="Rectangle 201" width="12.906" height="2.581" transform="translate(0.349 15.196)" fill="#11b3e1"/>
+        <path id="Path_3213" data-name="Path 3213" d="M17.589,4.765V1H15.706V4.765H11l.216,1.883h9L18.9,19.825H17.589v1.882h1.619a1.563,1.563,0,0,0,1.534-1.384L22.3,4.765Z" transform="translate(-1.587 -1)" fill="#11b3e1"/>
+      </g>
+    </g>
+  </g>
+</svg>

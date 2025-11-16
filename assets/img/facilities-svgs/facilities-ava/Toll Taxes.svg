@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="27" height="28" viewBox="0 0 27 28">
+  <g id="emoji_transportation-24px" transform="translate(0 0.077)">
+    <g id="Bounding_Box" transform="translate(0 0)">
+      <rect id="Rectangle_353" data-name="Rectangle 353" width="27" height="28" transform="translate(0 -0.077)" fill="none"/>
+    </g>
+    <g id="Flat" transform="translate(2.206 3.945)">
+      <g id="Group_518" data-name="Group 518">
+        <path id="Path_6511" data-name="Path 6511" d="M21.97,10.747a1.136,1.136,0,0,0-1.1-.747H12.729a1.15,1.15,0,0,0-1.11.747L10,15.4l.011,6.24a.813.813,0,0,0,.781.815h.7a.845.845,0,0,0,.77-.861v-1.4h9.059v1.4a.855.855,0,0,0,.781.861H22.8a.813.813,0,0,0,.781-.815l.011-1.551V15.4Zm-9.241.385h8.142l1.166,3.4H11.563Zm-.464,6.795A1.132,1.132,0,1,1,13.4,16.795,1.136,1.136,0,0,1,12.265,17.927Zm9.059,0a1.132,1.132,0,1,1,1.132-1.132A1.136,1.136,0,0,1,21.324,17.927Z" transform="translate(-0.941 -2.073)" fill="#acacac"/>
+        <path id="Path_6512" data-name="Path 6512" d="M15.589,9.795h1.132V3H7.662V8.662H2V23.384H3.132V9.795H8.795V4.132h6.795Z" transform="translate(-2 -3)" fill="#acacac"/>
+        <rect id="Rectangle_354" data-name="Rectangle 354" width="3" height="1" transform="translate(2.794 9.978)" fill="#acacac"/>
+        <rect id="Rectangle_355" data-name="Rectangle 355" width="2" height="2" transform="translate(8.794 1.978)" fill="#acacac"/>
+        <rect id="Rectangle_356" data-name="Rectangle 356" width="3" height="1" transform="translate(2.794 13.978)" fill="#acacac"/>
+        <rect id="Rectangle_357" data-name="Rectangle 357" width="3" height="2" transform="translate(2.794 17.978)" fill="#acacac"/>
+      </g>
+    </g>
+  </g>
+</svg>

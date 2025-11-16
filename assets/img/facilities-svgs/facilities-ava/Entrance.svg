@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="23.809" height="23.809" viewBox="0 0 23.809 23.809">
+  <g id="outline-terrain-24px" transform="translate(0)">
+    <g id="Bounding_Boxes" transform="translate(0)">
+      <path id="Path_3329" data-name="Path 3329" d="M0,0H23.809V23.809H0Z" fill="none"/>
+    </g>
+    <g id="Outline" transform="translate(0.992 5.952)">
+      <path id="Path_3330" data-name="Path 3330" d="M13.9,6,9.71,11.585l1.24,1.657L13.9,9.3l4.96,6.617H10.464L6.486,10.593,1,17.9H22.825ZM4.968,15.92l1.508-2.014L7.984,15.92Z" transform="translate(-1 -6)" fill="#acacac"/>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="23.514" height="23.514" viewBox="0 0 23.514 23.514">
+  <g id="outline-local_hotel-24px" transform="translate(0)">
+    <g id="Bounding_Boxes" transform="translate(0)">
+      <path id="Path_3256" data-name="Path 3256" d="M0,0H23.514V23.514H0Z" fill="none"/>
+    </g>
+    <g id="Outline" transform="translate(0.98 4.899)">
+      <g id="Group_318" data-name="Group 318">
+        <path id="Path_3257" data-name="Path 3257" d="M6.939,13.878A2.939,2.939,0,1,0,4,10.939,2.935,2.935,0,0,0,6.939,13.878Zm0-3.919a.98.98,0,1,1-.98.98A.983.983,0,0,1,6.939,9.959Z" transform="translate(-1.061 -5.061)" fill="#11b3e1"/>
+        <path id="Path_3258" data-name="Path 3258" d="M18.635,6.959H10.8V14.8H2.959V5H1V19.7H2.959V16.757H20.595V19.7h1.959V10.878A3.918,3.918,0,0,0,18.635,6.959ZM20.595,14.8H12.757V8.919h5.878a1.965,1.965,0,0,1,1.959,1.959Z" transform="translate(-1 -5)" fill="#11b3e1"/>
+      </g>
+    </g>
+  </g>
+</svg>
