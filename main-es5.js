@@ -573,7 +573,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<div class=\"container-fluid custom-detail-container\">\r\n  <div class=\"row\">\r\n    <div class=\"col-md-12\">\r\n      <h4 class=\"detail-header\">\r\n        Custom Tour Request Details\r\n        <span\r\n          class=\"status-badge status-{{\r\n            customRequestDetail?.TripRequest?.ReqStatus | lowercase\r\n          }}\"\r\n          >{{ customRequestDetail?.TripRequest?.ReqStatus }}</span\r\n        >\r\n      </h4>\r\n\r\n      <div\r\n        *ngIf=\"customRequestDetail?.TripRequest\"\r\n        class=\"card custom-detail-card\"\r\n      >\r\n        <div class=\"card-body\">\r\n          <!-- Request Information -->\r\n          <div class=\"detail-section\">\r\n            <h6>Request Information</h6>\r\n            <div class=\"row\">\r\n              <div class=\"col-md-6\">\r\n                <p>\r\n                  <strong>Request ID:</strong>\r\n                  {{ customRequestDetail.TripRequest.ReferenceId }}\r\n                </p>\r\n              </div>\r\n              <div class=\"col-md-6\">\r\n                <p>\r\n                  <strong>Title:</strong>\r\n                  {{ customRequestDetail.TripRequest.Title }}\r\n                </p>\r\n              </div>\r\n            </div>\r\n          </div>\r\n\r\n          <!-- Contact Information -->\r\n          <div class=\"detail-section\">\r\n            <h6>Contact Information</h6>\r\n            <div class=\"row\">\r\n              <div class=\"col-md-6\">\r\n                <p>\r\n                  <strong>Name:</strong>\r\n                  {{ customRequestDetail.TripRequest.Name }}\r\n                </p>\r\n              </div>\r\n              <div class=\"col-md-6\">\r\n                <p>\r\n                  <strong>Email:</strong>\r\n                  {{ customRequestDetail.TripRequest.Email }}\r\n                </p>\r\n              </div>\r\n              <div class=\"col-md-6\">\r\n                <p>\r\n                  <strong>Phone:</strong>\r\n                  {{ customRequestDetail.TripRequest.Phone }}\r\n                </p>\r\n              </div>\r\n              <div class=\"col-md-6\">\r\n                <p>\r\n                  <strong>Emergency Phone:</strong>\r\n                  {{ customRequestDetail.TripRequest.EmergencyPhone }}\r\n                </p>\r\n              </div>\r\n            </div>\r\n          </div>\r\n\r\n          <!-- Trip Details -->\r\n          <div class=\"detail-section\">\r\n            <h6>Trip Details</h6>\r\n            <div class=\"row\">\r\n              <div class=\"col-md-6\">\r\n                <p>\r\n                  <strong>From:</strong>\r\n                  {{ customRequestDetail.TripRequest.FromCountry }} -\r\n                  {{ customRequestDetail.TripRequest.FromPlace }}\r\n                </p>\r\n              </div>\r\n              <div class=\"col-md-6\">\r\n                <p>\r\n                  <strong>To:</strong>\r\n                  {{ customRequestDetail.TripRequest.ToCountry }} -\r\n                  {{ customRequestDetail.TripRequest.ToPlace }}\r\n                </p>\r\n              </div>\r\n              <div class=\"col-md-6\">\r\n                <p>\r\n                  <strong>Start Date:</strong>\r\n                  {{ customRequestDetail.TripRequest.StartDate | date }}\r\n                </p>\r\n              </div>\r\n              <div class=\"col-md-6\">\r\n                <p>\r\n                  <strong>End Date:</strong>\r\n                  {{ customRequestDetail.TripRequest.EndDate | date }}\r\n                </p>\r\n              </div>\r\n              <div class=\"col-md-6\">\r\n                <p>\r\n                  <strong>Duration:</strong>\r\n                  {{ customRequestDetail.TripRequest.Duration }} days\r\n                </p>\r\n              </div>\r\n              <div class=\"col-md-6\">\r\n                <p>\r\n                  <strong>Number of Guests:</strong>\r\n                  {{ customRequestDetail.TripRequest.NumberOfGuest }}\r\n                </p>\r\n              </div>\r\n              <div class=\"col-md-6\">\r\n                <p>\r\n                  <strong>Preferred Language:</strong>\r\n                  {{ customRequestDetail.TripRequest.PreferLanguage }}\r\n                </p>\r\n              </div>\r\n              <div class=\"col-md-6\">\r\n                <p>\r\n                  <strong>Trip Type:</strong>\r\n                  {{ customRequestDetail.TripRequest.TripType }}\r\n                </p>\r\n              </div>\r\n              <div class=\"col-md-6\">\r\n                <p>\r\n                  <strong>Accommodation Type:</strong>\r\n                  {{ customRequestDetail.TripRequest.AccomodationType }}\r\n                </p>\r\n              </div>\r\n              <div class=\"col-md-6\">\r\n                <p>\r\n                  <strong>Transport Type:</strong>\r\n                  {{ customRequestDetail.TripRequest.TransportType }}\r\n                </p>\r\n              </div>\r\n              <div class=\"col-md-12\">\r\n                <p>\r\n                  <strong>Activities:</strong>\r\n                  {{ customRequestDetail.TripRequest.Activities }}\r\n                </p>\r\n              </div>\r\n              <div class=\"col-md-12\">\r\n                <p>\r\n                  <strong>Note:</strong>\r\n                  {{ customRequestDetail.TripRequest.Note }}\r\n                </p>\r\n              </div>\r\n            </div>\r\n          </div>\r\n\r\n          <!-- Budget & Other Info -->\r\n          <div class=\"detail-section\">\r\n            <h6>Budget & Other Information</h6>\r\n            <div class=\"row\">\r\n              <div class=\"col-md-6\">\r\n                <p>\r\n                  <strong>Min Budget:</strong>\r\n                  {{ customRequestDetail.TripRequest.MinBudget }}\r\n                </p>\r\n              </div>\r\n              <div class=\"col-md-6\">\r\n                <p>\r\n                  <strong>Max Budget:</strong>\r\n                  {{ customRequestDetail.TripRequest.MaxBudget }}\r\n                </p>\r\n              </div>\r\n            </div>\r\n          </div>\r\n\r\n          <!-- Attachments -->\r\n          <div\r\n            *ngIf=\"attachments && attachments.length > 0\"\r\n            class=\"detail-section\"\r\n          >\r\n            <h6>Attachments</h6>\r\n            <div class=\"row\">\r\n              <div *ngFor=\"let attachment of attachments\" class=\"col-md-4 mb-3\">\r\n                <div *ngIf=\"isImage(attachment.MimeType); else fileAttachment\">\r\n                  <img\r\n                    [src]=\"domainToken + attachment.AttachmentPath\"\r\n                    alt=\"{{ attachment.AttachmentName }}\"\r\n                    class=\"img-fluid img-thumbnail\"\r\n                  />\r\n                </div>\r\n                <ng-template #fileAttachment>\r\n                  <a\r\n                    [href]=\"domainToken + attachment.AttachmentPath\"\r\n                    target=\"_blank\"\r\n                    >Open Attachment</a\r\n                  >\r\n                </ng-template>\r\n              </div>\r\n            </div>\r\n          </div>\r\n\r\n          <!-- Action Buttons -->\r\n          <div class=\"detail-actions mt-4\">\r\n            <button\r\n              class=\"btn jero-btn jero-btn-primary\"\r\n              (click)=\"acceptRequest()\"\r\n            >\r\n              Submit Offer\r\n            </button>\r\n            <button\r\n              class=\"btn jero-btn jero-btn-secondary ml-2\"\r\n              [routerLink]=\"['/custom-tour-requests']\"\r\n            >\r\n              Back to List\r\n            </button>\r\n          </div>\r\n        </div>\r\n      </div>\r\n\r\n      <!-- Offers and Revisions Card -->\r\n      <div\r\n        *ngIf=\"\r\n          customRequestDetail?.Participants &&\r\n          customRequestDetail.Participants.length > 0\r\n        \"\r\n        class=\"card custom-detail-card mt-4\"\r\n      >\r\n        <div class=\"card-body\">\r\n          <div class=\"detail-section\">\r\n            <h4 class=\"section-title mb-4\">Offers and Revisions</h4>\r\n            <div\r\n              *ngFor=\"let participant of filteredParticipants\"\r\n              class=\"mb-3 mt-5\"\r\n            >\r\n              <div *ngIf=\"participant.Offers && participant.Offers.length > 0\">\r\n                <!-- Latest Offer -->\r\n                <div class=\"latest-offer\">\r\n                  <div\r\n                    class=\"d-flex justify-content-between align-items-center mb-3\"\r\n                  >\r\n                    <h5 class=\"offer-subsection-title\">Latest Offer</h5>\r\n                    <!-- Revise Offer button for the participant -->\r\n                  </div>\r\n                  <hr class=\"section-divider\" />\r\n                  <ng-container\r\n                    *ngIf=\"\r\n                      participant.Offers[0] as offer\r\n                    \"\r\n                  >\r\n                    <div class=\"offer-card\">\r\n                      <p>\r\n                        <strong>Offer Date:</strong>\r\n                        {{ offer.CreatedAt | date : \"dd-MMM-yyyy hh:mm a\" }}\r\n                      </p>\r\n                      <p>\r\n                        <strong>Offer Price:</strong> {{ offer.OfferPrice }}\r\n                      </p>\r\n                      <p><strong>Operator Note:</strong> {{ offer.Note }}</p>\r\n                      <p *ngIf=\"offer.TravellerComments\">\r\n                        <strong>Traveller Comments:</strong>\r\n                        {{ offer.TravellerComments }}\r\n                      </p>\r\n                      <p>\r\n                        <strong>Offer Status (Traveller):</strong>\r\n                        {{ offer.TravellerStatus }}\r\n                      </p>\r\n                      <p>\r\n                        <strong>Offer Status (Operator):</strong>\r\n                        {{ offer.OperatorStatus }}\r\n                      </p>\r\n                      <div\r\n                        *ngIf=\"\r\n                          offer.OfferAttachments &&\r\n                          offer.OfferAttachments.length > 0\r\n                        \"\r\n                      >\r\n                        <ul>\r\n                          <li *ngFor=\"let attachment of offer.OfferAttachments\">\r\n                            <a\r\n                              class=\"btn btn-sm jero-btn jero-btn-primary-outlined\"\r\n                              [href]=\"domainToken + attachment.FilePath\"\r\n                              target=\"_blank\"\r\n                              >Open Attachment</a\r\n                            >\r\n                          </li>\r\n                        </ul>\r\n                      </div>\r\n                    </div>\r\n                  </ng-container>\r\n                </div>\r\n\r\n                <!-- Older Offers Toggle -->\r\n                <div class=\"cold-md-12 d-flex mt-3\">\r\n                    <!-- Revise Offer button for the participant -->\r\n                    <button\r\n                      class=\"btn btn-sm jero-btn jero-btn-primary col-md-6\"\r\n                      (click)=\"reviseOffer(participant.ParticipentId)\"\r\n                    >\r\n                      Revise Offer\r\n                    </button>\r\n                  <div *ngIf=\"participant.Offers.length > 1\" class=\"col-md-6\">\r\n                    <button\r\n                      class=\"btn btn-sm jero-btn jero-btn-secondary long-button\"\r\n                      (click)=\"toggleShowOlderOffers(participant.ParticipentId)\"\r\n                    >\r\n                      {{\r\n                        showOlderOffers.has(participant.ParticipentId)\r\n                          ? \"Hide\"\r\n                          : \"View\"\r\n                      }}\r\n                      Previous Offers\r\n                    </button>\r\n                  </div>\r\n                </div>\r\n                <!-- Older Offers -->\r\n                <div\r\n                  *ngIf=\"showOlderOffers.has(participant.ParticipentId)\"\r\n                  class=\"older-offers mt-3\"\r\n                >\r\n                  <h5 class=\"offer-subsection-title\" style=\"margin-top: 5rem\">\r\n                    Previous Offers\r\n                  </h5>\r\n                  <div *ngFor=\"let offer of participant.Offers.slice(1)\">\r\n                    <hr class=\"section-divider\" />\r\n                    <div class=\"offer-card\">\r\n                      <p>\r\n                        <strong>Offer Date:</strong>\r\n                        {{ offer.CreatedAt | date : \"dd-MMM-yyyy hh:mm a\" }}\r\n                      </p>\r\n                      <p>\r\n                        <strong>Offer Price:</strong> {{ offer.OfferPrice }}\r\n                      </p>\r\n                      <p><strong>Operator Note:</strong> {{ offer.Note }}</p>\r\n                      <p *ngIf=\"offer.TravellerComments\">\r\n                        <strong>Traveller Comments:</strong>\r\n                        {{ offer.TravellerComments }}\r\n                      </p>\r\n                      <p>\r\n                        <strong>Offer Status (Traveller):</strong>\r\n                        {{ offer.TravellerStatus }}\r\n                      </p>\r\n                      <p>\r\n                        <strong>Offer Status (Operator):</strong>\r\n                        {{ offer.OperatorStatus }}\r\n                      </p>\r\n                      <div\r\n                        *ngIf=\"\r\n                          offer.OfferAttachments &&\r\n                          offer.OfferAttachments.length > 0\r\n                        \"\r\n                      >\r\n                        <ul>\r\n                          <li *ngFor=\"let attachment of offer.OfferAttachments\">\r\n                            <a\r\n                              class=\"btn btn-sm jero-btn jero-btn-primary-outlined\"\r\n                              [href]=\"domainToken + attachment.FilePath\"\r\n                              target=\"_blank\"\r\n                              >Open Attachment</a\r\n                            >\r\n                          </li>\r\n                        </ul>\r\n                      </div>\r\n                    </div>\r\n                  </div>\r\n                </div>\r\n              </div>\r\n              <div\r\n                *ngIf=\"!participant.Offers || participant.Offers.length === 0\"\r\n              >\r\n                <p>No offers for this participant.</p>\r\n              </div>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n\r\n      <div *ngIf=\"!customRequestDetail\">\r\n        <p>Loading custom tour request details...</p>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n";
+    __webpack_exports__["default"] = "<div class=\"container-fluid custom-detail-container\">\r\n  <div class=\"row\">\r\n    <div class=\"col-md-12\">\r\n      <h4 class=\"detail-header\">\r\n        Custom Tour Request Details\r\n        <span\r\n          class=\"status-badge status-{{\r\n            customRequestDetail?.TripRequest?.ReqStatus | lowercase\r\n          }}\"\r\n          >{{ customRequestDetail?.TripRequest?.ReqStatus }}</span\r\n        >\r\n      </h4>\r\n\r\n      <div\r\n        *ngIf=\"customRequestDetail?.TripRequest\"\r\n        class=\"card custom-detail-card\"\r\n      >\r\n        <div class=\"card-body\">\r\n          <!-- Request Information -->\r\n          <div class=\"detail-section\">\r\n            <h6>Request Information</h6>\r\n            <div class=\"row\">\r\n              <div class=\"col-md-6\">\r\n                <p>\r\n                  <strong>Request ID:</strong>\r\n                  {{ customRequestDetail.TripRequest.ReferenceId }}\r\n                </p>\r\n              </div>\r\n              <div class=\"col-md-6\">\r\n                <p>\r\n                  <strong>Title:</strong>\r\n                  {{ customRequestDetail.TripRequest.Title }}\r\n                </p>\r\n              </div>\r\n            </div>\r\n          </div>\r\n\r\n          <!-- Contact Information -->\r\n          <div class=\"detail-section\">\r\n            <h6>Contact Information</h6>\r\n            <div class=\"row\">\r\n              <div class=\"col-md-6\">\r\n                <p>\r\n                  <strong>Name:</strong>\r\n                  {{ customRequestDetail.TripRequest.Name }}\r\n                </p>\r\n              </div>\r\n              <div class=\"col-md-6\">\r\n                <p>\r\n                  <strong>Email:</strong>\r\n                  {{ customRequestDetail.TripRequest.Email }}\r\n                </p>\r\n              </div>\r\n              <div class=\"col-md-6\">\r\n                <p>\r\n                  <strong>Phone:</strong>\r\n                  {{ customRequestDetail.TripRequest.Phone }}\r\n                </p>\r\n              </div>\r\n              <div class=\"col-md-6\">\r\n                <p>\r\n                  <strong>Emergency Phone:</strong>\r\n                  {{ customRequestDetail.TripRequest.EmergencyPhone }}\r\n                </p>\r\n              </div>\r\n            </div>\r\n          </div>\r\n\r\n          <!-- Trip Details -->\r\n          <div class=\"detail-section\">\r\n            <h6>Trip Details</h6>\r\n            <div class=\"row\">\r\n              <div class=\"col-md-6\">\r\n                <p>\r\n                  <strong>From:</strong>\r\n                  {{ customRequestDetail.TripRequest.FromCountry }} -\r\n                  {{ customRequestDetail.TripRequest.FromPlace }}\r\n                </p>\r\n              </div>\r\n              <div class=\"col-md-6\">\r\n                <p>\r\n                  <strong>To:</strong>\r\n                  {{ customRequestDetail.TripRequest.ToCountry }} -\r\n                  {{ customRequestDetail.TripRequest.ToPlace }}\r\n                </p>\r\n              </div>\r\n              <div class=\"col-md-6\">\r\n                <p>\r\n                  <strong>Start Date:</strong>\r\n                  {{ customRequestDetail.TripRequest.StartDate | date }}\r\n                </p>\r\n              </div>\r\n              <div class=\"col-md-6\">\r\n                <p>\r\n                  <strong>End Date:</strong>\r\n                  {{ customRequestDetail.TripRequest.EndDate | date }}\r\n                </p>\r\n              </div>\r\n              <div class=\"col-md-6\">\r\n                <p>\r\n                  <strong>Duration:</strong>\r\n                  {{ customRequestDetail.TripRequest.Duration }} days\r\n                </p>\r\n              </div>\r\n              <div class=\"col-md-6\">\r\n                <p>\r\n                  <strong>Number of Guests:</strong>\r\n                  {{ customRequestDetail.TripRequest.NumberOfGuest }}\r\n                </p>\r\n              </div>\r\n              <div class=\"col-md-6\">\r\n                <p>\r\n                  <strong>Preferred Language:</strong>\r\n                  {{ customRequestDetail.TripRequest.PreferLanguage }}\r\n                </p>\r\n              </div>\r\n              <div class=\"col-md-6\">\r\n                <p>\r\n                  <strong>Trip Type:</strong>\r\n                  {{ customRequestDetail.TripRequest.TripType }}\r\n                </p>\r\n              </div>\r\n              <div class=\"col-md-6\">\r\n                <p>\r\n                  <strong>Accommodation Type:</strong>\r\n                  {{ customRequestDetail.TripRequest.AccomodationType }}\r\n                </p>\r\n              </div>\r\n              <div class=\"col-md-6\">\r\n                <p>\r\n                  <strong>Transport Type:</strong>\r\n                  {{ customRequestDetail.TripRequest.TransportType }}\r\n                </p>\r\n              </div>\r\n              <div class=\"col-md-12\">\r\n                <p>\r\n                  <strong>Activities:</strong>\r\n                  {{ customRequestDetail.TripRequest.Activities }}\r\n                </p>\r\n              </div>\r\n              <div class=\"col-md-12\">\r\n                <p>\r\n                  <strong>Note:</strong>\r\n                  {{ customRequestDetail.TripRequest.Note }}\r\n                </p>\r\n              </div>\r\n            </div>\r\n          </div>\r\n\r\n          <!-- Budget & Other Info -->\r\n          <div class=\"detail-section\">\r\n            <h6>Budget & Other Information</h6>\r\n            <div class=\"row\">\r\n              <div class=\"col-md-6\">\r\n                <p>\r\n                  <strong>Min Budget:</strong>\r\n                  {{ customRequestDetail.TripRequest.MinBudget }}\r\n                </p>\r\n              </div>\r\n              <div class=\"col-md-6\">\r\n                <p>\r\n                  <strong>Max Budget:</strong>\r\n                  {{ customRequestDetail.TripRequest.MaxBudget }}\r\n                </p>\r\n              </div>\r\n            </div>\r\n          </div>\r\n\r\n          <!-- Attachments -->\r\n          <div\r\n            *ngIf=\"attachments && attachments.length > 0\"\r\n            class=\"detail-section\"\r\n          >\r\n            <h6>Attachments</h6>\r\n            <div class=\"row\">\r\n              <div *ngFor=\"let attachment of attachments\" class=\"col-md-4 mb-3\">\r\n                <div *ngIf=\"isImage(attachment.MimeType); else fileAttachment\">\r\n                  <img\r\n                    [src]=\"domainToken + attachment.AttachmentPath\"\r\n                    alt=\"{{ attachment.AttachmentName }}\"\r\n                    class=\"img-fluid img-thumbnail\"\r\n                  />\r\n                </div>\r\n                <ng-template #fileAttachment>\r\n                  <a\r\n                    [href]=\"domainToken + attachment.AttachmentPath\"\r\n                    target=\"_blank\"\r\n                    >Open Attachment</a\r\n                  >\r\n                </ng-template>\r\n              </div>\r\n            </div>\r\n          </div>\r\n\r\n          <!-- Action Buttons -->\r\n          <div class=\"detail-actions mt-4\">\r\n            <button\r\n              class=\"btn jero-btn jero-btn-primary\"\r\n              (click)=\"acceptRequest()\"\r\n            >\r\n              Submit Offer\r\n            </button>\r\n            <button\r\n              *ngIf=\"customRequestDetail?.TripRequest?.IsBroadCast === false\"\r\n              class=\"btn btn-danger jero-btn ml-2\"\r\n              (click)=\"rejectCustomTrip()\"\r\n            >\r\n              Reject Custom trip\r\n            </button>\r\n            <!-- <button\r\n              *ngIf=\"customRequestDetail?.TripRequest?.ReqStatus === 'Pending'\"\r\n              class=\"btn btn-danger jero-btn ml-2\"\r\n              (click)=\"cancelTripRequest()\"\r\n            >\r\n              Cancel\r\n            </button> -->\r\n            <button\r\n              class=\"btn jero-btn jero-btn-secondary ml-2\"\r\n              [routerLink]=\"['/custom-tour-requests']\"\r\n            >\r\n              Back to List\r\n            </button>\r\n          </div>\r\n        </div>\r\n      </div>\r\n\r\n      <!-- Offers and Revisions Card -->\r\n      <div\r\n        *ngIf=\"\r\n          customRequestDetail?.Participants &&\r\n          customRequestDetail.Participants.length > 0\r\n        \"\r\n        class=\"card custom-detail-card mt-4\"\r\n      >\r\n        <div class=\"card-body\">\r\n          <div class=\"detail-section\">\r\n            <h4 class=\"section-title mb-4\">Offers and Revisions</h4>\r\n            <div\r\n              *ngFor=\"let participant of filteredParticipants\"\r\n              class=\"mb-3 mt-5\"\r\n            >\r\n              <div *ngIf=\"participant.Offers && participant.Offers.length > 0\">\r\n                <!-- Latest Offer -->\r\n                <div class=\"latest-offer\">\r\n                  <div\r\n                    class=\"d-flex justify-content-between align-items-center mb-3\"\r\n                  >\r\n                    <h5 class=\"offer-subsection-title\">Latest Offer</h5>\r\n                    <!-- Revise Offer button for the participant -->\r\n                  </div>\r\n                  <hr class=\"section-divider\" />\r\n                  <ng-container\r\n                    *ngIf=\"\r\n                      participant.Offers[0] as offer\r\n                    \"\r\n                  >\r\n                    <div class=\"offer-card\">\r\n                      <p>\r\n                        <strong>Offer Date:</strong>\r\n                        {{ offer.CreatedAt | date : \"dd-MMM-yyyy hh:mm a\" }}\r\n                      </p>\r\n                      <p>\r\n                        <strong>Offer Price:</strong> {{ offer.OfferPrice }}\r\n                      </p>\r\n                      <p><strong>Operator Note:</strong> {{ offer.Note }}</p>\r\n                      <p *ngIf=\"offer.TravellerComments\">\r\n                        <strong>Traveller Comments:</strong>\r\n                        {{ offer.TravellerComments }}\r\n                      </p>\r\n                      <p>\r\n                        <strong>Offer Status (Traveller):</strong>\r\n                        {{ offer.TravellerStatus }}\r\n                      </p>\r\n                      <p>\r\n                        <strong>Offer Status (Operator):</strong>\r\n                        {{ offer.OperatorStatus }}\r\n                      </p>\r\n                      <div\r\n                        *ngIf=\"\r\n                          offer.OfferAttachments &&\r\n                          offer.OfferAttachments.length > 0\r\n                        \"\r\n                      >\r\n                        <ul>\r\n                          <li *ngFor=\"let attachment of offer.OfferAttachments\">\r\n                            <a\r\n                              class=\"btn btn-sm jero-btn jero-btn-primary-outlined\"\r\n                              [href]=\"domainToken + attachment.FilePath\"\r\n                              target=\"_blank\"\r\n                              >Open Attachment</a\r\n                            >\r\n                          </li>\r\n                        </ul>\r\n                      </div>\r\n                    </div>\r\n                  </ng-container>\r\n                </div>\r\n\r\n                <!-- Older Offers Toggle -->\r\n                <div class=\"cold-md-12 d-flex mt-3\">\r\n                    <!-- Revise Offer button for the participant -->\r\n                    <button\r\n                      class=\"btn btn-sm jero-btn jero-btn-primary col-md-6\"\r\n                      (click)=\"reviseOffer(participant.ParticipentId)\"\r\n                    >\r\n                      Revise Offer\r\n                    </button>\r\n                  <div *ngIf=\"participant.Offers.length > 1\" class=\"col-md-6\">\r\n                    <button\r\n                      class=\"btn btn-sm jero-btn jero-btn-secondary long-button\"\r\n                      (click)=\"toggleShowOlderOffers(participant.ParticipentId)\"\r\n                    >\r\n                      {{\r\n                        showOlderOffers.has(participant.ParticipentId)\r\n                          ? \"Hide\"\r\n                          : \"View\"\r\n                      }}\r\n                      Previous Offers\r\n                    </button>\r\n                  </div>\r\n                </div>\r\n                <!-- Older Offers -->\r\n                <div\r\n                  *ngIf=\"showOlderOffers.has(participant.ParticipentId)\"\r\n                  class=\"older-offers mt-3\"\r\n                >\r\n                  <h5 class=\"offer-subsection-title\" style=\"margin-top: 5rem\">\r\n                    Previous Offers\r\n                  </h5>\r\n                  <div *ngFor=\"let offer of participant.Offers.slice(1)\">\r\n                    <hr class=\"section-divider\" />\r\n                    <div class=\"offer-card\">\r\n                      <p>\r\n                        <strong>Offer Date:</strong>\r\n                        {{ offer.CreatedAt | date : \"dd-MMM-yyyy hh:mm a\" }}\r\n                      </p>\r\n                      <p>\r\n                        <strong>Offer Price:</strong> {{ offer.OfferPrice }}\r\n                      </p>\r\n                      <p><strong>Operator Note:</strong> {{ offer.Note }}</p>\r\n                      <p *ngIf=\"offer.TravellerComments\">\r\n                        <strong>Traveller Comments:</strong>\r\n                        {{ offer.TravellerComments }}\r\n                      </p>\r\n                      <p>\r\n                        <strong>Offer Status (Traveller):</strong>\r\n                        {{ offer.TravellerStatus }}\r\n                      </p>\r\n                      <p>\r\n                        <strong>Offer Status (Operator):</strong>\r\n                        {{ offer.OperatorStatus }}\r\n                      </p>\r\n                      <div\r\n                        *ngIf=\"\r\n                          offer.OfferAttachments &&\r\n                          offer.OfferAttachments.length > 0\r\n                        \"\r\n                      >\r\n                        <ul>\r\n                          <li *ngFor=\"let attachment of offer.OfferAttachments\">\r\n                            <a\r\n                              class=\"btn btn-sm jero-btn jero-btn-primary-outlined\"\r\n                              [href]=\"domainToken + attachment.FilePath\"\r\n                              target=\"_blank\"\r\n                              >Open Attachment</a\r\n                            >\r\n                          </li>\r\n                        </ul>\r\n                      </div>\r\n                    </div>\r\n                  </div>\r\n                </div>\r\n              </div>\r\n              <div\r\n                *ngIf=\"!participant.Offers || participant.Offers.length === 0\"\r\n              >\r\n                <p>No offers for this participant.</p>\r\n              </div>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n\r\n      <div *ngIf=\"!customRequestDetail\">\r\n        <p>Loading custom tour request details...</p>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n";
     /***/
   },
 
@@ -813,7 +813,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<div class=\"tab-container\">\r\n  <div class=\"tab-header\">\r\n    <div class=\"tab-buttons\">\r\n      <button\r\n        class=\"tab-button\"\r\n        [class.active]=\"activeTab === 'itineraries'\"\r\n        (click)=\"setActiveTab('itineraries')\"\r\n      >\r\n        {{ 'ITINERARIES' | translate }}\r\n        <i *ngIf=\"itineraryError\" class=\"fa fa-exclamation-circle fa-lg tab-error-icon\"></i>\r\n      </button>\r\n      <button\r\n        class=\"tab-button\"\r\n        [class.active]=\"activeTab === 'facilities'\"\r\n        (click)=\"setActiveTab('facilities')\"\r\n      >\r\n        {{ 'FACILITIES' | translate }}\r\n        <i *ngIf=\"facilitiesError\" class=\"fa fa-exclamation-circle fa-lg tab-error-icon\"></i>\r\n      </button>\r\n      <button\r\n        class=\"tab-button\"\r\n        [class.active]=\"activeTab === 'offer'\"\r\n        (click)=\"setActiveTab('offer')\"\r\n      >\r\n        {{ 'OFFER' | translate }}\r\n        <i *ngIf=\"offerError\" class=\"fa fa-exclamation-circle fa-lg tab-error-icon\"></i>\r\n      </button>\r\n    </div>\r\n  </div>\r\n\r\n  <div class=\"tab-content\" style=\"background-color: transparent; box-shadow: none;\">\r\n    <div *ngIf=\"activeTab === 'itineraries'\">\r\n      <fieldset>\r\n        <div class=\"row\" *ngIf=\"itineraryForm\">\r\n          <form [formGroup]=\"itineraryForm\" class=\"w-100\">\r\n            <div formArrayName=\"days\" class=\"row\">\r\n              <ng-container *ngFor=\"let day of days.controls; let i = index\">\r\n                <div class=\"col-md-6\">\r\n                  <div [formGroupName]=\"i\" class=\"form-control-box\">\r\n                    <div class=\"form-group custom-input-border\">\r\n                      <div\r\n                        class=\"d-flex justify-content-between align-items-center\"\r\n                      >\r\n                        <h5 class=\"day-title\">{{ 'DAY' | translate }} {{ i + 1 }}</h5>\r\n                        <a\r\n                          (click)=\"openTaskModal(i)\"\r\n                          class=\"jero-btn jero-btn-primary-outlined ml-2\"\r\n                        >\r\n                          <i class=\"fa fa-plus\"></i>\r\n                        </a>\r\n                      </div>\r\n                    </div>\r\n\r\n                    <div\r\n                      class=\"day-plan-container\"\r\n                      *ngIf=\"getDayPlan(i).controls.length > 0\"\r\n                    >\r\n                      <div formArrayName=\"DayPlan\">\r\n                        <ng-container\r\n                          *ngFor=\"\r\n                            let task of getDayPlan(i).controls;\r\n                            let j = index\r\n                          \"\r\n                        >\r\n                          <div [formGroupName]=\"j\" class=\"task-item\">\r\n                            <p class=\"intititle\">\r\n                              {{ task.get(\"TaskDetaisl\").value }}\r\n                            </p>\r\n                            <a (click)=\"removeTask(i, j)\" class=\"remove-icon\"\r\n                              ><i\r\n                                style=\"cursor: pointer\"\r\n                                class=\"fa fa-remove\"\r\n                              ></i\r\n                            ></a>\r\n                          </div>\r\n                        </ng-container>\r\n                      </div>\r\n                    </div>\r\n\r\n                    <!-- New \"No tasks\" message -->\r\n                    <div\r\n                      class=\"no-tasks-message\"\r\n                      *ngIf=\"getDayPlan(i).controls.length === 0\"\r\n                    >\r\n                      <p>{{ 'NO_TASKS_MESSAGE' | translate }}</p>\r\n                    </div>\r\n                  </div>\r\n                </div>\r\n              </ng-container>\r\n            </div>\r\n\r\n            <!-- Single Modal -->\r\n            <div class=\"modal fade\" id=\"taskModal\" tabindex=\"-1\" role=\"dialog\">\r\n              <div class=\"modal-dialog\" role=\"document\">\r\n                <div class=\"modal-content\">\r\n                  <div class=\"modal-header\">\r\n                    <h5 class=\"modal-title\">{{ 'ADD_TASK_FOR' | translate:{dayName: days.controls[currentDayIndex]?.get('DayName').value} }}</h5>\r\n                    <button\r\n                      type=\"button\"\r\n                      class=\"close\"\r\n                      data-dismiss=\"modal\"\r\n                      aria-label=\"Close\"\r\n                    >\r\n                      <span aria-hidden=\"true\">&times;</span>\r\n                    </button>\r\n                  </div>\r\n                  <div class=\"modal-body\">\r\n                    <div class=\"tripjero-floating w-100\">\r\n                      <textarea\r\n                        class=\"form-control\"\r\n                        #taskDetailsInput\r\n                        [class.is-invalid]=\"taskModalError && taskDetailsInput.value.trim() === ''\"\r\n                      ></textarea>\r\n                      <label class=\"float-label form-bg-surface\"\r\n                        >{{ 'TASK_DETAILS' | translate }}</label\r\n                      >\r\n                    </div>\r\n                    <div *ngIf=\"taskModalError && taskDetailsInput.value.trim() === ''\" class=\"invalid-feedback d-block\">\r\n                      {{ 'FIELD_REQUIRED' | translate }}\r\n                    </div>\r\n                  </div>\r\n                  <div class=\"modal-footer\">\r\n                    <button\r\n                      type=\"button\"\r\n                      class=\"jero-btn jero-btn-secondary\"\r\n                      data-dismiss=\"modal\"\r\n                    >\r\n                      {{ 'CLOSE' | translate }}\r\n                    </button>\r\n                    <button\r\n                      type=\"button\"\r\n                      class=\"jero-btn jero-btn-primary\"\r\n                      (click)=\"addTaskFromModal(taskDetailsInput)\"\r\n                    >\r\n                      {{ 'ADD' | translate }}\r\n                    </button>\r\n                  </div>\r\n                </div>\r\n              </div>\r\n            </div>\r\n          </form>\r\n        </div>\r\n      </fieldset>\r\n    </div>\r\n\r\n    <div *ngIf=\"activeTab === 'facilities'\">\r\n      <fieldset>\r\n        <div class=\"row my-3\">\r\n          <ng-container *ngFor=\"let item of facilities; let i = index\">\r\n            <div class=\"col-md-4 my-4\">\r\n              <div class=\"custom-row-box custom-input-border\">\r\n                <h6 class=\"label-icon\">\r\n                  <img class=\"pt-0 pr-2\" src=\"./assets/img/fac_blue/{{item.icon_string}}.png\" height=\"36\"\r\n                    alt=\"{{item.title}}\" />\r\n                  {{ item.title }}\r\n                </h6>\r\n                <div class=\"toggle-button-third \">\r\n                  <div class=\"button-cover\">\r\n                    <div class=\"button r\" id=\"button-1\">\r\n                      <input type=\"checkbox\" class=\"checkbox\" id=\"mainTitle_{{ i }}\"\r\n                        (click)=\"showSubChild(i, $event, item.title)\" [(ngModel)]=\"item.flag\">\r\n                      <div class=\"knobs\"></div>\r\n                      <div class=\"layer\"></div>\r\n                    </div>\r\n                  </div>\r\n                </div>\r\n              </div>\r\n              <div class=\"col-md-11 form-service-box \" *ngIf=\"item.havesub\"\r\n                [ngStyle]=\"{ display: item.flag ? 'block' : 'none' }\" id=\"subItem_{{ i }}\">\r\n                <ng-container *ngFor=\"let firstChild of item.child; let sI = index\">\r\n                  <div class=\"row-box mb-2 custom-input-border\">\r\n                    <h6 class=\"label-icon\">\r\n                      <img class=\"pt-0 pr-2\" src=\"./assets/img/fac_blue/{{firstChild.icon_string}}.png\" height=\"36\"\r\n                        alt=\"{{firstChild.title}}\" />\r\n                      {{ firstChild.title }}\r\n                    </h6>\r\n                    <ng-container *ngIf=\"item.title == 'Accommodation'\">\r\n                      <div class=\"toggle-button-cover mr-4\">\r\n                        <div class=\"button-inner-cover\">\r\n                          <div class=\"button r\" id=\"button-1\">\r\n                            <input id=\"firstChildLableAcco_{{ sI }}\"\r\n                              (click)=\"showSecendChild(sI + i, $event, sI, item.child.length, 'accomodation')\"\r\n                              [(ngModel)]=\"firstChild.flag\" type=\"checkbox\" class=\"checkbox\">\r\n                            <div class=\"knobs\"></div>\r\n                            <div class=\"layer\"></div>\r\n                          </div>\r\n                        </div>\r\n                      </div>\r\n                    </ng-container>\r\n                    <ng-container *ngIf=\"item.title == 'Transportation'\">\r\n                      <div class=\"toggle-button-cover mr-4\">\r\n                        <div class=\"button-inner-cover\">\r\n                          <div class=\"button r\" id=\"button-1\">\r\n                            <input id=\"firstChildLable_{{ sI }}\"\r\n                              (click)=\"showSecendChild(sI + i, $event, sI, item.child.length, 'transport')\"\r\n                              [(ngModel)]=\"firstChild.flag\" type=\"checkbox\" class=\"checkbox\" />\r\n                            <div class=\"knobs\"></div>\r\n                            <div class=\"layer\"></div>\r\n                          </div>\r\n                        </div>\r\n                      </div>\r\n                    </ng-container>\r\n                    <ng-container *ngIf=\"item.title == 'Meal'\">\r\n                      <div class=\"toggle-button-cover mr-4\">\r\n                        <div class=\"button-inner-cover\">\r\n                          <div class=\"button r\" id=\"button-1\">\r\n                            <input id=\"firstChildLableMeal_{{ sI }}\"\r\n                              (click)=\"showSecendChild(sI + i, $event, sI, item.child.length, 'meal')\"\r\n                              [(ngModel)]=\"firstChild.flag\" type=\"checkbox\" class=\"checkbox\">\r\n                            <div class=\"knobs\"></div>\r\n                            <div class=\"layer\"></div>\r\n                          </div>\r\n                        </div>\r\n                      </div>\r\n                    </ng-container>\r\n                  </div>\r\n                  <div class=\"d-flex justify-content-center\">\r\n                    <div *ngIf=\"firstChild.havesub\" [ngStyle]=\"{ display: firstChild.flag ? 'block' : 'none' }\"\r\n                      id=\"secendChild_{{ sI + i }}\">\r\n                      <label *ngFor=\"let secendChild of firstChild.child; let ij = index\" class=\"mr-1 ml-1\">\r\n                        <input class=\"mr-1\" type=\"radio\" name=\"starts\" id=\"secendChidl_{{ ij }}\"\r\n                          (click)=\"onHotelStarCLick(secendChild.title)\" /><span>{{ secendChild.title }} {{ 'STAR' | translate}}</span>\r\n                      </label>\r\n                    </div>\r\n                  </div>\r\n                </ng-container>\r\n              </div>\r\n            </div>\r\n          </ng-container>\r\n        </div>\r\n        <div class=\"add-facility-container\">\r\n          <div class=\"tripjero-floating w-100\">\r\n            <input placeholder=\"{{ 'ENTER_CUSTOM_SERVICES' | translate }}\" #titleOfFacility type=\"text\"\r\n              class=\"form-control\" [class.is-invalid]=\"isError && titleOfFacility.value.trim() === ''\" />\r\n            <label style=\"background: #F3F5EA;\" class=\"float-label\">{{ 'ENTER_CUSTOM_SERVICES_LABEL' | translate }}</label>\r\n          </div>\r\n          <a (click)=\"addNewFacility(titleOfFacility)\" class=\"jero-btn jero-btn-primary add-facility-btn\"><i class=\"fa fa-plus\"></i> {{ 'ADD' | translate }}</a>\r\n        </div>\r\n        <div *ngIf=\"isError\" class=\"invalid-feedback d-block\">\r\n          {{ 'FIELD_REQUIRED' | translate }}\r\n        </div>\r\n      </fieldset>\r\n    </div>\r\n\r\n    <div *ngIf=\"activeTab === 'offer'\">\r\n      <div class=\"offer-form-container\">\r\n        <div class=\"offer-form-card\">\r\n          <h4 class=\"form-title\">{{ 'SUBMIT_REVISE_OFFER' | translate }}</h4>\r\n          <form [formGroup]=\"offerForm\" (ngSubmit)=\"submitOffer()\">\r\n            \r\n            <!-- Offer Price -->\r\n            <div class=\"tripjero-floating\">\r\n              <input type=\"number\" id=\"offerPrice\" formControlName=\"OfferPrice\" class=\"form-control\" placeholder=\"e.g., 3000\" required \r\n                     [class.is-invalid]=\"offerForm.get('OfferPrice')?.invalid && offerForm.get('OfferPrice')?.touched\">\r\n              <label for=\"offerPrice\" class=\"float-label\">{{ 'OFFER_PRICE' | translate }}</label>\r\n              <div *ngIf=\"offerForm.get('OfferPrice')?.invalid && offerForm.get('OfferPrice')?.touched\" class=\"invalid-feedback\">\r\n                {{ 'OFFER_PRICE_REQUIRED' | translate }}\r\n              </div>\r\n            </div>\r\n      \r\n            <!-- Note -->\r\n            <div class=\"tripjero-floating\">\r\n              <textarea id=\"note\" formControlName=\"Note\" class=\"form-control\" placeholder=\"Add a descriptive note for the offer...\" required\r\n                        [class.is-invalid]=\"offerForm.get('Note')?.invalid && offerForm.get('Note')?.touched\"></textarea>\r\n              <label for=\"note\" class=\"float-label\">{{ 'NOTE' | translate }}</label>\r\n              <div *ngIf=\"offerForm.get('Note')?.invalid && offerForm.get('Note')?.touched\" class=\"invalid-feedback\">\r\n                <div *ngIf=\"offerForm.get('Note')?.errors?.required\">{{ 'NOTE_REQUIRED' | translate }}</div>\r\n                <div *ngIf=\"offerForm.get('Note')?.errors?.minlength\">{{ 'NOTE_MIN_LENGTH' | translate }}</div>\r\n              </div>\r\n            </div>\r\n      \r\n            <!-- Custom File Attachment -->\r\n            <div class=\"form-group\">\r\n              <label for=\"file\" class=\"file-input-label\">\r\n                <i class=\"fa fa-paperclip\"></i>\r\n                <span>{{ selectedFile ? selectedFile.name : ('CHOOSE_ATTACHMENT' | translate) }}</span>\r\n              </label>\r\n              <input type=\"file\" id=\"file\" (change)=\"onFileSelected($event)\" class=\"file-input-hidden\">\r\n              <div *ngIf=\"offerForm.get('File')?.invalid && offerForm.get('File')?.touched\" class=\"invalid-feedback d-block\">\r\n                {{ 'ATTACHMENT_REQUIRED' | translate }}\r\n              </div>\r\n            </div>\r\n      \r\n            <!-- Form Actions -->\r\n            <div class=\"form-actions\">\r\n              <button type=\"button\" class=\"jero-btn jero-btn-secondary\" (click)=\"cancel()\">{{ 'CANCEL' | translate }}</button>\r\n              <button type=\"submit\" class=\"jero-btn jero-btn-primary\">{{ (isRevisedOffer ? 'REVISE_OFFER' : 'SUBMIT_OFFER') | translate }}</button>\r\n            </div>\r\n          </form>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n";
+    __webpack_exports__["default"] = "<div class=\"tab-container\">\r\n  <div class=\"tab-header\">\r\n    <div class=\"tab-buttons\">\r\n      <button\r\n        class=\"tab-button\"\r\n        [class.active]=\"activeTab === 'itineraries'\"\r\n        (click)=\"setActiveTab('itineraries')\"\r\n      >\r\n        {{ 'ITINERARIES' | translate }}\r\n        <i *ngIf=\"itineraryError\" class=\"fa fa-exclamation-circle fa-lg tab-error-icon\"></i>\r\n      </button>\r\n      <button\r\n        class=\"tab-button\"\r\n        [class.active]=\"activeTab === 'facilities'\"\r\n        (click)=\"setActiveTab('facilities')\"\r\n      >\r\n        {{ 'FACILITIES' | translate }}\r\n        <i *ngIf=\"facilitiesError\" class=\"fa fa-exclamation-circle fa-lg tab-error-icon\"></i>\r\n      </button>\r\n      <button\r\n        class=\"tab-button\"\r\n        [class.active]=\"activeTab === 'offer'\"\r\n        (click)=\"setActiveTab('offer')\"\r\n      >\r\n        {{ 'OFFER' | translate }}\r\n        <i *ngIf=\"offerError\" class=\"fa fa-exclamation-circle fa-lg tab-error-icon\"></i>\r\n      </button>\r\n    </div>\r\n  </div>\r\n\r\n  <div class=\"tab-content\" style=\"background-color: transparent; box-shadow: none;\">\r\n    <div *ngIf=\"activeTab === 'itineraries'\">\r\n      <fieldset>\r\n        <div class=\"row\" *ngIf=\"itineraryForm\">\r\n          <form [formGroup]=\"itineraryForm\" class=\"w-100\">\r\n            <div formArrayName=\"days\" class=\"row\">\r\n              <ng-container *ngFor=\"let day of days.controls; let i = index\">\r\n                <div class=\"col-md-6\">\r\n                  <div [formGroupName]=\"i\" class=\"form-control-box\">\r\n                    <div class=\"form-group custom-input-border\">\r\n                      <div\r\n                        class=\"d-flex justify-content-between align-items-center\"\r\n                      >\r\n                        <h5 class=\"day-title\">{{ 'DAY' | translate }} {{ i + 1 }}</h5>\r\n                        <a\r\n                          (click)=\"openTaskModal(i)\"\r\n                          class=\"jero-btn jero-btn-primary-outlined ml-2\"\r\n                        >\r\n                          <i class=\"fa fa-plus\"></i>\r\n                        </a>\r\n                      </div>\r\n                    </div>\r\n\r\n                    <div\r\n                      class=\"day-plan-container\"\r\n                      *ngIf=\"getDayPlan(i).controls.length > 0\"\r\n                    >\r\n                      <div formArrayName=\"DayPlan\">\r\n                        <ng-container\r\n                          *ngFor=\"\r\n                            let task of getDayPlan(i).controls;\r\n                            let j = index\r\n                          \"\r\n                        >\r\n                          <div [formGroupName]=\"j\" class=\"task-item\">\r\n                            <p class=\"intititle\">\r\n                              {{ task.get(\"TaskDetaisl\").value }}\r\n                            </p>\r\n                            <a (click)=\"removeTask(i, j)\" class=\"remove-icon\"\r\n                              ><i\r\n                                style=\"cursor: pointer\"\r\n                                class=\"fa fa-remove\"\r\n                              ></i\r\n                            ></a>\r\n                          </div>\r\n                        </ng-container>\r\n                      </div>\r\n                    </div>\r\n\r\n                    <!-- New \"No tasks\" message -->\r\n                    <div\r\n                      class=\"no-tasks-message\"\r\n                      *ngIf=\"getDayPlan(i).controls.length === 0\"\r\n                    >\r\n                      <p>{{ 'NO_TASKS_MESSAGE' | translate }}</p>\r\n                    </div>\r\n                  </div>\r\n                </div>\r\n              </ng-container>\r\n            </div>\r\n\r\n            <!-- Single Modal -->\r\n            <div class=\"modal fade\" id=\"taskModal\" tabindex=\"-1\" role=\"dialog\">\r\n              <div class=\"modal-dialog\" role=\"document\">\r\n                <div class=\"modal-content\">\r\n                  <div class=\"modal-header\">\r\n                    <h5 class=\"modal-title\">{{ 'ADD_TASK_FOR' | translate:{dayName: days.controls[currentDayIndex]?.get('DayName').value} }}</h5>\r\n                    <button\r\n                      type=\"button\"\r\n                      class=\"close\"\r\n                      data-dismiss=\"modal\"\r\n                      aria-label=\"Close\"\r\n                    >\r\n                      <span aria-hidden=\"true\">&times;</span>\r\n                    </button>\r\n                  </div>\r\n                  <div class=\"modal-body\">\r\n                    <div class=\"tripjero-floating w-100\">\r\n                      <textarea\r\n                        class=\"form-control\"\r\n                        #taskDetailsInput\r\n                        [class.is-invalid]=\"taskModalError && taskDetailsInput.value.trim() === ''\"\r\n                      ></textarea>\r\n                      <label class=\"float-label form-bg-surface\"\r\n                        >{{ 'TASK_DETAILS' | translate }}</label\r\n                      >\r\n                    </div>\r\n                    <div *ngIf=\"taskModalError && taskDetailsInput.value.trim() === ''\" class=\"invalid-feedback d-block\">\r\n                      {{ 'FIELD_REQUIRED' | translate }}\r\n                    </div>\r\n                  </div>\r\n                  <div class=\"modal-footer\">\r\n                    <button\r\n                      type=\"button\"\r\n                      class=\"jero-btn jero-btn-secondary\"\r\n                      data-dismiss=\"modal\"\r\n                    >\r\n                      {{ 'CLOSE' | translate }}\r\n                    </button>\r\n                    <button\r\n                      type=\"button\"\r\n                      class=\"jero-btn jero-btn-primary\"\r\n                      (click)=\"addTaskFromModal(taskDetailsInput)\"\r\n                    >\r\n                      {{ 'ADD' | translate }}\r\n                    </button>\r\n                  </div>\r\n                </div>\r\n              </div>\r\n            </div>\r\n          </form>\r\n        </div>\r\n      </fieldset>\r\n    </div>\r\n\r\n    <div *ngIf=\"activeTab === 'facilities'\">\r\n      <fieldset>\r\n        <div class=\"row my-3\">\r\n          <ng-container *ngFor=\"let item of facilities; let i = index\">\r\n            <div class=\"col-md-4 my-4\">\r\n              <div class=\"custom-row-box custom-input-border\">\r\n                <h6 class=\"label-icon\">\r\n                  <img class=\"pt-0 pr-2\" src=\"./assets/img/fac_blue/{{item.icon_string}}.png\" height=\"36\"\r\n                    alt=\"{{item.title}}\" />\r\n                  {{ item.title }}\r\n                </h6>\r\n                <div class=\"toggle-button-third \">\r\n                  <div class=\"button-cover\">\r\n                    <div class=\"button r\" id=\"button-1\">\r\n                      <input type=\"checkbox\" class=\"checkbox\" id=\"mainTitle_{{ i }}\"\r\n                        (click)=\"showSubChild(i, $event, item.title)\" [(ngModel)]=\"item.flag\">\r\n                      <div class=\"knobs\"></div>\r\n                      <div class=\"layer\"></div>\r\n                    </div>\r\n                  </div>\r\n                </div>\r\n              </div>\r\n              <div class=\"col-md-11 form-service-box \" *ngIf=\"item.havesub\"\r\n                [ngStyle]=\"{ display: item.flag ? 'block' : 'none' }\" id=\"subItem_{{ i }}\">\r\n                <ng-container *ngFor=\"let firstChild of item.child; let sI = index\">\r\n                  <div class=\"row-box mb-2 custom-input-border\">\r\n                    <h6 class=\"label-icon\">\r\n                      <img class=\"pt-0 pr-2\" src=\"./assets/img/fac_blue/{{firstChild.icon_string}}.png\" height=\"36\"\r\n                        alt=\"{{firstChild.title}}\" />\r\n                      {{ firstChild.title }}\r\n                    </h6>\r\n                    <ng-container *ngIf=\"item.title == 'Accommodation'\">\r\n                      <div class=\"toggle-button-cover mr-4\">\r\n                        <div class=\"button-inner-cover\">\r\n                          <div class=\"button r\" id=\"button-1\">\r\n                            <input id=\"firstChildLableAcco_{{ sI }}\"\r\n                              (click)=\"showSecendChild(sI + i, $event, sI, item.child.length, 'accomodation')\"\r\n                              [(ngModel)]=\"firstChild.flag\" type=\"checkbox\" class=\"checkbox\">\r\n                            <div class=\"knobs\"></div>\r\n                            <div class=\"layer\"></div>\r\n                          </div>\r\n                        </div>\r\n                      </div>\r\n                    </ng-container>\r\n                    <ng-container *ngIf=\"item.title == 'Transportation'\">\r\n                      <div class=\"toggle-button-cover mr-4\">\r\n                        <div class=\"button-inner-cover\">\r\n                          <div class=\"button r\" id=\"button-1\">\r\n                            <input id=\"firstChildLable_{{ sI }}\"\r\n                              (click)=\"showSecendChild(sI + i, $event, sI, item.child.length, 'transport')\"\r\n                              [(ngModel)]=\"firstChild.flag\" type=\"checkbox\" class=\"checkbox\" />\r\n                            <div class=\"knobs\"></div>\r\n                            <div class=\"layer\"></div>\r\n                          </div>\r\n                        </div>\r\n                      </div>\r\n                    </ng-container>\r\n                    <ng-container *ngIf=\"item.title == 'Meal'\">\r\n                      <div class=\"toggle-button-cover mr-4\">\r\n                        <div class=\"button-inner-cover\">\r\n                          <div class=\"button r\" id=\"button-1\">\r\n                            <input id=\"firstChildLableMeal_{{ sI }}\"\r\n                              (click)=\"showSecendChild(sI + i, $event, sI, item.child.length, 'meal')\"\r\n                              [(ngModel)]=\"firstChild.flag\" type=\"checkbox\" class=\"checkbox\">\r\n                            <div class=\"knobs\"></div>\r\n                            <div class=\"layer\"></div>\r\n                          </div>\r\n                        </div>\r\n                      </div>\r\n                    </ng-container>\r\n                  </div>\r\n                  <div class=\"d-flex justify-content-center\">\r\n                    <div *ngIf=\"firstChild.havesub\" [ngStyle]=\"{ display: firstChild.flag ? 'block' : 'none' }\"\r\n                      id=\"secendChild_{{ sI + i }}\">\r\n                      <label *ngFor=\"let secendChild of firstChild.child; let ij = index\" class=\"mr-1 ml-1\">\r\n                        <input class=\"mr-1\" type=\"radio\" name=\"starts\" id=\"secendChidl_{{ ij }}\"\r\n                          (click)=\"onHotelStarCLick(secendChild.title)\" /><span>{{ secendChild.title }} {{ 'STAR' | translate}}</span>\r\n                      </label>\r\n                    </div>\r\n                  </div>\r\n                </ng-container>\r\n              </div>\r\n            </div>\r\n          </ng-container>\r\n        </div>\r\n        <div class=\"add-facility-container\">\r\n          <div class=\"tripjero-floating w-100\">\r\n            <input placeholder=\"{{ 'ENTER_CUSTOM_SERVICES' | translate }}\" #titleOfFacility type=\"text\"\r\n              class=\"form-control\" [class.is-invalid]=\"isError && titleOfFacility.value.trim() === ''\" />\r\n            <label style=\"background: #F3F5EA;\" class=\"float-label\">{{ 'ENTER_CUSTOM_SERVICES_LABEL' | translate }}</label>\r\n          </div>\r\n          <a (click)=\"addNewFacility(titleOfFacility)\" class=\"jero-btn jero-btn-primary add-facility-btn\"><i class=\"fa fa-plus\"></i> {{ 'ADD' | translate }}</a>\r\n        </div>\r\n        <div *ngIf=\"isError\" class=\"invalid-feedback d-block\">\r\n          {{ 'FIELD_REQUIRED' | translate }}\r\n        </div>\r\n      </fieldset>\r\n    </div>\r\n\r\n    <div *ngIf=\"activeTab === 'offer'\">\r\n      <div class=\"offer-form-container\">\r\n        <div class=\"offer-form-card\">\r\n          <h4 class=\"form-title\">{{ 'SUBMIT_REVISE_OFFER' | translate }}</h4>\r\n          <form [formGroup]=\"offerForm\" (ngSubmit)=\"submitOffer()\">\r\n            \r\n            <!-- Offer Price -->\r\n            <div class=\"tripjero-floating\">\r\n              <input type=\"number\" id=\"offerPrice\" formControlName=\"OfferPrice\" class=\"form-control\" placeholder=\"e.g., 3000\" required \r\n                     [class.is-invalid]=\"offerForm.get('OfferPrice')?.invalid && offerForm.get('OfferPrice')?.touched\">\r\n              <label for=\"offerPrice\" class=\"float-label\">{{ 'OFFER_PRICE' | translate }}</label>\r\n              <div *ngIf=\"offerForm.get('OfferPrice')?.invalid && offerForm.get('OfferPrice')?.touched\" class=\"invalid-feedback\">\r\n                {{ 'OFFER_PRICE_REQUIRED' | translate }}\r\n              </div>\r\n            </div>\r\n      \r\n            <!-- Note -->\r\n            <div class=\"tripjero-floating\">\r\n              <textarea id=\"note\" formControlName=\"Note\" class=\"form-control\" placeholder=\"Add a descriptive note for the offer...\" required\r\n                        [class.is-invalid]=\"offerForm.get('Note')?.invalid && offerForm.get('Note')?.touched\"></textarea>\r\n              <label for=\"note\" class=\"float-label\">{{ 'NOTE' | translate }}</label>\r\n              <div *ngIf=\"offerForm.get('Note')?.invalid && offerForm.get('Note')?.touched\" class=\"invalid-feedback\">\r\n                <div *ngIf=\"offerForm.get('Note')?.errors?.required\">{{ 'NOTE_REQUIRED' | translate }}</div>\r\n                <div *ngIf=\"offerForm.get('Note')?.errors?.minlength\">{{ 'NOTE_MIN_LENGTH' | translate }}</div>\r\n              </div>\r\n            </div>\r\n      \r\n            <!-- Custom File Attachment -->\r\n            <div class=\"form-group\">\r\n              <label for=\"file\" class=\"file-input-label\">\r\n                <i class=\"fa fa-paperclip\"></i>\r\n                <span>{{ selectedFile ? selectedFile.name : ('CHOOSE_ATTACHMENT' | translate) }} (Optional)</span>\r\n              </label>\r\n              <input type=\"file\" id=\"file\" (change)=\"onFileSelected($event)\" class=\"file-input-hidden\">\r\n              <div *ngIf=\"offerForm.get('File')?.invalid && offerForm.get('File')?.touched\" class=\"invalid-feedback d-block\">\r\n                {{ 'ATTACHMENT_REQUIRED' | translate }}\r\n              </div>\r\n            </div>\r\n      \r\n            <!-- Form Actions -->\r\n            <div class=\"form-actions\">\r\n              <button type=\"button\" class=\"jero-btn jero-btn-secondary\" (click)=\"cancel()\">{{ 'CANCEL' | translate }}</button>\r\n              <button type=\"submit\" class=\"jero-btn jero-btn-primary\">{{ (isRevisedOffer ? 'REVISE_OFFER' : 'SUBMIT_OFFER') | translate }}</button>\r\n            </div>\r\n          </form>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n";
     /***/
   },
 
@@ -1013,7 +1013,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<div id=\"page-content-wrapper\">\r\n  <div class=\"row\">\r\n    <div class=\"col-md-12 d-flex justify-content-between align-items-center\">\r\n      <h4>\r\n        {{ 'OPERATOR_PROFILE' | translate }}\r\n      </h4>\r\n      <ul class=\"nav nav-pills\" role=\"tablist\">\r\n        <li class=\"nav-item\">\r\n          <a class=\"jero-btn jero-btn-primary-outlined active\" data-toggle=\"pill\" href=\"#home\">{{ 'VERIFY_PROFILE' | translate }}</a>\r\n        </li>\r\n        <li class=\"nav-item\">\r\n          <a class=\"jero-btn jero-btn-primary-outlined\" data-toggle=\"pill\" href=\"#menu1\">{{ 'PROFILE' | translate }}</a>\r\n        </li>\r\n        <li class=\"nav-item\">\r\n          <a class=\"jero-btn jero-btn-primary-outlined\" data-toggle=\"pill\" href=\"#menu2\">{{ 'ACCOUNT_SETTING' | translate }}</a>\r\n        </li>\r\n      </ul>\r\n      <button class=\"jero-btn jero-btn-primary\" data-toggle=\"modal\" data-target=\"#expireModal\">\r\n        {{ 'ADD_NEW_PROMO' | translate }}\r\n      </button>\r\n    </div>\r\n    <div class=\"col-md-12 tab-content\">\r\n      <div class=\"row tab-pane active\" id=\"home\"\r\n        style=\"background: white; border-radius: 10px; padding: 20px; margin-top: 20px;\">\r\n        <div class=\"col-md-6\">\r\n          <form [formGroup]=\"verifyForm\" (ngSubmit)=\"verifyAccount()\">\r\n            <div class=\"form-card\">\r\n              <!-- License Number Floating Field -->\r\n              <div class=\"tripjero-floating mb-4\">\r\n                <input type=\"text\" id=\"licenceNumber\" class=\"form-control\" formControlName=\"LicenceNumber\"\r\n                  [(ngModel)]=\"user.Licence.LicenceNumber\" required />\r\n                <label class=\"float-label\" for=\"licenceNumber\">{{ 'LICENSE_NUMBER' | translate }}</label>\r\n                <div *ngIf=\"submitted && f.LicenceNumber.errors\" class=\"invalid-feedback d-block mt-1\">\r\n                  <div *ngIf=\"f.LicenceNumber.errors.required\" style=\"color: red;\">{{ 'LICENSE_NUMBER_REQUIRED' | translate }}</div>\r\n                </div>\r\n              </div>\r\n\r\n              <!-- License Document Upload -->\r\n              <div class=\"tripjero-upload-group mb-4 license-upload-container\">\r\n                <label class=\"float-label license-label\" for=\"licenceFile\">{{ 'LICENSE_DOCUMENT' | translate }}</label>\r\n                <div class=\"jero-file-upload-box license-upload-box\" (click)=\"file.click()\">\r\n                  <i class=\"fas fa-folder-open jero-file-icon\"></i>\r\n                  <span class=\"jero-file-text\">{{ 'BROWSE_FILE' | translate }}</span>\r\n                  <input type=\"file\" id=\"licenceFile\" accept=\"image/*,application/pdf,.doc,.docx\"\r\n                    formControlName=\"LicenceImage\" #file (change)=\"preview(file.files, 'verify')\"\r\n                    class=\"jero-file-input\" tabindex=\"-1\" />\r\n                </div>\r\n              </div>\r\n              <img src=\"{{verifyImgURL}}\" height=\"200\" width=\"200\" *ngIf=\"verifyImgURL\" alt=\"\">\r\n\r\n              <!-- Note Section -->\r\n              <div class=\"jero-note mt-4 mb-4\">\r\n                <div class=\"jero-note-title font-weight-bold mb-2\">{{ 'NOTE' | translate }}</div>\r\n                <div class=\"jero-note-desc\">\r\n                  {{ 'PROFILE_NOTE' | translate }}\r\n                </div>\r\n              </div>\r\n\r\n              <!-- Update Button -->\r\n              <div class=\"text-left mt-3\">\r\n                <button type=\"submit\" class=\"jero-btn jero-btn-primary\">\r\n                  {{ 'UPDATE_INFORMATION' | translate }}\r\n                </button>\r\n              </div>\r\n            </div>\r\n          </form>\r\n        </div>\r\n      </div>\r\n      <div class=\"row tab-pane fade\" id=\"menu1\"\r\n        style=\"background: white; border-radius: 10px; padding: 20px; margin-top: 20px;\">\r\n        <div class=\"col-md-6\">\r\n          <div class=\"form-card\">\r\n            <div class=\"row\">\r\n              <form [formGroup]=\"imgForm\" (ngSubmit)=\"updateImage()\">\r\n                <div class=\"tripjero-floating\">\r\n                  <input type=\"file\" accept='image/*' #profile formControlName=\"image\"\r\n                    (change)=\"preview(profile.files, 'profile')\" class=\"form-control d-none\" readonly>\r\n                  <div *ngIf=\"imgSubmit && i.image.errors\" class=\"invalid-feedback\">\r\n                    <div *ngIf=\"i.image.errors.required\" style=\"color: red;\">\r\n                      {{ 'PROFILE_IMAGE_REQUIRED' | translate }}\r\n                    </div>\r\n                  </div>\r\n                </div>\r\n              </form>\r\n            </div>\r\n            <div class=\"d-flex justify-content-start profile-image-jugad\">\r\n              <img class=\"image\" src=\"{{imgURL}}\" alt=\"\" (click)=\"profile.click()\" style=\"height: 150px;\r\n    width: 150px;\">\r\n              <div class=\"middle\" (click)=\"profile.click()\">\r\n                <i class=\"fa fa-camera\"></i>\r\n              </div>\r\n            </div>\r\n            <form [formGroup]=\"postForm\" (ngSubmit)=\"updateProfile()\">\r\n              <div class=\"row\">\r\n                <div class=\"col-md-12\">\r\n                  <div class=\"tripjero-floating\">\r\n\r\n                    <input type=\"text\" placeholder=\"{{ 'USER_FULL_NAME' | translate }}\" class=\"form-control\" aria-describedby=\"emailHelp\"\r\n                      id=\"name\" [(ngModel)]=\"user.Name\" formControlName=\"Name\" required>\r\n                    <label for=\"name\" class=\"float-label\">{{ 'NAME' | translate }}</label>\r\n                    <div *ngIf=\"submitted && f.Name.errors\" class=\"invalid-feedback\">\r\n                      <div *ngIf=\"f.Name.errors.required\" style=\"color: red;\">{{ 'NAME_REQUIRED' | translate }}</div>\r\n                    </div>\r\n                  </div>\r\n                </div>\r\n                <div class=\"col-md-12\">\r\n                  <div class=\"tripjero-floating\">\r\n                    <input type=\"text\" class=\"form-control\" [(ngModel)]=\"user.BuisnessName\"\r\n                      formControlName=\"BuisnessName\" id=\"business_name\" placeholder=\"{{ 'BUSINESS_NAME' | translate }}\" required>\r\n                    <label for=\"business_name\" class=\"float-label\">{{ 'BUSINESS_NAME' | translate }}</label>\r\n\r\n                  </div>\r\n                </div>\r\n                <div class=\"col-md-12\">\r\n                  <div class=\"tripjero-floating\">\r\n                    <input type=\"text\" class=\"form-control\" aria-describedby=\"emailHelp\" [(ngModel)]=\"user.FullAddress\"\r\n                      formControlName=\"FullAddress\" id=\"address\" placeholder=\"{{ 'BUSINESS_ADDRESS' | translate }}\" required>\r\n                    <label for=\"address\" class=\"float-label\">{{ 'BUSINESS_ADDRESS' | translate }}</label>\r\n\r\n                    <div *ngIf=\"submitted && f.FullAddress.errors\" class=\"invalid-feedback\">\r\n                      <div *ngIf=\"f.FullAddress.errors.required\" style=\"color: red;\">{{ 'FULL_ADDRESS_REQUIRED' | translate }}</div>\r\n                    </div>\r\n                  </div>\r\n                </div>\r\n                <div class=\"col-md-12\">\r\n                  <div class=\"tripjero-floating\">\r\n                    <input type=\"email\" placeholder=\"operator@abc.com\" class=\"form-control\" aria-describedby=\"emailHelp\"\r\n                      [(ngModel)]=\"user.Email\" formControlName=\"Email\" id=\"email\" placeholder=\"{{ 'EMAIL' | translate }}\" required>\r\n                    <label for=\"email\" class=\"float-label\">{{ 'EMAIL' | translate }}</label>\r\n\r\n                    <div *ngIf=\"submitted && f.Email.errors\" class=\"invalid-feedback\">\r\n                      <div *ngIf=\"f.Email.errors.required\" style=\"color: red;\">{{ 'EMAIL_REQUIRED' | translate }}</div>\r\n                    </div>\r\n                  </div>\r\n                </div>\r\n                <div class=\"col-md-12\">\r\n                  <div class=\"tripjero-floating\">\r\n                    <div class=\"input-group\">\r\n                      <select class=\"form-control country-code-picker\" [(ngModel)]=\"selectedPhoneCode\" formControlName=\"PhoneCode\">\r\n                        <option value=\"\" disabled selected>Code</option>\r\n                        <option *ngFor=\"let country of countries\" [value]=\"'+' + country.DailingCode\">{{country.Name}} (+{{country.DailingCode}})</option>\r\n                      </select>\r\n                    <label for=\"phoneno\" class=\"float-label\">{{ 'PHONE_NUMBER' | translate }}</label>\r\n\r\n                      <input type=\"number\" class=\"form-control\" aria-describedby=\"emailHelp\"\r\n                        [(ngModel)]=\"user.PhoneNumber\" formControlName=\"PhoneNumber\" id=\"phoneno\"\r\n                        placeholder=\"{{ 'PHONE_NUMBER' | translate }}\" required>\r\n                    </div>\r\n\r\n                    <div *ngIf=\"submitted && f.PhoneNumber.errors\" class=\"invalid-feedback\">\r\n                      <div *ngIf=\"f.PhoneNumber.errors.required\" style=\"color: red;\">{{ 'PHONE_NUMBER_REQUIRED' | translate }}</div>\r\n                    </div>\r\n                  </div>\r\n                </div>\r\n                <div class=\"col-md-12\">\r\n                  <div class=\"tripjero-floating\">\r\n                    <div class=\"input-group\">\r\n                      <select class=\"form-control country-code-picker\" [(ngModel)]=\"selectedContactCode\" formControlName=\"ContactCode\">\r\n                        <option value=\"\" disabled selected>Code</option>\r\n                        <option *ngFor=\"let country of countries\" [value]=\"'+' + country.DailingCode\">{{country.Name}} (+{{country.DailingCode}})</option>\r\n                      </select>\r\n                      <label for=\"contactno\" class=\"float-label\">{{ 'MOBILE_NUMBER' | translate }}</label>\r\n                      <input type=\"number\" class=\"form-control\" aria-describedby=\"emailHelp\"\r\n                        [(ngModel)]=\"user.ContactNumber\" formControlName=\"ContactNumber\" id=\"contactno\"\r\n                        placeholder=\"{{ 'MOBILE_NUMBER' | translate }}\" required>\r\n                    </div>\r\n\r\n                    <div *ngIf=\"submitted && f.ContactNumber.errors\" class=\"invalid-feedback\">\r\n                      <div *ngIf=\"f.ContactNumber.errors.required\" style=\"color: red;\">{{ 'MOBILE_NUMBER_REQUIRED' | translate }}</div>\r\n                    </div>\r\n                  </div>\r\n                </div>\r\n                <div class=\"col-md-12\">\r\n                  <div class=\"tripjero-floating\">\r\n                    <select class=\"form-control\" aria-describedby=\"emailHelp\"\r\n                      [(ngModel)]=\"user.Country\" formControlName=\"Country\" id=\"country\" required (change)=\"onCountryChange()\">\r\n                      <option value=\"\" disabled selected>{{ 'SELECT_COUNTRY' | translate }}</option>\r\n                      <option *ngFor=\"let country of countries\" [value]=\"country.Name\">{{country.Name}}</option>\r\n                    </select>\r\n                    <label for=\"country\" class=\"float-label\">{{ 'COUNTRY' | translate }}</label>\r\n\r\n                    <div *ngIf=\"submitted && f.Country.errors\" class=\"invalid-feedback\">\r\n                      <div *ngIf=\"f.Country.errors.required\" style=\"color: red;\">{{ 'COUNTRY_REQUIRED' | translate }}</div>\r\n                    </div>\r\n                  </div>\r\n                </div>\r\n                <div class=\"col-md-12\">\r\n                  <div class=\"tripjero-floating\">\r\n                    <select class=\"form-control\" aria-describedby=\"emailHelp\"\r\n                      [(ngModel)]=\"user.City\" formControlName=\"City\" id=\"city\" required>\r\n                      <option value=\"\" disabled selected>{{ 'SELECT_CITY' | translate }}</option>\r\n                      <option *ngFor=\"let city of cities\" [value]=\"city.Name\">{{city.Name}}</option>\r\n                    </select>\r\n                    <label for=\"city\" class=\"float-label\">{{ 'CITY' | translate }}</label>\r\n\r\n                    <div *ngIf=\"submitted && f.City.errors\" class=\"invalid-feedback\">\r\n                      <div *ngIf=\"f.City.errors.required\" style=\"color: red;\">{{ 'CITY_REQUIRED' | translate }}</div>\r\n                    </div>\r\n                  </div>\r\n                </div>\r\n                <div class=\"col-md-12 mt-3\">\r\n                  <button type=\"submit\" class=\"jero-btn jero-btn-primary\" [disabled]=\"!postForm.valid\">{{ 'UPDATE' | translate }}</button>\r\n                </div>\r\n              </div>\r\n            </form>\r\n          </div>\r\n        </div>\r\n      </div>\r\n      <div class=\"row tab-pane fade\" id=\"menu2\"\r\n        style=\"background: white; border-radius: 10px; padding: 20px; margin-top: 20px;\">\r\n        <div class=\"col-md-6\">\r\n          <form [formGroup]=\"passwordForm\" (ngSubmit)=\"updatePassword()\">\r\n            <div>\r\n              <div class=\"tripjero-floating\">\r\n                <input type=\"password\" class=\"form-control\" id=\"name\" [(ngModel)]=\"UserPassword.CurrentPassword\"\r\n                  formControlName=\"CurrentPassword\" placeholder=\"{{ 'CURRENT_PASSWORD' | translate }}\"\r\n                  [ngClass]=\"{ 'is-invalid': p.CurrentPassword.errors && passwordForm.get('CurrentPassword').touched }\"\r\n                  required>\r\n                <label for=\"Name\" class=\"float-label\">{{ 'CURRENT_PASSWORD' | translate }}</label>\r\n\r\n                <div *ngIf=\"(passwordForm.get('CurrentPassword').touched) && p.CurrentPassword.errors\"\r\n                  class=\"invalid-feedback\">\r\n                  <div *ngIf=\"p.CurrentPassword.errors.required\" style=\"color: red;\">{{ 'CURRENT_PASSWORD_REQUIRED' | translate }}</div>\r\n                </div>\r\n              </div>\r\n              <div class=\"tripjero-floating\">\r\n                <input type=\"password\" class=\"form-control\" [(ngModel)]=\"UserPassword.NewPassword\"\r\n                  formControlName=\"NewPassword\" id=\"name\"\r\n                  [ngClass]=\"{ 'is-invalid': p.NewPassword.errors && passwordForm.get('NewPassword').touched }\"\r\n                  placeholder=\"{{ 'NEW_PASSWORD' | translate }}\" required>\r\n                <label for=\"BName\" class=\"float-label\">{{ 'NEW_PASSWORD' | translate }}</label>\r\n                <div *ngIf=\"(passwordForm.get('NewPassword').touched) && p.NewPassword.errors\" class=\"invalid-feedback\">\r\n                  <div *ngIf=\"p.NewPassword.errors.pattern\" style=\"color: red;\">\r\n                    {{ 'PASSWORD_PATTERN' | translate }}\r\n                  </div>\r\n                  <div *ngIf=\"p.NewPassword.errors.required\" style=\"color: red;\">{{ 'NEW_PASSWORD_REQUIRED' | translate }}</div>\r\n                </div>\r\n              </div>\r\n              <div class=\"tripjero-floating\">\r\n                <input type=\"password\" class=\"form-control\" [(ngModel)]=\"UserPassword.ConfirmPass\"\r\n                  formControlName=\"ConfirmPass\" id=\"address\"\r\n                  [ngClass]=\"{ 'is-invalid': p.ConfirmPass.errors && passwordForm.get('ConfirmPass').touched }\"\r\n                  placeholder=\"{{ 'CONFIRM_PASSWORD' | translate }}\" required>\r\n                <label for=\"Address\" class=\"float-label\">{{ 'CONFIRM_NEW_PASSWORD' | translate }}</label>\r\n                <div *ngIf=\"(passwordForm.get('ConfirmPass').touched) && p.ConfirmPass.errors\" class=\"invalid-feedback\">\r\n                  <div *ngIf=\"p.ConfirmPass.errors.pattern\" style=\"color: red;\">\r\n                    {{ 'PASSWORD_PATTERN' | translate }}\r\n                  </div>\r\n                  <div *ngIf=\"p.ConfirmPass.errors.required\" style=\"color: red;\">{{ 'CONFIRM_PASSWORD_REQUIRED' | translate }}</div>\r\n                </div>\r\n              </div>\r\n              <div class=\"d-flex justify-content-start mt-4\" style=\"gap: 10px;\">\r\n                <button type=\"submit\" class=\"jero-btn jero-btn-primary\">{{ 'UPDATE_PASSWORD' | translate }}</button>\r\n                <button class=\"btn-danger jero-btn\" (click)=\"deactivateAccount()\">\r\n                  {{ 'DEACTIVATE_ACCOUNT' | translate }}\r\n                </button>\r\n              </div>\r\n            </div>\r\n          </form>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>";
+    __webpack_exports__["default"] = "<div id=\"page-content-wrapper\">\r\n  <div class=\"row\">\r\n    <div class=\"col-md-12 d-flex justify-content-between align-items-center\">\r\n      <h4>\r\n        {{ 'OPERATOR_PROFILE' | translate }}\r\n      </h4>\r\n      <ul class=\"nav nav-pills\" role=\"tablist\">\r\n        <li class=\"nav-item\">\r\n          <a class=\"jero-btn jero-btn-primary-outlined active\" data-toggle=\"pill\" href=\"#home\">{{ 'VERIFY_PROFILE' | translate }}</a>\r\n        </li>\r\n        <li class=\"nav-item\">\r\n          <a class=\"jero-btn jero-btn-primary-outlined\" data-toggle=\"pill\" href=\"#menu1\">{{ 'PROFILE' | translate }}</a>\r\n        </li>\r\n        <li class=\"nav-item\">\r\n          <a class=\"jero-btn jero-btn-primary-outlined\" data-toggle=\"pill\" href=\"#menu3\">{{ 'BANK' | translate }}</a>\r\n        </li>\r\n        <li class=\"nav-item\">\r\n          <a class=\"jero-btn jero-btn-primary-outlined\" data-toggle=\"pill\" href=\"#menu2\">{{ 'ACCOUNT_SETTING' | translate }}</a>\r\n        </li>\r\n      </ul>\r\n      <button class=\"jero-btn jero-btn-primary\" data-toggle=\"modal\" data-target=\"#expireModal\">\r\n        {{ 'ADD_NEW_PROMO' | translate }}\r\n      </button>\r\n    </div>\r\n    <div class=\"col-md-12 tab-content\">\r\n      <div class=\"row tab-pane active\" id=\"home\"\r\n        style=\"background: white; border-radius: 10px; padding: 20px; margin-top: 20px;\">\r\n        <div class=\"col-md-6\">\r\n          <form [formGroup]=\"verifyForm\" (ngSubmit)=\"verifyAccount()\">\r\n            <div class=\"form-card\">\r\n              <!-- License Number Floating Field -->\r\n              <div class=\"tripjero-floating mb-4\">\r\n                <input type=\"text\" id=\"licenceNumber\" class=\"form-control\" formControlName=\"LicenceNumber\"\r\n                  [(ngModel)]=\"user.Licence.LicenceNumber\" required />\r\n                <label class=\"float-label\" for=\"licenceNumber\">{{ 'LICENSE_NUMBER' | translate }}</label>\r\n                <div *ngIf=\"submitted && f.LicenceNumber.errors\" class=\"invalid-feedback d-block mt-1\">\r\n                  <div *ngIf=\"f.LicenceNumber.errors.required\" style=\"color: red;\">{{ 'LICENSE_NUMBER_REQUIRED' | translate }}</div>\r\n                </div>\r\n              </div>\r\n\r\n              <!-- License Document Upload -->\r\n              <div class=\"tripjero-upload-group mb-4 license-upload-container\">\r\n                <label class=\"float-label license-label\" for=\"licenceFile\">{{ 'LICENSE_DOCUMENT' | translate }}</label>\r\n                <div class=\"jero-file-upload-box license-upload-box\" (click)=\"file.click()\">\r\n                  <i class=\"fas fa-folder-open jero-file-icon\"></i>\r\n                  <span class=\"jero-file-text\">{{ 'BROWSE_FILE' | translate }}</span>\r\n                  <input type=\"file\" id=\"licenceFile\" accept=\"image/*,application/pdf,.doc,.docx\"\r\n                    formControlName=\"LicenceImage\" #file (change)=\"preview(file.files, 'verify')\"\r\n                    class=\"jero-file-input\" tabindex=\"-1\" />\r\n                </div>\r\n              </div>\r\n              <img src=\"{{verifyImgURL}}\" height=\"200\" width=\"200\" *ngIf=\"verifyImgURL\" alt=\"\">\r\n\r\n              <!-- Note Section -->\r\n              <div class=\"jero-note mt-4 mb-4\">\r\n                <div class=\"jero-note-title font-weight-bold mb-2\">{{ 'NOTE' | translate }}</div>\r\n                <div class=\"jero-note-desc\">\r\n                  {{ 'PROFILE_NOTE' | translate }}\r\n                </div>\r\n              </div>\r\n\r\n              <!-- Update Button -->\r\n              <div class=\"text-left mt-3\">\r\n                <button type=\"submit\" class=\"jero-btn jero-btn-primary\">\r\n                  {{ 'UPDATE_INFORMATION' | translate }}\r\n                </button>\r\n              </div>\r\n            </div>\r\n          </form>\r\n        </div>\r\n      </div>\r\n      <div class=\"row tab-pane fade\" id=\"menu1\"\r\n        style=\"background: white; border-radius: 10px; padding: 20px; margin-top: 20px;\">\r\n        <div class=\"col-md-6\">\r\n          <div class=\"form-card\">\r\n            <div class=\"row\">\r\n              <form [formGroup]=\"imgForm\" (ngSubmit)=\"updateImage()\">\r\n                <div class=\"tripjero-floating\">\r\n                  <input type=\"file\" accept='image/*' #profile formControlName=\"image\"\r\n                    (change)=\"preview(profile.files, 'profile')\" class=\"form-control d-none\" readonly>\r\n                  <div *ngIf=\"imgSubmit && i.image.errors\" class=\"invalid-feedback\">\r\n                    <div *ngIf=\"i.image.errors.required\" style=\"color: red;\">\r\n                      {{ 'PROFILE_IMAGE_REQUIRED' | translate }}\r\n                    </div>\r\n                  </div>\r\n                </div>\r\n              </form>\r\n            </div>\r\n            <div class=\"d-flex justify-content-start profile-image-jugad\">\r\n              <img class=\"image\" src=\"{{imgURL}}\" alt=\"\" (click)=\"profile.click()\" style=\"height: 150px;\r\n    width: 150px;\">\r\n              <div class=\"middle\" (click)=\"profile.click()\">\r\n                <i class=\"fa fa-camera\"></i>\r\n              </div>\r\n            </div>\r\n            <form [formGroup]=\"postForm\" (ngSubmit)=\"updateProfile()\">\r\n              <div class=\"row\">\r\n                <div class=\"col-md-12\">\r\n                  <div class=\"tripjero-floating\">\r\n\r\n                    <input type=\"text\" placeholder=\"{{ 'USER_FULL_NAME' | translate }}\" class=\"form-control\" aria-describedby=\"emailHelp\"\r\n                      id=\"name\" [(ngModel)]=\"user.Name\" formControlName=\"Name\" required>\r\n                    <label for=\"name\" class=\"float-label\">{{ 'NAME' | translate }}</label>\r\n                    <div *ngIf=\"submitted && f.Name.errors\" class=\"invalid-feedback\">\r\n                      <div *ngIf=\"f.Name.errors.required\" style=\"color: red;\">{{ 'NAME_REQUIRED' | translate }}</div>\r\n                    </div>\r\n                  </div>\r\n                </div>\r\n                <div class=\"col-md-12\">\r\n                  <div class=\"tripjero-floating\">\r\n                    <input type=\"text\" class=\"form-control\" [(ngModel)]=\"user.BuisnessName\"\r\n                      formControlName=\"BuisnessName\" id=\"business_name\" placeholder=\"{{ 'BUSINESS_NAME' | translate }}\" required>\r\n                    <label for=\"business_name\" class=\"float-label\">{{ 'BUSINESS_NAME' | translate }}</label>\r\n\r\n                  </div>\r\n                </div>\r\n                <div class=\"col-md-12\">\r\n                  <div class=\"tripjero-floating\">\r\n                    <input type=\"text\" class=\"form-control\" aria-describedby=\"emailHelp\" [(ngModel)]=\"user.FullAddress\"\r\n                      formControlName=\"FullAddress\" id=\"address\" placeholder=\"{{ 'BUSINESS_ADDRESS' | translate }}\" required>\r\n                    <label for=\"address\" class=\"float-label\">{{ 'BUSINESS_ADDRESS' | translate }}</label>\r\n\r\n                    <div *ngIf=\"submitted && f.FullAddress.errors\" class=\"invalid-feedback\">\r\n                      <div *ngIf=\"f.FullAddress.errors.required\" style=\"color: red;\">{{ 'FULL_ADDRESS_REQUIRED' | translate }}</div>\r\n                    </div>\r\n                  </div>\r\n                </div>\r\n                <div class=\"col-md-12\">\r\n                  <div class=\"tripjero-floating\">\r\n                    <input type=\"email\" placeholder=\"operator@abc.com\" class=\"form-control\" aria-describedby=\"emailHelp\"\r\n                      [(ngModel)]=\"user.Email\" formControlName=\"Email\" id=\"email\" placeholder=\"{{ 'EMAIL' | translate }}\" required>\r\n                    <label for=\"email\" class=\"float-label\">{{ 'EMAIL' | translate }}</label>\r\n\r\n                    <div *ngIf=\"submitted && f.Email.errors\" class=\"invalid-feedback\">\r\n                      <div *ngIf=\"f.Email.errors.required\" style=\"color: red;\">{{ 'EMAIL_REQUIRED' | translate }}</div>\r\n                    </div>\r\n                  </div>\r\n                </div>\r\n                <div class=\"col-md-12\">\r\n                  <div class=\"tripjero-floating\">\r\n                    <div class=\"input-group\">\r\n                      <select class=\"form-control country-code-picker\" [(ngModel)]=\"selectedPhoneCode\" formControlName=\"PhoneCode\">\r\n                        <option value=\"\" disabled selected>Code</option>\r\n                        <option *ngFor=\"let country of countries\" [value]=\"'+' + country.DailingCode\">{{country.Name}} (+{{country.DailingCode}})</option>\r\n                      </select>\r\n                    <label for=\"phoneno\" class=\"float-label\">{{ 'PHONE_NUMBER' | translate }}</label>\r\n\r\n                      <input type=\"number\" class=\"form-control\" aria-describedby=\"emailHelp\"\r\n                        [(ngModel)]=\"user.PhoneNumber\" formControlName=\"PhoneNumber\" id=\"phoneno\"\r\n                        placeholder=\"{{ 'PHONE_NUMBER' | translate }}\" required>\r\n                    </div>\r\n\r\n                    <div *ngIf=\"submitted && f.PhoneNumber.errors\" class=\"invalid-feedback\">\r\n                      <div *ngIf=\"f.PhoneNumber.errors.required\" style=\"color: red;\">{{ 'PHONE_NUMBER_REQUIRED' | translate }}</div>\r\n                    </div>\r\n                  </div>\r\n                </div>\r\n                <div class=\"col-md-12\">\r\n                  <div class=\"tripjero-floating\">\r\n                    <div class=\"input-group\">\r\n                      <select class=\"form-control country-code-picker\" [(ngModel)]=\"selectedContactCode\" formControlName=\"ContactCode\">\r\n                        <option value=\"\" disabled selected>Code</option>\r\n                        <option *ngFor=\"let country of countries\" [value]=\"'+' + country.DailingCode\">{{country.Name}} (+{{country.DailingCode}})</option>\r\n                      </select>\r\n                      <label for=\"contactno\" class=\"float-label\">{{ 'MOBILE_NUMBER' | translate }}</label>\r\n                      <input type=\"number\" class=\"form-control\" aria-describedby=\"emailHelp\"\r\n                        [(ngModel)]=\"user.ContactNumber\" formControlName=\"ContactNumber\" id=\"contactno\"\r\n                        placeholder=\"{{ 'MOBILE_NUMBER' | translate }}\" required>\r\n                    </div>\r\n\r\n                    <div *ngIf=\"submitted && f.ContactNumber.errors\" class=\"invalid-feedback\">\r\n                      <div *ngIf=\"f.ContactNumber.errors.required\" style=\"color: red;\">{{ 'MOBILE_NUMBER_REQUIRED' | translate }}</div>\r\n                    </div>\r\n                  </div>\r\n                </div>\r\n                <div class=\"col-md-12\">\r\n                  <div class=\"tripjero-floating\">\r\n                    <select class=\"form-control\" aria-describedby=\"emailHelp\"\r\n                      [(ngModel)]=\"user.Country\" formControlName=\"Country\" id=\"country\" required (change)=\"onCountryChange()\">\r\n                      <option value=\"\" disabled selected>{{ 'SELECT_COUNTRY' | translate }}</option>\r\n                      <option *ngFor=\"let country of countries\" [value]=\"country.Name\">{{country.Name}}</option>\r\n                    </select>\r\n                    <label for=\"country\" class=\"float-label\">{{ 'COUNTRY' | translate }}</label>\r\n\r\n                    <div *ngIf=\"submitted && f.Country.errors\" class=\"invalid-feedback\">\r\n                      <div *ngIf=\"f.Country.errors.required\" style=\"color: red;\">{{ 'COUNTRY_REQUIRED' | translate }}</div>\r\n                    </div>\r\n                  </div>\r\n                </div>\r\n                <div class=\"col-md-12\">\r\n                  <div class=\"tripjero-floating\">\r\n                    <select class=\"form-control\" aria-describedby=\"emailHelp\"\r\n                      [(ngModel)]=\"user.City\" formControlName=\"City\" id=\"city\" required>\r\n                      <option value=\"\" disabled selected>{{ 'SELECT_CITY' | translate }}</option>\r\n                      <option *ngFor=\"let city of cities\" [value]=\"city.Name\">{{city.Name}}</option>\r\n                    </select>\r\n                    <label for=\"city\" class=\"float-label\">{{ 'CITY' | translate }}</label>\r\n\r\n                    <div *ngIf=\"submitted && f.City.errors\" class=\"invalid-feedback\">\r\n                      <div *ngIf=\"f.City.errors.required\" style=\"color: red;\">{{ 'CITY_REQUIRED' | translate }}</div>\r\n                    </div>\r\n                  </div>\r\n                </div>\r\n                <div class=\"col-md-12 mt-3\">\r\n                  <button type=\"submit\" class=\"jero-btn jero-btn-primary\" [disabled]=\"!postForm.valid\">{{ 'UPDATE' | translate }}</button>\r\n                </div>\r\n              </div>\r\n            </form>\r\n          </div>\r\n        </div>\r\n      </div>\r\n      <div class=\"row tab-pane fade\" id=\"menu3\"\r\n        style=\"background: white; border-radius: 10px; padding: 20px; margin-top: 20px;\">\r\n        <div class=\"col-md-12\">\r\n          <div class=\"form-card\">\r\n            <h5 class=\"mb-4\">{{ 'BANK_INFORMATION' | translate }}</h5>\r\n            <div *ngIf=\"bankDetails\" class=\"bank-info-display\">\r\n              <div class=\"row mb-3\">\r\n                <div class=\"col-md-6\">\r\n                  <strong>{{ 'BANK_NAME' | translate }}:</strong>\r\n                  <p>{{ bankDetails.bank?.BankName || 'N/A' }}</p>\r\n                </div>\r\n                <div class=\"col-md-6\">\r\n                  <strong>{{ 'IBAN' | translate }}:</strong>\r\n                  <p>{{ bankDetails.IBAN || 'N/A' }}</p>\r\n                </div>\r\n              </div>\r\n              <div class=\"row mb-3\">\r\n                <div class=\"col-md-6\">\r\n                  <strong>{{ 'ACCOUNT_TITLE' | translate }}:</strong>\r\n                  <p>{{ bankDetails.AccTitle || 'N/A' }}</p>\r\n                </div>\r\n                <div class=\"col-md-6\">\r\n                  <strong>{{ 'DESCRIPTION' | translate }}:</strong>\r\n                  <p>{{ bankDetails.Description || 'N/A' }}</p>\r\n                </div>\r\n              </div>\r\n              <div class=\"mt-3\">\r\n                <button type=\"button\" class=\"jero-btn jero-btn-primary\" data-toggle=\"modal\" data-target=\"#bankModal\" (click)=\"openBankModal()\">\r\n                  {{ 'UPDATE_BANK' | translate }}\r\n                </button>\r\n              </div>\r\n            </div>\r\n            <div *ngIf=\"!bankDetails\" class=\"no-bank-info\">\r\n              <p class=\"mb-3\">{{ 'NO_BANK_INFORMATION' | translate }}</p>\r\n              <button type=\"button\" class=\"jero-btn jero-btn-primary\" data-toggle=\"modal\" data-target=\"#bankModal\" (click)=\"openBankModal()\">\r\n                {{ 'ADD_BANK' | translate }}\r\n              </button>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n      <div class=\"row tab-pane fade\" id=\"menu2\"\r\n        style=\"background: white; border-radius: 10px; padding: 20px; margin-top: 20px;\">\r\n        <div class=\"col-md-6\">\r\n          <form [formGroup]=\"passwordForm\" (ngSubmit)=\"updatePassword()\">\r\n            <div>\r\n              <div class=\"tripjero-floating\">\r\n                <input type=\"password\" class=\"form-control\" id=\"name\" [(ngModel)]=\"UserPassword.CurrentPassword\"\r\n                  formControlName=\"CurrentPassword\" placeholder=\"{{ 'CURRENT_PASSWORD' | translate }}\"\r\n                  [ngClass]=\"{ 'is-invalid': p.CurrentPassword.errors && passwordForm.get('CurrentPassword').touched }\"\r\n                  required>\r\n                <label for=\"Name\" class=\"float-label\">{{ 'CURRENT_PASSWORD' | translate }}</label>\r\n\r\n                <div *ngIf=\"(passwordForm.get('CurrentPassword').touched) && p.CurrentPassword.errors\"\r\n                  class=\"invalid-feedback\">\r\n                  <div *ngIf=\"p.CurrentPassword.errors.required\" style=\"color: red;\">{{ 'CURRENT_PASSWORD_REQUIRED' | translate }}</div>\r\n                </div>\r\n              </div>\r\n              <div class=\"tripjero-floating\">\r\n                <input type=\"password\" class=\"form-control\" [(ngModel)]=\"UserPassword.NewPassword\"\r\n                  formControlName=\"NewPassword\" id=\"name\"\r\n                  [ngClass]=\"{ 'is-invalid': p.NewPassword.errors && passwordForm.get('NewPassword').touched }\"\r\n                  placeholder=\"{{ 'NEW_PASSWORD' | translate }}\" required>\r\n                <label for=\"BName\" class=\"float-label\">{{ 'NEW_PASSWORD' | translate }}</label>\r\n                <div *ngIf=\"(passwordForm.get('NewPassword').touched) && p.NewPassword.errors\" class=\"invalid-feedback\">\r\n                  <div *ngIf=\"p.NewPassword.errors.pattern\" style=\"color: red;\">\r\n                    {{ 'PASSWORD_PATTERN' | translate }}\r\n                  </div>\r\n                  <div *ngIf=\"p.NewPassword.errors.required\" style=\"color: red;\">{{ 'NEW_PASSWORD_REQUIRED' | translate }}</div>\r\n                </div>\r\n              </div>\r\n              <div class=\"tripjero-floating\">\r\n                <input type=\"password\" class=\"form-control\" [(ngModel)]=\"UserPassword.ConfirmPass\"\r\n                  formControlName=\"ConfirmPass\" id=\"address\"\r\n                  [ngClass]=\"{ 'is-invalid': p.ConfirmPass.errors && passwordForm.get('ConfirmPass').touched }\"\r\n                  placeholder=\"{{ 'CONFIRM_PASSWORD' | translate }}\" required>\r\n                <label for=\"Address\" class=\"float-label\">{{ 'CONFIRM_NEW_PASSWORD' | translate }}</label>\r\n                <div *ngIf=\"(passwordForm.get('ConfirmPass').touched) && p.ConfirmPass.errors\" class=\"invalid-feedback\">\r\n                  <div *ngIf=\"p.ConfirmPass.errors.pattern\" style=\"color: red;\">\r\n                    {{ 'PASSWORD_PATTERN' | translate }}\r\n                  </div>\r\n                  <div *ngIf=\"p.ConfirmPass.errors.required\" style=\"color: red;\">{{ 'CONFIRM_PASSWORD_REQUIRED' | translate }}</div>\r\n                </div>\r\n              </div>\r\n              <div class=\"d-flex justify-content-start mt-4\" style=\"gap: 10px;\">\r\n                <button type=\"submit\" class=\"jero-btn jero-btn-primary\">{{ 'UPDATE_PASSWORD' | translate }}</button>\r\n                <button class=\"btn-danger jero-btn\" (click)=\"deactivateAccount()\">\r\n                  {{ 'DEACTIVATE_ACCOUNT' | translate }}\r\n                </button>\r\n              </div>\r\n            </div>\r\n          </form>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n\r\n<!-- Bank Modal -->\r\n<div class=\"modal fade\" id=\"bankModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"bankModalLabel\" aria-hidden=\"true\">\r\n  <div class=\"modal-dialog modal-dialog-centered\" role=\"document\">\r\n    <div class=\"modal-content\">\r\n      <div class=\"modal-header\">\r\n        <h5 class=\"modal-title\" id=\"bankModalLabel\">\r\n          <span *ngIf=\"bankDetails\">{{ 'UPDATE_BANK' | translate }}</span>\r\n          <span *ngIf=\"!bankDetails\">{{ 'ADD_BANK' | translate }}</span>\r\n        </h5>\r\n        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\r\n          <span aria-hidden=\"true\">&times;</span>\r\n        </button>\r\n      </div>\r\n      <div class=\"modal-body\">\r\n        <form [formGroup]=\"bankForm\" (ngSubmit)=\"saveBank()\">\r\n          <!-- Bank Dropdown with Search -->\r\n          <div class=\"form-group mb-4\">\r\n            <label for=\"bankSearch\" class=\"font-weight-bold\">{{ 'BANK' | translate }}</label>\r\n            <input \r\n              type=\"text\" \r\n              id=\"bankSearch\" \r\n              class=\"form-control mb-2\" \r\n              [(ngModel)]=\"bankSearchTerm\" \r\n              [ngModelOptions]=\"{standalone: true}\"\r\n              (input)=\"filterBanks()\"\r\n              placeholder=\"{{ 'SEARCH_BANK' | translate }}\"\r\n            />\r\n            <select \r\n              class=\"form-control\" \r\n              formControlName=\"BankId\" \r\n              id=\"bankId\"\r\n              [ngClass]=\"{ 'is-invalid': bankSubmitted && b.BankId.errors }\"\r\n            >\r\n              <option value=\"\" disabled selected>{{ 'SELECT_BANK' | translate }}</option>\r\n              <option *ngFor=\"let bank of filteredBanks\" [value]=\"bank.Bank_id\">\r\n                {{ bank.BankName }} <span *ngIf=\"bank.BankNameAR\">({{ bank.BankNameAR }})</span>\r\n              </option>\r\n            </select>\r\n            <div *ngIf=\"bankSubmitted && b.BankId.errors\" class=\"invalid-feedback d-block\">\r\n              <div *ngIf=\"b.BankId.errors.required\" style=\"color: red;\">{{ 'BANK_REQUIRED' | translate }}</div>\r\n            </div>\r\n          </div>\r\n\r\n          <!-- IBAN -->\r\n          <div class=\"tripjero-floating mb-4\">\r\n            <input \r\n              type=\"text\" \r\n              class=\"form-control\" \r\n              formControlName=\"IBAN\" \r\n              id=\"iban\"\r\n              [ngClass]=\"{ 'is-invalid': bankSubmitted && b.IBAN.errors }\"\r\n              required\r\n            />\r\n            <label for=\"iban\" class=\"float-label\">{{ 'IBAN' | translate }}</label>\r\n            <div *ngIf=\"bankSubmitted && b.IBAN.errors\" class=\"invalid-feedback d-block mt-1\">\r\n              <div *ngIf=\"b.IBAN.errors.required\" style=\"color: red;\">{{ 'IBAN_REQUIRED' | translate }}</div>\r\n            </div>\r\n          </div>\r\n\r\n          <!-- Account Title -->\r\n          <div class=\"tripjero-floating mb-4\">\r\n            <input \r\n              type=\"text\" \r\n              class=\"form-control\" \r\n              formControlName=\"AccTitle\" \r\n              id=\"accTitle\"\r\n              [ngClass]=\"{ 'is-invalid': bankSubmitted && b.AccTitle.errors }\"\r\n              required\r\n            />\r\n            <label for=\"accTitle\" class=\"float-label\">{{ 'ACCOUNT_TITLE' | translate }}</label>\r\n            <div *ngIf=\"bankSubmitted && b.AccTitle.errors\" class=\"invalid-feedback d-block mt-1\">\r\n              <div *ngIf=\"b.AccTitle.errors.required\" style=\"color: red;\">{{ 'ACCOUNT_TITLE_REQUIRED' | translate }}</div>\r\n            </div>\r\n          </div>\r\n\r\n          <!-- Description -->\r\n          <div class=\"tripjero-floating mb-4\">\r\n            <textarea \r\n              class=\"form-control\" \r\n              formControlName=\"Description\" \r\n              id=\"description\"\r\n              rows=\"3\"\r\n            ></textarea>\r\n            <label for=\"description\" class=\"float-label\">{{ 'DESCRIPTION' | translate }}</label>\r\n          </div>\r\n\r\n          <div class=\"modal-footer\">\r\n            <button type=\"button\" class=\"jero-btn jero-btn-secondary\" data-dismiss=\"modal\">{{ 'CANCEL' | translate }}</button>\r\n            <button type=\"submit\" class=\"jero-btn jero-btn-primary\">{{ 'SAVE' | translate }}</button>\r\n          </div>\r\n        </form>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>";
     /***/
   },
 
@@ -1822,6 +1822,81 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
   },
 
   /***/
+  "./src/app/Services/Bank/bank.service.ts":
+  /*!***********************************************!*\
+    !*** ./src/app/Services/Bank/bank.service.ts ***!
+    \***********************************************/
+
+  /*! exports provided: BankService */
+
+  /***/
+  function srcAppServicesBankBankServiceTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "BankService", function () {
+      return BankService;
+    });
+    /* harmony import */
+
+
+    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! tslib */
+    "./node_modules/tslib/tslib.es6.js");
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/fesm2015/core.js");
+    /* harmony import */
+
+
+    var _Utilities_triputilites_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! ../Utilities/triputilites.service */
+    "./src/app/Services/Utilities/triputilites.service.ts");
+
+    var BankService = /*#__PURE__*/function () {
+      function BankService(utils) {
+        _classCallCheck(this, BankService);
+
+        this.utils = utils;
+      }
+
+      _createClass(BankService, [{
+        key: "GetOptBankDetails",
+        value: function GetOptBankDetails() {
+          return this.utils.GenericServiceCallMethod('get', '/Bank/GetOptBankDetails', '', '');
+        }
+      }, {
+        key: "GetBanks",
+        value: function GetBanks() {
+          return this.utils.GenericServiceCallMethod('get', '/Bank/GetBanks', '', '');
+        }
+      }, {
+        key: "AddUpdateUserBank",
+        value: function AddUpdateUserBank(bankData) {
+          return this.utils.GenericServiceCallMethod('post', '/Bank/AddUpdateUserBank', '', bankData);
+        }
+      }]);
+
+      return BankService;
+    }();
+
+    BankService.ctorParameters = function () {
+      return [{
+        type: _Utilities_triputilites_service__WEBPACK_IMPORTED_MODULE_2__["TriputilitesService"]
+      }];
+    };
+
+    BankService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])()], BankService);
+    /***/
+  },
+
+  /***/
   "./src/app/Services/Bookings/bookings.service.ts":
   /*!*******************************************************!*\
     !*** ./src/app/Services/Bookings/bookings.service.ts ***!
@@ -2223,6 +2298,16 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         key: "GetCustomTripDetails",
         value: function GetCustomTripDetails(id) {
           return this.utilities.GenericServiceCallMethod('get', "CustomTrip/GetCustomTripDetails?referenceId=".concat(id), '', '');
+        }
+      }, {
+        key: "RejectCustomTripRequest",
+        value: function RejectCustomTripRequest(referenceId) {
+          return this.utilities.GenericServiceCallMethod('get', "CustomTrip/RejectCustomTripRequest?refrenceId=".concat(referenceId), '', '');
+        }
+      }, {
+        key: "CancelTripRequest",
+        value: function CancelTripRequest(referenceId) {
+          return this.utilities.GenericServiceCallMethod('get', "CustomTrip/CancelTripRequest?refrenceId=".concat(referenceId), '', '');
         }
       }, {
         key: "GetOperatorInvoices",
@@ -5017,158 +5102,164 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony import */
 
 
-    var ng_wizard__WEBPACK_IMPORTED_MODULE_52__ = __webpack_require__(
+    var _Services_Bank_bank_service__WEBPACK_IMPORTED_MODULE_52__ = __webpack_require__(
+    /*! ./Services/Bank/bank.service */
+    "./src/app/Services/Bank/bank.service.ts");
+    /* harmony import */
+
+
+    var ng_wizard__WEBPACK_IMPORTED_MODULE_53__ = __webpack_require__(
     /*! ng-wizard */
     "./node_modules/ng-wizard/fesm2015/ng-wizard.js");
     /* harmony import */
 
 
-    var _kolkov_angular_editor__WEBPACK_IMPORTED_MODULE_53__ = __webpack_require__(
+    var _kolkov_angular_editor__WEBPACK_IMPORTED_MODULE_54__ = __webpack_require__(
     /*! @kolkov/angular-editor */
     "./node_modules/@kolkov/angular-editor/fesm2015/kolkov-angular-editor.js");
     /* harmony import */
 
 
-    var _bookings_bookings_component__WEBPACK_IMPORTED_MODULE_54__ = __webpack_require__(
+    var _bookings_bookings_component__WEBPACK_IMPORTED_MODULE_55__ = __webpack_require__(
     /*! ./bookings/bookings.component */
     "./src/app/bookings/bookings.component.ts");
     /* harmony import */
 
 
-    var _bookingdetails_bookingdetails_component__WEBPACK_IMPORTED_MODULE_55__ = __webpack_require__(
+    var _bookingdetails_bookingdetails_component__WEBPACK_IMPORTED_MODULE_56__ = __webpack_require__(
     /*! ./bookingdetails/bookingdetails.component */
     "./src/app/bookingdetails/bookingdetails.component.ts");
     /* harmony import */
 
 
-    var ngx_pagination__WEBPACK_IMPORTED_MODULE_56__ = __webpack_require__(
+    var ngx_pagination__WEBPACK_IMPORTED_MODULE_57__ = __webpack_require__(
     /*! ngx-pagination */
     "./node_modules/ngx-pagination/dist/ngx-pagination.js");
     /* harmony import */
 
 
-    var _detail_detail_component__WEBPACK_IMPORTED_MODULE_57__ = __webpack_require__(
+    var _detail_detail_component__WEBPACK_IMPORTED_MODULE_58__ = __webpack_require__(
     /*! ./detail/detail.component */
     "./src/app/detail/detail.component.ts");
     /* harmony import */
 
 
-    var ng2_charts__WEBPACK_IMPORTED_MODULE_58__ = __webpack_require__(
+    var ng2_charts__WEBPACK_IMPORTED_MODULE_59__ = __webpack_require__(
     /*! ng2-charts */
     "./node_modules/ng2-charts/fesm2015/ng2-charts.js");
     /* harmony import */
 
 
-    var _angular_material_stepper__WEBPACK_IMPORTED_MODULE_59__ = __webpack_require__(
+    var _angular_material_stepper__WEBPACK_IMPORTED_MODULE_60__ = __webpack_require__(
     /*! @angular/material/stepper */
     "./node_modules/@angular/material/esm2015/stepper.js");
     /* harmony import */
 
 
-    var _angular_material_input__WEBPACK_IMPORTED_MODULE_60__ = __webpack_require__(
+    var _angular_material_input__WEBPACK_IMPORTED_MODULE_61__ = __webpack_require__(
     /*! @angular/material/input */
     "./node_modules/@angular/material/esm2015/input.js");
     /* harmony import */
 
 
-    var _angular_material_icon__WEBPACK_IMPORTED_MODULE_61__ = __webpack_require__(
+    var _angular_material_icon__WEBPACK_IMPORTED_MODULE_62__ = __webpack_require__(
     /*! @angular/material/icon */
     "./node_modules/@angular/material/esm2015/icon.js");
     /* harmony import */
 
 
-    var ngx_dropzone__WEBPACK_IMPORTED_MODULE_62__ = __webpack_require__(
+    var ngx_dropzone__WEBPACK_IMPORTED_MODULE_63__ = __webpack_require__(
     /*! ngx-dropzone */
     "./node_modules/ngx-dropzone/fesm2015/ngx-dropzone.js");
     /* harmony import */
 
 
-    var _signup_signup_component__WEBPACK_IMPORTED_MODULE_63__ = __webpack_require__(
+    var _signup_signup_component__WEBPACK_IMPORTED_MODULE_64__ = __webpack_require__(
     /*! ./signup/signup.component */
     "./src/app/signup/signup.component.ts");
     /* harmony import */
 
 
-    var angularx_social_login__WEBPACK_IMPORTED_MODULE_64__ = __webpack_require__(
+    var angularx_social_login__WEBPACK_IMPORTED_MODULE_65__ = __webpack_require__(
     /*! angularx-social-login */
     "./node_modules/angularx-social-login/fesm2015/angularx-social-login.js");
     /* harmony import */
 
 
-    var _forgetpassword_forgetpassword_component__WEBPACK_IMPORTED_MODULE_65__ = __webpack_require__(
+    var _forgetpassword_forgetpassword_component__WEBPACK_IMPORTED_MODULE_66__ = __webpack_require__(
     /*! ./forgetpassword/forgetpassword.component */
     "./src/app/forgetpassword/forgetpassword.component.ts");
     /* harmony import */
 
 
-    var _reset_password_reset_password_component__WEBPACK_IMPORTED_MODULE_66__ = __webpack_require__(
+    var _reset_password_reset_password_component__WEBPACK_IMPORTED_MODULE_67__ = __webpack_require__(
     /*! ./reset-password/reset-password.component */
     "./src/app/reset-password/reset-password.component.ts");
     /* harmony import */
 
 
-    var _self_about_us_about_us_component__WEBPACK_IMPORTED_MODULE_67__ = __webpack_require__(
+    var _self_about_us_about_us_component__WEBPACK_IMPORTED_MODULE_68__ = __webpack_require__(
     /*! ./self/about-us/about-us.component */
     "./src/app/self/about-us/about-us.component.ts");
     /* harmony import */
 
 
-    var _posttrip_postsuccess_postsuccess_component__WEBPACK_IMPORTED_MODULE_68__ = __webpack_require__(
+    var _posttrip_postsuccess_postsuccess_component__WEBPACK_IMPORTED_MODULE_69__ = __webpack_require__(
     /*! ./posttrip/postsuccess/postsuccess.component */
     "./src/app/posttrip/postsuccess/postsuccess.component.ts");
     /* harmony import */
 
 
-    var _ngx_translate_core__WEBPACK_IMPORTED_MODULE_69__ = __webpack_require__(
+    var _ngx_translate_core__WEBPACK_IMPORTED_MODULE_70__ = __webpack_require__(
     /*! @ngx-translate/core */
     "./node_modules/@ngx-translate/core/fesm2015/ngx-translate-core.js");
     /* harmony import */
 
 
-    var _ngx_translate_http_loader__WEBPACK_IMPORTED_MODULE_70__ = __webpack_require__(
+    var _ngx_translate_http_loader__WEBPACK_IMPORTED_MODULE_71__ = __webpack_require__(
     /*! @ngx-translate/http-loader */
     "./node_modules/@ngx-translate/http-loader/fesm2015/ngx-translate-http-loader.js");
     /* harmony import */
 
 
-    var _custom_tour_requests_custom_tour_requests_component__WEBPACK_IMPORTED_MODULE_71__ = __webpack_require__(
+    var _custom_tour_requests_custom_tour_requests_component__WEBPACK_IMPORTED_MODULE_72__ = __webpack_require__(
     /*! ./custom-tour-requests/custom-tour-requests.component */
     "./src/app/custom-tour-requests/custom-tour-requests.component.ts");
     /* harmony import */
 
 
-    var _custom_tour_request_detail_custom_tour_request_detail_component__WEBPACK_IMPORTED_MODULE_72__ = __webpack_require__(
+    var _custom_tour_request_detail_custom_tour_request_detail_component__WEBPACK_IMPORTED_MODULE_73__ = __webpack_require__(
     /*! ./custom-tour-request-detail/custom-tour-request-detail.component */
     "./src/app/custom-tour-request-detail/custom-tour-request-detail.component.ts");
     /* harmony import */
 
 
-    var _offer_management_offer_management_component__WEBPACK_IMPORTED_MODULE_73__ = __webpack_require__(
+    var _offer_management_offer_management_component__WEBPACK_IMPORTED_MODULE_74__ = __webpack_require__(
     /*! ./offer-management/offer-management.component */
     "./src/app/offer-management/offer-management.component.ts");
     /* harmony import */
 
 
-    var _invoices_invoices_component__WEBPACK_IMPORTED_MODULE_74__ = __webpack_require__(
+    var _invoices_invoices_component__WEBPACK_IMPORTED_MODULE_75__ = __webpack_require__(
     /*! ./invoices/invoices.component */
     "./src/app/invoices/invoices.component.ts");
     /* harmony import */
 
 
-    var _invoice_details_invoice_details_component__WEBPACK_IMPORTED_MODULE_75__ = __webpack_require__(
+    var _invoice_details_invoice_details_component__WEBPACK_IMPORTED_MODULE_76__ = __webpack_require__(
     /*! ./invoice-details/invoice-details.component */
     "./src/app/invoice-details/invoice-details.component.ts"); // Import your library
 
 
     var ngWizardConfig = {
-      theme: ng_wizard__WEBPACK_IMPORTED_MODULE_52__["THEME"]["default"]
+      theme: ng_wizard__WEBPACK_IMPORTED_MODULE_53__["THEME"]["default"]
     };
-    var config = new angularx_social_login__WEBPACK_IMPORTED_MODULE_64__["AuthServiceConfig"]([{
-      id: angularx_social_login__WEBPACK_IMPORTED_MODULE_64__["FacebookLoginProvider"].PROVIDER_ID,
-      provider: new angularx_social_login__WEBPACK_IMPORTED_MODULE_64__["FacebookLoginProvider"]('962780807415498')
+    var config = new angularx_social_login__WEBPACK_IMPORTED_MODULE_65__["AuthServiceConfig"]([{
+      id: angularx_social_login__WEBPACK_IMPORTED_MODULE_65__["FacebookLoginProvider"].PROVIDER_ID,
+      provider: new angularx_social_login__WEBPACK_IMPORTED_MODULE_65__["FacebookLoginProvider"]('962780807415498')
     }, {
-      id: angularx_social_login__WEBPACK_IMPORTED_MODULE_64__["GoogleLoginProvider"].PROVIDER_ID,
-      provider: new angularx_social_login__WEBPACK_IMPORTED_MODULE_64__["GoogleLoginProvider"]('160071286091-fpb8g5ikukhmk4cuqc53s3rdijqu4g00.apps.googleusercontent.com')
+      id: angularx_social_login__WEBPACK_IMPORTED_MODULE_65__["GoogleLoginProvider"].PROVIDER_ID,
+      provider: new angularx_social_login__WEBPACK_IMPORTED_MODULE_65__["GoogleLoginProvider"]('160071286091-fpb8g5ikukhmk4cuqc53s3rdijqu4g00.apps.googleusercontent.com')
     }]);
 
     function provideConfig() {
@@ -5176,7 +5267,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     }
 
     function HttpLoaderFactory(http) {
-      return new _ngx_translate_http_loader__WEBPACK_IMPORTED_MODULE_70__["TranslateHttpLoader"](http, "./assets/i18n/", ".json");
+      return new _ngx_translate_http_loader__WEBPACK_IMPORTED_MODULE_71__["TranslateHttpLoader"](http, "./assets/i18n/", ".json");
     }
 
     var AppModule = function AppModule() {
@@ -5184,10 +5275,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     };
 
     AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_6__["NgModule"])({
-      declarations: [_app_component__WEBPACK_IMPORTED_MODULE_10__["AppComponent"], _dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_11__["DashboardComponent"], _mytrips_mytrips_component__WEBPACK_IMPORTED_MODULE_12__["MytripsComponent"], _posttrip_posttrip_component__WEBPACK_IMPORTED_MODULE_13__["PosttripComponent"], _pkgdetails_pkgdetails_component__WEBPACK_IMPORTED_MODULE_14__["PkgdetailsComponent"], _aval_packges_aval_packges_component__WEBPACK_IMPORTED_MODULE_15__["AvalPackgesComponent"], _boost_pkg_boost_pkg_component__WEBPACK_IMPORTED_MODULE_16__["BoostPkgComponent"], _tripdetail_tripdetail_component__WEBPACK_IMPORTED_MODULE_17__["TripdetailComponent"], _pkginvoice_pkginvoice_component__WEBPACK_IMPORTED_MODULE_18__["PkginvoiceComponent"], _promo_promo_component__WEBPACK_IMPORTED_MODULE_19__["PromoComponent"], _detail_detail_component__WEBPACK_IMPORTED_MODULE_57__["DetailComponent"], _addpromo_addpromo_component__WEBPACK_IMPORTED_MODULE_20__["AddpromoComponent"], _profile_profile_component__WEBPACK_IMPORTED_MODULE_21__["ProfileComponent"], _updatepas_updatepas_component__WEBPACK_IMPORTED_MODULE_22__["UpdatepasComponent"], _verify_verify_component__WEBPACK_IMPORTED_MODULE_23__["VerifyComponent"], _edit_edit_component__WEBPACK_IMPORTED_MODULE_24__["EditComponent"], _calender_calender_component__WEBPACK_IMPORTED_MODULE_25__["CalenderComponent"], _draft_draft_component__WEBPACK_IMPORTED_MODULE_26__["DraftComponent"], _reports_reports_component__WEBPACK_IMPORTED_MODULE_27__["ReportsComponent"], _offer_management_ItineraryPlane_ItineraryPlane_component__WEBPACK_IMPORTED_MODULE_30__["OfferManagementItineraryPlaneComponent"], _posttrip_TripItinerary_Facilities_facilities_trip_facilities_trip_component__WEBPACK_IMPORTED_MODULE_31__["FacilitiesTripComponent"], _posttrip_TripItinerary_TripImages_tripImages_tripImages_component__WEBPACK_IMPORTED_MODULE_32__["TripImagesComponent"], _buy_boost_package_buy_boost_package_component__WEBPACK_IMPORTED_MODULE_37__["BuyBoostPackageComponent"], _posttrip_TripItinerary_PostFinalTrip_PostFinalTrip_component__WEBPACK_IMPORTED_MODULE_41__["PostFinalTripComponent"], _login_login_component__WEBPACK_IMPORTED_MODULE_44__["LoginComponent"], _complaint_complaint_component__WEBPACK_IMPORTED_MODULE_50__["ComplaintComponent"], _bookings_bookings_component__WEBPACK_IMPORTED_MODULE_54__["BookingsComponent"], _bookingdetails_bookingdetails_component__WEBPACK_IMPORTED_MODULE_55__["BookingdetailsComponent"], _signup_signup_component__WEBPACK_IMPORTED_MODULE_63__["SignupComponent"], _Shared_SocialLogins_socail_logins_socail_logins_component__WEBPACK_IMPORTED_MODULE_4__["SocailLoginsComponent"], _forgetpassword_forgetpassword_component__WEBPACK_IMPORTED_MODULE_65__["ForgetpasswordComponent"], _reset_password_reset_password_component__WEBPACK_IMPORTED_MODULE_66__["ResetPasswordComponent"], _self_about_us_about_us_component__WEBPACK_IMPORTED_MODULE_67__["AboutUsComponent"], _self_contact_us_contact_us_component__WEBPACK_IMPORTED_MODULE_3__["ContactUsComponent"], _self_faqs_faqs_component__WEBPACK_IMPORTED_MODULE_2__["FaqsComponent"], _posttrip_buy_boost_packages_buy_boost_packages_popup_component__WEBPACK_IMPORTED_MODULE_1__["BuyBoostPackagesPopUpComponent"], _posttrip_postsuccess_postsuccess_component__WEBPACK_IMPORTED_MODULE_68__["PostsuccessComponent"], _custom_tour_requests_custom_tour_requests_component__WEBPACK_IMPORTED_MODULE_71__["CustomTourRequestsComponent"], _custom_tour_request_detail_custom_tour_request_detail_component__WEBPACK_IMPORTED_MODULE_72__["CustomTourRequestDetailComponent"], _offer_management_offer_management_component__WEBPACK_IMPORTED_MODULE_73__["OfferManagementComponent"], _invoices_invoices_component__WEBPACK_IMPORTED_MODULE_74__["InvoicesComponent"], _invoice_details_invoice_details_component__WEBPACK_IMPORTED_MODULE_75__["InvoiceDetailsComponent"]],
-      imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_5__["BrowserModule"], _app_routing_module__WEBPACK_IMPORTED_MODULE_9__["AppRoutingModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_7__["FormsModule"], angular2_wizard__WEBPACK_IMPORTED_MODULE_28__["FormWizardModule"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_29__["NgbModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_7__["FormsModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_7__["ReactiveFormsModule"], _angular_common_http__WEBPACK_IMPORTED_MODULE_35__["HttpClientModule"], ngx_toastr__WEBPACK_IMPORTED_MODULE_38__["ToastrModule"].forRoot(), ngx_bar_rating__WEBPACK_IMPORTED_MODULE_39__["BarRatingModule"], _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_40__["BrowserAnimationsModule"], ng_wizard__WEBPACK_IMPORTED_MODULE_52__["NgWizardModule"].forRoot(ngWizardConfig), _kolkov_angular_editor__WEBPACK_IMPORTED_MODULE_53__["AngularEditorModule"], ngx_pagination__WEBPACK_IMPORTED_MODULE_56__["NgxPaginationModule"], ng2_charts__WEBPACK_IMPORTED_MODULE_58__["ChartsModule"], _angular_material_stepper__WEBPACK_IMPORTED_MODULE_59__["MatStepperModule"], _angular_material_input__WEBPACK_IMPORTED_MODULE_60__["MatInputModule"], _angular_material_icon__WEBPACK_IMPORTED_MODULE_61__["MatIconModule"], ngx_dropzone__WEBPACK_IMPORTED_MODULE_62__["NgxDropzoneModule"], ng2_charts__WEBPACK_IMPORTED_MODULE_58__["ChartsModule"], angularx_social_login__WEBPACK_IMPORTED_MODULE_64__["SocialLoginModule"], _ngx_translate_core__WEBPACK_IMPORTED_MODULE_69__["TranslateModule"].forRoot({
+      declarations: [_app_component__WEBPACK_IMPORTED_MODULE_10__["AppComponent"], _dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_11__["DashboardComponent"], _mytrips_mytrips_component__WEBPACK_IMPORTED_MODULE_12__["MytripsComponent"], _posttrip_posttrip_component__WEBPACK_IMPORTED_MODULE_13__["PosttripComponent"], _pkgdetails_pkgdetails_component__WEBPACK_IMPORTED_MODULE_14__["PkgdetailsComponent"], _aval_packges_aval_packges_component__WEBPACK_IMPORTED_MODULE_15__["AvalPackgesComponent"], _boost_pkg_boost_pkg_component__WEBPACK_IMPORTED_MODULE_16__["BoostPkgComponent"], _tripdetail_tripdetail_component__WEBPACK_IMPORTED_MODULE_17__["TripdetailComponent"], _pkginvoice_pkginvoice_component__WEBPACK_IMPORTED_MODULE_18__["PkginvoiceComponent"], _promo_promo_component__WEBPACK_IMPORTED_MODULE_19__["PromoComponent"], _detail_detail_component__WEBPACK_IMPORTED_MODULE_58__["DetailComponent"], _addpromo_addpromo_component__WEBPACK_IMPORTED_MODULE_20__["AddpromoComponent"], _profile_profile_component__WEBPACK_IMPORTED_MODULE_21__["ProfileComponent"], _updatepas_updatepas_component__WEBPACK_IMPORTED_MODULE_22__["UpdatepasComponent"], _verify_verify_component__WEBPACK_IMPORTED_MODULE_23__["VerifyComponent"], _edit_edit_component__WEBPACK_IMPORTED_MODULE_24__["EditComponent"], _calender_calender_component__WEBPACK_IMPORTED_MODULE_25__["CalenderComponent"], _draft_draft_component__WEBPACK_IMPORTED_MODULE_26__["DraftComponent"], _reports_reports_component__WEBPACK_IMPORTED_MODULE_27__["ReportsComponent"], _offer_management_ItineraryPlane_ItineraryPlane_component__WEBPACK_IMPORTED_MODULE_30__["OfferManagementItineraryPlaneComponent"], _posttrip_TripItinerary_Facilities_facilities_trip_facilities_trip_component__WEBPACK_IMPORTED_MODULE_31__["FacilitiesTripComponent"], _posttrip_TripItinerary_TripImages_tripImages_tripImages_component__WEBPACK_IMPORTED_MODULE_32__["TripImagesComponent"], _buy_boost_package_buy_boost_package_component__WEBPACK_IMPORTED_MODULE_37__["BuyBoostPackageComponent"], _posttrip_TripItinerary_PostFinalTrip_PostFinalTrip_component__WEBPACK_IMPORTED_MODULE_41__["PostFinalTripComponent"], _login_login_component__WEBPACK_IMPORTED_MODULE_44__["LoginComponent"], _complaint_complaint_component__WEBPACK_IMPORTED_MODULE_50__["ComplaintComponent"], _bookings_bookings_component__WEBPACK_IMPORTED_MODULE_55__["BookingsComponent"], _bookingdetails_bookingdetails_component__WEBPACK_IMPORTED_MODULE_56__["BookingdetailsComponent"], _signup_signup_component__WEBPACK_IMPORTED_MODULE_64__["SignupComponent"], _Shared_SocialLogins_socail_logins_socail_logins_component__WEBPACK_IMPORTED_MODULE_4__["SocailLoginsComponent"], _forgetpassword_forgetpassword_component__WEBPACK_IMPORTED_MODULE_66__["ForgetpasswordComponent"], _reset_password_reset_password_component__WEBPACK_IMPORTED_MODULE_67__["ResetPasswordComponent"], _self_about_us_about_us_component__WEBPACK_IMPORTED_MODULE_68__["AboutUsComponent"], _self_contact_us_contact_us_component__WEBPACK_IMPORTED_MODULE_3__["ContactUsComponent"], _self_faqs_faqs_component__WEBPACK_IMPORTED_MODULE_2__["FaqsComponent"], _posttrip_buy_boost_packages_buy_boost_packages_popup_component__WEBPACK_IMPORTED_MODULE_1__["BuyBoostPackagesPopUpComponent"], _posttrip_postsuccess_postsuccess_component__WEBPACK_IMPORTED_MODULE_69__["PostsuccessComponent"], _custom_tour_requests_custom_tour_requests_component__WEBPACK_IMPORTED_MODULE_72__["CustomTourRequestsComponent"], _custom_tour_request_detail_custom_tour_request_detail_component__WEBPACK_IMPORTED_MODULE_73__["CustomTourRequestDetailComponent"], _offer_management_offer_management_component__WEBPACK_IMPORTED_MODULE_74__["OfferManagementComponent"], _invoices_invoices_component__WEBPACK_IMPORTED_MODULE_75__["InvoicesComponent"], _invoice_details_invoice_details_component__WEBPACK_IMPORTED_MODULE_76__["InvoiceDetailsComponent"]],
+      imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_5__["BrowserModule"], _app_routing_module__WEBPACK_IMPORTED_MODULE_9__["AppRoutingModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_7__["FormsModule"], angular2_wizard__WEBPACK_IMPORTED_MODULE_28__["FormWizardModule"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_29__["NgbModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_7__["FormsModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_7__["ReactiveFormsModule"], _angular_common_http__WEBPACK_IMPORTED_MODULE_35__["HttpClientModule"], ngx_toastr__WEBPACK_IMPORTED_MODULE_38__["ToastrModule"].forRoot(), ngx_bar_rating__WEBPACK_IMPORTED_MODULE_39__["BarRatingModule"], _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_40__["BrowserAnimationsModule"], ng_wizard__WEBPACK_IMPORTED_MODULE_53__["NgWizardModule"].forRoot(ngWizardConfig), _kolkov_angular_editor__WEBPACK_IMPORTED_MODULE_54__["AngularEditorModule"], ngx_pagination__WEBPACK_IMPORTED_MODULE_57__["NgxPaginationModule"], ng2_charts__WEBPACK_IMPORTED_MODULE_59__["ChartsModule"], _angular_material_stepper__WEBPACK_IMPORTED_MODULE_60__["MatStepperModule"], _angular_material_input__WEBPACK_IMPORTED_MODULE_61__["MatInputModule"], _angular_material_icon__WEBPACK_IMPORTED_MODULE_62__["MatIconModule"], ngx_dropzone__WEBPACK_IMPORTED_MODULE_63__["NgxDropzoneModule"], ng2_charts__WEBPACK_IMPORTED_MODULE_59__["ChartsModule"], angularx_social_login__WEBPACK_IMPORTED_MODULE_65__["SocialLoginModule"], _ngx_translate_core__WEBPACK_IMPORTED_MODULE_70__["TranslateModule"].forRoot({
         loader: {
-          provide: _ngx_translate_core__WEBPACK_IMPORTED_MODULE_69__["TranslateLoader"],
+          provide: _ngx_translate_core__WEBPACK_IMPORTED_MODULE_70__["TranslateLoader"],
           useFactory: HttpLoaderFactory,
           deps: [_angular_common_http__WEBPACK_IMPORTED_MODULE_35__["HttpClient"]]
         }
@@ -5196,8 +5287,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         provide: _angular_common_http__WEBPACK_IMPORTED_MODULE_35__["HTTP_INTERCEPTORS"],
         useClass: _Shared_Interceptor_token_interceptor_service__WEBPACK_IMPORTED_MODULE_45__["TokenInterceptorService"],
         multi: true
-      }, ng2_charts__WEBPACK_IMPORTED_MODULE_58__["ThemeService"], _Shared_guards_auth_guard_service_service__WEBPACK_IMPORTED_MODULE_48__["AuthGuardService"], _Services_Utilities_triputilites_service__WEBPACK_IMPORTED_MODULE_33__["TriputilitesService"], _Services_TripService_trip_service__WEBPACK_IMPORTED_MODULE_34__["TripService"], _angular_common__WEBPACK_IMPORTED_MODULE_8__["DatePipe"], _Services_Utilities_genaric_service__WEBPACK_IMPORTED_MODULE_36__["GenaricService"], _Services_Utilities_UtilitiesMethods_service__WEBPACK_IMPORTED_MODULE_42__["UtilitiesMethodsService"], _Services_BoostPackge_boostpackage_service__WEBPACK_IMPORTED_MODULE_43__["BoostpackageService"], _Services_Users_UsersService_service__WEBPACK_IMPORTED_MODULE_46__["UsersService"], _Services_Utilities_AuthService_service__WEBPACK_IMPORTED_MODULE_47__["AuthService"], _Services_Users_UseraccessService_service__WEBPACK_IMPORTED_MODULE_49__["UseraccessService"], _Services_Operator_operator_api_service__WEBPACK_IMPORTED_MODULE_51__["OperatorApiService"], angular2_wizard__WEBPACK_IMPORTED_MODULE_28__["FormWizardModule"], {
-        provide: angularx_social_login__WEBPACK_IMPORTED_MODULE_64__["AuthServiceConfig"],
+      }, ng2_charts__WEBPACK_IMPORTED_MODULE_59__["ThemeService"], _Shared_guards_auth_guard_service_service__WEBPACK_IMPORTED_MODULE_48__["AuthGuardService"], _Services_Utilities_triputilites_service__WEBPACK_IMPORTED_MODULE_33__["TriputilitesService"], _Services_TripService_trip_service__WEBPACK_IMPORTED_MODULE_34__["TripService"], _angular_common__WEBPACK_IMPORTED_MODULE_8__["DatePipe"], _Services_Utilities_genaric_service__WEBPACK_IMPORTED_MODULE_36__["GenaricService"], _Services_Utilities_UtilitiesMethods_service__WEBPACK_IMPORTED_MODULE_42__["UtilitiesMethodsService"], _Services_BoostPackge_boostpackage_service__WEBPACK_IMPORTED_MODULE_43__["BoostpackageService"], _Services_Users_UsersService_service__WEBPACK_IMPORTED_MODULE_46__["UsersService"], _Services_Utilities_AuthService_service__WEBPACK_IMPORTED_MODULE_47__["AuthService"], _Services_Users_UseraccessService_service__WEBPACK_IMPORTED_MODULE_49__["UseraccessService"], _Services_Operator_operator_api_service__WEBPACK_IMPORTED_MODULE_51__["OperatorApiService"], _Services_Bank_bank_service__WEBPACK_IMPORTED_MODULE_52__["BankService"], angular2_wizard__WEBPACK_IMPORTED_MODULE_28__["FormWizardModule"], {
+        provide: angularx_social_login__WEBPACK_IMPORTED_MODULE_65__["AuthServiceConfig"],
         useFactory: provideConfig
       }],
       bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_10__["AppComponent"]],
@@ -7241,6 +7332,44 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             this.showOlderOffers.add(participantId);
           }
         }
+      }, {
+        key: "rejectCustomTrip",
+        value: function rejectCustomTrip() {
+          var _this25 = this;
+
+          if (confirm('Are you sure you want to reject this custom trip request?')) {
+            this.operatorApiService.RejectCustomTripRequest(this.referenceId).subscribe(function (response) {
+              if (response.Status) {
+                _this25.toastr.success('Custom trip request rejected successfully', 'Success');
+
+                _this25.router.navigate(['/custom-tour-requests']);
+              } else {
+                _this25.toastr.error(response.Message || 'Failed to reject custom trip request', 'Error');
+              }
+            }, function (error) {
+              _this25.toastr.error('An error occurred while rejecting the custom trip request', 'Error');
+            });
+          }
+        }
+      }, {
+        key: "cancelTripRequest",
+        value: function cancelTripRequest() {
+          var _this26 = this;
+
+          if (confirm('Are you sure you want to cancel this custom trip request?')) {
+            this.operatorApiService.CancelTripRequest(this.referenceId).subscribe(function (response) {
+              if (response.Status) {
+                _this26.toastr.success('Custom trip request cancelled successfully', 'Success');
+
+                _this26.router.navigate(['/custom-tour-requests']);
+              } else {
+                _this26.toastr.error(response.Message || 'Failed to cancel custom trip request', 'Error');
+              }
+            }, function (error) {
+              _this26.toastr.error('An error occurred while cancelling the custom trip request', 'Error');
+            });
+          }
+        }
       }]);
 
       return CustomTourRequestDetailComponent;
@@ -7366,10 +7495,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       _createClass(CustomTourRequestsComponent, [{
         key: "ngOnInit",
         value: function ngOnInit() {
-          var _this25 = this;
+          var _this27 = this;
 
           this.loadCountriesAndVisitPlaces().then(function () {
-            _this25.loadRequests(); // Call the single loadRequests method
+            _this27.loadRequests(); // Call the single loadRequests method
 
           });
         }
@@ -7377,7 +7506,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         key: "loadCountriesAndVisitPlaces",
         value: function loadCountriesAndVisitPlaces() {
           return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
-            var _this26 = this;
+            var _this28 = this;
 
             var countryResponse, visitPlaceObservables, visitPlaceResponses;
             return regeneratorRuntime.wrap(function _callee2$(_context2) {
@@ -7397,7 +7526,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
                     this.countries = countryResponse.Data;
                     visitPlaceObservables = this.countries.map(function (country) {
-                      return _this26.utilities.GetVisitPlace(country.Id);
+                      return _this28.utilities.GetVisitPlace(country.Id);
                     });
                     _context2.next = 8;
                     return Object(rxjs__WEBPACK_IMPORTED_MODULE_5__["forkJoin"])(visitPlaceObservables).toPromise();
@@ -7406,9 +7535,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                     visitPlaceResponses = _context2.sent;
                     visitPlaceResponses.forEach(function (response) {
                       if (response.Status) {
-                        var _this26$visitPlaces;
+                        var _this28$visitPlaces;
 
-                        (_this26$visitPlaces = _this26.visitPlaces).push.apply(_this26$visitPlaces, _toConsumableArray(response.Data));
+                        (_this28$visitPlaces = _this28.visitPlaces).push.apply(_this28$visitPlaces, _toConsumableArray(response.Data));
                       }
                     });
 
@@ -7423,22 +7552,22 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "mapCountryAndPlaceNames",
         value: function mapCountryAndPlaceNames(requests) {
-          var _this27 = this;
+          var _this29 = this;
 
           return requests.map(function (request) {
-            var fromCountry = _this27.countries.find(function (c) {
+            var fromCountry = _this29.countries.find(function (c) {
               return c.Id === request.FromCountry;
             });
 
-            var toCountry = _this27.countries.find(function (c) {
+            var toCountry = _this29.countries.find(function (c) {
               return c.Id === request.ToCountry;
             });
 
-            var fromPlace = _this27.visitPlaces.find(function (vp) {
+            var fromPlace = _this29.visitPlaces.find(function (vp) {
               return vp.Id === request.FromPlace;
             });
 
-            var toPlace = _this27.visitPlaces.find(function (vp) {
+            var toPlace = _this29.visitPlaces.find(function (vp) {
               return vp.Id === request.ToPlace;
             });
 
@@ -7453,13 +7582,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "loadRequests",
         value: function loadRequests() {
-          var _this28 = this;
+          var _this30 = this;
 
           this.operatorApiService.GetNewCustomTripRequest().subscribe(function (data) {
             if (data.Status && Array.isArray(data.Data)) {
-              _this28.customTourRequests = _this28.mapCountryAndPlaceNames(data.Data);
+              _this30.customTourRequests = _this30.mapCountryAndPlaceNames(data.Data);
             } else {
-              _this28.customTourRequests = [];
+              _this30.customTourRequests = [];
             }
           });
         }
@@ -7823,12 +7952,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "loadAllTrips",
         value: function loadAllTrips() {
-          var _this29 = this;
+          var _this31 = this;
 
           this.tripSerivce.GetScheduleTrips().subscribe(function (data) {
             if (data) {
               if (data.Status) {
-                _this29.tripModalList = data.Data;
+                _this31.tripModalList = data.Data;
               }
             }
           });
@@ -7836,12 +7965,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "loadtripViews",
         value: function loadtripViews() {
-          var _this30 = this;
+          var _this32 = this;
 
           this.tripSerivce.GetTripViews().subscribe(function (data) {
             if (data) {
               if (data.Status) {
-                _this30.tripViews = data.Data;
+                _this32.tripViews = data.Data;
               }
             }
           });
@@ -7859,12 +7988,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "loadtripscounter",
         value: function loadtripscounter() {
-          var _this31 = this;
+          var _this33 = this;
 
           this.tripSerivce.GetTripCount().subscribe(function (data) {
             if (data) {
               if (data.Status) {
-                _this31.tripcount = data.Data;
+                _this33.tripcount = data.Data;
               }
             }
           });
@@ -7872,16 +8001,16 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "loadchartData",
         value: function loadchartData() {
-          var _this32 = this;
+          var _this34 = this;
 
           this.tripSerivce.GetChartData().subscribe(function (data) {
             if (data) {
               if (data.Status) {
                 var tempTripBookingdata = [];
                 var tempTripPosteddata = [];
-                _this32.graphData = data.Data;
+                _this34.graphData = data.Data;
 
-                _this32.graphData.forEach(function (element) {
+                _this34.graphData.forEach(function (element) {
                   if (element.monthlyTripData) {
                     tempTripPosteddata.push(element.monthlyTripData.TotalTripPosted);
                     tempTripBookingdata.push(element.monthlyTripData.TotalBookings);
@@ -7891,7 +8020,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                   }
                 });
 
-                _this32.bookingTripsData = [{
+                _this34.bookingTripsData = [{
                   data: tempTripPosteddata,
                   label: 'Trip Posted',
                   fill: false,
@@ -7902,20 +8031,20 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                   fill: false,
                   borderColor: ''
                 }];
-                _this32.bookingTripsLabels = _this32.labels;
-                _this32.saleProgressData = [{
+                _this34.bookingTripsLabels = _this34.labels;
+                _this34.saleProgressData = [{
                   data: tempTripBookingdata,
                   label: 'Progress'
                 }];
-                _this32.saleProgressLabels = _this32.labels;
-                _this32.postTripData = [{
+                _this34.saleProgressLabels = _this34.labels;
+                _this34.postTripData = [{
                   data: tempTripPosteddata,
                   label: 'Trip Posted'
                 }, {
                   data: tempTripBookingdata,
                   label: 'Trip Bookings'
                 }];
-                _this32.postTripLabels = _this32.labels;
+                _this34.postTripLabels = _this34.labels;
               }
             }
           });
@@ -8082,12 +8211,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "loadAllTrips",
         value: function loadAllTrips() {
-          var _this33 = this;
+          var _this35 = this;
 
           this.tripSerivce.GetAllCompTripsByUsers().subscribe(function (data) {
             if (data) {
               if (data.Status) {
-                _this33.tripModalList = data.Data;
+                _this35.tripModalList = data.Data;
               }
             }
           });
@@ -8095,18 +8224,18 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "report",
         value: function report(id) {
-          var _this34 = this;
+          var _this36 = this;
 
           this.tripSerivce.GetTripReport(id).subscribe(function (data) {
             if (data) {
               if (data.Status) {
-                _this34.genricUtlitis.showMessageToast(data.Message, true, "Success!"); //  console.log(data);
+                _this36.genricUtlitis.showMessageToast(data.Message, true, "Success!"); //  console.log(data);
 
               } else {
-                _this34.genricUtlitis.showMessageToast(data.Message, false, "Error!");
+                _this36.genricUtlitis.showMessageToast(data.Message, false, "Error!");
               }
             } else {
-              _this34.genricUtlitis.showMessageToast("There was some error.", false, "Error!");
+              _this36.genricUtlitis.showMessageToast("There was some error.", false, "Error!");
             }
           });
         }
@@ -8235,18 +8364,18 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "loadAllDraftTrips",
         value: function loadAllDraftTrips() {
-          var _this35 = this;
+          var _this37 = this;
 
           this.tripSerivce.GetDraftTrips().subscribe(function (data) {
             if (data) {
               if (data.Status) {
-                _this35.drafList = data.Data;
+                _this37.drafList = data.Data;
 
-                _this35.mapDraftrip(_this35.drafList);
+                _this37.mapDraftrip(_this37.drafList);
 
-                _this35.noRecordFound = false;
+                _this37.noRecordFound = false;
               } else {
-                _this35.noRecordFound = true;
+                _this37.noRecordFound = true;
               }
             }
           });
@@ -8254,15 +8383,15 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "mapDraftrip",
         value: function mapDraftrip(draft) {
-          var _this36 = this;
+          var _this38 = this;
 
           draft.forEach(function (x) {
-            _this36.tripModal = JSON.parse(x.TripString);
-            _this36.tripModal.DraftTripId = x.Id;
+            _this38.tripModal = JSON.parse(x.TripString);
+            _this38.tripModal.DraftTripId = x.Id;
 
-            _this36.tripModalList.push(_this36.tripModal);
+            _this38.tripModalList.push(_this38.tripModal);
 
-            console.log(_this36.tripModal);
+            console.log(_this38.tripModal);
           });
         }
       }, {
@@ -8273,19 +8402,19 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "DelDraft",
         value: function DelDraft(Id) {
-          var _this37 = this;
+          var _this39 = this;
 
           this.tripSerivce.DelDraftTripById(Id).subscribe(function (data) {
             if (data) {
               if (data.Status) {
-                _this37.drafList = [];
-                _this37.tripModalList = [];
-                _this37.tripModal = new src_app_classes_trip_TripModel__WEBPACK_IMPORTED_MODULE_3__["TripModel"]();
-                _this37.drafTrip = new src_app_classes_trip_TripModel__WEBPACK_IMPORTED_MODULE_3__["TripDefult"]();
+                _this39.drafList = [];
+                _this39.tripModalList = [];
+                _this39.tripModal = new src_app_classes_trip_TripModel__WEBPACK_IMPORTED_MODULE_3__["TripModel"]();
+                _this39.drafTrip = new src_app_classes_trip_TripModel__WEBPACK_IMPORTED_MODULE_3__["TripDefult"]();
 
-                _this37.loadAllDraftTrips();
+                _this39.loadAllDraftTrips();
               } else {
-                _this37.loadAllDraftTrips();
+                _this39.loadAllDraftTrips();
               }
             }
           });
@@ -8448,7 +8577,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "updateImage",
         value: function updateImage() {
-          var _this38 = this;
+          var _this40 = this;
 
           this.imgSubmit = true;
 
@@ -8460,20 +8589,20 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             this.user.ImageProfileString = this.imgURL.replace("data:image/jpeg;base64,", "");
             this.userService.updateimage(this.user).subscribe(function (data) {
               if (data.Status) {
-                _this38.imgSubmit = false;
+                _this40.imgSubmit = false;
 
-                _this38.genricUtlitis.showMessageToast('Image updated successfully!', true, _Services_Utilities_genaric_service__WEBPACK_IMPORTED_MODULE_4__["PrintMedia"].Conformation);
+                _this40.genricUtlitis.showMessageToast('Image updated successfully!', true, _Services_Utilities_genaric_service__WEBPACK_IMPORTED_MODULE_4__["PrintMedia"].Conformation);
 
-                _this38.userService.GetUser().subscribe(function (data) {
+                _this40.userService.GetUser().subscribe(function (data) {
                   if (data) {
                     localStorage.setItem('UserProfile', JSON.stringify(data.Data));
                   }
 
-                  _this38.router.navigate(['/profile']); // window.location.href = '/profile';
+                  _this40.router.navigate(['/profile']); // window.location.href = '/profile';
 
                 });
               } else {
-                _this38.genricUtlitis.showMessageToast('Image could not be updated!', false, _Services_Utilities_genaric_service__WEBPACK_IMPORTED_MODULE_4__["PrintMedia"].Conformation);
+                _this40.genricUtlitis.showMessageToast('Image could not be updated!', false, _Services_Utilities_genaric_service__WEBPACK_IMPORTED_MODULE_4__["PrintMedia"].Conformation);
               }
             });
           }
@@ -8481,7 +8610,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "updateProfile",
         value: function updateProfile() {
-          var _this39 = this;
+          var _this41 = this;
 
           // debugger;
           this.submitted = true; // stop here if form is invalid
@@ -8497,21 +8626,21 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             this.userService.updateuser(this.user).subscribe(function (data) {
               if (data.Status) {
                 // debugger
-                _this39.submitted = false;
+                _this41.submitted = false;
 
-                _this39.genricUtlitis.showMessageToast('Profile updated successfully', true, _Services_Utilities_genaric_service__WEBPACK_IMPORTED_MODULE_4__["PrintMedia"].Conformation);
+                _this41.genricUtlitis.showMessageToast('Profile updated successfully', true, _Services_Utilities_genaric_service__WEBPACK_IMPORTED_MODULE_4__["PrintMedia"].Conformation);
 
-                _this39.userService.GetUser().subscribe(function (data) {
+                _this41.userService.GetUser().subscribe(function (data) {
                   if (data) {
                     localStorage.setItem('UserProfile', JSON.stringify(data.Data));
                   }
 
-                  _this39.router.navigate(['/profile']); // window.location.href = '/profile';
+                  _this41.router.navigate(['/profile']); // window.location.href = '/profile';
 
                 }); // });
 
               } else {
-                _this39.genricUtlitis.showMessageToast(data.Message, true, _Services_Utilities_genaric_service__WEBPACK_IMPORTED_MODULE_4__["PrintMedia"].Conformation);
+                _this41.genricUtlitis.showMessageToast(data.Message, true, _Services_Utilities_genaric_service__WEBPACK_IMPORTED_MODULE_4__["PrintMedia"].Conformation);
               }
             });
           }
@@ -8519,7 +8648,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "preview",
         value: function preview(files) {
-          var _this40 = this;
+          var _this42 = this;
 
           if (files.length === 0) {
             return;
@@ -8537,7 +8666,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           reader.readAsDataURL(files[0]);
 
           reader.onload = function (_event) {
-            _this40.imgURL = reader.result;
+            _this42.imgURL = reader.result;
           };
         }
       }]);
@@ -8677,16 +8806,16 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "sendResetLink",
         value: function sendResetLink() {
-          var _this41 = this;
+          var _this43 = this;
 
           if (!this.forgetPasswordFrom.invalid) {
             this._authservice.ForgetPassword(this.email).subscribe(function (data) {
               if (data.Status) {
-                _this41._toaster.success(data.Message);
+                _this43._toaster.success(data.Message);
 
-                _this41.showResetPassword = true;
+                _this43.showResetPassword = true;
               } else {
-                _this41._toaster.error(data.Message);
+                _this43._toaster.error(data.Message);
               }
             });
           }
@@ -8855,18 +8984,18 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "loadInvoiceDetails",
         value: function loadInvoiceDetails() {
-          var _this42 = this;
+          var _this44 = this;
 
           this.loading = true;
           this.operatorApiService.GetOperatorInvoiceDetails(this.invoiceId).subscribe(function (data) {
             if (data.Status) {
-              _this42.invoiceData = data.Data;
+              _this44.invoiceData = data.Data;
             }
 
-            _this42.loading = false;
+            _this44.loading = false;
           }, function (error) {
             console.error('Error loading invoice details:', error);
-            _this42.loading = false;
+            _this44.loading = false;
           });
         }
       }, {
@@ -8904,7 +9033,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "recalculate",
         value: function recalculate() {
-          var _this43 = this;
+          var _this45 = this;
 
           if (!this.invoiceData || !this.invoiceData.TId) {
             this.genaricService.showMessageToast('Invalid invoice data', false, 'Error!');
@@ -8913,21 +9042,21 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
           this.recalculating = true;
           this.operatorApiService.CalculateTripCommision(this.invoiceData.TId).subscribe(function (data) {
-            _this43.recalculating = false;
+            _this45.recalculating = false;
 
             if (data.Status) {
               // Reload invoice details after recalculation
-              _this43.loadInvoiceDetails();
+              _this45.loadInvoiceDetails();
 
-              _this43.genaricService.showMessageToast(data.Message || 'Commission recalculated successfully!', true, 'Success!');
+              _this45.genaricService.showMessageToast(data.Message || 'Commission recalculated successfully!', true, 'Success!');
             } else {
-              _this43.genaricService.showMessageToast(data.Message || 'Failed to recalculate commission', false, 'Error!');
+              _this45.genaricService.showMessageToast(data.Message || 'Failed to recalculate commission', false, 'Error!');
             }
           }, function (error) {
-            _this43.recalculating = false;
+            _this45.recalculating = false;
             console.error('Error recalculating commission:', error);
 
-            _this43.genaricService.showMessageToast('Error recalculating commission. Please try again.', false, 'Error!');
+            _this45.genaricService.showMessageToast('Error recalculating commission. Please try again.', false, 'Error!');
           });
         }
       }, {
@@ -8938,7 +9067,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "createInvoice",
         value: function createInvoice() {
-          var _this44 = this;
+          var _this46 = this;
 
           if (!this.invoiceForm.valid) {
             this.invoiceForm.markAllAsTouched();
@@ -8963,28 +9092,28 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           }
 
           this.operatorApiService.CreateOperatorInvoice(formData).subscribe(function (data) {
-            _this44.creatingInvoice = false;
+            _this46.creatingInvoice = false;
 
             if (data.Status) {
               $('#createInvoiceModal').modal('hide');
 
-              _this44.genaricService.showMessageToast(data.Message || 'Invoice created successfully!', true, 'Success!'); // Reload invoice details after successful creation
+              _this46.genaricService.showMessageToast(data.Message || 'Invoice created successfully!', true, 'Success!'); // Reload invoice details after successful creation
 
 
-              _this44.loadInvoiceDetails(); // Reset form
+              _this46.loadInvoiceDetails(); // Reset form
 
 
-              _this44.invoiceForm.reset();
+              _this46.invoiceForm.reset();
 
-              _this44.selectedFile = null;
+              _this46.selectedFile = null;
             } else {
-              _this44.genaricService.showMessageToast(data.Message || 'Failed to create invoice', false, 'Error!');
+              _this46.genaricService.showMessageToast(data.Message || 'Failed to create invoice', false, 'Error!');
             }
           }, function (error) {
-            _this44.creatingInvoice = false;
+            _this46.creatingInvoice = false;
             console.error('Error creating invoice:', error);
 
-            _this44.genaricService.showMessageToast('Error creating invoice. Please try again.', false, 'Error!');
+            _this46.genaricService.showMessageToast('Error creating invoice. Please try again.', false, 'Error!');
           });
         }
       }, {
@@ -9152,7 +9281,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "loadInvoices",
         value: function loadInvoices() {
-          var _this45 = this;
+          var _this47 = this;
 
           var filters = {
             PageNo: this.p,
@@ -9177,8 +9306,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
           this.operatorApiService.GetOperatorInvoices(filters).subscribe(function (data) {
             if (data.Status) {
-              _this45.invoices = data.Data || [];
-              _this45.totalPages = data.TotalPages || 0;
+              _this47.invoices = data.Data || [];
+              _this47.totalPages = data.TotalPages || 0;
             }
           }, function (error) {
             console.error('Error loading invoices:', error);
@@ -9563,14 +9692,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "loadAllTrips",
         value: function loadAllTrips() {
-          var _this46 = this;
+          var _this48 = this;
 
           this.tripSerivce.GetAllTripsByUsers().subscribe(function (data) {
             if (data) {
               if (data.Status) {
-                _this46.totalTripsModal = data.Data; // console.log(this.totalTripsModal);
+                _this48.totalTripsModal = data.Data; // console.log(this.totalTripsModal);
 
-                _this46.getData('comp');
+                _this48.getData('comp');
               }
             }
           });
@@ -9867,7 +9996,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "submistAsDraft",
         value: function submistAsDraft() {
-          var _this47 = this;
+          var _this49 = this;
 
           if (this.tripModel && this.IternaryPlanList && this.IternaryPlanList.length > 0) {
             this.tripModel.IternaryPlan = this.IternaryPlanList;
@@ -9876,9 +10005,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             this.settingUtitls.setDraftTrip = this.DefultTrip;
             this.tripSerivce.AddTripdefult(this.DefultTrip).subscribe(function (data) {
               if (data.Status) {
-                _this47.genricUtlitis.showMessageToast('Trip Basic Info saved as draft', true, _Services_Utilities_genaric_service__WEBPACK_IMPORTED_MODULE_5__["PrintMedia"].Conformation);
+                _this49.genricUtlitis.showMessageToast('Trip Basic Info saved as draft', true, _Services_Utilities_genaric_service__WEBPACK_IMPORTED_MODULE_5__["PrintMedia"].Conformation);
 
-                _this47.childEmitter.emit('Itr');
+                _this49.childEmitter.emit('Itr');
               }
             });
           }
@@ -10029,32 +10158,32 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       _createClass(OfferManagementComponent, [{
         key: "ngOnInit",
         value: function ngOnInit() {
-          var _this48 = this;
+          var _this50 = this;
 
           this.route.queryParams.subscribe(function (params) {
             if (params['referenceId']) {
-              _this48.referenceId = +params['referenceId'];
+              _this50.referenceId = +params['referenceId'];
 
-              _this48.operatorApiService.GetCustomTripDetails(_this48.referenceId).subscribe(function (response) {
+              _this50.operatorApiService.GetCustomTripDetails(_this50.referenceId).subscribe(function (response) {
                 if (response.Status && response.Data && response.Data.TripRequest) {
-                  _this48.numberOfDays = response.Data.TripRequest.Duration;
+                  _this50.numberOfDays = response.Data.TripRequest.Duration;
 
-                  _this48.createItinerary();
+                  _this50.createItinerary();
                 }
               });
             }
 
             if (params['participentId']) {
-              _this48.participentId = +params['participentId'];
-              _this48.isRevisedOffer = true;
+              _this50.participentId = +params['participentId'];
+              _this50.isRevisedOffer = true;
             } else {
-              _this48.isRevisedOffer = false;
+              _this50.isRevisedOffer = false;
             }
           });
           this.offerForm = this.fb.group({
             OfferPrice: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].min(0)]],
             Note: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].minLength(10)]],
-            File: [null, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required] // For file attachment
+            File: [null] // For file attachment
 
           });
           this.itineraryForm = this.fb.group({
@@ -10114,7 +10243,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "submitOffer",
         value: function submitOffer() {
-          var _this49 = this;
+          var _this51 = this;
 
           // Reset errors
           this.offerError = false;
@@ -10180,15 +10309,21 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
               formData.append("ParticipantId", this.participentId.toString());
               this.operatorApiService.CreateRevisedOffer(formData).subscribe(function (response) {
                 if (response.Status) {
-                  _this49.toastr.success('Your offer has been submitted successfully. The tourist has been notified, and your offer status is now marked as ‘Pending’ for their review', 'Success');
+                  _this51.toastr.success('Your offer has been submitted successfully. The tourist has been notified, and your offer status is now marked as ‘Pending’ for their review', 'Success');
 
-                  _this49.router.navigate(['/custom-tour-requests', _this49.referenceId]); // Navigate after submission
+                  _this51.router.navigate(['/custom-tour-requests', _this51.referenceId]); // Navigate after submission
 
                 } else {
-                  _this49.toastr.error('Failed to submit revised offer: ' + response.Message, 'Error');
+                  if (response.Data && Array.isArray(response.Data) && response.Data.length > 0) {
+                    response.Data.forEach(function (errorMsg) {
+                      _this51.toastr.error(errorMsg, 'Validation Error');
+                    });
+                  } else {
+                    _this51.toastr.error('Failed to submit revised offer: ' + response.Message, 'Error');
+                  }
                 }
               }, function (error) {
-                _this49.toastr.error('An error occurred while submitting the revised offer.', 'Error');
+                _this51.toastr.error('An error occurred while submitting the revised offer.', 'Error');
               });
             }
           } else {
@@ -10196,15 +10331,21 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
               formData.append('ReqId', this.referenceId.toString());
               this.operatorApiService.SubmitAnOffer(formData).subscribe(function (response) {
                 if (response.Status) {
-                  _this49.toastr.success('Your offer has been submitted successfully. The tourist has been notified, and your offer status is now marked as ‘Pending’ for their review', 'Success');
+                  _this51.toastr.success('Your offer has been submitted successfully. The tourist has been notified, and your offer status is now marked as ‘Pending’ for their review', 'Success');
 
-                  _this49.router.navigate(['/custom-tour-requests', _this49.referenceId]); // Navigate after submission
+                  _this51.router.navigate(['/custom-tour-requests', _this51.referenceId]); // Navigate after submission
 
                 } else {
-                  _this49.toastr.error('Failed to submit offer: ' + response.Message, 'Error');
+                  if (response.Data && Array.isArray(response.Data) && response.Data.length > 0) {
+                    response.Data.forEach(function (errorMsg) {
+                      _this51.toastr.error(errorMsg, 'Validation Error');
+                    });
+                  } else {
+                    _this51.toastr.error('Failed to submit offer: ' + response.Message, 'Error');
+                  }
                 }
               }, function (error) {
-                _this49.toastr.error('An error occurred while submitting the offer.', 'Error');
+                _this51.toastr.error('An error occurred while submitting the offer.', 'Error');
               });
             }
           }
@@ -10466,12 +10607,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       _createClass(PkgdetailsComponent, [{
         key: "ngOnInit",
         value: function ngOnInit() {
-          var _this50 = this;
+          var _this52 = this;
 
           this.operatorServiceService.GetOperatorPackages().subscribe(function (data) {
             if (data.Status) {
               // console.log(data.Data);
-              _this50.operatorPackage = data.Data;
+              _this52.operatorPackage = data.Data;
             }
           });
         }
@@ -10595,26 +10736,26 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "loadAllPackages",
         value: function loadAllPackages() {
-          var _this51 = this;
+          var _this53 = this;
 
           this.operatorPackageServiceService.GetPackageById(this.packageId).subscribe(function (data) {
             if (data.Data) {
-              _this51.availableOperatorPackage = data.Data;
-              _this51.totaCurrentAccount = _this51.availableOperatorPackage.CurrentPrice;
+              _this53.availableOperatorPackage = data.Data;
+              _this53.totaCurrentAccount = _this53.availableOperatorPackage.CurrentPrice;
             }
           });
         }
       }, {
         key: "SubscribePackage",
         value: function SubscribePackage() {
-          var _this52 = this;
+          var _this54 = this;
 
           this.operatorPackageServiceService.SubscribePackage(this.packageId).subscribe(function (data) {
             if (data) {
               if (data.Status) {
-                _this52.genricUtlitis.showMessageToast('Your package successfully subscribe', true, _Services_Utilities_genaric_service__WEBPACK_IMPORTED_MODULE_5__["PrintMedia"].Conformation);
+                _this54.genricUtlitis.showMessageToast('Your package successfully subscribe', true, _Services_Utilities_genaric_service__WEBPACK_IMPORTED_MODULE_5__["PrintMedia"].Conformation);
               } else {
-                _this52.genricUtlitis.showMessageToast(data.Mssage, false, _Services_Utilities_genaric_service__WEBPACK_IMPORTED_MODULE_5__["PrintMedia"].Error);
+                _this54.genricUtlitis.showMessageToast(data.Mssage, false, _Services_Utilities_genaric_service__WEBPACK_IMPORTED_MODULE_5__["PrintMedia"].Error);
               }
             }
           });
@@ -10808,7 +10949,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "addFacilities",
         value: function addFacilities() {
-          var _this53 = this;
+          var _this55 = this;
 
           debugger;
           this.DefultTrip = Object.assign({}, this.settingUtitls.getDraftTrip);
@@ -10856,9 +10997,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             this.settingUtitls.setDraftTrip = this.DefultTrip;
             this.tripSerivce.AddTripdefult(this.DefultTrip).subscribe(function (data) {
               if (data.Status) {
-                _this53.genricUtlitis.showMessageToast('Trip Info saved as draft', true, src_app_Services_Utilities_genaric_service__WEBPACK_IMPORTED_MODULE_6__["PrintMedia"].Conformation);
+                _this55.genricUtlitis.showMessageToast('Trip Info saved as draft', true, src_app_Services_Utilities_genaric_service__WEBPACK_IMPORTED_MODULE_6__["PrintMedia"].Conformation);
 
-                _this53.childEmitter.emit('Fac');
+                _this55.childEmitter.emit('Fac');
               }
             });
           } // console.log(this.facilities);
@@ -11132,7 +11273,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "submistAsDraft",
         value: function submistAsDraft() {
-          var _this54 = this;
+          var _this56 = this;
 
           if (this.tripModel && this.IternaryPlanList && this.IternaryPlanList.length > 0) {
             this.tripModel.IternaryPlan = this.IternaryPlanList;
@@ -11141,9 +11282,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             this.settingUtitls.setDraftTrip = this.DefultTrip;
             this.tripSerivce.AddTripdefult(this.DefultTrip).subscribe(function (data) {
               if (data.Status) {
-                _this54.genricUtlitis.showMessageToast('Trip Basic Info saved as draft', true, src_app_Services_Utilities_genaric_service__WEBPACK_IMPORTED_MODULE_5__["PrintMedia"].Conformation);
+                _this56.genricUtlitis.showMessageToast('Trip Basic Info saved as draft', true, src_app_Services_Utilities_genaric_service__WEBPACK_IMPORTED_MODULE_5__["PrintMedia"].Conformation);
 
-                _this54.childEmitter.emit('Itr');
+                _this56.childEmitter.emit('Itr');
               }
             });
           }
@@ -11356,14 +11497,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "loadBoostPackages",
         value: function loadBoostPackages() {
-          var _this55 = this;
+          var _this57 = this;
 
           this.boostTrip.GetUsersBoostPackage().subscribe(function (data) {
             if (data.Status) {
-              _this55.BoostPackagesUser = data.Data;
+              _this57.BoostPackagesUser = data.Data;
 
-              for (var i = 0; i < _this55.BoostPackagesUser.length; i++) {
-                if (_this55.BoostPackagesUser[i].IS_Payment) _this55.isBoostAvailable = true;
+              for (var i = 0; i < _this57.BoostPackagesUser.length; i++) {
+                if (_this57.BoostPackagesUser[i].IS_Payment) _this57.isBoostAvailable = true;
               }
             }
           });
@@ -11371,20 +11512,20 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "postTrip",
         value: function postTrip() {
-          var _this56 = this;
+          var _this58 = this;
 
           if (this.tripModel) {
             if (this.tripModel) {
               this.tripSerivce.AddTrip(this.tripModel).subscribe(function (data) {
                 if (data.Status) {
-                  if (_this56.DefultTrip) {
-                    _this56.DelDraft(_this56.DefultTrip.Id);
+                  if (_this58.DefultTrip) {
+                    _this58.DelDraft(_this58.DefultTrip.Id);
                   }
 
-                  _this56.openShareTripModal(data.RefId); // this.genricUtlitis.showMessageToast("Trip posted successfully.", true, PrintMedia.Conformation);
+                  _this58.openShareTripModal(data.RefId); // this.genricUtlitis.showMessageToast("Trip posted successfully.", true, PrintMedia.Conformation);
 
                 } else {
-                  _this56.genricUtlitis.showMessageToast(data.Message, false, src_app_Services_Utilities_genaric_service__WEBPACK_IMPORTED_MODULE_4__["PrintMedia"].Conformation);
+                  _this58.genricUtlitis.showMessageToast(data.Message, false, src_app_Services_Utilities_genaric_service__WEBPACK_IMPORTED_MODULE_4__["PrintMedia"].Conformation);
                 }
               });
             }
@@ -11422,27 +11563,27 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "loadBuyBoostPackgesPopup",
         value: function loadBuyBoostPackgesPopup() {
-          var _this57 = this;
+          var _this59 = this;
 
           var factory = this.componentFactoryResolver.resolveComponentFactory(_buy_boost_packages_buy_boost_packages_popup_component__WEBPACK_IMPORTED_MODULE_8__["BuyBoostPackagesPopUpComponent"]);
           this.BuyBoostPackagesRef.clear();
           this.cmpRef = this.BuyBoostPackagesRef.createComponent(factory);
           this.cmpRef.instance.onDistory.subscribe(function () {
-            _this57.tripModel.IsBoost = false;
+            _this59.tripModel.IsBoost = false;
 
-            _this57.loadBoostPackages();
+            _this59.loadBoostPackages();
 
-            _this57.cmpRef.destroy();
+            _this59.cmpRef.destroy();
           });
         }
       }, {
         key: "loadCancellationPolicies",
         value: function loadCancellationPolicies() {
-          var _this58 = this;
+          var _this60 = this;
 
           this.tripUtilities.GetCancellationOptions().subscribe(function (data) {
             if (data.Status) {
-              _this58.cancellationPolicies = data.Data;
+              _this60.cancellationPolicies = data.Data;
             }
           });
         }
@@ -11619,23 +11760,23 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "fileBase64",
         value: function fileBase64(files) {
-          var _this59 = this;
+          var _this61 = this;
 
           this.TripImagesList = [];
           var reader = new FileReader();
           reader.readAsDataURL(files);
 
           reader.onload = function () {
-            _this59.img = reader.result; // console.log(reader.result)
+            _this61.img = reader.result; // console.log(reader.result)
 
             var tipimageSingle = new src_app_classes_trip_TripModel__WEBPACK_IMPORTED_MODULE_2__["TripImages"]();
-            tipimageSingle.ImageUrl = _this59.img;
+            tipimageSingle.ImageUrl = _this61.img;
 
-            _this59.TripImagesList.push(tipimageSingle);
+            _this61.TripImagesList.push(tipimageSingle);
           };
 
           reader.onloadend = function () {
-            _this59.collectionAllImages(); // this.files = [];
+            _this61.collectionAllImages(); // this.files = [];
 
           };
 
@@ -11659,13 +11800,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "submitImagesAsDraft",
         value: function submitImagesAsDraft() {
-          var _this60 = this;
+          var _this62 = this;
 
           // console.log(this.files)
           if (this.files.length > 0) {
             this.files.forEach(function (element, key) {
               // console.log(element)
-              _this60.fileBase64(element);
+              _this62.fileBase64(element);
             });
           } else if (this.tripModel.TripImages.length > 0) {
             // console.log('------------here---------------')
@@ -11686,7 +11827,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "submitAfterCompleteImageProcess",
         value: function submitAfterCompleteImageProcess() {
-          var _this61 = this;
+          var _this63 = this;
 
           if (this.tripModel) {
             // tslint:disable-next-line:prefer-for-of
@@ -11702,13 +11843,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
               if (data.Status) {
                 // tslint:disable-next-line: prefer-for-of
                 for (var i = 0; i < data.Data.length; i++) {
-                  _this61.TripImages = new src_app_classes_trip_TripModel__WEBPACK_IMPORTED_MODULE_2__["TripImages"]();
-                  _this61.TripImages.ImageUrl = data.Data[i];
+                  _this63.TripImages = new src_app_classes_trip_TripModel__WEBPACK_IMPORTED_MODULE_2__["TripImages"]();
+                  _this63.TripImages.ImageUrl = data.Data[i];
 
-                  _this61.tripModel.TripImages.push(_this61.TripImages);
+                  _this63.tripModel.TripImages.push(_this63.TripImages);
                 }
 
-                _this61.AddUpdateDraftTrip();
+                _this63.AddUpdateDraftTrip();
               }
             });
           }
@@ -11722,7 +11863,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "AddUpdateDraftTrip",
         value: function AddUpdateDraftTrip() {
-          var _this62 = this;
+          var _this64 = this;
 
           var callFrom = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "";
           this.DefultTrip.TripString = JSON.stringify(this.tripModel);
@@ -11730,11 +11871,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           this.settingUtitls.setDraftTrip = this.DefultTrip;
           this.tripSerivce.AddTripdefult(this.DefultTrip).subscribe(function (r) {
             if (r.Status) {
-              _this62.files = [];
+              _this64.files = [];
               callFrom !== "delete" ? $("#tripImagesModal").modal("hide") : "";
               $("#file-4").fileinput("clear");
 
-              _this62.childEmitter.emit("Img");
+              _this64.childEmitter.emit("Img");
             }
           });
         }
@@ -11847,18 +11988,18 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "getBoostPackges",
         value: function getBoostPackges() {
-          var _this63 = this;
+          var _this65 = this;
 
           this.boostTrip.GetTripBoostPackages().subscribe(function (data) {
             if (data.Status) {
-              _this63.boostPackgesList = data.Data;
+              _this65.boostPackgesList = data.Data;
             }
           });
         }
       }, {
         key: "Buy",
         value: function Buy(value) {
-          var _this64 = this;
+          var _this66 = this;
 
           var subscribeBoostPackage = new src_app_classes_trip_BoostPackage__WEBPACK_IMPORTED_MODULE_2__["SubscribeBoostPackage"]();
           subscribeBoostPackage.Id = 0;
@@ -11877,12 +12018,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           if (confirm('Are you sure?')) {
             this.boostTrip.BoostPackageSubscription(subscribeBoostPackage).subscribe(function (data) {
               if (data.Status) {
-                _this64.showPayment = true;
-                _this64.orderId = data.Data.Id;
+                _this66.showPayment = true;
+                _this66.orderId = data.Data.Id;
 
-                _this64.genricUtlitis.showMessageToast(data.Message, true, 'Success!');
+                _this66.genricUtlitis.showMessageToast(data.Message, true, 'Success!');
               } else {
-                _this64.genricUtlitis.showMessageToast(data.Message, false, 'Error!');
+                _this66.genricUtlitis.showMessageToast(data.Message, false, 'Error!');
               }
             });
           } else {
@@ -12249,7 +12390,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       _createClass(PosttripComponent, [{
         key: "ngOnInit",
         value: function ngOnInit() {
-          var _this65 = this;
+          var _this67 = this;
 
           // 2020-05-10
           this.today = new Date();
@@ -12265,8 +12406,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           this.loadCategories();
           this.loadUserPromo();
           this.getCountries(function () {
-            if (_this65.draftTripId > 0) {
-              _this65.loadAllDraftTrips(_this65.draftTripId);
+            if (_this67.draftTripId > 0) {
+              _this67.loadAllDraftTrips(_this67.draftTripId);
             }
           });
           console.log('------post trip ng on init------');
@@ -12274,12 +12415,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "getCountries",
         value: function getCountries(callback) {
-          var _this66 = this;
+          var _this68 = this;
 
           this.tripUtilites.GetCountry().subscribe(function (data) {
             if (data.Status) {
-              _this66.fromCountries = data.Data;
-              _this66.toCountries = data.Data;
+              _this68.fromCountries = data.Data;
+              _this68.toCountries = data.Data;
               callback();
             }
           });
@@ -12287,20 +12428,20 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "onFromCountryChange",
         value: function onFromCountryChange() {
-          var _this67 = this;
+          var _this69 = this;
 
           this.postForm.controls.FromCity.setValue('');
           this.postForm.controls.FromVistId.setValue('');
           var selectedCountry = this.fromCountries.find(function (c) {
-            return c.Name === _this67.postForm.value.FromCountry;
+            return c.Name === _this69.postForm.value.FromCountry;
           });
 
           if (selectedCountry) {
             this.tripUtilites.GetVisitPlace(selectedCountry.Id).subscribe(function (data) {
               if (data.Status) {
-                _this67.fromCities = data.Data;
+                _this69.fromCities = data.Data;
               } else {
-                _this67.fromCities = [];
+                _this69.fromCities = [];
               }
             });
           } else {
@@ -12310,20 +12451,20 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "onToCountryChange",
         value: function onToCountryChange() {
-          var _this68 = this;
+          var _this70 = this;
 
           this.postForm.controls.ToCity.setValue('');
           this.postForm.controls.ToVistId.setValue('');
           var selectedCountry = this.toCountries.find(function (c) {
-            return c.Name === _this68.postForm.value.ToCountry;
+            return c.Name === _this70.postForm.value.ToCountry;
           });
 
           if (selectedCountry) {
             this.tripUtilites.GetVisitPlace(selectedCountry.Id).subscribe(function (data) {
               if (data.Status) {
-                _this68.toCities = data.Data;
+                _this70.toCities = data.Data;
               } else {
-                _this68.toCities = [];
+                _this70.toCities = [];
               }
             });
           } else {
@@ -12454,7 +12595,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "preview",
         value: function preview(files) {
-          var _this69 = this;
+          var _this71 = this;
 
           if (files.length === 0) {
             return;
@@ -12472,19 +12613,19 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           reader.readAsDataURL(files[0]);
 
           reader.onload = function (_event) {
-            _this69.imgURL = reader.result;
-            _this69.TempTripImagesList = [];
-            _this69.TempTripImages = new _classes_trip_TripModel__WEBPACK_IMPORTED_MODULE_5__["TempTripImagesList"]();
-            _this69.TempTripImages.ImageString = _this69.imgURL;
+            _this71.imgURL = reader.result;
+            _this71.TempTripImagesList = [];
+            _this71.TempTripImages = new _classes_trip_TripModel__WEBPACK_IMPORTED_MODULE_5__["TempTripImagesList"]();
+            _this71.TempTripImages.ImageString = _this71.imgURL;
 
-            _this69.TempTripImagesList.push(_this69.TempTripImages);
+            _this71.TempTripImagesList.push(_this71.TempTripImages);
 
-            _this69.tripSerivce.AddTempTripImages(_this69.TempTripImagesList).subscribe(function (data) {
+            _this71.tripSerivce.AddTempTripImages(_this71.TempTripImagesList).subscribe(function (data) {
               if (data.Status) {
                 // tslint:disable-next-line: prefer-for-of
-                _this69.tripModel.TripBasicInfo.FeaturesImage = data.Data[0];
-                _this69.TempTripImages.ImageString = '';
-                _this69.imgURL = _this69.baseImgURL + data.Data[0];
+                _this71.tripModel.TripBasicInfo.FeaturesImage = data.Data[0];
+                _this71.TempTripImages.ImageString = '';
+                _this71.imgURL = _this71.baseImgURL + data.Data[0];
               }
             });
           };
@@ -12492,7 +12633,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "loadItineraryInfo",
         value: function loadItineraryInfo() {
-          var _this70 = this;
+          var _this72 = this;
 
           this.ItineraryInfo.clear();
           var factory = this.componentFactoryResolver.resolveComponentFactory(_TripItinerary_ItineraryPlane_ItineraryPlane_component__WEBPACK_IMPORTED_MODULE_2__["ItineraryPlaneComponent"]);
@@ -12501,14 +12642,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
           if (!!this.cmpRef.instance.childEmitter) {
             this.cmpRef.instance.childEmitter.subscribe(function (data) {
-              _this70.updateButtonStatus(data);
+              _this72.updateButtonStatus(data);
             });
           }
         }
       }, {
         key: "loadFaclitiesInfo",
         value: function loadFaclitiesInfo() {
-          var _this71 = this;
+          var _this73 = this;
 
           this.FacilitiesInfo.clear();
           var factory = this.componentFactoryResolver.resolveComponentFactory(_TripItinerary_Facilities_facilities_trip_facilities_trip_component__WEBPACK_IMPORTED_MODULE_3__["FacilitiesTripComponent"]);
@@ -12518,14 +12659,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
           if (!!this.cmpRef.instance.childEmitter) {
             this.cmpRef.instance.childEmitter.subscribe(function (data) {
-              _this71.updateButtonStatus(data);
+              _this73.updateButtonStatus(data);
             });
           }
         }
       }, {
         key: "loadTripImages",
         value: function loadTripImages() {
-          var _this72 = this;
+          var _this74 = this;
 
           this.TripImagesInfo.clear();
           var factory = this.componentFactoryResolver.resolveComponentFactory(_TripItinerary_TripImages_tripImages_tripImages_component__WEBPACK_IMPORTED_MODULE_4__["TripImagesComponent"]);
@@ -12533,14 +12674,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
           if (!!this.cmpRef.instance.childEmitter) {
             this.cmpRef.instance.childEmitter.subscribe(function (data) {
-              _this72.updateButtonStatus(data);
+              _this74.updateButtonStatus(data);
             });
           } // Add this subscription
 
 
           if (!!this.cmpRef.instance.hasImagesChange) {
             this.cmpRef.instance.hasImagesChange.subscribe(function (status) {
-              _this72.photosStepCompleted = status;
+              _this74.photosStepCompleted = status;
             });
           }
         }
@@ -12558,37 +12699,37 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "loadCategories",
         value: function loadCategories() {
-          var _this73 = this;
+          var _this75 = this;
 
           this.tripSerivce.GetTripCategories().subscribe(function (data) {
             if (data.Status) {
-              _this73.tripCategories = data.Data; // console.log(data);
+              _this75.tripCategories = data.Data; // console.log(data);
             }
           });
         }
       }, {
         key: "loadVisitPlaces",
         value: function loadVisitPlaces() {
-          var _this74 = this;
+          var _this76 = this;
 
           this.tripSerivce.GetTripVisitPlaces().subscribe(function (data) {
             if (data) {
-              _this74.tripVisitPlaces = data.Data;
+              _this76.tripVisitPlaces = data.Data;
             }
           });
         }
       }, {
         key: "loadUserPromo",
         value: function loadUserPromo() {
-          var _this75 = this;
+          var _this77 = this;
 
           this.tripPromoService.GetPromosByUser().subscribe(function (data) {
             if (data && data.Status) {
-              _this75.usersPromoList = data.Data;
+              _this77.usersPromoList = data.Data;
 
-              for (var i = 0; i < _this75.usersPromoList.length; i++) {
-                if (_this75.usersPromoList[i].ISExpire == 0) {
-                  _this75.promoExist = true;
+              for (var i = 0; i < _this77.usersPromoList.length; i++) {
+                if (_this77.usersPromoList[i].ISExpire == 0) {
+                  _this77.promoExist = true;
                 }
               } // console.log(this.promoExist);
 
@@ -12630,7 +12771,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "sumbiteTripsBasicInfo",
         value: function sumbiteTripsBasicInfo() {
-          var _this76 = this;
+          var _this78 = this;
 
           console.log('sumbiteTripsBasicInfo called');
           debugger;
@@ -12649,7 +12790,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           if (this.postForm.invalid) {
             var errorMessages = 'Please correct the following errors:\n';
             Object.keys(this.postForm.controls).forEach(function (key) {
-              var controlErrors = _this76.postForm.get(key).errors;
+              var controlErrors = _this78.postForm.get(key).errors;
 
               if (controlErrors != null) {
                 errorMessages += "- ".concat(key, ": ").concat(JSON.stringify(controlErrors), "\n");
@@ -12734,14 +12875,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           this.settingUtitls.setDraftTrip = this.DefultTrip;
           this.tripSerivce.AddTripdefult(this.DefultTrip).subscribe(function (data) {
             if (data.Status) {
-              _this76.DefultTrip.Id = data.Data.Id;
+              _this78.DefultTrip.Id = data.Data.Id;
 
-              _this76.genricUtlitis.showMessageToast('Trip Basic Info saved as draft', true, _Services_Utilities_genaric_service__WEBPACK_IMPORTED_MODULE_11__["PrintMedia"].Conformation);
+              _this78.genricUtlitis.showMessageToast('Trip Basic Info saved as draft', true, _Services_Utilities_genaric_service__WEBPACK_IMPORTED_MODULE_11__["PrintMedia"].Conformation);
 
-              if (_this76.DefultTrip.Id && _this76.DefultTrip.Id > 0) {
-                _this76.showNextStep();
+              if (_this78.DefultTrip.Id && _this78.DefultTrip.Id > 0) {
+                _this78.showNextStep();
 
-                _this76.loadItineraryInfo();
+                _this78.loadItineraryInfo();
               }
             }
           });
@@ -12804,72 +12945,72 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "loadAllDraftTrips",
         value: function loadAllDraftTrips(Id) {
-          var _this77 = this;
+          var _this79 = this;
 
           this.tripSerivce.GetDraftTripById(Id).subscribe(function (data) {
             if (data && data.Status) {
-              _this77.DefultTrip = data.Data;
-              _this77.tripModel = JSON.parse(_this77.DefultTrip.TripString);
-              console.log('Loaded draft trip model:', _this77.tripModel);
-              _this77.imgURL = _this77.tripModel.TripBasicInfo.BaseStringFeaturesImages && _this77.tripModel.TripBasicInfo.BaseStringFeaturesImages;
-              _this77.settingUtitls.setDraftTrip = _this77.DefultTrip;
+              _this79.DefultTrip = data.Data;
+              _this79.tripModel = JSON.parse(_this79.DefultTrip.TripString);
+              console.log('Loaded draft trip model:', _this79.tripModel);
+              _this79.imgURL = _this79.tripModel.TripBasicInfo.BaseStringFeaturesImages && _this79.tripModel.TripBasicInfo.BaseStringFeaturesImages;
+              _this79.settingUtitls.setDraftTrip = _this79.DefultTrip;
 
-              _this77.postForm.controls.CurrentAmount.setValue(_this77.tripModel.tripPrices.CurrentAmount);
+              _this79.postForm.controls.CurrentAmount.setValue(_this79.tripModel.tripPrices.CurrentAmount);
 
-              _this77.postForm.controls.Title.setValue(_this77.tripModel.TripBasicInfo.Title);
+              _this79.postForm.controls.Title.setValue(_this79.tripModel.TripBasicInfo.Title);
 
-              _this77.postForm.controls.Details.setValue(_this77.tripModel.TripBasicInfo.Details);
+              _this79.postForm.controls.Details.setValue(_this79.tripModel.TripBasicInfo.Details);
 
-              _this77.postForm.controls.CategoriesId.setValue(_this77.tripModel.TripBasicInfo.CategoriesId);
+              _this79.postForm.controls.CategoriesId.setValue(_this79.tripModel.TripBasicInfo.CategoriesId);
 
-              _this77.postForm.controls.StartDate.setValue(_this77.tripModel.TripBasicInfo.StartDateTime);
+              _this79.postForm.controls.StartDate.setValue(_this79.tripModel.TripBasicInfo.StartDateTime);
 
-              _this77.postForm.controls.EndDateTime.setValue(_this77.tripModel.TripBasicInfo.EndDateTime);
+              _this79.postForm.controls.EndDateTime.setValue(_this79.tripModel.TripBasicInfo.EndDateTime);
 
-              _this77.postForm.controls.ActualAmount.setValue(_this77.tripModel.tripPrices.ActualAmount);
+              _this79.postForm.controls.ActualAmount.setValue(_this79.tripModel.tripPrices.ActualAmount);
 
-              _this77.postForm.controls.DiscountPercentage.setValue(_this77.tripModel.tripPrices.DiscountPercentage);
+              _this79.postForm.controls.DiscountPercentage.setValue(_this79.tripModel.tripPrices.DiscountPercentage);
 
-              _this77.postForm.controls.HavePromo.setValue(_this77.tripModel.tripPrices.HavePromo);
+              _this79.postForm.controls.HavePromo.setValue(_this79.tripModel.tripPrices.HavePromo);
 
-              _this77.postForm.controls.Promo_Key.setValue(_this77.tripModel.tripPrices.PromoCode);
+              _this79.postForm.controls.Promo_Key.setValue(_this79.tripModel.tripPrices.PromoCode);
 
-              _this77.applyDiscount();
+              _this79.applyDiscount();
 
               var cityLoadingObservables = [];
               var fromCountryId;
               var toCountryId;
-              console.log('FromCountry:', _this77.tripModel.TripBasicInfo.FromCountry);
+              console.log('FromCountry:', _this79.tripModel.TripBasicInfo.FromCountry);
 
-              if (_this77.tripModel.TripBasicInfo.FromCountry) {
-                var fromCountry = _this77.fromCountries.find(function (c) {
-                  return c.Id == _this77.tripModel.TripBasicInfo.FromCountry;
+              if (_this79.tripModel.TripBasicInfo.FromCountry) {
+                var fromCountry = _this79.fromCountries.find(function (c) {
+                  return c.Id == _this79.tripModel.TripBasicInfo.FromCountry;
                 });
 
                 console.log('Found fromCountry:', fromCountry);
 
                 if (fromCountry) {
-                  _this77.postForm.controls.FromCountry.setValue(fromCountry.Name);
+                  _this79.postForm.controls.FromCountry.setValue(fromCountry.Name);
 
                   fromCountryId = fromCountry.Id;
-                  cityLoadingObservables.push(_this77.tripUtilites.GetVisitPlace(fromCountry.Id));
+                  cityLoadingObservables.push(_this79.tripUtilites.GetVisitPlace(fromCountry.Id));
                 }
               }
 
-              console.log('ToCountry:', _this77.tripModel.TripBasicInfo.ToCountry);
+              console.log('ToCountry:', _this79.tripModel.TripBasicInfo.ToCountry);
 
-              if (_this77.tripModel.TripBasicInfo.ToCountry) {
-                var toCountry = _this77.toCountries.find(function (c) {
-                  return c.Id == _this77.tripModel.TripBasicInfo.ToCountry;
+              if (_this79.tripModel.TripBasicInfo.ToCountry) {
+                var toCountry = _this79.toCountries.find(function (c) {
+                  return c.Id == _this79.tripModel.TripBasicInfo.ToCountry;
                 });
 
                 console.log('Found toCountry:', toCountry);
 
                 if (toCountry) {
-                  _this77.postForm.controls.ToCountry.setValue(toCountry.Name);
+                  _this79.postForm.controls.ToCountry.setValue(toCountry.Name);
 
                   toCountryId = toCountry.Id;
-                  cityLoadingObservables.push(_this77.tripUtilites.GetVisitPlace(toCountry.Id));
+                  cityLoadingObservables.push(_this79.tripUtilites.GetVisitPlace(toCountry.Id));
                 }
               }
 
@@ -12889,49 +13030,49 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                   }
 
                   if (fromCityData.length > 0) {
-                    _this77.fromCities = fromCityData;
-                    console.log("Loaded fromCities:", _this77.fromCities);
-                    console.log("FromVistId:", _this77.tripModel.TripBasicInfo.FromVistId);
+                    _this79.fromCities = fromCityData;
+                    console.log("Loaded fromCities:", _this79.fromCities);
+                    console.log("FromVistId:", _this79.tripModel.TripBasicInfo.FromVistId);
 
-                    if (_this77.tripModel.TripBasicInfo.FromVistId) {
-                      var fromCity = _this77.fromCities.find(function (c) {
-                        return c.Id == _this77.tripModel.TripBasicInfo.FromVistId;
+                    if (_this79.tripModel.TripBasicInfo.FromVistId) {
+                      var fromCity = _this79.fromCities.find(function (c) {
+                        return c.Id == _this79.tripModel.TripBasicInfo.FromVistId;
                       });
 
                       console.log("Found fromCity:", fromCity);
 
                       if (fromCity) {
-                        _this77.postForm.controls.FromVistId.setValue(_this77.tripModel.TripBasicInfo.FromVistId);
+                        _this79.postForm.controls.FromVistId.setValue(_this79.tripModel.TripBasicInfo.FromVistId);
 
-                        _this77.postForm.controls.FromCity.setValue(fromCity.PartialVisitPlace);
+                        _this79.postForm.controls.FromCity.setValue(fromCity.PartialVisitPlace);
                       }
                     }
                   }
 
                   if (toCityData.length > 0) {
-                    _this77.toCities = toCityData;
-                    console.log("Loaded toCities:", _this77.toCities);
-                    console.log("ToVistId:", _this77.tripModel.TripBasicInfo.ToVistId);
+                    _this79.toCities = toCityData;
+                    console.log("Loaded toCities:", _this79.toCities);
+                    console.log("ToVistId:", _this79.tripModel.TripBasicInfo.ToVistId);
 
-                    if (_this77.tripModel.TripBasicInfo.ToVistId) {
-                      var toCity = _this77.toCities.find(function (c) {
-                        return c.Id == _this77.tripModel.TripBasicInfo.ToVistId;
+                    if (_this79.tripModel.TripBasicInfo.ToVistId) {
+                      var toCity = _this79.toCities.find(function (c) {
+                        return c.Id == _this79.tripModel.TripBasicInfo.ToVistId;
                       });
 
                       console.log("Found toCity:", toCity);
 
                       if (toCity) {
-                        _this77.postForm.controls.ToVistId.setValue(_this77.tripModel.TripBasicInfo.ToVistId);
+                        _this79.postForm.controls.ToVistId.setValue(_this79.tripModel.TripBasicInfo.ToVistId);
 
-                        _this77.postForm.controls.ToCity.setValue(toCity.PartialVisitPlace);
+                        _this79.postForm.controls.ToCity.setValue(toCity.PartialVisitPlace);
                       }
                     }
                   }
 
-                  _this77.finalizeDraftLoading();
+                  _this79.finalizeDraftLoading();
                 });
               } else {
-                _this77.finalizeDraftLoading();
+                _this79.finalizeDraftLoading();
               }
             }
           });
@@ -13146,9 +13287,15 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     var _Services_Utilities_triputilites_service__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
     /*! ../Services/Utilities/triputilites.service */
     "./src/app/Services/Utilities/triputilites.service.ts");
+    /* harmony import */
+
+
+    var _Services_Bank_bank_service__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(
+    /*! ../Services/Bank/bank.service */
+    "./src/app/Services/Bank/bank.service.ts");
 
     var ProfileComponent = /*#__PURE__*/function () {
-      function ProfileComponent(router, formBuilder, userService, genricUtlitis, tripUtilites, componentFactoryResolver) {
+      function ProfileComponent(router, formBuilder, userService, genricUtlitis, tripUtilites, componentFactoryResolver, bankService) {
         _classCallCheck(this, ProfileComponent);
 
         this.router = router;
@@ -13157,6 +13304,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         this.genricUtlitis = genricUtlitis;
         this.tripUtilites = tripUtilites;
         this.componentFactoryResolver = componentFactoryResolver;
+        this.bankService = bankService;
         this.submitted = false;
         this.imgSubmit = false;
         this.psubmitted = false;
@@ -13166,6 +13314,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         this.cities = [];
         this.selectedPhoneCode = "+1";
         this.selectedContactCode = "+1";
+        this.bankDetails = null;
+        this.banks = [];
+        this.bankSubmitted = false;
+        this.bankSearchTerm = "";
+        this.filteredBanks = [];
       }
 
       _createClass(ProfileComponent, [{
@@ -13193,18 +13346,20 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           }
 
           this.loadFormValidation();
+          this.loadBankDetails();
+          this.loadBanks();
         }
       }, {
         key: "getCountries",
         value: function getCountries() {
-          var _this78 = this;
+          var _this80 = this;
 
           this.tripUtilites.GetCountry().subscribe(function (data) {
             if (data.Status) {
-              _this78.countries = data.Data;
+              _this80.countries = data.Data;
 
-              if (_this78.user.Country) {
-                _this78.onCountryChange();
+              if (_this80.user.Country) {
+                _this80.onCountryChange();
               }
             }
           });
@@ -13212,16 +13367,16 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "onCountryChange",
         value: function onCountryChange() {
-          var _this79 = this;
+          var _this81 = this;
 
           var selectedCountry = this.countries.find(function (c) {
-            return c.Name === _this79.user.Country;
+            return c.Name === _this81.user.Country;
           });
 
           if (selectedCountry) {
             this.tripUtilites.GetCity(selectedCountry.Id).subscribe(function (data) {
               if (data.Status) {
-                _this79.cities = data.Data;
+                _this81.cities = data.Data;
               }
             });
           }
@@ -13265,6 +13420,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             LicenceNumber: [null, _angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required],
             LicenceImage: [null, _angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required]
           });
+          this.bankForm = this.formBuilder.group({
+            BankId: [null, _angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required],
+            IBAN: [null, _angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required],
+            AccTitle: [null, _angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required],
+            Description: [null]
+          });
         }
       }, {
         key: "f",
@@ -13287,9 +13448,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           return this.verifyForm.controls;
         }
       }, {
+        key: "b",
+        get: function get() {
+          return this.bankForm.controls;
+        }
+      }, {
         key: "updateImage",
         value: function updateImage() {
-          var _this80 = this;
+          var _this82 = this;
 
           this.imgSubmit = true;
 
@@ -13302,20 +13468,20 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             this.user.ImageProfileString = this.imgURL.split(",")[1];
             this.userService.updateimage(this.user).subscribe(function (data) {
               if (data.Status) {
-                _this80.imgSubmit = false;
+                _this82.imgSubmit = false;
 
-                _this80.genricUtlitis.showMessageToast("Image updated successfully!", true, _Services_Utilities_genaric_service__WEBPACK_IMPORTED_MODULE_7__["PrintMedia"].Conformation);
+                _this82.genricUtlitis.showMessageToast("Image updated successfully!", true, _Services_Utilities_genaric_service__WEBPACK_IMPORTED_MODULE_7__["PrintMedia"].Conformation);
 
-                _this80.userService.GetUser().subscribe(function (data) {
+                _this82.userService.GetUser().subscribe(function (data) {
                   if (data) {
                     localStorage.setItem("UserProfile", JSON.stringify(data.Data));
                   }
 
-                  _this80.router.navigate(["/profile"]); // window.location.href = '/profile';
+                  _this82.router.navigate(["/profile"]); // window.location.href = '/profile';
 
                 });
               } else {
-                _this80.genricUtlitis.showMessageToast("Image could not be updated!", false, _Services_Utilities_genaric_service__WEBPACK_IMPORTED_MODULE_7__["PrintMedia"].Conformation);
+                _this82.genricUtlitis.showMessageToast("Image could not be updated!", false, _Services_Utilities_genaric_service__WEBPACK_IMPORTED_MODULE_7__["PrintMedia"].Conformation);
               }
             });
           }
@@ -13323,7 +13489,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "updateProfile",
         value: function updateProfile() {
-          var _this81 = this;
+          var _this83 = this;
 
           this.submitted = true;
 
@@ -13339,7 +13505,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             userToUpdate.PhoneNumber = this.selectedPhoneCode + "-" + this.user.PhoneNumber;
             userToUpdate.ContactNumber = this.selectedContactCode + "-" + this.user.ContactNumber;
             var selectedCountry = this.countries.find(function (c) {
-              return c.Name === _this81.user.Country;
+              return c.Name === _this83.user.Country;
             });
 
             if (selectedCountry) {
@@ -13347,7 +13513,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             }
 
             var selectedCity = this.cities.find(function (c) {
-              return c.Name === _this81.user.City;
+              return c.Name === _this83.user.City;
             });
 
             if (selectedCity) {
@@ -13358,19 +13524,19 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             delete userToUpdate.City;
             this.userService.updateuser(userToUpdate).subscribe(function (data) {
               if (data.Status) {
-                _this81.submitted = false;
+                _this83.submitted = false;
 
-                _this81.genricUtlitis.showMessageToast('Profile updated successfully', true, _Services_Utilities_genaric_service__WEBPACK_IMPORTED_MODULE_7__["PrintMedia"].Conformation);
+                _this83.genricUtlitis.showMessageToast('Profile updated successfully', true, _Services_Utilities_genaric_service__WEBPACK_IMPORTED_MODULE_7__["PrintMedia"].Conformation);
 
-                _this81.userService.GetUser().subscribe(function (data) {
+                _this83.userService.GetUser().subscribe(function (data) {
                   if (data) {
                     localStorage.setItem('UserProfile', JSON.stringify(data.Data));
                   }
 
-                  _this81.router.navigate(['/profile']);
+                  _this83.router.navigate(['/profile']);
                 });
               } else {
-                _this81.genricUtlitis.showMessageToast(data.Message, true, _Services_Utilities_genaric_service__WEBPACK_IMPORTED_MODULE_7__["PrintMedia"].Conformation);
+                _this83.genricUtlitis.showMessageToast(data.Message, true, _Services_Utilities_genaric_service__WEBPACK_IMPORTED_MODULE_7__["PrintMedia"].Conformation);
               }
             });
           }
@@ -13378,7 +13544,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "preview",
         value: function preview(files, type) {
-          var _this82 = this;
+          var _this84 = this;
 
           console.log(files);
 
@@ -13399,11 +13565,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
           reader.onload = function (_event) {
             if (type === "verify") {
-              _this82.verifyImgURL = reader.result;
+              _this84.verifyImgURL = reader.result;
             } else {
-              _this82.imgURL = reader.result;
+              _this84.imgURL = reader.result;
 
-              _this82.updateImage();
+              _this84.updateImage();
             }
           }; // console.log(this.imgURL)
 
@@ -13411,7 +13577,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "updatePassword",
         value: function updatePassword() {
-          var _this83 = this;
+          var _this85 = this;
 
           // debugger;
           this.psubmitted = true;
@@ -13428,20 +13594,20 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           if (this.UserPassword && this.passwordForm.valid) {
             this.userService.changePass(this.UserPassword).subscribe(function (data) {
               if (data.Status) {
-                _this83.psubmitted = false;
+                _this85.psubmitted = false;
                 localStorage.clear();
 
-                _this83.router.navigate(["/login"]);
+                _this85.router.navigate(["/login"]);
               }
 
-              _this83.genricUtlitis.showMessageToast(data.Message, data.Status, _Services_Utilities_genaric_service__WEBPACK_IMPORTED_MODULE_7__["PrintMedia"].Conformation);
+              _this85.genricUtlitis.showMessageToast(data.Message, data.Status, _Services_Utilities_genaric_service__WEBPACK_IMPORTED_MODULE_7__["PrintMedia"].Conformation);
             });
           }
         }
       }, {
         key: "verifyAccount",
         value: function verifyAccount() {
-          var _this84 = this;
+          var _this86 = this;
 
           // debugger;
           this.vsubmitted = true;
@@ -13464,21 +13630,21 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             this.userService.updateuserLicenece(this.user.Licence).subscribe(function (data) {
               if (data.Status) {
                 debugger;
-                _this84.vsubmitted = false;
+                _this86.vsubmitted = false;
 
-                _this84.genricUtlitis.showMessageToast("Licence updated successfully", true, _Services_Utilities_genaric_service__WEBPACK_IMPORTED_MODULE_7__["PrintMedia"].Conformation);
+                _this86.genricUtlitis.showMessageToast("Licence updated successfully", true, _Services_Utilities_genaric_service__WEBPACK_IMPORTED_MODULE_7__["PrintMedia"].Conformation);
 
-                _this84.userService.GetUser().subscribe(function (data) {
+                _this86.userService.GetUser().subscribe(function (data) {
                   if (data) {
                     localStorage.setItem("UserProfile", JSON.stringify(data.Data));
                   }
 
-                  _this84.router.navigate(["/profile"]); // window.location.href = '/profile';
+                  _this86.router.navigate(["/profile"]); // window.location.href = '/profile';
 
                 }); // });
 
               } else {
-                _this84.genricUtlitis.showMessageToast(data.Message, true, _Services_Utilities_genaric_service__WEBPACK_IMPORTED_MODULE_7__["PrintMedia"].Conformation);
+                _this86.genricUtlitis.showMessageToast(data.Message, true, _Services_Utilities_genaric_service__WEBPACK_IMPORTED_MODULE_7__["PrintMedia"].Conformation);
               }
             });
           }
@@ -13486,16 +13652,105 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "deactivateAccount",
         value: function deactivateAccount() {
-          var _this85 = this;
+          var _this87 = this;
 
           this.userService.deactive().subscribe(function (data) {
             if (data.Status) {
-              _this85.genricUtlitis.showMessageToast("Account deactivated", true, _Services_Utilities_genaric_service__WEBPACK_IMPORTED_MODULE_7__["PrintMedia"].Conformation);
+              _this87.genricUtlitis.showMessageToast("Account deactivated", true, _Services_Utilities_genaric_service__WEBPACK_IMPORTED_MODULE_7__["PrintMedia"].Conformation);
 
               localStorage.removeItem("UserProfile");
               localStorage.removeItem("token");
 
-              _this85.router.navigate(["/login"]);
+              _this87.router.navigate(["/login"]);
+            }
+          });
+        }
+      }, {
+        key: "loadBankDetails",
+        value: function loadBankDetails() {
+          var _this88 = this;
+
+          this.bankService.GetOptBankDetails().subscribe(function (data) {
+            if (data.Result && data.Result.Status && data.Result.Data) {
+              _this88.bankDetails = data.Result.Data;
+            } else {
+              _this88.bankDetails = null;
+            }
+          });
+        }
+      }, {
+        key: "loadBanks",
+        value: function loadBanks() {
+          var _this89 = this;
+
+          this.bankService.GetBanks().subscribe(function (data) {
+            if (data.Result && data.Result.Status && data.Result.Data) {
+              _this89.banks = data.Result.Data;
+              _this89.filteredBanks = _this89.banks;
+            }
+          });
+        }
+      }, {
+        key: "filterBanks",
+        value: function filterBanks() {
+          if (!this.bankSearchTerm || this.bankSearchTerm.trim() === '') {
+            this.filteredBanks = this.banks;
+          } else {
+            var searchLower = this.bankSearchTerm.toLowerCase();
+            this.filteredBanks = this.banks.filter(function (bank) {
+              return bank.BankName.toLowerCase().includes(searchLower) || bank.BankNameAR && bank.BankNameAR.toLowerCase().includes(searchLower);
+            });
+          }
+        }
+      }, {
+        key: "openBankModal",
+        value: function openBankModal() {
+          this.bankSearchTerm = '';
+          this.filteredBanks = this.banks;
+          this.bankSubmitted = false;
+
+          if (this.bankDetails) {
+            // Update mode - populate form
+            this.bankForm.patchValue({
+              BankId: this.bankDetails.BankId,
+              IBAN: this.bankDetails.IBAN,
+              AccTitle: this.bankDetails.AccTitle,
+              Description: this.bankDetails.Description || ''
+            });
+          } else {
+            // Add mode - reset form
+            this.bankForm.reset();
+          }
+        }
+      }, {
+        key: "saveBank",
+        value: function saveBank() {
+          var _this90 = this;
+
+          this.bankSubmitted = true;
+
+          if (this.bankForm.invalid) {
+            return;
+          }
+
+          var bankData = {
+            BankId: this.bankForm.value.BankId,
+            IBAN: this.bankForm.value.IBAN,
+            AccTitle: this.bankForm.value.AccTitle,
+            Description: this.bankForm.value.Description || ''
+          };
+          this.bankService.AddUpdateUserBank(bankData).subscribe(function (data) {
+            if (data.Result && data.Result.Status) {
+              _this90.bankSubmitted = false;
+
+              _this90.genricUtlitis.showMessageToast(data.Result.Message || "Bank information saved successfully", true, _Services_Utilities_genaric_service__WEBPACK_IMPORTED_MODULE_7__["PrintMedia"].Conformation); // Close modal using jQuery/Bootstrap
+
+
+              $('#bankModal').modal('hide');
+
+              _this90.loadBankDetails();
+            } else {
+              _this90.genricUtlitis.showMessageToast(data.Result && data.Result.Message || "Failed to save bank information", false, _Services_Utilities_genaric_service__WEBPACK_IMPORTED_MODULE_7__["PrintMedia"].Error);
             }
           });
         }
@@ -13517,6 +13772,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         type: _Services_Utilities_triputilites_service__WEBPACK_IMPORTED_MODULE_9__["TriputilitesService"]
       }, {
         type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ComponentFactoryResolver"]
+      }, {
+        type: _Services_Bank_bank_service__WEBPACK_IMPORTED_MODULE_10__["BankService"]
       }];
     };
 
@@ -13658,14 +13915,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "getPromo",
         value: function getPromo() {
-          var _this86 = this;
+          var _this91 = this;
 
           this.promoService.GetPromosByUser().subscribe(function (data) {
             if (data && data.Data) {
-              _this86.UserPromo = data.Data.filter(function (promo) {
+              _this91.UserPromo = data.Data.filter(function (promo) {
                 return !(promo.ISExpire > 0);
               });
-              _this86.ExpirePromo = data.Data.filter(function (promo) {
+              _this91.ExpirePromo = data.Data.filter(function (promo) {
                 return promo.ISExpire > 0;
               });
             }
@@ -13718,22 +13975,22 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "AddPromo",
         value: function AddPromo() {
-          var _this87 = this;
+          var _this92 = this;
 
           if (this.aFormGroup.valid) {
             this.showFormError = false;
             this.promoService.AddPromoByUser(this.promo).subscribe(function (data) {
               if (data) {
-                _this87.response = data;
+                _this92.response = data;
 
-                if (_this87.response.Status) {
-                  _this87.toastr.success(_this87.response.Message, 'Notification');
+                if (_this92.response.Status) {
+                  _this92.toastr.success(_this92.response.Message, 'Notification');
 
-                  _this87.getPromo();
+                  _this92.getPromo();
 
                   $('#expireModal').modal('hide');
                 } else {
-                  _this87.toastr.error(_this87.response.Message, 'Notification');
+                  _this92.toastr.error(_this92.response.Message, 'Notification');
                 }
               }
             });
@@ -13865,12 +14122,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "loadAllTrips",
         value: function loadAllTrips() {
-          var _this88 = this;
+          var _this93 = this;
 
           this.tripSerivce.GetAllCompTripsByUsers().subscribe(function (data) {
             if (data) {
               if (data.Status) {
-                _this88.tripModalList = data.Data;
+                _this93.tripModalList = data.Data;
               }
             }
           });
@@ -13878,18 +14135,18 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "report",
         value: function report(id) {
-          var _this89 = this;
+          var _this94 = this;
 
           this.tripSerivce.GetTripReport(id).subscribe(function (data) {
             if (data) {
               if (data.Status) {
-                _this89.genricUtlitis.showMessageToast(data.Message, true, "Success!"); //  console.log(data);
+                _this94.genricUtlitis.showMessageToast(data.Message, true, "Success!"); //  console.log(data);
 
               } else {
-                _this89.genricUtlitis.showMessageToast(data.Message, false, "Error!");
+                _this94.genricUtlitis.showMessageToast(data.Message, false, "Error!");
               }
             } else {
-              _this89.genricUtlitis.showMessageToast("There was some error.", false, "Error!");
+              _this94.genricUtlitis.showMessageToast("There was some error.", false, "Error!");
             }
           });
         }
@@ -14041,19 +14298,19 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "resetPassword",
         value: function resetPassword() {
-          var _this90 = this;
+          var _this95 = this;
 
           if (this.resetPasswordFrom.invalid) return;
 
           this._authservice.ResetPassword(this.resetPasswordModel).subscribe(function (data) {
             if (data.Status) {
-              _this90._toaster.success(data.Message);
+              _this95._toaster.success(data.Message);
 
               setTimeout(function () {
                 window.location.href = '/login';
               }, 1000);
             } else {
-              _this90._toaster.info(data.Message);
+              _this95._toaster.info(data.Message);
             }
           });
         }
@@ -14469,17 +14726,17 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "submit",
         value: function submit() {
-          var _this91 = this;
+          var _this96 = this;
 
           if (this.singUpFrom.invalid) return;
           this.user.RoleId = 3;
           this.authService.SingUp(this.user).subscribe(function (data) {
             if (data.Status) {
-              _this91.toastr.success("You have seccessfuly registered", 'Notification');
+              _this96.toastr.success("You have seccessfuly registered", 'Notification');
 
-              _this91.routers.navigate(['/login']);
+              _this96.routers.navigate(['/login']);
             } else {
-              _this91.toastr.error(data.Message, 'Notification');
+              _this96.toastr.error(data.Message, 'Notification');
             }
           });
         }
@@ -14629,13 +14886,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "loadTripDetail",
         value: function loadTripDetail() {
-          var _this92 = this;
+          var _this97 = this;
 
           this.tripSerivce.GetAllTripDetailById(this.tripId).subscribe(function (data) {
             if (data) {
               if (data.Status) {
-                _this92.tripDetail = data.Data;
-                _this92.tripDetail.Faclities.Facalities = JSON.parse(_this92.tripDetail.Faclities.Facalities); // share
+                _this97.tripDetail = data.Data;
+                _this97.tripDetail.Faclities.Facalities = JSON.parse(_this97.tripDetail.Faclities.Facalities); // share
                 // var picUrl = environment.DomainUrl + this.tripDetail.TripBasicInfo.FeaturesImage;
                 // var triptitle =  this.tripDetail.TripBasicInfo.Title;
                 // var dexcription =  this.tripDetail.TripBasicInfo.Details;
@@ -14644,11 +14901,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                 // var returnUrl = window.location.href;
                 // console.log(returnUrl)
 
-                var url = _environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].shareTripBasePath + _this92.tripDetail.TripBasicInfo.Id;
-                _this92.shareFB = "https://www.facebook.com/dialog/feed?app_id=962780807415498&redirect_uri=" + url + "&link=" + url + "}"; // this.shareFB = "https://www.facebook.com/dialog/feed?app_id=962780807415498&redirect_uri="+url+"&link="+url+"&picture="+picUrl+"&caption="+triptitle+"&description="+dexcription+"&properties={from:'value1',To:'value2'}";
+                var url = _environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].shareTripBasePath + _this97.tripDetail.TripBasicInfo.Id;
+                _this97.shareFB = "https://www.facebook.com/dialog/feed?app_id=962780807415498&redirect_uri=" + url + "&link=" + url + "}"; // this.shareFB = "https://www.facebook.com/dialog/feed?app_id=962780807415498&redirect_uri="+url+"&link="+url+"&picture="+picUrl+"&caption="+triptitle+"&description="+dexcription+"&properties={from:'value1',To:'value2'}";
 
-                _this92.shareTwitter = "https://twitter.com/intent/tweet?url=" + url;
-                _this92.shareLinkedIn = "https://www.linkedin.com/sharing/share-offsite/?url=" + url;
+                _this97.shareTwitter = "https://twitter.com/intent/tweet?url=" + url;
+                _this97.shareLinkedIn = "https://www.linkedin.com/sharing/share-offsite/?url=" + url;
               }
             }
           });
@@ -14656,11 +14913,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "getReviewIdForSpam",
         value: function getReviewIdForSpam(id) {
-          var _this93 = this;
+          var _this98 = this;
 
           this.reViewId = id;
           this.reviewSpamComment = this.tripDetail.TripReviews.find(function (x) {
-            return x.ReviewId === _this93.reViewId;
+            return x.ReviewId === _this98.reViewId;
           }).Comment;
         }
       }, {
@@ -14672,7 +14929,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "AddCommentReply",
         value: function AddCommentReply(inputEvent) {
-          var _this94 = this;
+          var _this99 = this;
 
           if (inputEvent && inputEvent.value) {
             this.tripCommentsReply = new _classes_trip_TripModel__WEBPACK_IMPORTED_MODULE_2__["TripReplyComments"]();
@@ -14680,7 +14937,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             this.tripCommentsReply.ReplyComments = inputEvent.value;
             this.tripSerivce.AddTripCommentReply(this.tripCommentsReply).subscribe(function (data) {
               if (data.Status) {
-                _this94.getTripsComments();
+                _this99.getTripsComments();
 
                 $('#modal-info-replyCommentBox').modal('hide');
               }
@@ -14692,11 +14949,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "getTripsComments",
         value: function getTripsComments() {
-          var _this95 = this;
+          var _this100 = this;
 
           this.tripSerivce.GetAllTripCommentsById(this.tripId).subscribe(function (data) {
             if (data.Status) {
-              _this95.TripComments = data.Data;
+              _this100.TripComments = data.Data;
             }
           });
         }
@@ -14709,7 +14966,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "UpdateCommentAsSpam",
         value: function UpdateCommentAsSpam() {
-          var _this96 = this;
+          var _this101 = this;
 
           var tripCommentsSpam = new _classes_trip_TripModel__WEBPACK_IMPORTED_MODULE_2__["TripComments"]();
           tripCommentsSpam.CommentId = this.tripcommentId;
@@ -14719,7 +14976,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             if (data.Status) {
               $('#modal-info-markasspan-comment').modal('hide');
 
-              _this96.getTripsComments();
+              _this101.getTripsComments();
             }
           });
         }
@@ -14739,7 +14996,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "UpdateTripStatus",
         value: function UpdateTripStatus(id) {
-          var _this97 = this;
+          var _this102 = this;
 
           var isStartBooking = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
 
@@ -14749,7 +15006,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             this.tripStatusModal.StatusId = id;
             this.tripSerivce.UpdateTripStatus(this.tripStatusModal).subscribe(function (data) {
               if (data.Status) {
-                _this97.loadTripDetail();
+                _this102.loadTripDetail();
               } else {
                 alert(data.Message);
               }
@@ -14760,7 +15017,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             trip.NO_MORE_BOOKING = isStartBooking === 'ST' ? false : true;
             this.tripSerivce.UpdateTripNoMoreTripStatus(trip).subscribe(function (data) {
               if (data.Status) {
-                _this97.loadTripDetail();
+                _this102.loadTripDetail();
               } else {
                 alert(data.Message);
               }
@@ -14776,18 +15033,18 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "report",
         value: function report(id) {
-          var _this98 = this;
+          var _this103 = this;
 
           this.tripSerivce.GetTripReport(id).subscribe(function (data) {
             if (data) {
               if (data.Status) {
-                _this98.genricUtlitis.showMessageToast(data.Message, true, "Success!"); //  console.log(data);
+                _this103.genricUtlitis.showMessageToast(data.Message, true, "Success!"); //  console.log(data);
 
               } else {
-                _this98.genricUtlitis.showMessageToast(data.Message, false, "Error!");
+                _this103.genricUtlitis.showMessageToast(data.Message, false, "Error!");
               }
             } else {
-              _this98.genricUtlitis.showMessageToast("There was some error.", false, "Error!");
+              _this103.genricUtlitis.showMessageToast("There was some error.", false, "Error!");
             }
           });
         }
@@ -14934,7 +15191,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "updateProfile",
         value: function updateProfile() {
-          var _this99 = this;
+          var _this104 = this;
 
           // debugger;
           this.submitted = true;
@@ -14950,15 +15207,15 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             this.userService.changePass(this.UserPassword).subscribe(function (data) {
               if (data.Status) {
                 // debugger
-                _this99.submitted = false; // this.genricUtlitis.showMessageToast('Password changed successfully', true, PrintMedia.Conformation);
+                _this104.submitted = false; // this.genricUtlitis.showMessageToast('Password changed successfully', true, PrintMedia.Conformation);
 
-                _this99.router.navigate(['/profile']);
+                _this104.router.navigate(['/profile']);
               } // } else {
               //   this.genricUtlitis.showMessageToast(data.Message, data.Status, PrintMedia.Conformation);
               // }
 
 
-              _this99.genricUtlitis.showMessageToast(data.Message, data.Status, _Services_Utilities_genaric_service__WEBPACK_IMPORTED_MODULE_5__["PrintMedia"].Conformation);
+              _this104.genricUtlitis.showMessageToast(data.Message, data.Status, _Services_Utilities_genaric_service__WEBPACK_IMPORTED_MODULE_5__["PrintMedia"].Conformation);
             });
           }
         }
@@ -15103,7 +15360,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "updateProfile",
         value: function updateProfile() {
-          var _this100 = this;
+          var _this105 = this;
 
           // debugger;
           this.submitted = true;
@@ -15125,21 +15382,21 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             this.userService.updateuser(this.user).subscribe(function (data) {
               if (data.Status) {
                 // debugger
-                _this100.submitted = false;
+                _this105.submitted = false;
 
-                _this100.genricUtlitis.showMessageToast('Profile updated successfully', true, _Services_Utilities_genaric_service__WEBPACK_IMPORTED_MODULE_4__["PrintMedia"].Conformation);
+                _this105.genricUtlitis.showMessageToast('Profile updated successfully', true, _Services_Utilities_genaric_service__WEBPACK_IMPORTED_MODULE_4__["PrintMedia"].Conformation);
 
-                _this100.userService.GetUser().subscribe(function (data) {
+                _this105.userService.GetUser().subscribe(function (data) {
                   if (data) {
                     localStorage.setItem('UserProfile', JSON.stringify(data.Data));
                   }
 
-                  _this100.router.navigate(['/profile']); // window.location.href = '/profile';
+                  _this105.router.navigate(['/profile']); // window.location.href = '/profile';
 
                 }); // });
 
               } else {
-                _this100.genricUtlitis.showMessageToast(data.Message, true, _Services_Utilities_genaric_service__WEBPACK_IMPORTED_MODULE_4__["PrintMedia"].Conformation);
+                _this105.genricUtlitis.showMessageToast(data.Message, true, _Services_Utilities_genaric_service__WEBPACK_IMPORTED_MODULE_4__["PrintMedia"].Conformation);
               }
             });
           }
@@ -15147,7 +15404,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "preview",
         value: function preview(files) {
-          var _this101 = this;
+          var _this106 = this;
 
           if (files.length === 0) {
             return;
@@ -15165,7 +15422,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           reader.readAsDataURL(files[0]);
 
           reader.onload = function (_event) {
-            _this101.imgURL = reader.result;
+            _this106.imgURL = reader.result;
           };
         }
       }]);
@@ -15230,7 +15487,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       production: false,
       //DomainUrl: 'http://api2.tripjero.com/api/'
       //  DomainUrl: 'http://localhost:54593/api/',
-      //  domainToken: 'http://localhost:54593/'
+      //  domainToken: 'http://localhost:54593/',
       DomainUrl: "https://services.tripjero.com/api/",
       domainToken: "https://services.tripjero.com/",
       shareTripBasePath: "https://trip.tripjero.com/callback/share/trip/"
