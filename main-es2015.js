@@ -568,7 +568,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div id=\"page-content-wrapper\">\n  <div class=\"row\">\n    <div class=\"col-md-12 d-flex justify-content-between align-items-center mb-3\">\n      <h4>My Invoices</h4>\n    </div>\n    <div class=\"col-md-12\">\n      <div class=\"p-3 mb-3\" style=\"background: #ffff; border-radius: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);\">\n        <div class=\"row\">\n          <div class=\"col-md-3\">\n            <div class=\"form-group\">\n              <label for=\"yearSelect\">Year</label>\n              <select class=\"form-control\" id=\"yearSelect\" [(ngModel)]=\"selectedYear\" (change)=\"onYearChange()\">\n                <option value=\"\">All Years</option>\n                <option *ngFor=\"let year of yearOptions\" [value]=\"year\">{{year}}</option>\n              </select>\n            </div>\n          </div>\n          <div class=\"col-md-3\">\n            <div class=\"form-group\">\n              <label for=\"statusSelect\">Status</label>\n              <select class=\"form-control\" id=\"statusSelect\" [(ngModel)]=\"selectedStatus\" (change)=\"onStatusChange()\">\n                <option value=\"\">All Status</option>\n                <option *ngFor=\"let status of statusOptions\" [value]=\"status.value\">{{status.label}}</option>\n              </select>\n            </div>\n          </div>\n          <div class=\"col-md-3\">\n            <div class=\"form-group\">\n              <label for=\"paymentStatusSelect\">Payment Status</label>\n              <select class=\"form-control\" id=\"paymentStatusSelect\" [(ngModel)]=\"selectedPaymentStatus\" (change)=\"onPaymentStatusChange()\">\n                <option value=\"\">All Payment Status</option>\n                <option *ngFor=\"let ps of paymentStatusOptions\" [value]=\"ps\">{{ps}}</option>\n              </select>\n            </div>\n          </div>\n          <div class=\"col-md-3\">\n            <div class=\"form-group\">\n              <label for=\"searchInput\">Search</label>\n              <input type=\"text\" class=\"form-control\" id=\"searchInput\" placeholder=\"Search...\" \n                     [(ngModel)]=\"searchText\" (keyup.enter)=\"onSearchKeyPress($event)\" (blur)=\"applyFilters()\">\n            </div>\n          </div>\n        </div>\n        <div class=\"row\">\n          <div class=\"col-md-12 text-right\">\n            <button class=\"jero-btn jero-btn-secondary\" (click)=\"clearFilters()\">Clear Filters</button>\n          </div>\n        </div>\n      </div>\n    </div>\n    <div class=\"col-md-12\">\n      <div class=\"py-4\">\n        <div class=\"row justify-content-center\">\n          <div class=\"col-12\">\n            <div class=\"p-3\" style=\"background: #ffff; border-radius: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);\">\n              <table class=\"table mb-0\" style=\"background: transparent;\">\n                <thead>\n                  <tr style=\"background: #d6f2e6; color: #4b5d52;\">\n                    <th style=\"border-top-left-radius: 8px;\">Trip Name</th>\n                    <th>Start Date</th>\n                    <th>End Date</th>\n                    <th>From</th>\n                    <th>To</th>\n                    <th>Number of Bookings</th>\n                    <th>Status</th>\n                    <th>Amount</th>\n                    <th>Commission</th>\n                    <th>Payment Status</th>\n                    <th style=\"border-top-right-radius: 8px;\">Action</th>\n                  </tr>\n                </thead>\n                <tbody style=\"background: #fff;\">\n                  <tr *ngFor=\"let item of invoices; let i = index\" \n                      style=\"vertical-align: middle;\">\n                    <td>{{ item.trip?.TripBasicInfo?.Title }}</td>\n                    <td>{{ item.trip?.TripBasicInfo?.StartDateTime | date:'dd-MMM-yyyy' }}</td>\n                    <td>{{ item.trip?.TripBasicInfo?.EndDateTime | date:'dd-MMM-yyyy' }}</td>\n                    <td>{{ item.trip?.TripBasicInfo?.FromPlaceName || 'N/A' }}</td>\n                    <td>{{ item.trip?.TripBasicInfo?.ToPlaceName || 'N/A' }}</td>\n                    <td>{{ item.trip?.TripBasicInfo?.NumberOfBookings || 0 }}</td>\n                    <td>\n                      <span class=\"badge\" [ngClass]=\"{\n                        'badge-success': item.trip?.TripBasicInfo?.TripStatusId === 1,\n                        'badge-primary': item.trip?.TripBasicInfo?.TripStatusId === 2,\n                        'badge-info': item.trip?.TripBasicInfo?.TripStatusId === 3,\n                        'badge-warning': item.trip?.TripBasicInfo?.TripStatusId === 4,\n                        'badge-danger': item.trip?.TripBasicInfo?.TripStatusId === 5\n                      }\">\n                        {{ item.trip?.TripBasicInfo?.TripStatus || 'N/A' }}\n                      </span>\n                    </td>\n                    <td>{{ item.trip?.TripBasicInfo?.Amount | currency:'USD':'symbol':'1.2-2' }}</td>\n                    <td>\n                      <span *ngIf=\"item.commission\">\n                        {{ item.commission.ChargeAmount | currency:'USD':'symbol':'1.2-2' }}\n                      </span>\n                      <span *ngIf=\"!item.commission\">-</span>\n                    </td>\n                    <td>\n                      <span *ngIf=\"item.commission\" [ngClass]=\"getPaymentStatusClass(item.commission.Status)\">\n                        {{ item.commission.Status }}\n                      </span>\n                      <span *ngIf=\"!item.commission\">-</span>\n                    </td>\n                    <td>\n                      <button class=\"jero-btn jero-btn-primary\" \n                              [routerLink]=\"item.commission && item.commission.Id ? '/invoice-details/' + item.commission.Id : '#'\"\n                              [disabled]=\"!item.commission || !item.commission.Id\">View</button>\n                    </td>\n                  </tr>\n                  <tr *ngIf=\"invoices.length === 0\">\n                    <td colspan=\"10\" class=\"text-center py-4\">No invoices found</td>\n                  </tr>\n                </tbody>\n              </table>\n              <div class=\"d-flex justify-content-center mt-3\" *ngIf=\"totalPages > 0\">\n                <pagination-controls \n                  (pageChange)=\"onPageChange($event)\"\n                  [maxSize]=\"5\"\n                  [directionLinks]=\"true\"\n                  [autoHide]=\"false\"\n                  previousLabel=\"Previous\"\n                  nextLabel=\"Next\">\n                </pagination-controls>\n              </div>\n              <div class=\"text-center mt-2\" *ngIf=\"totalPages > 0\">\n                <small class=\"text-muted\">Page {{p}} of {{totalPages}}</small>\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div id=\"page-content-wrapper\">\n  <div class=\"row\">\n    <div class=\"col-md-12 d-flex justify-content-between align-items-center mb-3\">\n      <h4>My Invoices</h4>\n    </div>\n    \n    <!-- Commission Slab Section -->\n    <div class=\"col-md-12 mb-4\" *ngIf=\"!loadingCommission\">\n      <div class=\"row\">\n        <!-- Left Section: Current Commission Status -->\n        <div class=\"col-md-6\">\n          <div class=\"commission-status-card\">\n            <div class=\"commission-note mb-2\">\n              <strong>Trip Completed trip and status paid</strong>\n            </div>\n            <div class=\"commission-info-item\">\n              <span class=\"commission-label\">Number of Bookings</span>\n              <span class=\"commission-value\">{{ totalBookings }}</span>\n            </div>\n            <div class=\"commission-info-item\">\n              <span class=\"commission-label\">Applied % Slab Commission</span>\n              <span class=\"commission-value\">{{ appliedSlab?.Commission || 0 }}%</span>\n            </div>\n            <div class=\"commission-note mt-3\">\n              <small>Count number of paid bookings for Trip status \"In-Progress, Complete\"</small>\n            </div>\n          </div>\n        </div>\n        \n        <!-- Right Section: Commission Slab Table -->\n        <div class=\"col-md-6\">\n          <div class=\"commission-slab-card\">\n            <div class=\"commission-note mb-2\">\n              <strong>Commission slab.</strong>\n            </div>\n            <div class=\"commission-slab-table\">\n              <table class=\"table table-bordered mb-0\">\n                <thead>\n                  <tr class=\"commission-table-header\">\n                    <th>No of Completed Bookings</th>\n                    <th *ngFor=\"let slab of allSlabs; let i = index\" class=\"text-center\">{{ getSlabRange(slab, i) }}</th>\n                  </tr>\n                </thead>\n                <tbody>\n                  <tr class=\"commission-table-row\">\n                    <td class=\"commission-table-label\">Per Annual</td>\n                    <td *ngFor=\"let slab of allSlabs\" class=\"text-center\">Bookings</td>\n                  </tr>\n                  <tr class=\"commission-table-row\">\n                    <td class=\"commission-table-label\">Commission in Percentage %</td>\n                    <td *ngFor=\"let slab of allSlabs\" class=\"text-center\">{{ slab.Commission }}%</td>\n                  </tr>\n                </tbody>\n              </table>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n    \n    <!-- Loading State for Commission -->\n    <div class=\"col-md-12 mb-4\" *ngIf=\"loadingCommission\">\n      <div class=\"text-center py-4\">\n        <div class=\"spinner-border text-primary\" role=\"status\">\n          <span class=\"sr-only\">Loading...</span>\n        </div>\n      </div>\n    </div>\n    \n    <div class=\"col-md-12\">\n      <div class=\"p-3 mb-3\" style=\"background: #ffff; border-radius: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);\">\n        <div class=\"row\">\n          <div class=\"col-md-3\">\n            <div class=\"form-group\">\n              <label for=\"yearSelect\">Year</label>\n              <select class=\"form-control\" id=\"yearSelect\" [(ngModel)]=\"selectedYear\" (change)=\"onYearChange()\">\n                <option value=\"\">All Years</option>\n                <option *ngFor=\"let year of yearOptions\" [value]=\"year\">{{year}}</option>\n              </select>\n            </div>\n          </div>\n          <div class=\"col-md-3\">\n            <div class=\"form-group\">\n              <label for=\"statusSelect\">Status</label>\n              <select class=\"form-control\" id=\"statusSelect\" [(ngModel)]=\"selectedStatus\" (change)=\"onStatusChange()\">\n                <option value=\"\">All Status</option>\n                <option *ngFor=\"let status of statusOptions\" [value]=\"status.value\">{{status.label}}</option>\n              </select>\n            </div>\n          </div>\n          <div class=\"col-md-3\">\n            <div class=\"form-group\">\n              <label for=\"paymentStatusSelect\">Payment Status</label>\n              <select class=\"form-control\" id=\"paymentStatusSelect\" [(ngModel)]=\"selectedPaymentStatus\" (change)=\"onPaymentStatusChange()\">\n                <option value=\"\">All Payment Status</option>\n                <option *ngFor=\"let ps of paymentStatusOptions\" [value]=\"ps\">{{ps}}</option>\n              </select>\n            </div>\n          </div>\n          <div class=\"col-md-3\">\n            <div class=\"form-group\">\n              <label for=\"searchInput\">Search</label>\n              <input type=\"text\" class=\"form-control\" id=\"searchInput\" placeholder=\"Search...\" \n                     [(ngModel)]=\"searchText\" (keyup.enter)=\"onSearchKeyPress($event)\" (blur)=\"applyFilters()\">\n            </div>\n          </div>\n        </div>\n        <div class=\"row\">\n          <div class=\"col-md-12 text-right\">\n            <button class=\"jero-btn jero-btn-secondary\" (click)=\"clearFilters()\">Clear Filters</button>\n          </div>\n        </div>\n      </div>\n    </div>\n    <div class=\"col-md-12\">\n      <div class=\"py-4\">\n        <div class=\"row justify-content-center\">\n          <div class=\"col-12\">\n            <div class=\"p-3\" style=\"background: #ffff; border-radius: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);\">\n              <table class=\"table mb-0\" style=\"background: transparent;\">\n                <thead>\n                  <tr style=\"background: #d6f2e6; color: #4b5d52;\">\n                    <th style=\"border-top-left-radius: 8px;\">Trip Name</th>\n                    <th>Start Date</th>\n                    <th>End Date</th>\n                    <th>From</th>\n                    <th>To</th>\n                    <th>Number of Bookings</th>\n                    <th>Status</th>\n                    <th>Amount</th>\n                    <th>Commission</th>\n                    <th>Payment Status</th>\n                    <th style=\"border-top-right-radius: 8px;\">Action</th>\n                  </tr>\n                </thead>\n                <tbody style=\"background: #fff;\">\n                  <tr *ngFor=\"let item of invoices; let i = index\" \n                      style=\"vertical-align: middle;\">\n                    <td>{{ item.trip?.TripBasicInfo?.Title }}</td>\n                    <td>{{ item.trip?.TripBasicInfo?.StartDateTime | date:'dd-MMM-yyyy' }}</td>\n                    <td>{{ item.trip?.TripBasicInfo?.EndDateTime | date:'dd-MMM-yyyy' }}</td>\n                    <td>{{ item.trip?.TripBasicInfo?.FromPlaceName || 'N/A' }}</td>\n                    <td>{{ item.trip?.TripBasicInfo?.ToPlaceName || 'N/A' }}</td>\n                    <td>{{ item.trip?.TripBasicInfo?.NumberOfBookings || 0 }}</td>\n                    <td>\n                      <span class=\"badge\" [ngClass]=\"{\n                        'badge-success': item.trip?.TripBasicInfo?.TripStatusId === 1,\n                        'badge-primary': item.trip?.TripBasicInfo?.TripStatusId === 2,\n                        'badge-info': item.trip?.TripBasicInfo?.TripStatusId === 3,\n                        'badge-warning': item.trip?.TripBasicInfo?.TripStatusId === 4,\n                        'badge-danger': item.trip?.TripBasicInfo?.TripStatusId === 5\n                      }\">\n                        {{ item.trip?.TripBasicInfo?.TripStatus || 'N/A' }}\n                      </span>\n                    </td>\n                    <td>{{ item.trip?.TripBasicInfo?.Amount | currency:'USD':'symbol':'1.2-2' }}</td>\n                    <td>\n                      <span *ngIf=\"item.commission\">\n                        {{ item.commission.ChargeAmount | currency:'USD':'symbol':'1.2-2' }}\n                      </span>\n                      <span *ngIf=\"!item.commission\">-</span>\n                    </td>\n                    <td>\n                      <span *ngIf=\"item.commission\" [ngClass]=\"getPaymentStatusClass(item.commission.Status)\">\n                        {{ item.commission.Status }}\n                      </span>\n                      <span *ngIf=\"!item.commission\">-</span>\n                    </td>\n                    <td>\n                      <button class=\"jero-btn jero-btn-primary\" \n                              [routerLink]=\"item.commission && item.commission.Id ? '/invoice-details/' + item.commission.Id : '#'\"\n                              [disabled]=\"!item.commission || !item.commission.Id\">View</button>\n                    </td>\n                  </tr>\n                  <tr *ngIf=\"invoices.length === 0\">\n                    <td colspan=\"10\" class=\"text-center py-4\">No invoices found</td>\n                  </tr>\n                </tbody>\n              </table>\n              <div class=\"d-flex justify-content-center mt-3\" *ngIf=\"totalPages > 0\">\n                <pagination-controls \n                  (pageChange)=\"onPageChange($event)\"\n                  [maxSize]=\"5\"\n                  [directionLinks]=\"true\"\n                  [autoHide]=\"false\"\n                  previousLabel=\"Previous\"\n                  nextLabel=\"Next\">\n                </pagination-controls>\n              </div>\n              <div class=\"text-center mt-2\" *ngIf=\"totalPages > 0\">\n                <small class=\"text-muted\">Page {{p}} of {{totalPages}}</small>\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n");
 
 /***/ }),
 
@@ -1419,6 +1419,9 @@ let OperatorApiService = class OperatorApiService {
     }
     CreateOperatorInvoice(formData) {
         return this.utilities.GenericServiceCallMethod('post', 'Operator/CreateOperatorInvoice', '', formData);
+    }
+    GetOperatorOngoingSlabAndBookings() {
+        return this.utilities.GenericServiceCallMethod('get', 'Operator/GetOperatorOngoingSlabAndBookings', '', '');
     }
 };
 OperatorApiService.ctorParameters = () => [
@@ -2930,53 +2933,54 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var angular2_wizard__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! angular2-wizard */ "./node_modules/angular2-wizard/dist/index.js");
 /* harmony import */ var angular2_wizard__WEBPACK_IMPORTED_MODULE_28___default = /*#__PURE__*/__webpack_require__.n(angular2_wizard__WEBPACK_IMPORTED_MODULE_28__);
 /* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm2015/ng-bootstrap.js");
-/* harmony import */ var _offer_management_ItineraryPlane_ItineraryPlane_component__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ./offer-management/ItineraryPlane/ItineraryPlane.component */ "./src/app/offer-management/ItineraryPlane/ItineraryPlane.component.ts");
-/* harmony import */ var _posttrip_TripItinerary_Facilities_facilities_trip_facilities_trip_component__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ./posttrip/TripItinerary/Facilities/facilities-trip/facilities-trip.component */ "./src/app/posttrip/TripItinerary/Facilities/facilities-trip/facilities-trip.component.ts");
-/* harmony import */ var _posttrip_TripItinerary_TripImages_tripImages_tripImages_component__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! ./posttrip/TripItinerary/TripImages/tripImages/tripImages.component */ "./src/app/posttrip/TripItinerary/TripImages/tripImages/tripImages.component.ts");
-/* harmony import */ var _Services_Utilities_triputilites_service__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! ./Services/Utilities/triputilites.service */ "./src/app/Services/Utilities/triputilites.service.ts");
-/* harmony import */ var _Services_TripService_trip_service__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! ./Services/TripService/trip.service */ "./src/app/Services/TripService/trip.service.ts");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
-/* harmony import */ var _Services_Utilities_genaric_service__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(/*! ./Services/Utilities/genaric.service */ "./src/app/Services/Utilities/genaric.service.ts");
-/* harmony import */ var _buy_boost_package_buy_boost_package_component__WEBPACK_IMPORTED_MODULE_37__ = __webpack_require__(/*! ./buy-boost-package/buy-boost-package.component */ "./src/app/buy-boost-package/buy-boost-package.component.ts");
-/* harmony import */ var ngx_toastr__WEBPACK_IMPORTED_MODULE_38__ = __webpack_require__(/*! ngx-toastr */ "./node_modules/ngx-toastr/fesm2015/ngx-toastr.js");
-/* harmony import */ var ngx_bar_rating__WEBPACK_IMPORTED_MODULE_39__ = __webpack_require__(/*! ngx-bar-rating */ "./node_modules/ngx-bar-rating/index.js");
-/* harmony import */ var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_40__ = __webpack_require__(/*! @angular/platform-browser/animations */ "./node_modules/@angular/platform-browser/fesm2015/animations.js");
-/* harmony import */ var _posttrip_TripItinerary_PostFinalTrip_PostFinalTrip_component__WEBPACK_IMPORTED_MODULE_41__ = __webpack_require__(/*! ./posttrip/TripItinerary/PostFinalTrip/PostFinalTrip.component */ "./src/app/posttrip/TripItinerary/PostFinalTrip/PostFinalTrip.component.ts");
-/* harmony import */ var _Services_Utilities_UtilitiesMethods_service__WEBPACK_IMPORTED_MODULE_42__ = __webpack_require__(/*! ./Services/Utilities/UtilitiesMethods.service */ "./src/app/Services/Utilities/UtilitiesMethods.service.ts");
-/* harmony import */ var _Services_BoostPackge_boostpackage_service__WEBPACK_IMPORTED_MODULE_43__ = __webpack_require__(/*! ./Services/BoostPackge/boostpackage.service */ "./src/app/Services/BoostPackge/boostpackage.service.ts");
-/* harmony import */ var _login_login_component__WEBPACK_IMPORTED_MODULE_44__ = __webpack_require__(/*! ./login/login.component */ "./src/app/login/login.component.ts");
-/* harmony import */ var _Shared_Interceptor_token_interceptor_service__WEBPACK_IMPORTED_MODULE_45__ = __webpack_require__(/*! ./Shared/Interceptor/token-interceptor.service */ "./src/app/Shared/Interceptor/token-interceptor.service.ts");
-/* harmony import */ var _Services_Users_UsersService_service__WEBPACK_IMPORTED_MODULE_46__ = __webpack_require__(/*! ./Services/Users/UsersService.service */ "./src/app/Services/Users/UsersService.service.ts");
-/* harmony import */ var _Services_Utilities_AuthService_service__WEBPACK_IMPORTED_MODULE_47__ = __webpack_require__(/*! ./Services/Utilities/AuthService.service */ "./src/app/Services/Utilities/AuthService.service.ts");
-/* harmony import */ var _Shared_guards_auth_guard_service_service__WEBPACK_IMPORTED_MODULE_48__ = __webpack_require__(/*! ./Shared/guards/auth-guard.service.service */ "./src/app/Shared/guards/auth-guard.service.service.ts");
-/* harmony import */ var _Services_Users_UseraccessService_service__WEBPACK_IMPORTED_MODULE_49__ = __webpack_require__(/*! ./Services/Users/UseraccessService.service */ "./src/app/Services/Users/UseraccessService.service.ts");
-/* harmony import */ var _complaint_complaint_component__WEBPACK_IMPORTED_MODULE_50__ = __webpack_require__(/*! ./complaint/complaint.component */ "./src/app/complaint/complaint.component.ts");
-/* harmony import */ var _Services_Operator_operator_api_service__WEBPACK_IMPORTED_MODULE_51__ = __webpack_require__(/*! ./Services/Operator/operator-api.service */ "./src/app/Services/Operator/operator-api.service.ts");
-/* harmony import */ var _Services_Bank_bank_service__WEBPACK_IMPORTED_MODULE_52__ = __webpack_require__(/*! ./Services/Bank/bank.service */ "./src/app/Services/Bank/bank.service.ts");
-/* harmony import */ var ng_wizard__WEBPACK_IMPORTED_MODULE_53__ = __webpack_require__(/*! ng-wizard */ "./node_modules/ng-wizard/fesm2015/ng-wizard.js");
-/* harmony import */ var _kolkov_angular_editor__WEBPACK_IMPORTED_MODULE_54__ = __webpack_require__(/*! @kolkov/angular-editor */ "./node_modules/@kolkov/angular-editor/fesm2015/kolkov-angular-editor.js");
-/* harmony import */ var _bookings_bookings_component__WEBPACK_IMPORTED_MODULE_55__ = __webpack_require__(/*! ./bookings/bookings.component */ "./src/app/bookings/bookings.component.ts");
-/* harmony import */ var _bookingdetails_bookingdetails_component__WEBPACK_IMPORTED_MODULE_56__ = __webpack_require__(/*! ./bookingdetails/bookingdetails.component */ "./src/app/bookingdetails/bookingdetails.component.ts");
-/* harmony import */ var ngx_pagination__WEBPACK_IMPORTED_MODULE_57__ = __webpack_require__(/*! ngx-pagination */ "./node_modules/ngx-pagination/dist/ngx-pagination.js");
-/* harmony import */ var _detail_detail_component__WEBPACK_IMPORTED_MODULE_58__ = __webpack_require__(/*! ./detail/detail.component */ "./src/app/detail/detail.component.ts");
-/* harmony import */ var ng2_charts__WEBPACK_IMPORTED_MODULE_59__ = __webpack_require__(/*! ng2-charts */ "./node_modules/ng2-charts/fesm2015/ng2-charts.js");
-/* harmony import */ var _angular_material_stepper__WEBPACK_IMPORTED_MODULE_60__ = __webpack_require__(/*! @angular/material/stepper */ "./node_modules/@angular/material/esm2015/stepper.js");
-/* harmony import */ var _angular_material_input__WEBPACK_IMPORTED_MODULE_61__ = __webpack_require__(/*! @angular/material/input */ "./node_modules/@angular/material/esm2015/input.js");
-/* harmony import */ var _angular_material_icon__WEBPACK_IMPORTED_MODULE_62__ = __webpack_require__(/*! @angular/material/icon */ "./node_modules/@angular/material/esm2015/icon.js");
-/* harmony import */ var ngx_dropzone__WEBPACK_IMPORTED_MODULE_63__ = __webpack_require__(/*! ngx-dropzone */ "./node_modules/ngx-dropzone/fesm2015/ngx-dropzone.js");
-/* harmony import */ var _signup_signup_component__WEBPACK_IMPORTED_MODULE_64__ = __webpack_require__(/*! ./signup/signup.component */ "./src/app/signup/signup.component.ts");
-/* harmony import */ var angularx_social_login__WEBPACK_IMPORTED_MODULE_65__ = __webpack_require__(/*! angularx-social-login */ "./node_modules/angularx-social-login/fesm2015/angularx-social-login.js");
-/* harmony import */ var _forgetpassword_forgetpassword_component__WEBPACK_IMPORTED_MODULE_66__ = __webpack_require__(/*! ./forgetpassword/forgetpassword.component */ "./src/app/forgetpassword/forgetpassword.component.ts");
-/* harmony import */ var _reset_password_reset_password_component__WEBPACK_IMPORTED_MODULE_67__ = __webpack_require__(/*! ./reset-password/reset-password.component */ "./src/app/reset-password/reset-password.component.ts");
-/* harmony import */ var _self_about_us_about_us_component__WEBPACK_IMPORTED_MODULE_68__ = __webpack_require__(/*! ./self/about-us/about-us.component */ "./src/app/self/about-us/about-us.component.ts");
-/* harmony import */ var _posttrip_postsuccess_postsuccess_component__WEBPACK_IMPORTED_MODULE_69__ = __webpack_require__(/*! ./posttrip/postsuccess/postsuccess.component */ "./src/app/posttrip/postsuccess/postsuccess.component.ts");
-/* harmony import */ var _ngx_translate_core__WEBPACK_IMPORTED_MODULE_70__ = __webpack_require__(/*! @ngx-translate/core */ "./node_modules/@ngx-translate/core/fesm2015/ngx-translate-core.js");
-/* harmony import */ var _ngx_translate_http_loader__WEBPACK_IMPORTED_MODULE_71__ = __webpack_require__(/*! @ngx-translate/http-loader */ "./node_modules/@ngx-translate/http-loader/fesm2015/ngx-translate-http-loader.js");
-/* harmony import */ var _custom_tour_requests_custom_tour_requests_component__WEBPACK_IMPORTED_MODULE_72__ = __webpack_require__(/*! ./custom-tour-requests/custom-tour-requests.component */ "./src/app/custom-tour-requests/custom-tour-requests.component.ts");
-/* harmony import */ var _custom_tour_request_detail_custom_tour_request_detail_component__WEBPACK_IMPORTED_MODULE_73__ = __webpack_require__(/*! ./custom-tour-request-detail/custom-tour-request-detail.component */ "./src/app/custom-tour-request-detail/custom-tour-request-detail.component.ts");
-/* harmony import */ var _offer_management_offer_management_component__WEBPACK_IMPORTED_MODULE_74__ = __webpack_require__(/*! ./offer-management/offer-management.component */ "./src/app/offer-management/offer-management.component.ts");
-/* harmony import */ var _invoices_invoices_component__WEBPACK_IMPORTED_MODULE_75__ = __webpack_require__(/*! ./invoices/invoices.component */ "./src/app/invoices/invoices.component.ts");
-/* harmony import */ var _invoice_details_invoice_details_component__WEBPACK_IMPORTED_MODULE_76__ = __webpack_require__(/*! ./invoice-details/invoice-details.component */ "./src/app/invoice-details/invoice-details.component.ts");
+/* harmony import */ var _posttrip_TripItinerary_ItineraryPlane_ItineraryPlane_component__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ./posttrip/TripItinerary/ItineraryPlane/ItineraryPlane.component */ "./src/app/posttrip/TripItinerary/ItineraryPlane/ItineraryPlane.component.ts");
+/* harmony import */ var _offer_management_ItineraryPlane_ItineraryPlane_component__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ./offer-management/ItineraryPlane/ItineraryPlane.component */ "./src/app/offer-management/ItineraryPlane/ItineraryPlane.component.ts");
+/* harmony import */ var _posttrip_TripItinerary_Facilities_facilities_trip_facilities_trip_component__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! ./posttrip/TripItinerary/Facilities/facilities-trip/facilities-trip.component */ "./src/app/posttrip/TripItinerary/Facilities/facilities-trip/facilities-trip.component.ts");
+/* harmony import */ var _posttrip_TripItinerary_TripImages_tripImages_tripImages_component__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! ./posttrip/TripItinerary/TripImages/tripImages/tripImages.component */ "./src/app/posttrip/TripItinerary/TripImages/tripImages/tripImages.component.ts");
+/* harmony import */ var _Services_Utilities_triputilites_service__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! ./Services/Utilities/triputilites.service */ "./src/app/Services/Utilities/triputilites.service.ts");
+/* harmony import */ var _Services_TripService_trip_service__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(/*! ./Services/TripService/trip.service */ "./src/app/Services/TripService/trip.service.ts");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+/* harmony import */ var _Services_Utilities_genaric_service__WEBPACK_IMPORTED_MODULE_37__ = __webpack_require__(/*! ./Services/Utilities/genaric.service */ "./src/app/Services/Utilities/genaric.service.ts");
+/* harmony import */ var _buy_boost_package_buy_boost_package_component__WEBPACK_IMPORTED_MODULE_38__ = __webpack_require__(/*! ./buy-boost-package/buy-boost-package.component */ "./src/app/buy-boost-package/buy-boost-package.component.ts");
+/* harmony import */ var ngx_toastr__WEBPACK_IMPORTED_MODULE_39__ = __webpack_require__(/*! ngx-toastr */ "./node_modules/ngx-toastr/fesm2015/ngx-toastr.js");
+/* harmony import */ var ngx_bar_rating__WEBPACK_IMPORTED_MODULE_40__ = __webpack_require__(/*! ngx-bar-rating */ "./node_modules/ngx-bar-rating/index.js");
+/* harmony import */ var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_41__ = __webpack_require__(/*! @angular/platform-browser/animations */ "./node_modules/@angular/platform-browser/fesm2015/animations.js");
+/* harmony import */ var _posttrip_TripItinerary_PostFinalTrip_PostFinalTrip_component__WEBPACK_IMPORTED_MODULE_42__ = __webpack_require__(/*! ./posttrip/TripItinerary/PostFinalTrip/PostFinalTrip.component */ "./src/app/posttrip/TripItinerary/PostFinalTrip/PostFinalTrip.component.ts");
+/* harmony import */ var _Services_Utilities_UtilitiesMethods_service__WEBPACK_IMPORTED_MODULE_43__ = __webpack_require__(/*! ./Services/Utilities/UtilitiesMethods.service */ "./src/app/Services/Utilities/UtilitiesMethods.service.ts");
+/* harmony import */ var _Services_BoostPackge_boostpackage_service__WEBPACK_IMPORTED_MODULE_44__ = __webpack_require__(/*! ./Services/BoostPackge/boostpackage.service */ "./src/app/Services/BoostPackge/boostpackage.service.ts");
+/* harmony import */ var _login_login_component__WEBPACK_IMPORTED_MODULE_45__ = __webpack_require__(/*! ./login/login.component */ "./src/app/login/login.component.ts");
+/* harmony import */ var _Shared_Interceptor_token_interceptor_service__WEBPACK_IMPORTED_MODULE_46__ = __webpack_require__(/*! ./Shared/Interceptor/token-interceptor.service */ "./src/app/Shared/Interceptor/token-interceptor.service.ts");
+/* harmony import */ var _Services_Users_UsersService_service__WEBPACK_IMPORTED_MODULE_47__ = __webpack_require__(/*! ./Services/Users/UsersService.service */ "./src/app/Services/Users/UsersService.service.ts");
+/* harmony import */ var _Services_Utilities_AuthService_service__WEBPACK_IMPORTED_MODULE_48__ = __webpack_require__(/*! ./Services/Utilities/AuthService.service */ "./src/app/Services/Utilities/AuthService.service.ts");
+/* harmony import */ var _Shared_guards_auth_guard_service_service__WEBPACK_IMPORTED_MODULE_49__ = __webpack_require__(/*! ./Shared/guards/auth-guard.service.service */ "./src/app/Shared/guards/auth-guard.service.service.ts");
+/* harmony import */ var _Services_Users_UseraccessService_service__WEBPACK_IMPORTED_MODULE_50__ = __webpack_require__(/*! ./Services/Users/UseraccessService.service */ "./src/app/Services/Users/UseraccessService.service.ts");
+/* harmony import */ var _complaint_complaint_component__WEBPACK_IMPORTED_MODULE_51__ = __webpack_require__(/*! ./complaint/complaint.component */ "./src/app/complaint/complaint.component.ts");
+/* harmony import */ var _Services_Operator_operator_api_service__WEBPACK_IMPORTED_MODULE_52__ = __webpack_require__(/*! ./Services/Operator/operator-api.service */ "./src/app/Services/Operator/operator-api.service.ts");
+/* harmony import */ var _Services_Bank_bank_service__WEBPACK_IMPORTED_MODULE_53__ = __webpack_require__(/*! ./Services/Bank/bank.service */ "./src/app/Services/Bank/bank.service.ts");
+/* harmony import */ var ng_wizard__WEBPACK_IMPORTED_MODULE_54__ = __webpack_require__(/*! ng-wizard */ "./node_modules/ng-wizard/fesm2015/ng-wizard.js");
+/* harmony import */ var _kolkov_angular_editor__WEBPACK_IMPORTED_MODULE_55__ = __webpack_require__(/*! @kolkov/angular-editor */ "./node_modules/@kolkov/angular-editor/fesm2015/kolkov-angular-editor.js");
+/* harmony import */ var _bookings_bookings_component__WEBPACK_IMPORTED_MODULE_56__ = __webpack_require__(/*! ./bookings/bookings.component */ "./src/app/bookings/bookings.component.ts");
+/* harmony import */ var _bookingdetails_bookingdetails_component__WEBPACK_IMPORTED_MODULE_57__ = __webpack_require__(/*! ./bookingdetails/bookingdetails.component */ "./src/app/bookingdetails/bookingdetails.component.ts");
+/* harmony import */ var ngx_pagination__WEBPACK_IMPORTED_MODULE_58__ = __webpack_require__(/*! ngx-pagination */ "./node_modules/ngx-pagination/dist/ngx-pagination.js");
+/* harmony import */ var _detail_detail_component__WEBPACK_IMPORTED_MODULE_59__ = __webpack_require__(/*! ./detail/detail.component */ "./src/app/detail/detail.component.ts");
+/* harmony import */ var ng2_charts__WEBPACK_IMPORTED_MODULE_60__ = __webpack_require__(/*! ng2-charts */ "./node_modules/ng2-charts/fesm2015/ng2-charts.js");
+/* harmony import */ var _angular_material_stepper__WEBPACK_IMPORTED_MODULE_61__ = __webpack_require__(/*! @angular/material/stepper */ "./node_modules/@angular/material/esm2015/stepper.js");
+/* harmony import */ var _angular_material_input__WEBPACK_IMPORTED_MODULE_62__ = __webpack_require__(/*! @angular/material/input */ "./node_modules/@angular/material/esm2015/input.js");
+/* harmony import */ var _angular_material_icon__WEBPACK_IMPORTED_MODULE_63__ = __webpack_require__(/*! @angular/material/icon */ "./node_modules/@angular/material/esm2015/icon.js");
+/* harmony import */ var ngx_dropzone__WEBPACK_IMPORTED_MODULE_64__ = __webpack_require__(/*! ngx-dropzone */ "./node_modules/ngx-dropzone/fesm2015/ngx-dropzone.js");
+/* harmony import */ var _signup_signup_component__WEBPACK_IMPORTED_MODULE_65__ = __webpack_require__(/*! ./signup/signup.component */ "./src/app/signup/signup.component.ts");
+/* harmony import */ var angularx_social_login__WEBPACK_IMPORTED_MODULE_66__ = __webpack_require__(/*! angularx-social-login */ "./node_modules/angularx-social-login/fesm2015/angularx-social-login.js");
+/* harmony import */ var _forgetpassword_forgetpassword_component__WEBPACK_IMPORTED_MODULE_67__ = __webpack_require__(/*! ./forgetpassword/forgetpassword.component */ "./src/app/forgetpassword/forgetpassword.component.ts");
+/* harmony import */ var _reset_password_reset_password_component__WEBPACK_IMPORTED_MODULE_68__ = __webpack_require__(/*! ./reset-password/reset-password.component */ "./src/app/reset-password/reset-password.component.ts");
+/* harmony import */ var _self_about_us_about_us_component__WEBPACK_IMPORTED_MODULE_69__ = __webpack_require__(/*! ./self/about-us/about-us.component */ "./src/app/self/about-us/about-us.component.ts");
+/* harmony import */ var _posttrip_postsuccess_postsuccess_component__WEBPACK_IMPORTED_MODULE_70__ = __webpack_require__(/*! ./posttrip/postsuccess/postsuccess.component */ "./src/app/posttrip/postsuccess/postsuccess.component.ts");
+/* harmony import */ var _ngx_translate_core__WEBPACK_IMPORTED_MODULE_71__ = __webpack_require__(/*! @ngx-translate/core */ "./node_modules/@ngx-translate/core/fesm2015/ngx-translate-core.js");
+/* harmony import */ var _ngx_translate_http_loader__WEBPACK_IMPORTED_MODULE_72__ = __webpack_require__(/*! @ngx-translate/http-loader */ "./node_modules/@ngx-translate/http-loader/fesm2015/ngx-translate-http-loader.js");
+/* harmony import */ var _custom_tour_requests_custom_tour_requests_component__WEBPACK_IMPORTED_MODULE_73__ = __webpack_require__(/*! ./custom-tour-requests/custom-tour-requests.component */ "./src/app/custom-tour-requests/custom-tour-requests.component.ts");
+/* harmony import */ var _custom_tour_request_detail_custom_tour_request_detail_component__WEBPACK_IMPORTED_MODULE_74__ = __webpack_require__(/*! ./custom-tour-request-detail/custom-tour-request-detail.component */ "./src/app/custom-tour-request-detail/custom-tour-request-detail.component.ts");
+/* harmony import */ var _offer_management_offer_management_component__WEBPACK_IMPORTED_MODULE_75__ = __webpack_require__(/*! ./offer-management/offer-management.component */ "./src/app/offer-management/offer-management.component.ts");
+/* harmony import */ var _invoices_invoices_component__WEBPACK_IMPORTED_MODULE_76__ = __webpack_require__(/*! ./invoices/invoices.component */ "./src/app/invoices/invoices.component.ts");
+/* harmony import */ var _invoice_details_invoice_details_component__WEBPACK_IMPORTED_MODULE_77__ = __webpack_require__(/*! ./invoice-details/invoice-details.component */ "./src/app/invoice-details/invoice-details.component.ts");
 
 
 
@@ -3055,24 +3059,25 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 const ngWizardConfig = {
-    theme: ng_wizard__WEBPACK_IMPORTED_MODULE_53__["THEME"].default
+    theme: ng_wizard__WEBPACK_IMPORTED_MODULE_54__["THEME"].default
 };
-const config = new angularx_social_login__WEBPACK_IMPORTED_MODULE_65__["AuthServiceConfig"]([
+const config = new angularx_social_login__WEBPACK_IMPORTED_MODULE_66__["AuthServiceConfig"]([
     {
-        id: angularx_social_login__WEBPACK_IMPORTED_MODULE_65__["FacebookLoginProvider"].PROVIDER_ID,
-        provider: new angularx_social_login__WEBPACK_IMPORTED_MODULE_65__["FacebookLoginProvider"]('962780807415498')
+        id: angularx_social_login__WEBPACK_IMPORTED_MODULE_66__["FacebookLoginProvider"].PROVIDER_ID,
+        provider: new angularx_social_login__WEBPACK_IMPORTED_MODULE_66__["FacebookLoginProvider"]('962780807415498')
     },
     {
-        id: angularx_social_login__WEBPACK_IMPORTED_MODULE_65__["GoogleLoginProvider"].PROVIDER_ID,
-        provider: new angularx_social_login__WEBPACK_IMPORTED_MODULE_65__["GoogleLoginProvider"]('160071286091-fpb8g5ikukhmk4cuqc53s3rdijqu4g00.apps.googleusercontent.com')
+        id: angularx_social_login__WEBPACK_IMPORTED_MODULE_66__["GoogleLoginProvider"].PROVIDER_ID,
+        provider: new angularx_social_login__WEBPACK_IMPORTED_MODULE_66__["GoogleLoginProvider"]('160071286091-fpb8g5ikukhmk4cuqc53s3rdijqu4g00.apps.googleusercontent.com')
     }
 ]);
 function provideConfig() {
     return config;
 }
 function HttpLoaderFactory(http) {
-    return new _ngx_translate_http_loader__WEBPACK_IMPORTED_MODULE_71__["TranslateHttpLoader"](http, "./assets/i18n/", ".json");
+    return new _ngx_translate_http_loader__WEBPACK_IMPORTED_MODULE_72__["TranslateHttpLoader"](http, "./assets/i18n/", ".json");
 }
 let AppModule = class AppModule {
 };
@@ -3089,7 +3094,7 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
             _tripdetail_tripdetail_component__WEBPACK_IMPORTED_MODULE_17__["TripdetailComponent"],
             _pkginvoice_pkginvoice_component__WEBPACK_IMPORTED_MODULE_18__["PkginvoiceComponent"],
             _promo_promo_component__WEBPACK_IMPORTED_MODULE_19__["PromoComponent"],
-            _detail_detail_component__WEBPACK_IMPORTED_MODULE_58__["DetailComponent"],
+            _detail_detail_component__WEBPACK_IMPORTED_MODULE_59__["DetailComponent"],
             _addpromo_addpromo_component__WEBPACK_IMPORTED_MODULE_20__["AddpromoComponent"],
             _profile_profile_component__WEBPACK_IMPORTED_MODULE_21__["ProfileComponent"],
             _updatepas_updatepas_component__WEBPACK_IMPORTED_MODULE_22__["UpdatepasComponent"],
@@ -3098,29 +3103,30 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
             _calender_calender_component__WEBPACK_IMPORTED_MODULE_25__["CalenderComponent"],
             _draft_draft_component__WEBPACK_IMPORTED_MODULE_26__["DraftComponent"],
             _reports_reports_component__WEBPACK_IMPORTED_MODULE_27__["ReportsComponent"],
-            _offer_management_ItineraryPlane_ItineraryPlane_component__WEBPACK_IMPORTED_MODULE_30__["OfferManagementItineraryPlaneComponent"],
-            _posttrip_TripItinerary_Facilities_facilities_trip_facilities_trip_component__WEBPACK_IMPORTED_MODULE_31__["FacilitiesTripComponent"],
-            _posttrip_TripItinerary_TripImages_tripImages_tripImages_component__WEBPACK_IMPORTED_MODULE_32__["TripImagesComponent"],
-            _buy_boost_package_buy_boost_package_component__WEBPACK_IMPORTED_MODULE_37__["BuyBoostPackageComponent"],
-            _posttrip_TripItinerary_PostFinalTrip_PostFinalTrip_component__WEBPACK_IMPORTED_MODULE_41__["PostFinalTripComponent"],
-            _login_login_component__WEBPACK_IMPORTED_MODULE_44__["LoginComponent"],
-            _complaint_complaint_component__WEBPACK_IMPORTED_MODULE_50__["ComplaintComponent"],
-            _bookings_bookings_component__WEBPACK_IMPORTED_MODULE_55__["BookingsComponent"],
-            _bookingdetails_bookingdetails_component__WEBPACK_IMPORTED_MODULE_56__["BookingdetailsComponent"],
-            _signup_signup_component__WEBPACK_IMPORTED_MODULE_64__["SignupComponent"],
+            _offer_management_ItineraryPlane_ItineraryPlane_component__WEBPACK_IMPORTED_MODULE_31__["OfferManagementItineraryPlaneComponent"],
+            _posttrip_TripItinerary_ItineraryPlane_ItineraryPlane_component__WEBPACK_IMPORTED_MODULE_30__["ItineraryPlaneComponent"],
+            _posttrip_TripItinerary_Facilities_facilities_trip_facilities_trip_component__WEBPACK_IMPORTED_MODULE_32__["FacilitiesTripComponent"],
+            _posttrip_TripItinerary_TripImages_tripImages_tripImages_component__WEBPACK_IMPORTED_MODULE_33__["TripImagesComponent"],
+            _buy_boost_package_buy_boost_package_component__WEBPACK_IMPORTED_MODULE_38__["BuyBoostPackageComponent"],
+            _posttrip_TripItinerary_PostFinalTrip_PostFinalTrip_component__WEBPACK_IMPORTED_MODULE_42__["PostFinalTripComponent"],
+            _login_login_component__WEBPACK_IMPORTED_MODULE_45__["LoginComponent"],
+            _complaint_complaint_component__WEBPACK_IMPORTED_MODULE_51__["ComplaintComponent"],
+            _bookings_bookings_component__WEBPACK_IMPORTED_MODULE_56__["BookingsComponent"],
+            _bookingdetails_bookingdetails_component__WEBPACK_IMPORTED_MODULE_57__["BookingdetailsComponent"],
+            _signup_signup_component__WEBPACK_IMPORTED_MODULE_65__["SignupComponent"],
             _Shared_SocialLogins_socail_logins_socail_logins_component__WEBPACK_IMPORTED_MODULE_4__["SocailLoginsComponent"],
-            _forgetpassword_forgetpassword_component__WEBPACK_IMPORTED_MODULE_66__["ForgetpasswordComponent"],
-            _reset_password_reset_password_component__WEBPACK_IMPORTED_MODULE_67__["ResetPasswordComponent"],
-            _self_about_us_about_us_component__WEBPACK_IMPORTED_MODULE_68__["AboutUsComponent"],
+            _forgetpassword_forgetpassword_component__WEBPACK_IMPORTED_MODULE_67__["ForgetpasswordComponent"],
+            _reset_password_reset_password_component__WEBPACK_IMPORTED_MODULE_68__["ResetPasswordComponent"],
+            _self_about_us_about_us_component__WEBPACK_IMPORTED_MODULE_69__["AboutUsComponent"],
             _self_contact_us_contact_us_component__WEBPACK_IMPORTED_MODULE_3__["ContactUsComponent"],
             _self_faqs_faqs_component__WEBPACK_IMPORTED_MODULE_2__["FaqsComponent"],
             _posttrip_buy_boost_packages_buy_boost_packages_popup_component__WEBPACK_IMPORTED_MODULE_1__["BuyBoostPackagesPopUpComponent"],
-            _posttrip_postsuccess_postsuccess_component__WEBPACK_IMPORTED_MODULE_69__["PostsuccessComponent"],
-            _custom_tour_requests_custom_tour_requests_component__WEBPACK_IMPORTED_MODULE_72__["CustomTourRequestsComponent"],
-            _custom_tour_request_detail_custom_tour_request_detail_component__WEBPACK_IMPORTED_MODULE_73__["CustomTourRequestDetailComponent"],
-            _offer_management_offer_management_component__WEBPACK_IMPORTED_MODULE_74__["OfferManagementComponent"],
-            _invoices_invoices_component__WEBPACK_IMPORTED_MODULE_75__["InvoicesComponent"],
-            _invoice_details_invoice_details_component__WEBPACK_IMPORTED_MODULE_76__["InvoiceDetailsComponent"],
+            _posttrip_postsuccess_postsuccess_component__WEBPACK_IMPORTED_MODULE_70__["PostsuccessComponent"],
+            _custom_tour_requests_custom_tour_requests_component__WEBPACK_IMPORTED_MODULE_73__["CustomTourRequestsComponent"],
+            _custom_tour_request_detail_custom_tour_request_detail_component__WEBPACK_IMPORTED_MODULE_74__["CustomTourRequestDetailComponent"],
+            _offer_management_offer_management_component__WEBPACK_IMPORTED_MODULE_75__["OfferManagementComponent"],
+            _invoices_invoices_component__WEBPACK_IMPORTED_MODULE_76__["InvoicesComponent"],
+            _invoice_details_invoice_details_component__WEBPACK_IMPORTED_MODULE_77__["InvoiceDetailsComponent"],
         ],
         imports: [
             _angular_platform_browser__WEBPACK_IMPORTED_MODULE_5__["BrowserModule"],
@@ -3130,50 +3136,50 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
             _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_29__["NgbModule"],
             _angular_forms__WEBPACK_IMPORTED_MODULE_7__["FormsModule"],
             _angular_forms__WEBPACK_IMPORTED_MODULE_7__["ReactiveFormsModule"],
-            _angular_common_http__WEBPACK_IMPORTED_MODULE_35__["HttpClientModule"],
-            ngx_toastr__WEBPACK_IMPORTED_MODULE_38__["ToastrModule"].forRoot(),
-            ngx_bar_rating__WEBPACK_IMPORTED_MODULE_39__["BarRatingModule"],
-            _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_40__["BrowserAnimationsModule"],
-            ng_wizard__WEBPACK_IMPORTED_MODULE_53__["NgWizardModule"].forRoot(ngWizardConfig),
-            _kolkov_angular_editor__WEBPACK_IMPORTED_MODULE_54__["AngularEditorModule"],
-            ngx_pagination__WEBPACK_IMPORTED_MODULE_57__["NgxPaginationModule"],
-            ng2_charts__WEBPACK_IMPORTED_MODULE_59__["ChartsModule"],
-            _angular_material_stepper__WEBPACK_IMPORTED_MODULE_60__["MatStepperModule"],
-            _angular_material_input__WEBPACK_IMPORTED_MODULE_61__["MatInputModule"],
-            _angular_material_icon__WEBPACK_IMPORTED_MODULE_62__["MatIconModule"],
-            ngx_dropzone__WEBPACK_IMPORTED_MODULE_63__["NgxDropzoneModule"],
-            ng2_charts__WEBPACK_IMPORTED_MODULE_59__["ChartsModule"],
-            angularx_social_login__WEBPACK_IMPORTED_MODULE_65__["SocialLoginModule"],
-            _ngx_translate_core__WEBPACK_IMPORTED_MODULE_70__["TranslateModule"].forRoot({
+            _angular_common_http__WEBPACK_IMPORTED_MODULE_36__["HttpClientModule"],
+            ngx_toastr__WEBPACK_IMPORTED_MODULE_39__["ToastrModule"].forRoot(),
+            ngx_bar_rating__WEBPACK_IMPORTED_MODULE_40__["BarRatingModule"],
+            _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_41__["BrowserAnimationsModule"],
+            ng_wizard__WEBPACK_IMPORTED_MODULE_54__["NgWizardModule"].forRoot(ngWizardConfig),
+            _kolkov_angular_editor__WEBPACK_IMPORTED_MODULE_55__["AngularEditorModule"],
+            ngx_pagination__WEBPACK_IMPORTED_MODULE_58__["NgxPaginationModule"],
+            ng2_charts__WEBPACK_IMPORTED_MODULE_60__["ChartsModule"],
+            _angular_material_stepper__WEBPACK_IMPORTED_MODULE_61__["MatStepperModule"],
+            _angular_material_input__WEBPACK_IMPORTED_MODULE_62__["MatInputModule"],
+            _angular_material_icon__WEBPACK_IMPORTED_MODULE_63__["MatIconModule"],
+            ngx_dropzone__WEBPACK_IMPORTED_MODULE_64__["NgxDropzoneModule"],
+            ng2_charts__WEBPACK_IMPORTED_MODULE_60__["ChartsModule"],
+            angularx_social_login__WEBPACK_IMPORTED_MODULE_66__["SocialLoginModule"],
+            _ngx_translate_core__WEBPACK_IMPORTED_MODULE_71__["TranslateModule"].forRoot({
                 loader: {
-                    provide: _ngx_translate_core__WEBPACK_IMPORTED_MODULE_70__["TranslateLoader"],
+                    provide: _ngx_translate_core__WEBPACK_IMPORTED_MODULE_71__["TranslateLoader"],
                     useFactory: HttpLoaderFactory,
-                    deps: [_angular_common_http__WEBPACK_IMPORTED_MODULE_35__["HttpClient"]],
+                    deps: [_angular_common_http__WEBPACK_IMPORTED_MODULE_36__["HttpClient"]],
                 },
             }),
         ],
         providers: [
             {
-                provide: _angular_common_http__WEBPACK_IMPORTED_MODULE_35__["HTTP_INTERCEPTORS"],
-                useClass: _Shared_Interceptor_token_interceptor_service__WEBPACK_IMPORTED_MODULE_45__["TokenInterceptorService"],
+                provide: _angular_common_http__WEBPACK_IMPORTED_MODULE_36__["HTTP_INTERCEPTORS"],
+                useClass: _Shared_Interceptor_token_interceptor_service__WEBPACK_IMPORTED_MODULE_46__["TokenInterceptorService"],
                 multi: true,
             },
-            ng2_charts__WEBPACK_IMPORTED_MODULE_59__["ThemeService"],
-            _Shared_guards_auth_guard_service_service__WEBPACK_IMPORTED_MODULE_48__["AuthGuardService"],
-            _Services_Utilities_triputilites_service__WEBPACK_IMPORTED_MODULE_33__["TriputilitesService"],
-            _Services_TripService_trip_service__WEBPACK_IMPORTED_MODULE_34__["TripService"],
+            ng2_charts__WEBPACK_IMPORTED_MODULE_60__["ThemeService"],
+            _Shared_guards_auth_guard_service_service__WEBPACK_IMPORTED_MODULE_49__["AuthGuardService"],
+            _Services_Utilities_triputilites_service__WEBPACK_IMPORTED_MODULE_34__["TriputilitesService"],
+            _Services_TripService_trip_service__WEBPACK_IMPORTED_MODULE_35__["TripService"],
             _angular_common__WEBPACK_IMPORTED_MODULE_8__["DatePipe"],
-            _Services_Utilities_genaric_service__WEBPACK_IMPORTED_MODULE_36__["GenaricService"],
-            _Services_Utilities_UtilitiesMethods_service__WEBPACK_IMPORTED_MODULE_42__["UtilitiesMethodsService"],
-            _Services_BoostPackge_boostpackage_service__WEBPACK_IMPORTED_MODULE_43__["BoostpackageService"],
-            _Services_Users_UsersService_service__WEBPACK_IMPORTED_MODULE_46__["UsersService"],
-            _Services_Utilities_AuthService_service__WEBPACK_IMPORTED_MODULE_47__["AuthService"],
-            _Services_Users_UseraccessService_service__WEBPACK_IMPORTED_MODULE_49__["UseraccessService"],
-            _Services_Operator_operator_api_service__WEBPACK_IMPORTED_MODULE_51__["OperatorApiService"],
-            _Services_Bank_bank_service__WEBPACK_IMPORTED_MODULE_52__["BankService"],
+            _Services_Utilities_genaric_service__WEBPACK_IMPORTED_MODULE_37__["GenaricService"],
+            _Services_Utilities_UtilitiesMethods_service__WEBPACK_IMPORTED_MODULE_43__["UtilitiesMethodsService"],
+            _Services_BoostPackge_boostpackage_service__WEBPACK_IMPORTED_MODULE_44__["BoostpackageService"],
+            _Services_Users_UsersService_service__WEBPACK_IMPORTED_MODULE_47__["UsersService"],
+            _Services_Utilities_AuthService_service__WEBPACK_IMPORTED_MODULE_48__["AuthService"],
+            _Services_Users_UseraccessService_service__WEBPACK_IMPORTED_MODULE_50__["UseraccessService"],
+            _Services_Operator_operator_api_service__WEBPACK_IMPORTED_MODULE_52__["OperatorApiService"],
+            _Services_Bank_bank_service__WEBPACK_IMPORTED_MODULE_53__["BankService"],
             angular2_wizard__WEBPACK_IMPORTED_MODULE_28__["FormWizardModule"],
             {
-                provide: angularx_social_login__WEBPACK_IMPORTED_MODULE_65__["AuthServiceConfig"],
+                provide: angularx_social_login__WEBPACK_IMPORTED_MODULE_66__["AuthServiceConfig"],
                 useFactory: provideConfig,
             },
         ],
@@ -3184,11 +3190,12 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         //   NgbModalConfig
         // ],
         entryComponents: [
-            _posttrip_TripItinerary_Facilities_facilities_trip_facilities_trip_component__WEBPACK_IMPORTED_MODULE_31__["FacilitiesTripComponent"],
-            _posttrip_TripItinerary_TripImages_tripImages_tripImages_component__WEBPACK_IMPORTED_MODULE_32__["TripImagesComponent"],
-            _buy_boost_package_buy_boost_package_component__WEBPACK_IMPORTED_MODULE_37__["BuyBoostPackageComponent"],
-            _posttrip_TripItinerary_PostFinalTrip_PostFinalTrip_component__WEBPACK_IMPORTED_MODULE_41__["PostFinalTripComponent"],
+            _posttrip_TripItinerary_Facilities_facilities_trip_facilities_trip_component__WEBPACK_IMPORTED_MODULE_32__["FacilitiesTripComponent"],
+            _posttrip_TripItinerary_TripImages_tripImages_tripImages_component__WEBPACK_IMPORTED_MODULE_33__["TripImagesComponent"],
+            _buy_boost_package_buy_boost_package_component__WEBPACK_IMPORTED_MODULE_38__["BuyBoostPackageComponent"],
+            _posttrip_TripItinerary_PostFinalTrip_PostFinalTrip_component__WEBPACK_IMPORTED_MODULE_42__["PostFinalTripComponent"],
             _posttrip_buy_boost_packages_buy_boost_packages_popup_component__WEBPACK_IMPORTED_MODULE_1__["BuyBoostPackagesPopUpComponent"],
+            _posttrip_TripItinerary_ItineraryPlane_ItineraryPlane_component__WEBPACK_IMPORTED_MODULE_30__["ItineraryPlaneComponent"],
         ],
     })
 ], AppModule);
@@ -5536,7 +5543,7 @@ InvoiceDetailsComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("");
+/* harmony default export */ __webpack_exports__["default"] = ("/* Commission Status Card */\r\n.commission-status-card {\r\n  background: #ffffff;\r\n  border-radius: 16px;\r\n  box-shadow: 0 2px 8px rgba(0,0,0,0.05);\r\n  padding: 20px;\r\n  height: 100%;\r\n}\r\n.commission-slab-card {\r\n  background: #ffffff;\r\n  border-radius: 16px;\r\n  box-shadow: 0 2px 8px rgba(0,0,0,0.05);\r\n  padding: 20px;\r\n  height: 100%;\r\n}\r\n.commission-note {\r\n  color: #333;\r\n  font-size: 13px;\r\n  line-height: 1.5;\r\n}\r\n.commission-note strong {\r\n  color: #00A991;\r\n}\r\n.commission-info-item {\r\n  display: flex;\r\n  justify-content: space-between;\r\n  align-items: center;\r\n  padding: 12px 15px;\r\n  margin-bottom: 10px;\r\n  background: #d6f2e6;\r\n  border-radius: 8px;\r\n}\r\n.commission-label {\r\n  font-weight: 600;\r\n  color: #4b5d52;\r\n  font-size: 14px;\r\n}\r\n.commission-value {\r\n  font-weight: 700;\r\n  color: #00A991;\r\n  font-size: 16px;\r\n}\r\n/* Commission Slab Table */\r\n.commission-slab-table {\r\n  margin-top: 15px;\r\n}\r\n.commission-slab-table .table {\r\n  margin-bottom: 0;\r\n  border-collapse: separate;\r\n  border-spacing: 0;\r\n}\r\n.commission-slab-table .table th,\r\n.commission-slab-table .table td {\r\n  border: 1px solid #d6f2e6;\r\n  padding: 12px 8px;\r\n  text-align: left;\r\n  font-size: 13px;\r\n}\r\n.commission-table-header {\r\n  background: #d6f2e6 !important;\r\n  color: #4b5d52 !important;\r\n}\r\n.commission-table-header th {\r\n  font-weight: 600;\r\n  text-align: center;\r\n  background: #d6f2e6 !important;\r\n  color: #4b5d52 !important;\r\n  border: 1px solid #b8e0d0 !important;\r\n}\r\n.commission-table-row {\r\n  background: #ffffff;\r\n}\r\n.commission-table-row td {\r\n  background: #ffffff;\r\n  color: #333;\r\n}\r\n.commission-table-label {\r\n  background: #d6f2e6 !important;\r\n  color: #4b5d52 !important;\r\n  font-weight: 600;\r\n  border: 1px solid #b8e0d0 !important;\r\n}\r\n.commission-slab-table .table tbody tr td.text-center {\r\n  text-align: center;\r\n  font-weight: 500;\r\n  color: #333;\r\n}\r\n/* Responsive Design */\r\n@media (max-width: 768px) {\r\n  .commission-status-card,\r\n  .commission-slab-card {\r\n    margin-bottom: 20px;\r\n  }\r\n  \r\n  .commission-info-item {\r\n    flex-direction: column;\r\n    align-items: flex-start;\r\n    gap: 5px;\r\n  }\r\n  \r\n  .commission-slab-table {\r\n    overflow-x: auto;\r\n  }\r\n  \r\n  .commission-slab-table .table {\r\n    min-width: 600px;\r\n  }\r\n}\r\n\r\n");
 
 /***/ }),
 
@@ -5561,12 +5568,12 @@ let InvoicesComponent = class InvoicesComponent {
         this.operatorApiService = operatorApiService;
         this.invoices = [];
         this.p = 1;
-        this.pageSize = 10;
+        this.pageSize = 20;
         this.totalPages = 0;
-        // Filter properties
-        this.selectedYear = '';
-        this.selectedStatus = '';
-        this.selectedPaymentStatus = '';
+        // Filter properties with default values
+        this.selectedYear = '2025';
+        this.selectedStatus = '1';
+        this.selectedPaymentStatus = 'Paid';
         this.searchText = '';
         // Status options
         this.statusOptions = [
@@ -5580,9 +5587,46 @@ let InvoicesComponent = class InvoicesComponent {
         this.yearOptions = ['2025', '2026', '2028'];
         // Payment status options
         this.paymentStatusOptions = ['Paid', 'UnPaid'];
+        // Commission slab properties
+        this.totalBookings = 0;
+        this.appliedSlab = null;
+        this.allSlabs = [];
+        this.loadingCommission = false;
     }
     ngOnInit() {
+        this.loadCommissionData();
         this.loadInvoices();
+    }
+    loadCommissionData() {
+        this.loadingCommission = true;
+        this.operatorApiService.GetOperatorOngoingSlabAndBookings()
+            .subscribe(data => {
+            this.loadingCommission = false;
+            if (data.Status && data.Data) {
+                this.totalBookings = data.Data.TotalBookings || 0;
+                this.appliedSlab = data.Data.AppliedSlab || null;
+                this.allSlabs = data.Data.AllSlabs || [];
+                // Sort slabs by MinBookings ascending (lowest first) to match table display
+                this.allSlabs.sort((a, b) => a.MinBookings - b.MinBookings);
+            }
+        }, error => {
+            this.loadingCommission = false;
+            console.error('Error loading commission data:', error);
+        });
+    }
+    getSlabRange(slab, index) {
+        // Check if this is the last slab (highest range)
+        const isLastSlab = index === this.allSlabs.length - 1;
+        if (isLastSlab) {
+            return `Above ${slab.MinBookings}`;
+        }
+        if (slab.MaxBookings === null || slab.MaxBookings === undefined) {
+            return `Above ${slab.MinBookings}`;
+        }
+        if (slab.MinBookings === slab.MaxBookings) {
+            return `${slab.MinBookings}`;
+        }
+        return `${slab.MinBookings} To ${slab.MaxBookings}`;
     }
     loadInvoices() {
         const filters = {
@@ -7460,30 +7504,56 @@ let ItineraryPlaneComponent = class ItineraryPlaneComponent {
         this.childEmitter = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
         this.charLength = 0;
         this.IternaryPlan = new src_app_classes_trip_TripModel__WEBPACK_IMPORTED_MODULE_2__["IternaryPlan"]();
+        this.IternaryPlanList = [];
         this.tripModel = new src_app_classes_trip_TripModel__WEBPACK_IMPORTED_MODULE_2__["TripModel"]();
         this.DefultTrip = new src_app_classes_trip_TripModel__WEBPACK_IMPORTED_MODULE_2__["TripDefult"]();
     }
+    get totalNumberofDays() {
+        return this._totalNumberofDays;
+    }
+    set totalNumberofDays(value) {
+        console.log('totalNumberofDays setter called with value:', value);
+        this._totalNumberofDays = value;
+        if (value && value > 0 && (!this.IternaryPlanList || this.IternaryPlanList.length === 0)) {
+            // Only load if list is empty (to avoid overwriting draft data)
+            console.log('Loading day trips with', value, 'days');
+            this.loadDayTrips();
+        }
+    }
     ngOnInit() {
-        this.loadDayTrips();
+        // loadDayTrips will be called when totalNumberofDays is set by parent component
         // console.log(this.totalNumberofDays);
     }
     ngAfterViewInit() {
         this.DefultTrip = this.settingUtitls.getDraftTrip;
-        this.tripModel = JSON.parse(this.DefultTrip.TripString);
-        this.loaddraftItinrayplane();
+        if (this.DefultTrip && this.DefultTrip.TripString) {
+            this.tripModel = JSON.parse(this.DefultTrip.TripString);
+            this.loaddraftItinrayplane();
+        }
+        // If no draft data and days haven't been loaded yet, ensure they're loaded
+        if ((!this.IternaryPlanList || this.IternaryPlanList.length === 0) && this.totalNumberofDays && this.totalNumberofDays > 0) {
+            this.loadDayTrips();
+        }
     }
     ngOnDestroy() {
     }
     loadPopup() {
     }
     loadDayTrips() {
+        console.log('loadDayTrips called, totalNumberofDays:', this.totalNumberofDays);
+        if (!this.totalNumberofDays || this.totalNumberofDays <= 0) {
+            console.warn('totalNumberofDays is not set or invalid:', this.totalNumberofDays);
+            return;
+        }
         this.IternaryPlanList = [];
         for (let i = 0; i < this.totalNumberofDays; i++) {
             this.IternaryPlan = new src_app_classes_trip_TripModel__WEBPACK_IMPORTED_MODULE_2__["IternaryPlan"]();
             this.IternaryPlan.DayName = 'Day ' + (i + 1);
             this.IternaryPlan.Id = (i + 1);
+            this.IternaryPlan.DayPlan = []; // Initialize DayPlan array
             this.IternaryPlanList.push(this.IternaryPlan);
         }
+        console.log('IternaryPlanList loaded with', this.IternaryPlanList.length, 'items');
     }
     checkCharacterLength(event) {
         console.log(event.target.value.length);
@@ -7536,9 +7606,13 @@ let ItineraryPlaneComponent = class ItineraryPlaneComponent {
         }
     }
     loaddraftItinrayplane() {
-        if (this.tripModel && this.tripModel.IternaryPlan.length > 0) {
+        if (this.tripModel && this.tripModel.IternaryPlan && this.tripModel.IternaryPlan.length > 0) {
             this.IternaryPlanList = [];
             this.IternaryPlanList = this.tripModel.IternaryPlan;
+        }
+        else if ((!this.IternaryPlanList || this.IternaryPlanList.length === 0) && this.totalNumberofDays && this.totalNumberofDays > 0) {
+            // If no draft data exists, load days from totalNumberofDays
+            this.loadDayTrips();
         }
     }
 };
@@ -10315,10 +10389,10 @@ __webpack_require__.r(__webpack_exports__);
 const environment = {
     production: false,
     //DomainUrl: 'http://api2.tripjero.com/api/'
-    //  DomainUrl: 'http://localhost:54593/api/',
-    //  domainToken: 'http://localhost:54593/',
-    DomainUrl: "https://services.tripjero.com/api/",
-    domainToken: "https://services.tripjero.com/",
+    DomainUrl: 'http://localhost:54593/api/',
+    domainToken: 'http://localhost:54593/',
+    // DomainUrl: "https://services.tripjero.com/api/",
+    // domainToken: "https://services.tripjero.com/",
     shareTripBasePath: "https://trip.tripjero.com/callback/share/trip/",
 };
 /*

@@ -733,7 +733,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<div id=\"page-content-wrapper\">\n  <div class=\"row\">\n    <div class=\"col-md-12 d-flex justify-content-between align-items-center mb-3\">\n      <h4>My Invoices</h4>\n    </div>\n    <div class=\"col-md-12\">\n      <div class=\"p-3 mb-3\" style=\"background: #ffff; border-radius: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);\">\n        <div class=\"row\">\n          <div class=\"col-md-3\">\n            <div class=\"form-group\">\n              <label for=\"yearSelect\">Year</label>\n              <select class=\"form-control\" id=\"yearSelect\" [(ngModel)]=\"selectedYear\" (change)=\"onYearChange()\">\n                <option value=\"\">All Years</option>\n                <option *ngFor=\"let year of yearOptions\" [value]=\"year\">{{year}}</option>\n              </select>\n            </div>\n          </div>\n          <div class=\"col-md-3\">\n            <div class=\"form-group\">\n              <label for=\"statusSelect\">Status</label>\n              <select class=\"form-control\" id=\"statusSelect\" [(ngModel)]=\"selectedStatus\" (change)=\"onStatusChange()\">\n                <option value=\"\">All Status</option>\n                <option *ngFor=\"let status of statusOptions\" [value]=\"status.value\">{{status.label}}</option>\n              </select>\n            </div>\n          </div>\n          <div class=\"col-md-3\">\n            <div class=\"form-group\">\n              <label for=\"paymentStatusSelect\">Payment Status</label>\n              <select class=\"form-control\" id=\"paymentStatusSelect\" [(ngModel)]=\"selectedPaymentStatus\" (change)=\"onPaymentStatusChange()\">\n                <option value=\"\">All Payment Status</option>\n                <option *ngFor=\"let ps of paymentStatusOptions\" [value]=\"ps\">{{ps}}</option>\n              </select>\n            </div>\n          </div>\n          <div class=\"col-md-3\">\n            <div class=\"form-group\">\n              <label for=\"searchInput\">Search</label>\n              <input type=\"text\" class=\"form-control\" id=\"searchInput\" placeholder=\"Search...\" \n                     [(ngModel)]=\"searchText\" (keyup.enter)=\"onSearchKeyPress($event)\" (blur)=\"applyFilters()\">\n            </div>\n          </div>\n        </div>\n        <div class=\"row\">\n          <div class=\"col-md-12 text-right\">\n            <button class=\"jero-btn jero-btn-secondary\" (click)=\"clearFilters()\">Clear Filters</button>\n          </div>\n        </div>\n      </div>\n    </div>\n    <div class=\"col-md-12\">\n      <div class=\"py-4\">\n        <div class=\"row justify-content-center\">\n          <div class=\"col-12\">\n            <div class=\"p-3\" style=\"background: #ffff; border-radius: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);\">\n              <table class=\"table mb-0\" style=\"background: transparent;\">\n                <thead>\n                  <tr style=\"background: #d6f2e6; color: #4b5d52;\">\n                    <th style=\"border-top-left-radius: 8px;\">Trip Name</th>\n                    <th>Start Date</th>\n                    <th>End Date</th>\n                    <th>From</th>\n                    <th>To</th>\n                    <th>Number of Bookings</th>\n                    <th>Status</th>\n                    <th>Amount</th>\n                    <th>Commission</th>\n                    <th>Payment Status</th>\n                    <th style=\"border-top-right-radius: 8px;\">Action</th>\n                  </tr>\n                </thead>\n                <tbody style=\"background: #fff;\">\n                  <tr *ngFor=\"let item of invoices; let i = index\" \n                      style=\"vertical-align: middle;\">\n                    <td>{{ item.trip?.TripBasicInfo?.Title }}</td>\n                    <td>{{ item.trip?.TripBasicInfo?.StartDateTime | date:'dd-MMM-yyyy' }}</td>\n                    <td>{{ item.trip?.TripBasicInfo?.EndDateTime | date:'dd-MMM-yyyy' }}</td>\n                    <td>{{ item.trip?.TripBasicInfo?.FromPlaceName || 'N/A' }}</td>\n                    <td>{{ item.trip?.TripBasicInfo?.ToPlaceName || 'N/A' }}</td>\n                    <td>{{ item.trip?.TripBasicInfo?.NumberOfBookings || 0 }}</td>\n                    <td>\n                      <span class=\"badge\" [ngClass]=\"{\n                        'badge-success': item.trip?.TripBasicInfo?.TripStatusId === 1,\n                        'badge-primary': item.trip?.TripBasicInfo?.TripStatusId === 2,\n                        'badge-info': item.trip?.TripBasicInfo?.TripStatusId === 3,\n                        'badge-warning': item.trip?.TripBasicInfo?.TripStatusId === 4,\n                        'badge-danger': item.trip?.TripBasicInfo?.TripStatusId === 5\n                      }\">\n                        {{ item.trip?.TripBasicInfo?.TripStatus || 'N/A' }}\n                      </span>\n                    </td>\n                    <td>{{ item.trip?.TripBasicInfo?.Amount | currency:'USD':'symbol':'1.2-2' }}</td>\n                    <td>\n                      <span *ngIf=\"item.commission\">\n                        {{ item.commission.ChargeAmount | currency:'USD':'symbol':'1.2-2' }}\n                      </span>\n                      <span *ngIf=\"!item.commission\">-</span>\n                    </td>\n                    <td>\n                      <span *ngIf=\"item.commission\" [ngClass]=\"getPaymentStatusClass(item.commission.Status)\">\n                        {{ item.commission.Status }}\n                      </span>\n                      <span *ngIf=\"!item.commission\">-</span>\n                    </td>\n                    <td>\n                      <button class=\"jero-btn jero-btn-primary\" \n                              [routerLink]=\"item.commission && item.commission.Id ? '/invoice-details/' + item.commission.Id : '#'\"\n                              [disabled]=\"!item.commission || !item.commission.Id\">View</button>\n                    </td>\n                  </tr>\n                  <tr *ngIf=\"invoices.length === 0\">\n                    <td colspan=\"10\" class=\"text-center py-4\">No invoices found</td>\n                  </tr>\n                </tbody>\n              </table>\n              <div class=\"d-flex justify-content-center mt-3\" *ngIf=\"totalPages > 0\">\n                <pagination-controls \n                  (pageChange)=\"onPageChange($event)\"\n                  [maxSize]=\"5\"\n                  [directionLinks]=\"true\"\n                  [autoHide]=\"false\"\n                  previousLabel=\"Previous\"\n                  nextLabel=\"Next\">\n                </pagination-controls>\n              </div>\n              <div class=\"text-center mt-2\" *ngIf=\"totalPages > 0\">\n                <small class=\"text-muted\">Page {{p}} of {{totalPages}}</small>\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n";
+    __webpack_exports__["default"] = "<div id=\"page-content-wrapper\">\n  <div class=\"row\">\n    <div class=\"col-md-12 d-flex justify-content-between align-items-center mb-3\">\n      <h4>My Invoices</h4>\n    </div>\n    \n    <!-- Commission Slab Section -->\n    <div class=\"col-md-12 mb-4\" *ngIf=\"!loadingCommission\">\n      <div class=\"row\">\n        <!-- Left Section: Current Commission Status -->\n        <div class=\"col-md-6\">\n          <div class=\"commission-status-card\">\n            <div class=\"commission-note mb-2\">\n              <strong>Trip Completed trip and status paid</strong>\n            </div>\n            <div class=\"commission-info-item\">\n              <span class=\"commission-label\">Number of Bookings</span>\n              <span class=\"commission-value\">{{ totalBookings }}</span>\n            </div>\n            <div class=\"commission-info-item\">\n              <span class=\"commission-label\">Applied % Slab Commission</span>\n              <span class=\"commission-value\">{{ appliedSlab?.Commission || 0 }}%</span>\n            </div>\n            <div class=\"commission-note mt-3\">\n              <small>Count number of paid bookings for Trip status \"In-Progress, Complete\"</small>\n            </div>\n          </div>\n        </div>\n        \n        <!-- Right Section: Commission Slab Table -->\n        <div class=\"col-md-6\">\n          <div class=\"commission-slab-card\">\n            <div class=\"commission-note mb-2\">\n              <strong>Commission slab.</strong>\n            </div>\n            <div class=\"commission-slab-table\">\n              <table class=\"table table-bordered mb-0\">\n                <thead>\n                  <tr class=\"commission-table-header\">\n                    <th>No of Completed Bookings</th>\n                    <th *ngFor=\"let slab of allSlabs; let i = index\" class=\"text-center\">{{ getSlabRange(slab, i) }}</th>\n                  </tr>\n                </thead>\n                <tbody>\n                  <tr class=\"commission-table-row\">\n                    <td class=\"commission-table-label\">Per Annual</td>\n                    <td *ngFor=\"let slab of allSlabs\" class=\"text-center\">Bookings</td>\n                  </tr>\n                  <tr class=\"commission-table-row\">\n                    <td class=\"commission-table-label\">Commission in Percentage %</td>\n                    <td *ngFor=\"let slab of allSlabs\" class=\"text-center\">{{ slab.Commission }}%</td>\n                  </tr>\n                </tbody>\n              </table>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n    \n    <!-- Loading State for Commission -->\n    <div class=\"col-md-12 mb-4\" *ngIf=\"loadingCommission\">\n      <div class=\"text-center py-4\">\n        <div class=\"spinner-border text-primary\" role=\"status\">\n          <span class=\"sr-only\">Loading...</span>\n        </div>\n      </div>\n    </div>\n    \n    <div class=\"col-md-12\">\n      <div class=\"p-3 mb-3\" style=\"background: #ffff; border-radius: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);\">\n        <div class=\"row\">\n          <div class=\"col-md-3\">\n            <div class=\"form-group\">\n              <label for=\"yearSelect\">Year</label>\n              <select class=\"form-control\" id=\"yearSelect\" [(ngModel)]=\"selectedYear\" (change)=\"onYearChange()\">\n                <option value=\"\">All Years</option>\n                <option *ngFor=\"let year of yearOptions\" [value]=\"year\">{{year}}</option>\n              </select>\n            </div>\n          </div>\n          <div class=\"col-md-3\">\n            <div class=\"form-group\">\n              <label for=\"statusSelect\">Status</label>\n              <select class=\"form-control\" id=\"statusSelect\" [(ngModel)]=\"selectedStatus\" (change)=\"onStatusChange()\">\n                <option value=\"\">All Status</option>\n                <option *ngFor=\"let status of statusOptions\" [value]=\"status.value\">{{status.label}}</option>\n              </select>\n            </div>\n          </div>\n          <div class=\"col-md-3\">\n            <div class=\"form-group\">\n              <label for=\"paymentStatusSelect\">Payment Status</label>\n              <select class=\"form-control\" id=\"paymentStatusSelect\" [(ngModel)]=\"selectedPaymentStatus\" (change)=\"onPaymentStatusChange()\">\n                <option value=\"\">All Payment Status</option>\n                <option *ngFor=\"let ps of paymentStatusOptions\" [value]=\"ps\">{{ps}}</option>\n              </select>\n            </div>\n          </div>\n          <div class=\"col-md-3\">\n            <div class=\"form-group\">\n              <label for=\"searchInput\">Search</label>\n              <input type=\"text\" class=\"form-control\" id=\"searchInput\" placeholder=\"Search...\" \n                     [(ngModel)]=\"searchText\" (keyup.enter)=\"onSearchKeyPress($event)\" (blur)=\"applyFilters()\">\n            </div>\n          </div>\n        </div>\n        <div class=\"row\">\n          <div class=\"col-md-12 text-right\">\n            <button class=\"jero-btn jero-btn-secondary\" (click)=\"clearFilters()\">Clear Filters</button>\n          </div>\n        </div>\n      </div>\n    </div>\n    <div class=\"col-md-12\">\n      <div class=\"py-4\">\n        <div class=\"row justify-content-center\">\n          <div class=\"col-12\">\n            <div class=\"p-3\" style=\"background: #ffff; border-radius: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);\">\n              <table class=\"table mb-0\" style=\"background: transparent;\">\n                <thead>\n                  <tr style=\"background: #d6f2e6; color: #4b5d52;\">\n                    <th style=\"border-top-left-radius: 8px;\">Trip Name</th>\n                    <th>Start Date</th>\n                    <th>End Date</th>\n                    <th>From</th>\n                    <th>To</th>\n                    <th>Number of Bookings</th>\n                    <th>Status</th>\n                    <th>Amount</th>\n                    <th>Commission</th>\n                    <th>Payment Status</th>\n                    <th style=\"border-top-right-radius: 8px;\">Action</th>\n                  </tr>\n                </thead>\n                <tbody style=\"background: #fff;\">\n                  <tr *ngFor=\"let item of invoices; let i = index\" \n                      style=\"vertical-align: middle;\">\n                    <td>{{ item.trip?.TripBasicInfo?.Title }}</td>\n                    <td>{{ item.trip?.TripBasicInfo?.StartDateTime | date:'dd-MMM-yyyy' }}</td>\n                    <td>{{ item.trip?.TripBasicInfo?.EndDateTime | date:'dd-MMM-yyyy' }}</td>\n                    <td>{{ item.trip?.TripBasicInfo?.FromPlaceName || 'N/A' }}</td>\n                    <td>{{ item.trip?.TripBasicInfo?.ToPlaceName || 'N/A' }}</td>\n                    <td>{{ item.trip?.TripBasicInfo?.NumberOfBookings || 0 }}</td>\n                    <td>\n                      <span class=\"badge\" [ngClass]=\"{\n                        'badge-success': item.trip?.TripBasicInfo?.TripStatusId === 1,\n                        'badge-primary': item.trip?.TripBasicInfo?.TripStatusId === 2,\n                        'badge-info': item.trip?.TripBasicInfo?.TripStatusId === 3,\n                        'badge-warning': item.trip?.TripBasicInfo?.TripStatusId === 4,\n                        'badge-danger': item.trip?.TripBasicInfo?.TripStatusId === 5\n                      }\">\n                        {{ item.trip?.TripBasicInfo?.TripStatus || 'N/A' }}\n                      </span>\n                    </td>\n                    <td>{{ item.trip?.TripBasicInfo?.Amount | currency:'USD':'symbol':'1.2-2' }}</td>\n                    <td>\n                      <span *ngIf=\"item.commission\">\n                        {{ item.commission.ChargeAmount | currency:'USD':'symbol':'1.2-2' }}\n                      </span>\n                      <span *ngIf=\"!item.commission\">-</span>\n                    </td>\n                    <td>\n                      <span *ngIf=\"item.commission\" [ngClass]=\"getPaymentStatusClass(item.commission.Status)\">\n                        {{ item.commission.Status }}\n                      </span>\n                      <span *ngIf=\"!item.commission\">-</span>\n                    </td>\n                    <td>\n                      <button class=\"jero-btn jero-btn-primary\" \n                              [routerLink]=\"item.commission && item.commission.Id ? '/invoice-details/' + item.commission.Id : '#'\"\n                              [disabled]=\"!item.commission || !item.commission.Id\">View</button>\n                    </td>\n                  </tr>\n                  <tr *ngIf=\"invoices.length === 0\">\n                    <td colspan=\"10\" class=\"text-center py-4\">No invoices found</td>\n                  </tr>\n                </tbody>\n              </table>\n              <div class=\"d-flex justify-content-center mt-3\" *ngIf=\"totalPages > 0\">\n                <pagination-controls \n                  (pageChange)=\"onPageChange($event)\"\n                  [maxSize]=\"5\"\n                  [directionLinks]=\"true\"\n                  [autoHide]=\"false\"\n                  previousLabel=\"Previous\"\n                  nextLabel=\"Next\">\n                </pagination-controls>\n              </div>\n              <div class=\"text-center mt-2\" *ngIf=\"totalPages > 0\">\n                <small class=\"text-muted\">Page {{p}} of {{totalPages}}</small>\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n";
     /***/
   },
 
@@ -2328,6 +2328,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         key: "CreateOperatorInvoice",
         value: function CreateOperatorInvoice(formData) {
           return this.utilities.GenericServiceCallMethod('post', 'Operator/CreateOperatorInvoice', '', formData);
+        }
+      }, {
+        key: "GetOperatorOngoingSlabAndBookings",
+        value: function GetOperatorOngoingSlabAndBookings() {
+          return this.utilities.GenericServiceCallMethod('get', 'Operator/GetOperatorOngoingSlabAndBookings', '', '');
         }
       }]);
 
@@ -4970,296 +4975,302 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony import */
 
 
-    var _offer_management_ItineraryPlane_ItineraryPlane_component__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(
+    var _posttrip_TripItinerary_ItineraryPlane_ItineraryPlane_component__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(
+    /*! ./posttrip/TripItinerary/ItineraryPlane/ItineraryPlane.component */
+    "./src/app/posttrip/TripItinerary/ItineraryPlane/ItineraryPlane.component.ts");
+    /* harmony import */
+
+
+    var _offer_management_ItineraryPlane_ItineraryPlane_component__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(
     /*! ./offer-management/ItineraryPlane/ItineraryPlane.component */
     "./src/app/offer-management/ItineraryPlane/ItineraryPlane.component.ts");
     /* harmony import */
 
 
-    var _posttrip_TripItinerary_Facilities_facilities_trip_facilities_trip_component__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(
+    var _posttrip_TripItinerary_Facilities_facilities_trip_facilities_trip_component__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(
     /*! ./posttrip/TripItinerary/Facilities/facilities-trip/facilities-trip.component */
     "./src/app/posttrip/TripItinerary/Facilities/facilities-trip/facilities-trip.component.ts");
     /* harmony import */
 
 
-    var _posttrip_TripItinerary_TripImages_tripImages_tripImages_component__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(
+    var _posttrip_TripItinerary_TripImages_tripImages_tripImages_component__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(
     /*! ./posttrip/TripItinerary/TripImages/tripImages/tripImages.component */
     "./src/app/posttrip/TripItinerary/TripImages/tripImages/tripImages.component.ts");
     /* harmony import */
 
 
-    var _Services_Utilities_triputilites_service__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(
+    var _Services_Utilities_triputilites_service__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(
     /*! ./Services/Utilities/triputilites.service */
     "./src/app/Services/Utilities/triputilites.service.ts");
     /* harmony import */
 
 
-    var _Services_TripService_trip_service__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(
+    var _Services_TripService_trip_service__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(
     /*! ./Services/TripService/trip.service */
     "./src/app/Services/TripService/trip.service.ts");
     /* harmony import */
 
 
-    var _angular_common_http__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(
+    var _angular_common_http__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(
     /*! @angular/common/http */
     "./node_modules/@angular/common/fesm2015/http.js");
     /* harmony import */
 
 
-    var _Services_Utilities_genaric_service__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(
+    var _Services_Utilities_genaric_service__WEBPACK_IMPORTED_MODULE_37__ = __webpack_require__(
     /*! ./Services/Utilities/genaric.service */
     "./src/app/Services/Utilities/genaric.service.ts");
     /* harmony import */
 
 
-    var _buy_boost_package_buy_boost_package_component__WEBPACK_IMPORTED_MODULE_37__ = __webpack_require__(
+    var _buy_boost_package_buy_boost_package_component__WEBPACK_IMPORTED_MODULE_38__ = __webpack_require__(
     /*! ./buy-boost-package/buy-boost-package.component */
     "./src/app/buy-boost-package/buy-boost-package.component.ts");
     /* harmony import */
 
 
-    var ngx_toastr__WEBPACK_IMPORTED_MODULE_38__ = __webpack_require__(
+    var ngx_toastr__WEBPACK_IMPORTED_MODULE_39__ = __webpack_require__(
     /*! ngx-toastr */
     "./node_modules/ngx-toastr/fesm2015/ngx-toastr.js");
     /* harmony import */
 
 
-    var ngx_bar_rating__WEBPACK_IMPORTED_MODULE_39__ = __webpack_require__(
+    var ngx_bar_rating__WEBPACK_IMPORTED_MODULE_40__ = __webpack_require__(
     /*! ngx-bar-rating */
     "./node_modules/ngx-bar-rating/index.js");
     /* harmony import */
 
 
-    var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_40__ = __webpack_require__(
+    var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_41__ = __webpack_require__(
     /*! @angular/platform-browser/animations */
     "./node_modules/@angular/platform-browser/fesm2015/animations.js");
     /* harmony import */
 
 
-    var _posttrip_TripItinerary_PostFinalTrip_PostFinalTrip_component__WEBPACK_IMPORTED_MODULE_41__ = __webpack_require__(
+    var _posttrip_TripItinerary_PostFinalTrip_PostFinalTrip_component__WEBPACK_IMPORTED_MODULE_42__ = __webpack_require__(
     /*! ./posttrip/TripItinerary/PostFinalTrip/PostFinalTrip.component */
     "./src/app/posttrip/TripItinerary/PostFinalTrip/PostFinalTrip.component.ts");
     /* harmony import */
 
 
-    var _Services_Utilities_UtilitiesMethods_service__WEBPACK_IMPORTED_MODULE_42__ = __webpack_require__(
+    var _Services_Utilities_UtilitiesMethods_service__WEBPACK_IMPORTED_MODULE_43__ = __webpack_require__(
     /*! ./Services/Utilities/UtilitiesMethods.service */
     "./src/app/Services/Utilities/UtilitiesMethods.service.ts");
     /* harmony import */
 
 
-    var _Services_BoostPackge_boostpackage_service__WEBPACK_IMPORTED_MODULE_43__ = __webpack_require__(
+    var _Services_BoostPackge_boostpackage_service__WEBPACK_IMPORTED_MODULE_44__ = __webpack_require__(
     /*! ./Services/BoostPackge/boostpackage.service */
     "./src/app/Services/BoostPackge/boostpackage.service.ts");
     /* harmony import */
 
 
-    var _login_login_component__WEBPACK_IMPORTED_MODULE_44__ = __webpack_require__(
+    var _login_login_component__WEBPACK_IMPORTED_MODULE_45__ = __webpack_require__(
     /*! ./login/login.component */
     "./src/app/login/login.component.ts");
     /* harmony import */
 
 
-    var _Shared_Interceptor_token_interceptor_service__WEBPACK_IMPORTED_MODULE_45__ = __webpack_require__(
+    var _Shared_Interceptor_token_interceptor_service__WEBPACK_IMPORTED_MODULE_46__ = __webpack_require__(
     /*! ./Shared/Interceptor/token-interceptor.service */
     "./src/app/Shared/Interceptor/token-interceptor.service.ts");
     /* harmony import */
 
 
-    var _Services_Users_UsersService_service__WEBPACK_IMPORTED_MODULE_46__ = __webpack_require__(
+    var _Services_Users_UsersService_service__WEBPACK_IMPORTED_MODULE_47__ = __webpack_require__(
     /*! ./Services/Users/UsersService.service */
     "./src/app/Services/Users/UsersService.service.ts");
     /* harmony import */
 
 
-    var _Services_Utilities_AuthService_service__WEBPACK_IMPORTED_MODULE_47__ = __webpack_require__(
+    var _Services_Utilities_AuthService_service__WEBPACK_IMPORTED_MODULE_48__ = __webpack_require__(
     /*! ./Services/Utilities/AuthService.service */
     "./src/app/Services/Utilities/AuthService.service.ts");
     /* harmony import */
 
 
-    var _Shared_guards_auth_guard_service_service__WEBPACK_IMPORTED_MODULE_48__ = __webpack_require__(
+    var _Shared_guards_auth_guard_service_service__WEBPACK_IMPORTED_MODULE_49__ = __webpack_require__(
     /*! ./Shared/guards/auth-guard.service.service */
     "./src/app/Shared/guards/auth-guard.service.service.ts");
     /* harmony import */
 
 
-    var _Services_Users_UseraccessService_service__WEBPACK_IMPORTED_MODULE_49__ = __webpack_require__(
+    var _Services_Users_UseraccessService_service__WEBPACK_IMPORTED_MODULE_50__ = __webpack_require__(
     /*! ./Services/Users/UseraccessService.service */
     "./src/app/Services/Users/UseraccessService.service.ts");
     /* harmony import */
 
 
-    var _complaint_complaint_component__WEBPACK_IMPORTED_MODULE_50__ = __webpack_require__(
+    var _complaint_complaint_component__WEBPACK_IMPORTED_MODULE_51__ = __webpack_require__(
     /*! ./complaint/complaint.component */
     "./src/app/complaint/complaint.component.ts");
     /* harmony import */
 
 
-    var _Services_Operator_operator_api_service__WEBPACK_IMPORTED_MODULE_51__ = __webpack_require__(
+    var _Services_Operator_operator_api_service__WEBPACK_IMPORTED_MODULE_52__ = __webpack_require__(
     /*! ./Services/Operator/operator-api.service */
     "./src/app/Services/Operator/operator-api.service.ts");
     /* harmony import */
 
 
-    var _Services_Bank_bank_service__WEBPACK_IMPORTED_MODULE_52__ = __webpack_require__(
+    var _Services_Bank_bank_service__WEBPACK_IMPORTED_MODULE_53__ = __webpack_require__(
     /*! ./Services/Bank/bank.service */
     "./src/app/Services/Bank/bank.service.ts");
     /* harmony import */
 
 
-    var ng_wizard__WEBPACK_IMPORTED_MODULE_53__ = __webpack_require__(
+    var ng_wizard__WEBPACK_IMPORTED_MODULE_54__ = __webpack_require__(
     /*! ng-wizard */
     "./node_modules/ng-wizard/fesm2015/ng-wizard.js");
     /* harmony import */
 
 
-    var _kolkov_angular_editor__WEBPACK_IMPORTED_MODULE_54__ = __webpack_require__(
+    var _kolkov_angular_editor__WEBPACK_IMPORTED_MODULE_55__ = __webpack_require__(
     /*! @kolkov/angular-editor */
     "./node_modules/@kolkov/angular-editor/fesm2015/kolkov-angular-editor.js");
     /* harmony import */
 
 
-    var _bookings_bookings_component__WEBPACK_IMPORTED_MODULE_55__ = __webpack_require__(
+    var _bookings_bookings_component__WEBPACK_IMPORTED_MODULE_56__ = __webpack_require__(
     /*! ./bookings/bookings.component */
     "./src/app/bookings/bookings.component.ts");
     /* harmony import */
 
 
-    var _bookingdetails_bookingdetails_component__WEBPACK_IMPORTED_MODULE_56__ = __webpack_require__(
+    var _bookingdetails_bookingdetails_component__WEBPACK_IMPORTED_MODULE_57__ = __webpack_require__(
     /*! ./bookingdetails/bookingdetails.component */
     "./src/app/bookingdetails/bookingdetails.component.ts");
     /* harmony import */
 
 
-    var ngx_pagination__WEBPACK_IMPORTED_MODULE_57__ = __webpack_require__(
+    var ngx_pagination__WEBPACK_IMPORTED_MODULE_58__ = __webpack_require__(
     /*! ngx-pagination */
     "./node_modules/ngx-pagination/dist/ngx-pagination.js");
     /* harmony import */
 
 
-    var _detail_detail_component__WEBPACK_IMPORTED_MODULE_58__ = __webpack_require__(
+    var _detail_detail_component__WEBPACK_IMPORTED_MODULE_59__ = __webpack_require__(
     /*! ./detail/detail.component */
     "./src/app/detail/detail.component.ts");
     /* harmony import */
 
 
-    var ng2_charts__WEBPACK_IMPORTED_MODULE_59__ = __webpack_require__(
+    var ng2_charts__WEBPACK_IMPORTED_MODULE_60__ = __webpack_require__(
     /*! ng2-charts */
     "./node_modules/ng2-charts/fesm2015/ng2-charts.js");
     /* harmony import */
 
 
-    var _angular_material_stepper__WEBPACK_IMPORTED_MODULE_60__ = __webpack_require__(
+    var _angular_material_stepper__WEBPACK_IMPORTED_MODULE_61__ = __webpack_require__(
     /*! @angular/material/stepper */
     "./node_modules/@angular/material/esm2015/stepper.js");
     /* harmony import */
 
 
-    var _angular_material_input__WEBPACK_IMPORTED_MODULE_61__ = __webpack_require__(
+    var _angular_material_input__WEBPACK_IMPORTED_MODULE_62__ = __webpack_require__(
     /*! @angular/material/input */
     "./node_modules/@angular/material/esm2015/input.js");
     /* harmony import */
 
 
-    var _angular_material_icon__WEBPACK_IMPORTED_MODULE_62__ = __webpack_require__(
+    var _angular_material_icon__WEBPACK_IMPORTED_MODULE_63__ = __webpack_require__(
     /*! @angular/material/icon */
     "./node_modules/@angular/material/esm2015/icon.js");
     /* harmony import */
 
 
-    var ngx_dropzone__WEBPACK_IMPORTED_MODULE_63__ = __webpack_require__(
+    var ngx_dropzone__WEBPACK_IMPORTED_MODULE_64__ = __webpack_require__(
     /*! ngx-dropzone */
     "./node_modules/ngx-dropzone/fesm2015/ngx-dropzone.js");
     /* harmony import */
 
 
-    var _signup_signup_component__WEBPACK_IMPORTED_MODULE_64__ = __webpack_require__(
+    var _signup_signup_component__WEBPACK_IMPORTED_MODULE_65__ = __webpack_require__(
     /*! ./signup/signup.component */
     "./src/app/signup/signup.component.ts");
     /* harmony import */
 
 
-    var angularx_social_login__WEBPACK_IMPORTED_MODULE_65__ = __webpack_require__(
+    var angularx_social_login__WEBPACK_IMPORTED_MODULE_66__ = __webpack_require__(
     /*! angularx-social-login */
     "./node_modules/angularx-social-login/fesm2015/angularx-social-login.js");
     /* harmony import */
 
 
-    var _forgetpassword_forgetpassword_component__WEBPACK_IMPORTED_MODULE_66__ = __webpack_require__(
+    var _forgetpassword_forgetpassword_component__WEBPACK_IMPORTED_MODULE_67__ = __webpack_require__(
     /*! ./forgetpassword/forgetpassword.component */
     "./src/app/forgetpassword/forgetpassword.component.ts");
     /* harmony import */
 
 
-    var _reset_password_reset_password_component__WEBPACK_IMPORTED_MODULE_67__ = __webpack_require__(
+    var _reset_password_reset_password_component__WEBPACK_IMPORTED_MODULE_68__ = __webpack_require__(
     /*! ./reset-password/reset-password.component */
     "./src/app/reset-password/reset-password.component.ts");
     /* harmony import */
 
 
-    var _self_about_us_about_us_component__WEBPACK_IMPORTED_MODULE_68__ = __webpack_require__(
+    var _self_about_us_about_us_component__WEBPACK_IMPORTED_MODULE_69__ = __webpack_require__(
     /*! ./self/about-us/about-us.component */
     "./src/app/self/about-us/about-us.component.ts");
     /* harmony import */
 
 
-    var _posttrip_postsuccess_postsuccess_component__WEBPACK_IMPORTED_MODULE_69__ = __webpack_require__(
+    var _posttrip_postsuccess_postsuccess_component__WEBPACK_IMPORTED_MODULE_70__ = __webpack_require__(
     /*! ./posttrip/postsuccess/postsuccess.component */
     "./src/app/posttrip/postsuccess/postsuccess.component.ts");
     /* harmony import */
 
 
-    var _ngx_translate_core__WEBPACK_IMPORTED_MODULE_70__ = __webpack_require__(
+    var _ngx_translate_core__WEBPACK_IMPORTED_MODULE_71__ = __webpack_require__(
     /*! @ngx-translate/core */
     "./node_modules/@ngx-translate/core/fesm2015/ngx-translate-core.js");
     /* harmony import */
 
 
-    var _ngx_translate_http_loader__WEBPACK_IMPORTED_MODULE_71__ = __webpack_require__(
+    var _ngx_translate_http_loader__WEBPACK_IMPORTED_MODULE_72__ = __webpack_require__(
     /*! @ngx-translate/http-loader */
     "./node_modules/@ngx-translate/http-loader/fesm2015/ngx-translate-http-loader.js");
     /* harmony import */
 
 
-    var _custom_tour_requests_custom_tour_requests_component__WEBPACK_IMPORTED_MODULE_72__ = __webpack_require__(
+    var _custom_tour_requests_custom_tour_requests_component__WEBPACK_IMPORTED_MODULE_73__ = __webpack_require__(
     /*! ./custom-tour-requests/custom-tour-requests.component */
     "./src/app/custom-tour-requests/custom-tour-requests.component.ts");
     /* harmony import */
 
 
-    var _custom_tour_request_detail_custom_tour_request_detail_component__WEBPACK_IMPORTED_MODULE_73__ = __webpack_require__(
+    var _custom_tour_request_detail_custom_tour_request_detail_component__WEBPACK_IMPORTED_MODULE_74__ = __webpack_require__(
     /*! ./custom-tour-request-detail/custom-tour-request-detail.component */
     "./src/app/custom-tour-request-detail/custom-tour-request-detail.component.ts");
     /* harmony import */
 
 
-    var _offer_management_offer_management_component__WEBPACK_IMPORTED_MODULE_74__ = __webpack_require__(
+    var _offer_management_offer_management_component__WEBPACK_IMPORTED_MODULE_75__ = __webpack_require__(
     /*! ./offer-management/offer-management.component */
     "./src/app/offer-management/offer-management.component.ts");
     /* harmony import */
 
 
-    var _invoices_invoices_component__WEBPACK_IMPORTED_MODULE_75__ = __webpack_require__(
+    var _invoices_invoices_component__WEBPACK_IMPORTED_MODULE_76__ = __webpack_require__(
     /*! ./invoices/invoices.component */
     "./src/app/invoices/invoices.component.ts");
     /* harmony import */
 
 
-    var _invoice_details_invoice_details_component__WEBPACK_IMPORTED_MODULE_76__ = __webpack_require__(
+    var _invoice_details_invoice_details_component__WEBPACK_IMPORTED_MODULE_77__ = __webpack_require__(
     /*! ./invoice-details/invoice-details.component */
     "./src/app/invoice-details/invoice-details.component.ts"); // Import your library
 
 
     var ngWizardConfig = {
-      theme: ng_wizard__WEBPACK_IMPORTED_MODULE_53__["THEME"]["default"]
+      theme: ng_wizard__WEBPACK_IMPORTED_MODULE_54__["THEME"]["default"]
     };
-    var config = new angularx_social_login__WEBPACK_IMPORTED_MODULE_65__["AuthServiceConfig"]([{
-      id: angularx_social_login__WEBPACK_IMPORTED_MODULE_65__["FacebookLoginProvider"].PROVIDER_ID,
-      provider: new angularx_social_login__WEBPACK_IMPORTED_MODULE_65__["FacebookLoginProvider"]('962780807415498')
+    var config = new angularx_social_login__WEBPACK_IMPORTED_MODULE_66__["AuthServiceConfig"]([{
+      id: angularx_social_login__WEBPACK_IMPORTED_MODULE_66__["FacebookLoginProvider"].PROVIDER_ID,
+      provider: new angularx_social_login__WEBPACK_IMPORTED_MODULE_66__["FacebookLoginProvider"]('962780807415498')
     }, {
-      id: angularx_social_login__WEBPACK_IMPORTED_MODULE_65__["GoogleLoginProvider"].PROVIDER_ID,
-      provider: new angularx_social_login__WEBPACK_IMPORTED_MODULE_65__["GoogleLoginProvider"]('160071286091-fpb8g5ikukhmk4cuqc53s3rdijqu4g00.apps.googleusercontent.com')
+      id: angularx_social_login__WEBPACK_IMPORTED_MODULE_66__["GoogleLoginProvider"].PROVIDER_ID,
+      provider: new angularx_social_login__WEBPACK_IMPORTED_MODULE_66__["GoogleLoginProvider"]('160071286091-fpb8g5ikukhmk4cuqc53s3rdijqu4g00.apps.googleusercontent.com')
     }]);
 
     function provideConfig() {
@@ -5267,7 +5278,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     }
 
     function HttpLoaderFactory(http) {
-      return new _ngx_translate_http_loader__WEBPACK_IMPORTED_MODULE_71__["TranslateHttpLoader"](http, "./assets/i18n/", ".json");
+      return new _ngx_translate_http_loader__WEBPACK_IMPORTED_MODULE_72__["TranslateHttpLoader"](http, "./assets/i18n/", ".json");
     }
 
     var AppModule = function AppModule() {
@@ -5275,27 +5286,27 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     };
 
     AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_6__["NgModule"])({
-      declarations: [_app_component__WEBPACK_IMPORTED_MODULE_10__["AppComponent"], _dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_11__["DashboardComponent"], _mytrips_mytrips_component__WEBPACK_IMPORTED_MODULE_12__["MytripsComponent"], _posttrip_posttrip_component__WEBPACK_IMPORTED_MODULE_13__["PosttripComponent"], _pkgdetails_pkgdetails_component__WEBPACK_IMPORTED_MODULE_14__["PkgdetailsComponent"], _aval_packges_aval_packges_component__WEBPACK_IMPORTED_MODULE_15__["AvalPackgesComponent"], _boost_pkg_boost_pkg_component__WEBPACK_IMPORTED_MODULE_16__["BoostPkgComponent"], _tripdetail_tripdetail_component__WEBPACK_IMPORTED_MODULE_17__["TripdetailComponent"], _pkginvoice_pkginvoice_component__WEBPACK_IMPORTED_MODULE_18__["PkginvoiceComponent"], _promo_promo_component__WEBPACK_IMPORTED_MODULE_19__["PromoComponent"], _detail_detail_component__WEBPACK_IMPORTED_MODULE_58__["DetailComponent"], _addpromo_addpromo_component__WEBPACK_IMPORTED_MODULE_20__["AddpromoComponent"], _profile_profile_component__WEBPACK_IMPORTED_MODULE_21__["ProfileComponent"], _updatepas_updatepas_component__WEBPACK_IMPORTED_MODULE_22__["UpdatepasComponent"], _verify_verify_component__WEBPACK_IMPORTED_MODULE_23__["VerifyComponent"], _edit_edit_component__WEBPACK_IMPORTED_MODULE_24__["EditComponent"], _calender_calender_component__WEBPACK_IMPORTED_MODULE_25__["CalenderComponent"], _draft_draft_component__WEBPACK_IMPORTED_MODULE_26__["DraftComponent"], _reports_reports_component__WEBPACK_IMPORTED_MODULE_27__["ReportsComponent"], _offer_management_ItineraryPlane_ItineraryPlane_component__WEBPACK_IMPORTED_MODULE_30__["OfferManagementItineraryPlaneComponent"], _posttrip_TripItinerary_Facilities_facilities_trip_facilities_trip_component__WEBPACK_IMPORTED_MODULE_31__["FacilitiesTripComponent"], _posttrip_TripItinerary_TripImages_tripImages_tripImages_component__WEBPACK_IMPORTED_MODULE_32__["TripImagesComponent"], _buy_boost_package_buy_boost_package_component__WEBPACK_IMPORTED_MODULE_37__["BuyBoostPackageComponent"], _posttrip_TripItinerary_PostFinalTrip_PostFinalTrip_component__WEBPACK_IMPORTED_MODULE_41__["PostFinalTripComponent"], _login_login_component__WEBPACK_IMPORTED_MODULE_44__["LoginComponent"], _complaint_complaint_component__WEBPACK_IMPORTED_MODULE_50__["ComplaintComponent"], _bookings_bookings_component__WEBPACK_IMPORTED_MODULE_55__["BookingsComponent"], _bookingdetails_bookingdetails_component__WEBPACK_IMPORTED_MODULE_56__["BookingdetailsComponent"], _signup_signup_component__WEBPACK_IMPORTED_MODULE_64__["SignupComponent"], _Shared_SocialLogins_socail_logins_socail_logins_component__WEBPACK_IMPORTED_MODULE_4__["SocailLoginsComponent"], _forgetpassword_forgetpassword_component__WEBPACK_IMPORTED_MODULE_66__["ForgetpasswordComponent"], _reset_password_reset_password_component__WEBPACK_IMPORTED_MODULE_67__["ResetPasswordComponent"], _self_about_us_about_us_component__WEBPACK_IMPORTED_MODULE_68__["AboutUsComponent"], _self_contact_us_contact_us_component__WEBPACK_IMPORTED_MODULE_3__["ContactUsComponent"], _self_faqs_faqs_component__WEBPACK_IMPORTED_MODULE_2__["FaqsComponent"], _posttrip_buy_boost_packages_buy_boost_packages_popup_component__WEBPACK_IMPORTED_MODULE_1__["BuyBoostPackagesPopUpComponent"], _posttrip_postsuccess_postsuccess_component__WEBPACK_IMPORTED_MODULE_69__["PostsuccessComponent"], _custom_tour_requests_custom_tour_requests_component__WEBPACK_IMPORTED_MODULE_72__["CustomTourRequestsComponent"], _custom_tour_request_detail_custom_tour_request_detail_component__WEBPACK_IMPORTED_MODULE_73__["CustomTourRequestDetailComponent"], _offer_management_offer_management_component__WEBPACK_IMPORTED_MODULE_74__["OfferManagementComponent"], _invoices_invoices_component__WEBPACK_IMPORTED_MODULE_75__["InvoicesComponent"], _invoice_details_invoice_details_component__WEBPACK_IMPORTED_MODULE_76__["InvoiceDetailsComponent"]],
-      imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_5__["BrowserModule"], _app_routing_module__WEBPACK_IMPORTED_MODULE_9__["AppRoutingModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_7__["FormsModule"], angular2_wizard__WEBPACK_IMPORTED_MODULE_28__["FormWizardModule"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_29__["NgbModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_7__["FormsModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_7__["ReactiveFormsModule"], _angular_common_http__WEBPACK_IMPORTED_MODULE_35__["HttpClientModule"], ngx_toastr__WEBPACK_IMPORTED_MODULE_38__["ToastrModule"].forRoot(), ngx_bar_rating__WEBPACK_IMPORTED_MODULE_39__["BarRatingModule"], _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_40__["BrowserAnimationsModule"], ng_wizard__WEBPACK_IMPORTED_MODULE_53__["NgWizardModule"].forRoot(ngWizardConfig), _kolkov_angular_editor__WEBPACK_IMPORTED_MODULE_54__["AngularEditorModule"], ngx_pagination__WEBPACK_IMPORTED_MODULE_57__["NgxPaginationModule"], ng2_charts__WEBPACK_IMPORTED_MODULE_59__["ChartsModule"], _angular_material_stepper__WEBPACK_IMPORTED_MODULE_60__["MatStepperModule"], _angular_material_input__WEBPACK_IMPORTED_MODULE_61__["MatInputModule"], _angular_material_icon__WEBPACK_IMPORTED_MODULE_62__["MatIconModule"], ngx_dropzone__WEBPACK_IMPORTED_MODULE_63__["NgxDropzoneModule"], ng2_charts__WEBPACK_IMPORTED_MODULE_59__["ChartsModule"], angularx_social_login__WEBPACK_IMPORTED_MODULE_65__["SocialLoginModule"], _ngx_translate_core__WEBPACK_IMPORTED_MODULE_70__["TranslateModule"].forRoot({
+      declarations: [_app_component__WEBPACK_IMPORTED_MODULE_10__["AppComponent"], _dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_11__["DashboardComponent"], _mytrips_mytrips_component__WEBPACK_IMPORTED_MODULE_12__["MytripsComponent"], _posttrip_posttrip_component__WEBPACK_IMPORTED_MODULE_13__["PosttripComponent"], _pkgdetails_pkgdetails_component__WEBPACK_IMPORTED_MODULE_14__["PkgdetailsComponent"], _aval_packges_aval_packges_component__WEBPACK_IMPORTED_MODULE_15__["AvalPackgesComponent"], _boost_pkg_boost_pkg_component__WEBPACK_IMPORTED_MODULE_16__["BoostPkgComponent"], _tripdetail_tripdetail_component__WEBPACK_IMPORTED_MODULE_17__["TripdetailComponent"], _pkginvoice_pkginvoice_component__WEBPACK_IMPORTED_MODULE_18__["PkginvoiceComponent"], _promo_promo_component__WEBPACK_IMPORTED_MODULE_19__["PromoComponent"], _detail_detail_component__WEBPACK_IMPORTED_MODULE_59__["DetailComponent"], _addpromo_addpromo_component__WEBPACK_IMPORTED_MODULE_20__["AddpromoComponent"], _profile_profile_component__WEBPACK_IMPORTED_MODULE_21__["ProfileComponent"], _updatepas_updatepas_component__WEBPACK_IMPORTED_MODULE_22__["UpdatepasComponent"], _verify_verify_component__WEBPACK_IMPORTED_MODULE_23__["VerifyComponent"], _edit_edit_component__WEBPACK_IMPORTED_MODULE_24__["EditComponent"], _calender_calender_component__WEBPACK_IMPORTED_MODULE_25__["CalenderComponent"], _draft_draft_component__WEBPACK_IMPORTED_MODULE_26__["DraftComponent"], _reports_reports_component__WEBPACK_IMPORTED_MODULE_27__["ReportsComponent"], _offer_management_ItineraryPlane_ItineraryPlane_component__WEBPACK_IMPORTED_MODULE_31__["OfferManagementItineraryPlaneComponent"], _posttrip_TripItinerary_ItineraryPlane_ItineraryPlane_component__WEBPACK_IMPORTED_MODULE_30__["ItineraryPlaneComponent"], _posttrip_TripItinerary_Facilities_facilities_trip_facilities_trip_component__WEBPACK_IMPORTED_MODULE_32__["FacilitiesTripComponent"], _posttrip_TripItinerary_TripImages_tripImages_tripImages_component__WEBPACK_IMPORTED_MODULE_33__["TripImagesComponent"], _buy_boost_package_buy_boost_package_component__WEBPACK_IMPORTED_MODULE_38__["BuyBoostPackageComponent"], _posttrip_TripItinerary_PostFinalTrip_PostFinalTrip_component__WEBPACK_IMPORTED_MODULE_42__["PostFinalTripComponent"], _login_login_component__WEBPACK_IMPORTED_MODULE_45__["LoginComponent"], _complaint_complaint_component__WEBPACK_IMPORTED_MODULE_51__["ComplaintComponent"], _bookings_bookings_component__WEBPACK_IMPORTED_MODULE_56__["BookingsComponent"], _bookingdetails_bookingdetails_component__WEBPACK_IMPORTED_MODULE_57__["BookingdetailsComponent"], _signup_signup_component__WEBPACK_IMPORTED_MODULE_65__["SignupComponent"], _Shared_SocialLogins_socail_logins_socail_logins_component__WEBPACK_IMPORTED_MODULE_4__["SocailLoginsComponent"], _forgetpassword_forgetpassword_component__WEBPACK_IMPORTED_MODULE_67__["ForgetpasswordComponent"], _reset_password_reset_password_component__WEBPACK_IMPORTED_MODULE_68__["ResetPasswordComponent"], _self_about_us_about_us_component__WEBPACK_IMPORTED_MODULE_69__["AboutUsComponent"], _self_contact_us_contact_us_component__WEBPACK_IMPORTED_MODULE_3__["ContactUsComponent"], _self_faqs_faqs_component__WEBPACK_IMPORTED_MODULE_2__["FaqsComponent"], _posttrip_buy_boost_packages_buy_boost_packages_popup_component__WEBPACK_IMPORTED_MODULE_1__["BuyBoostPackagesPopUpComponent"], _posttrip_postsuccess_postsuccess_component__WEBPACK_IMPORTED_MODULE_70__["PostsuccessComponent"], _custom_tour_requests_custom_tour_requests_component__WEBPACK_IMPORTED_MODULE_73__["CustomTourRequestsComponent"], _custom_tour_request_detail_custom_tour_request_detail_component__WEBPACK_IMPORTED_MODULE_74__["CustomTourRequestDetailComponent"], _offer_management_offer_management_component__WEBPACK_IMPORTED_MODULE_75__["OfferManagementComponent"], _invoices_invoices_component__WEBPACK_IMPORTED_MODULE_76__["InvoicesComponent"], _invoice_details_invoice_details_component__WEBPACK_IMPORTED_MODULE_77__["InvoiceDetailsComponent"]],
+      imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_5__["BrowserModule"], _app_routing_module__WEBPACK_IMPORTED_MODULE_9__["AppRoutingModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_7__["FormsModule"], angular2_wizard__WEBPACK_IMPORTED_MODULE_28__["FormWizardModule"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_29__["NgbModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_7__["FormsModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_7__["ReactiveFormsModule"], _angular_common_http__WEBPACK_IMPORTED_MODULE_36__["HttpClientModule"], ngx_toastr__WEBPACK_IMPORTED_MODULE_39__["ToastrModule"].forRoot(), ngx_bar_rating__WEBPACK_IMPORTED_MODULE_40__["BarRatingModule"], _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_41__["BrowserAnimationsModule"], ng_wizard__WEBPACK_IMPORTED_MODULE_54__["NgWizardModule"].forRoot(ngWizardConfig), _kolkov_angular_editor__WEBPACK_IMPORTED_MODULE_55__["AngularEditorModule"], ngx_pagination__WEBPACK_IMPORTED_MODULE_58__["NgxPaginationModule"], ng2_charts__WEBPACK_IMPORTED_MODULE_60__["ChartsModule"], _angular_material_stepper__WEBPACK_IMPORTED_MODULE_61__["MatStepperModule"], _angular_material_input__WEBPACK_IMPORTED_MODULE_62__["MatInputModule"], _angular_material_icon__WEBPACK_IMPORTED_MODULE_63__["MatIconModule"], ngx_dropzone__WEBPACK_IMPORTED_MODULE_64__["NgxDropzoneModule"], ng2_charts__WEBPACK_IMPORTED_MODULE_60__["ChartsModule"], angularx_social_login__WEBPACK_IMPORTED_MODULE_66__["SocialLoginModule"], _ngx_translate_core__WEBPACK_IMPORTED_MODULE_71__["TranslateModule"].forRoot({
         loader: {
-          provide: _ngx_translate_core__WEBPACK_IMPORTED_MODULE_70__["TranslateLoader"],
+          provide: _ngx_translate_core__WEBPACK_IMPORTED_MODULE_71__["TranslateLoader"],
           useFactory: HttpLoaderFactory,
-          deps: [_angular_common_http__WEBPACK_IMPORTED_MODULE_35__["HttpClient"]]
+          deps: [_angular_common_http__WEBPACK_IMPORTED_MODULE_36__["HttpClient"]]
         }
       })],
       providers: [{
-        provide: _angular_common_http__WEBPACK_IMPORTED_MODULE_35__["HTTP_INTERCEPTORS"],
-        useClass: _Shared_Interceptor_token_interceptor_service__WEBPACK_IMPORTED_MODULE_45__["TokenInterceptorService"],
+        provide: _angular_common_http__WEBPACK_IMPORTED_MODULE_36__["HTTP_INTERCEPTORS"],
+        useClass: _Shared_Interceptor_token_interceptor_service__WEBPACK_IMPORTED_MODULE_46__["TokenInterceptorService"],
         multi: true
-      }, ng2_charts__WEBPACK_IMPORTED_MODULE_59__["ThemeService"], _Shared_guards_auth_guard_service_service__WEBPACK_IMPORTED_MODULE_48__["AuthGuardService"], _Services_Utilities_triputilites_service__WEBPACK_IMPORTED_MODULE_33__["TriputilitesService"], _Services_TripService_trip_service__WEBPACK_IMPORTED_MODULE_34__["TripService"], _angular_common__WEBPACK_IMPORTED_MODULE_8__["DatePipe"], _Services_Utilities_genaric_service__WEBPACK_IMPORTED_MODULE_36__["GenaricService"], _Services_Utilities_UtilitiesMethods_service__WEBPACK_IMPORTED_MODULE_42__["UtilitiesMethodsService"], _Services_BoostPackge_boostpackage_service__WEBPACK_IMPORTED_MODULE_43__["BoostpackageService"], _Services_Users_UsersService_service__WEBPACK_IMPORTED_MODULE_46__["UsersService"], _Services_Utilities_AuthService_service__WEBPACK_IMPORTED_MODULE_47__["AuthService"], _Services_Users_UseraccessService_service__WEBPACK_IMPORTED_MODULE_49__["UseraccessService"], _Services_Operator_operator_api_service__WEBPACK_IMPORTED_MODULE_51__["OperatorApiService"], _Services_Bank_bank_service__WEBPACK_IMPORTED_MODULE_52__["BankService"], angular2_wizard__WEBPACK_IMPORTED_MODULE_28__["FormWizardModule"], {
-        provide: angularx_social_login__WEBPACK_IMPORTED_MODULE_65__["AuthServiceConfig"],
+      }, ng2_charts__WEBPACK_IMPORTED_MODULE_60__["ThemeService"], _Shared_guards_auth_guard_service_service__WEBPACK_IMPORTED_MODULE_49__["AuthGuardService"], _Services_Utilities_triputilites_service__WEBPACK_IMPORTED_MODULE_34__["TriputilitesService"], _Services_TripService_trip_service__WEBPACK_IMPORTED_MODULE_35__["TripService"], _angular_common__WEBPACK_IMPORTED_MODULE_8__["DatePipe"], _Services_Utilities_genaric_service__WEBPACK_IMPORTED_MODULE_37__["GenaricService"], _Services_Utilities_UtilitiesMethods_service__WEBPACK_IMPORTED_MODULE_43__["UtilitiesMethodsService"], _Services_BoostPackge_boostpackage_service__WEBPACK_IMPORTED_MODULE_44__["BoostpackageService"], _Services_Users_UsersService_service__WEBPACK_IMPORTED_MODULE_47__["UsersService"], _Services_Utilities_AuthService_service__WEBPACK_IMPORTED_MODULE_48__["AuthService"], _Services_Users_UseraccessService_service__WEBPACK_IMPORTED_MODULE_50__["UseraccessService"], _Services_Operator_operator_api_service__WEBPACK_IMPORTED_MODULE_52__["OperatorApiService"], _Services_Bank_bank_service__WEBPACK_IMPORTED_MODULE_53__["BankService"], angular2_wizard__WEBPACK_IMPORTED_MODULE_28__["FormWizardModule"], {
+        provide: angularx_social_login__WEBPACK_IMPORTED_MODULE_66__["AuthServiceConfig"],
         useFactory: provideConfig
       }],
       bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_10__["AppComponent"]],
       // exports: [
       //   NgbModalConfig
       // ],
-      entryComponents: [_posttrip_TripItinerary_Facilities_facilities_trip_facilities_trip_component__WEBPACK_IMPORTED_MODULE_31__["FacilitiesTripComponent"], _posttrip_TripItinerary_TripImages_tripImages_tripImages_component__WEBPACK_IMPORTED_MODULE_32__["TripImagesComponent"], _buy_boost_package_buy_boost_package_component__WEBPACK_IMPORTED_MODULE_37__["BuyBoostPackageComponent"], _posttrip_TripItinerary_PostFinalTrip_PostFinalTrip_component__WEBPACK_IMPORTED_MODULE_41__["PostFinalTripComponent"], _posttrip_buy_boost_packages_buy_boost_packages_popup_component__WEBPACK_IMPORTED_MODULE_1__["BuyBoostPackagesPopUpComponent"]]
+      entryComponents: [_posttrip_TripItinerary_Facilities_facilities_trip_facilities_trip_component__WEBPACK_IMPORTED_MODULE_32__["FacilitiesTripComponent"], _posttrip_TripItinerary_TripImages_tripImages_tripImages_component__WEBPACK_IMPORTED_MODULE_33__["TripImagesComponent"], _buy_boost_package_buy_boost_package_component__WEBPACK_IMPORTED_MODULE_38__["BuyBoostPackageComponent"], _posttrip_TripItinerary_PostFinalTrip_PostFinalTrip_component__WEBPACK_IMPORTED_MODULE_42__["PostFinalTripComponent"], _posttrip_buy_boost_packages_buy_boost_packages_popup_component__WEBPACK_IMPORTED_MODULE_1__["BuyBoostPackagesPopUpComponent"], _posttrip_TripItinerary_ItineraryPlane_ItineraryPlane_component__WEBPACK_IMPORTED_MODULE_30__["ItineraryPlaneComponent"]]
     })], AppModule);
     /***/
   },
@@ -9194,7 +9205,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "";
+    __webpack_exports__["default"] = "/* Commission Status Card */\r\n.commission-status-card {\r\n  background: #ffffff;\r\n  border-radius: 16px;\r\n  box-shadow: 0 2px 8px rgba(0,0,0,0.05);\r\n  padding: 20px;\r\n  height: 100%;\r\n}\r\n.commission-slab-card {\r\n  background: #ffffff;\r\n  border-radius: 16px;\r\n  box-shadow: 0 2px 8px rgba(0,0,0,0.05);\r\n  padding: 20px;\r\n  height: 100%;\r\n}\r\n.commission-note {\r\n  color: #333;\r\n  font-size: 13px;\r\n  line-height: 1.5;\r\n}\r\n.commission-note strong {\r\n  color: #00A991;\r\n}\r\n.commission-info-item {\r\n  display: flex;\r\n  justify-content: space-between;\r\n  align-items: center;\r\n  padding: 12px 15px;\r\n  margin-bottom: 10px;\r\n  background: #d6f2e6;\r\n  border-radius: 8px;\r\n}\r\n.commission-label {\r\n  font-weight: 600;\r\n  color: #4b5d52;\r\n  font-size: 14px;\r\n}\r\n.commission-value {\r\n  font-weight: 700;\r\n  color: #00A991;\r\n  font-size: 16px;\r\n}\r\n/* Commission Slab Table */\r\n.commission-slab-table {\r\n  margin-top: 15px;\r\n}\r\n.commission-slab-table .table {\r\n  margin-bottom: 0;\r\n  border-collapse: separate;\r\n  border-spacing: 0;\r\n}\r\n.commission-slab-table .table th,\r\n.commission-slab-table .table td {\r\n  border: 1px solid #d6f2e6;\r\n  padding: 12px 8px;\r\n  text-align: left;\r\n  font-size: 13px;\r\n}\r\n.commission-table-header {\r\n  background: #d6f2e6 !important;\r\n  color: #4b5d52 !important;\r\n}\r\n.commission-table-header th {\r\n  font-weight: 600;\r\n  text-align: center;\r\n  background: #d6f2e6 !important;\r\n  color: #4b5d52 !important;\r\n  border: 1px solid #b8e0d0 !important;\r\n}\r\n.commission-table-row {\r\n  background: #ffffff;\r\n}\r\n.commission-table-row td {\r\n  background: #ffffff;\r\n  color: #333;\r\n}\r\n.commission-table-label {\r\n  background: #d6f2e6 !important;\r\n  color: #4b5d52 !important;\r\n  font-weight: 600;\r\n  border: 1px solid #b8e0d0 !important;\r\n}\r\n.commission-slab-table .table tbody tr td.text-center {\r\n  text-align: center;\r\n  font-weight: 500;\r\n  color: #333;\r\n}\r\n/* Responsive Design */\r\n@media (max-width: 768px) {\r\n  .commission-status-card,\r\n  .commission-slab-card {\r\n    margin-bottom: 20px;\r\n  }\r\n  \r\n  .commission-info-item {\r\n    flex-direction: column;\r\n    align-items: flex-start;\r\n    gap: 5px;\r\n  }\r\n  \r\n  .commission-slab-table {\r\n    overflow-x: auto;\r\n  }\r\n  \r\n  .commission-slab-table .table {\r\n    min-width: 600px;\r\n  }\r\n}\r\n\r\n";
     /***/
   },
 
@@ -9243,12 +9254,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         this.operatorApiService = operatorApiService;
         this.invoices = [];
         this.p = 1;
-        this.pageSize = 10;
-        this.totalPages = 0; // Filter properties
+        this.pageSize = 20;
+        this.totalPages = 0; // Filter properties with default values
 
-        this.selectedYear = '';
-        this.selectedStatus = '';
-        this.selectedPaymentStatus = '';
+        this.selectedYear = '2025';
+        this.selectedStatus = '1';
+        this.selectedPaymentStatus = 'Paid';
         this.searchText = ''; // Status options
 
         this.statusOptions = [{
@@ -9270,18 +9281,67 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
         this.yearOptions = ['2025', '2026', '2028']; // Payment status options
 
-        this.paymentStatusOptions = ['Paid', 'UnPaid'];
+        this.paymentStatusOptions = ['Paid', 'UnPaid']; // Commission slab properties
+
+        this.totalBookings = 0;
+        this.appliedSlab = null;
+        this.allSlabs = [];
+        this.loadingCommission = false;
       }
 
       _createClass(InvoicesComponent, [{
         key: "ngOnInit",
         value: function ngOnInit() {
+          this.loadCommissionData();
           this.loadInvoices();
+        }
+      }, {
+        key: "loadCommissionData",
+        value: function loadCommissionData() {
+          var _this47 = this;
+
+          this.loadingCommission = true;
+          this.operatorApiService.GetOperatorOngoingSlabAndBookings().subscribe(function (data) {
+            _this47.loadingCommission = false;
+
+            if (data.Status && data.Data) {
+              _this47.totalBookings = data.Data.TotalBookings || 0;
+              _this47.appliedSlab = data.Data.AppliedSlab || null;
+              _this47.allSlabs = data.Data.AllSlabs || []; // Sort slabs by MinBookings ascending (lowest first) to match table display
+
+              _this47.allSlabs.sort(function (a, b) {
+                return a.MinBookings - b.MinBookings;
+              });
+            }
+          }, function (error) {
+            _this47.loadingCommission = false;
+            console.error('Error loading commission data:', error);
+          });
+        }
+      }, {
+        key: "getSlabRange",
+        value: function getSlabRange(slab, index) {
+          // Check if this is the last slab (highest range)
+          var isLastSlab = index === this.allSlabs.length - 1;
+
+          if (isLastSlab) {
+            return "Above ".concat(slab.MinBookings);
+          }
+
+          if (slab.MaxBookings === null || slab.MaxBookings === undefined) {
+            return "Above ".concat(slab.MinBookings);
+          }
+
+          if (slab.MinBookings === slab.MaxBookings) {
+            return "".concat(slab.MinBookings);
+          }
+
+          return "".concat(slab.MinBookings, " To ").concat(slab.MaxBookings);
         }
       }, {
         key: "loadInvoices",
         value: function loadInvoices() {
-          var _this47 = this;
+          var _this48 = this;
 
           var filters = {
             PageNo: this.p,
@@ -9306,8 +9366,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
           this.operatorApiService.GetOperatorInvoices(filters).subscribe(function (data) {
             if (data.Status) {
-              _this47.invoices = data.Data || [];
-              _this47.totalPages = data.TotalPages || 0;
+              _this48.invoices = data.Data || [];
+              _this48.totalPages = data.TotalPages || 0;
             }
           }, function (error) {
             console.error('Error loading invoices:', error);
@@ -9692,14 +9752,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "loadAllTrips",
         value: function loadAllTrips() {
-          var _this48 = this;
+          var _this49 = this;
 
           this.tripSerivce.GetAllTripsByUsers().subscribe(function (data) {
             if (data) {
               if (data.Status) {
-                _this48.totalTripsModal = data.Data; // console.log(this.totalTripsModal);
+                _this49.totalTripsModal = data.Data; // console.log(this.totalTripsModal);
 
-                _this48.getData('comp');
+                _this49.getData('comp');
               }
             }
           });
@@ -9996,7 +10056,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "submistAsDraft",
         value: function submistAsDraft() {
-          var _this49 = this;
+          var _this50 = this;
 
           if (this.tripModel && this.IternaryPlanList && this.IternaryPlanList.length > 0) {
             this.tripModel.IternaryPlan = this.IternaryPlanList;
@@ -10005,9 +10065,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             this.settingUtitls.setDraftTrip = this.DefultTrip;
             this.tripSerivce.AddTripdefult(this.DefultTrip).subscribe(function (data) {
               if (data.Status) {
-                _this49.genricUtlitis.showMessageToast('Trip Basic Info saved as draft', true, _Services_Utilities_genaric_service__WEBPACK_IMPORTED_MODULE_5__["PrintMedia"].Conformation);
+                _this50.genricUtlitis.showMessageToast('Trip Basic Info saved as draft', true, _Services_Utilities_genaric_service__WEBPACK_IMPORTED_MODULE_5__["PrintMedia"].Conformation);
 
-                _this49.childEmitter.emit('Itr');
+                _this50.childEmitter.emit('Itr');
               }
             });
           }
@@ -10158,26 +10218,26 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       _createClass(OfferManagementComponent, [{
         key: "ngOnInit",
         value: function ngOnInit() {
-          var _this50 = this;
+          var _this51 = this;
 
           this.route.queryParams.subscribe(function (params) {
             if (params['referenceId']) {
-              _this50.referenceId = +params['referenceId'];
+              _this51.referenceId = +params['referenceId'];
 
-              _this50.operatorApiService.GetCustomTripDetails(_this50.referenceId).subscribe(function (response) {
+              _this51.operatorApiService.GetCustomTripDetails(_this51.referenceId).subscribe(function (response) {
                 if (response.Status && response.Data && response.Data.TripRequest) {
-                  _this50.numberOfDays = response.Data.TripRequest.Duration;
+                  _this51.numberOfDays = response.Data.TripRequest.Duration;
 
-                  _this50.createItinerary();
+                  _this51.createItinerary();
                 }
               });
             }
 
             if (params['participentId']) {
-              _this50.participentId = +params['participentId'];
-              _this50.isRevisedOffer = true;
+              _this51.participentId = +params['participentId'];
+              _this51.isRevisedOffer = true;
             } else {
-              _this50.isRevisedOffer = false;
+              _this51.isRevisedOffer = false;
             }
           });
           this.offerForm = this.fb.group({
@@ -10243,7 +10303,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "submitOffer",
         value: function submitOffer() {
-          var _this51 = this;
+          var _this52 = this;
 
           // Reset errors
           this.offerError = false;
@@ -10309,21 +10369,21 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
               formData.append("ParticipantId", this.participentId.toString());
               this.operatorApiService.CreateRevisedOffer(formData).subscribe(function (response) {
                 if (response.Status) {
-                  _this51.toastr.success('Your offer has been submitted successfully. The tourist has been notified, and your offer status is now marked as ‘Pending’ for their review', 'Success');
+                  _this52.toastr.success('Your offer has been submitted successfully. The tourist has been notified, and your offer status is now marked as ‘Pending’ for their review', 'Success');
 
-                  _this51.router.navigate(['/custom-tour-requests', _this51.referenceId]); // Navigate after submission
+                  _this52.router.navigate(['/custom-tour-requests', _this52.referenceId]); // Navigate after submission
 
                 } else {
                   if (response.Data && Array.isArray(response.Data) && response.Data.length > 0) {
                     response.Data.forEach(function (errorMsg) {
-                      _this51.toastr.error(errorMsg, 'Validation Error');
+                      _this52.toastr.error(errorMsg, 'Validation Error');
                     });
                   } else {
-                    _this51.toastr.error('Failed to submit revised offer: ' + response.Message, 'Error');
+                    _this52.toastr.error('Failed to submit revised offer: ' + response.Message, 'Error');
                   }
                 }
               }, function (error) {
-                _this51.toastr.error('An error occurred while submitting the revised offer.', 'Error');
+                _this52.toastr.error('An error occurred while submitting the revised offer.', 'Error');
               });
             }
           } else {
@@ -10331,21 +10391,21 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
               formData.append('ReqId', this.referenceId.toString());
               this.operatorApiService.SubmitAnOffer(formData).subscribe(function (response) {
                 if (response.Status) {
-                  _this51.toastr.success('Your offer has been submitted successfully. The tourist has been notified, and your offer status is now marked as ‘Pending’ for their review', 'Success');
+                  _this52.toastr.success('Your offer has been submitted successfully. The tourist has been notified, and your offer status is now marked as ‘Pending’ for their review', 'Success');
 
-                  _this51.router.navigate(['/custom-tour-requests', _this51.referenceId]); // Navigate after submission
+                  _this52.router.navigate(['/custom-tour-requests', _this52.referenceId]); // Navigate after submission
 
                 } else {
                   if (response.Data && Array.isArray(response.Data) && response.Data.length > 0) {
                     response.Data.forEach(function (errorMsg) {
-                      _this51.toastr.error(errorMsg, 'Validation Error');
+                      _this52.toastr.error(errorMsg, 'Validation Error');
                     });
                   } else {
-                    _this51.toastr.error('Failed to submit offer: ' + response.Message, 'Error');
+                    _this52.toastr.error('Failed to submit offer: ' + response.Message, 'Error');
                   }
                 }
               }, function (error) {
-                _this51.toastr.error('An error occurred while submitting the offer.', 'Error');
+                _this52.toastr.error('An error occurred while submitting the offer.', 'Error');
               });
             }
           }
@@ -10607,12 +10667,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       _createClass(PkgdetailsComponent, [{
         key: "ngOnInit",
         value: function ngOnInit() {
-          var _this52 = this;
+          var _this53 = this;
 
           this.operatorServiceService.GetOperatorPackages().subscribe(function (data) {
             if (data.Status) {
               // console.log(data.Data);
-              _this52.operatorPackage = data.Data;
+              _this53.operatorPackage = data.Data;
             }
           });
         }
@@ -10736,26 +10796,26 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "loadAllPackages",
         value: function loadAllPackages() {
-          var _this53 = this;
+          var _this54 = this;
 
           this.operatorPackageServiceService.GetPackageById(this.packageId).subscribe(function (data) {
             if (data.Data) {
-              _this53.availableOperatorPackage = data.Data;
-              _this53.totaCurrentAccount = _this53.availableOperatorPackage.CurrentPrice;
+              _this54.availableOperatorPackage = data.Data;
+              _this54.totaCurrentAccount = _this54.availableOperatorPackage.CurrentPrice;
             }
           });
         }
       }, {
         key: "SubscribePackage",
         value: function SubscribePackage() {
-          var _this54 = this;
+          var _this55 = this;
 
           this.operatorPackageServiceService.SubscribePackage(this.packageId).subscribe(function (data) {
             if (data) {
               if (data.Status) {
-                _this54.genricUtlitis.showMessageToast('Your package successfully subscribe', true, _Services_Utilities_genaric_service__WEBPACK_IMPORTED_MODULE_5__["PrintMedia"].Conformation);
+                _this55.genricUtlitis.showMessageToast('Your package successfully subscribe', true, _Services_Utilities_genaric_service__WEBPACK_IMPORTED_MODULE_5__["PrintMedia"].Conformation);
               } else {
-                _this54.genricUtlitis.showMessageToast(data.Mssage, false, _Services_Utilities_genaric_service__WEBPACK_IMPORTED_MODULE_5__["PrintMedia"].Error);
+                _this55.genricUtlitis.showMessageToast(data.Mssage, false, _Services_Utilities_genaric_service__WEBPACK_IMPORTED_MODULE_5__["PrintMedia"].Error);
               }
             }
           });
@@ -10949,7 +11009,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "addFacilities",
         value: function addFacilities() {
-          var _this55 = this;
+          var _this56 = this;
 
           debugger;
           this.DefultTrip = Object.assign({}, this.settingUtitls.getDraftTrip);
@@ -10997,9 +11057,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             this.settingUtitls.setDraftTrip = this.DefultTrip;
             this.tripSerivce.AddTripdefult(this.DefultTrip).subscribe(function (data) {
               if (data.Status) {
-                _this55.genricUtlitis.showMessageToast('Trip Info saved as draft', true, src_app_Services_Utilities_genaric_service__WEBPACK_IMPORTED_MODULE_6__["PrintMedia"].Conformation);
+                _this56.genricUtlitis.showMessageToast('Trip Info saved as draft', true, src_app_Services_Utilities_genaric_service__WEBPACK_IMPORTED_MODULE_6__["PrintMedia"].Conformation);
 
-                _this55.childEmitter.emit('Fac');
+                _this56.childEmitter.emit('Fac');
               }
             });
           } // console.log(this.facilities);
@@ -11192,21 +11252,45 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         this.childEmitter = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
         this.charLength = 0;
         this.IternaryPlan = new src_app_classes_trip_TripModel__WEBPACK_IMPORTED_MODULE_2__["IternaryPlan"]();
+        this.IternaryPlanList = [];
         this.tripModel = new src_app_classes_trip_TripModel__WEBPACK_IMPORTED_MODULE_2__["TripModel"]();
         this.DefultTrip = new src_app_classes_trip_TripModel__WEBPACK_IMPORTED_MODULE_2__["TripDefult"]();
       }
 
       _createClass(ItineraryPlaneComponent, [{
+        key: "totalNumberofDays",
+        get: function get() {
+          return this._totalNumberofDays;
+        },
+        set: function set(value) {
+          console.log('totalNumberofDays setter called with value:', value);
+          this._totalNumberofDays = value;
+
+          if (value && value > 0 && (!this.IternaryPlanList || this.IternaryPlanList.length === 0)) {
+            // Only load if list is empty (to avoid overwriting draft data)
+            console.log('Loading day trips with', value, 'days');
+            this.loadDayTrips();
+          }
+        }
+      }, {
         key: "ngOnInit",
-        value: function ngOnInit() {
-          this.loadDayTrips(); // console.log(this.totalNumberofDays);
+        value: function ngOnInit() {// loadDayTrips will be called when totalNumberofDays is set by parent component
+          // console.log(this.totalNumberofDays);
         }
       }, {
         key: "ngAfterViewInit",
         value: function ngAfterViewInit() {
           this.DefultTrip = this.settingUtitls.getDraftTrip;
-          this.tripModel = JSON.parse(this.DefultTrip.TripString);
-          this.loaddraftItinrayplane();
+
+          if (this.DefultTrip && this.DefultTrip.TripString) {
+            this.tripModel = JSON.parse(this.DefultTrip.TripString);
+            this.loaddraftItinrayplane();
+          } // If no draft data and days haven't been loaded yet, ensure they're loaded
+
+
+          if ((!this.IternaryPlanList || this.IternaryPlanList.length === 0) && this.totalNumberofDays && this.totalNumberofDays > 0) {
+            this.loadDayTrips();
+          }
         }
       }, {
         key: "ngOnDestroy",
@@ -11217,14 +11301,25 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "loadDayTrips",
         value: function loadDayTrips() {
+          console.log('loadDayTrips called, totalNumberofDays:', this.totalNumberofDays);
+
+          if (!this.totalNumberofDays || this.totalNumberofDays <= 0) {
+            console.warn('totalNumberofDays is not set or invalid:', this.totalNumberofDays);
+            return;
+          }
+
           this.IternaryPlanList = [];
 
           for (var i = 0; i < this.totalNumberofDays; i++) {
             this.IternaryPlan = new src_app_classes_trip_TripModel__WEBPACK_IMPORTED_MODULE_2__["IternaryPlan"]();
             this.IternaryPlan.DayName = 'Day ' + (i + 1);
             this.IternaryPlan.Id = i + 1;
+            this.IternaryPlan.DayPlan = []; // Initialize DayPlan array
+
             this.IternaryPlanList.push(this.IternaryPlan);
           }
+
+          console.log('IternaryPlanList loaded with', this.IternaryPlanList.length, 'items');
         }
       }, {
         key: "checkCharacterLength",
@@ -11273,7 +11368,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "submistAsDraft",
         value: function submistAsDraft() {
-          var _this56 = this;
+          var _this57 = this;
 
           if (this.tripModel && this.IternaryPlanList && this.IternaryPlanList.length > 0) {
             this.tripModel.IternaryPlan = this.IternaryPlanList;
@@ -11282,9 +11377,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             this.settingUtitls.setDraftTrip = this.DefultTrip;
             this.tripSerivce.AddTripdefult(this.DefultTrip).subscribe(function (data) {
               if (data.Status) {
-                _this56.genricUtlitis.showMessageToast('Trip Basic Info saved as draft', true, src_app_Services_Utilities_genaric_service__WEBPACK_IMPORTED_MODULE_5__["PrintMedia"].Conformation);
+                _this57.genricUtlitis.showMessageToast('Trip Basic Info saved as draft', true, src_app_Services_Utilities_genaric_service__WEBPACK_IMPORTED_MODULE_5__["PrintMedia"].Conformation);
 
-                _this56.childEmitter.emit('Itr');
+                _this57.childEmitter.emit('Itr');
               }
             });
           }
@@ -11292,9 +11387,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "loaddraftItinrayplane",
         value: function loaddraftItinrayplane() {
-          if (this.tripModel && this.tripModel.IternaryPlan.length > 0) {
+          if (this.tripModel && this.tripModel.IternaryPlan && this.tripModel.IternaryPlan.length > 0) {
             this.IternaryPlanList = [];
             this.IternaryPlanList = this.tripModel.IternaryPlan;
+          } else if ((!this.IternaryPlanList || this.IternaryPlanList.length === 0) && this.totalNumberofDays && this.totalNumberofDays > 0) {
+            // If no draft data exists, load days from totalNumberofDays
+            this.loadDayTrips();
           }
         }
       }]);
@@ -11497,14 +11595,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "loadBoostPackages",
         value: function loadBoostPackages() {
-          var _this57 = this;
+          var _this58 = this;
 
           this.boostTrip.GetUsersBoostPackage().subscribe(function (data) {
             if (data.Status) {
-              _this57.BoostPackagesUser = data.Data;
+              _this58.BoostPackagesUser = data.Data;
 
-              for (var i = 0; i < _this57.BoostPackagesUser.length; i++) {
-                if (_this57.BoostPackagesUser[i].IS_Payment) _this57.isBoostAvailable = true;
+              for (var i = 0; i < _this58.BoostPackagesUser.length; i++) {
+                if (_this58.BoostPackagesUser[i].IS_Payment) _this58.isBoostAvailable = true;
               }
             }
           });
@@ -11512,20 +11610,20 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "postTrip",
         value: function postTrip() {
-          var _this58 = this;
+          var _this59 = this;
 
           if (this.tripModel) {
             if (this.tripModel) {
               this.tripSerivce.AddTrip(this.tripModel).subscribe(function (data) {
                 if (data.Status) {
-                  if (_this58.DefultTrip) {
-                    _this58.DelDraft(_this58.DefultTrip.Id);
+                  if (_this59.DefultTrip) {
+                    _this59.DelDraft(_this59.DefultTrip.Id);
                   }
 
-                  _this58.openShareTripModal(data.RefId); // this.genricUtlitis.showMessageToast("Trip posted successfully.", true, PrintMedia.Conformation);
+                  _this59.openShareTripModal(data.RefId); // this.genricUtlitis.showMessageToast("Trip posted successfully.", true, PrintMedia.Conformation);
 
                 } else {
-                  _this58.genricUtlitis.showMessageToast(data.Message, false, src_app_Services_Utilities_genaric_service__WEBPACK_IMPORTED_MODULE_4__["PrintMedia"].Conformation);
+                  _this59.genricUtlitis.showMessageToast(data.Message, false, src_app_Services_Utilities_genaric_service__WEBPACK_IMPORTED_MODULE_4__["PrintMedia"].Conformation);
                 }
               });
             }
@@ -11563,27 +11661,27 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "loadBuyBoostPackgesPopup",
         value: function loadBuyBoostPackgesPopup() {
-          var _this59 = this;
+          var _this60 = this;
 
           var factory = this.componentFactoryResolver.resolveComponentFactory(_buy_boost_packages_buy_boost_packages_popup_component__WEBPACK_IMPORTED_MODULE_8__["BuyBoostPackagesPopUpComponent"]);
           this.BuyBoostPackagesRef.clear();
           this.cmpRef = this.BuyBoostPackagesRef.createComponent(factory);
           this.cmpRef.instance.onDistory.subscribe(function () {
-            _this59.tripModel.IsBoost = false;
+            _this60.tripModel.IsBoost = false;
 
-            _this59.loadBoostPackages();
+            _this60.loadBoostPackages();
 
-            _this59.cmpRef.destroy();
+            _this60.cmpRef.destroy();
           });
         }
       }, {
         key: "loadCancellationPolicies",
         value: function loadCancellationPolicies() {
-          var _this60 = this;
+          var _this61 = this;
 
           this.tripUtilities.GetCancellationOptions().subscribe(function (data) {
             if (data.Status) {
-              _this60.cancellationPolicies = data.Data;
+              _this61.cancellationPolicies = data.Data;
             }
           });
         }
@@ -11760,23 +11858,23 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "fileBase64",
         value: function fileBase64(files) {
-          var _this61 = this;
+          var _this62 = this;
 
           this.TripImagesList = [];
           var reader = new FileReader();
           reader.readAsDataURL(files);
 
           reader.onload = function () {
-            _this61.img = reader.result; // console.log(reader.result)
+            _this62.img = reader.result; // console.log(reader.result)
 
             var tipimageSingle = new src_app_classes_trip_TripModel__WEBPACK_IMPORTED_MODULE_2__["TripImages"]();
-            tipimageSingle.ImageUrl = _this61.img;
+            tipimageSingle.ImageUrl = _this62.img;
 
-            _this61.TripImagesList.push(tipimageSingle);
+            _this62.TripImagesList.push(tipimageSingle);
           };
 
           reader.onloadend = function () {
-            _this61.collectionAllImages(); // this.files = [];
+            _this62.collectionAllImages(); // this.files = [];
 
           };
 
@@ -11800,13 +11898,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "submitImagesAsDraft",
         value: function submitImagesAsDraft() {
-          var _this62 = this;
+          var _this63 = this;
 
           // console.log(this.files)
           if (this.files.length > 0) {
             this.files.forEach(function (element, key) {
               // console.log(element)
-              _this62.fileBase64(element);
+              _this63.fileBase64(element);
             });
           } else if (this.tripModel.TripImages.length > 0) {
             // console.log('------------here---------------')
@@ -11827,7 +11925,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "submitAfterCompleteImageProcess",
         value: function submitAfterCompleteImageProcess() {
-          var _this63 = this;
+          var _this64 = this;
 
           if (this.tripModel) {
             // tslint:disable-next-line:prefer-for-of
@@ -11843,13 +11941,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
               if (data.Status) {
                 // tslint:disable-next-line: prefer-for-of
                 for (var i = 0; i < data.Data.length; i++) {
-                  _this63.TripImages = new src_app_classes_trip_TripModel__WEBPACK_IMPORTED_MODULE_2__["TripImages"]();
-                  _this63.TripImages.ImageUrl = data.Data[i];
+                  _this64.TripImages = new src_app_classes_trip_TripModel__WEBPACK_IMPORTED_MODULE_2__["TripImages"]();
+                  _this64.TripImages.ImageUrl = data.Data[i];
 
-                  _this63.tripModel.TripImages.push(_this63.TripImages);
+                  _this64.tripModel.TripImages.push(_this64.TripImages);
                 }
 
-                _this63.AddUpdateDraftTrip();
+                _this64.AddUpdateDraftTrip();
               }
             });
           }
@@ -11863,7 +11961,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "AddUpdateDraftTrip",
         value: function AddUpdateDraftTrip() {
-          var _this64 = this;
+          var _this65 = this;
 
           var callFrom = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "";
           this.DefultTrip.TripString = JSON.stringify(this.tripModel);
@@ -11871,11 +11969,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           this.settingUtitls.setDraftTrip = this.DefultTrip;
           this.tripSerivce.AddTripdefult(this.DefultTrip).subscribe(function (r) {
             if (r.Status) {
-              _this64.files = [];
+              _this65.files = [];
               callFrom !== "delete" ? $("#tripImagesModal").modal("hide") : "";
               $("#file-4").fileinput("clear");
 
-              _this64.childEmitter.emit("Img");
+              _this65.childEmitter.emit("Img");
             }
           });
         }
@@ -11988,18 +12086,18 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "getBoostPackges",
         value: function getBoostPackges() {
-          var _this65 = this;
+          var _this66 = this;
 
           this.boostTrip.GetTripBoostPackages().subscribe(function (data) {
             if (data.Status) {
-              _this65.boostPackgesList = data.Data;
+              _this66.boostPackgesList = data.Data;
             }
           });
         }
       }, {
         key: "Buy",
         value: function Buy(value) {
-          var _this66 = this;
+          var _this67 = this;
 
           var subscribeBoostPackage = new src_app_classes_trip_BoostPackage__WEBPACK_IMPORTED_MODULE_2__["SubscribeBoostPackage"]();
           subscribeBoostPackage.Id = 0;
@@ -12018,12 +12116,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           if (confirm('Are you sure?')) {
             this.boostTrip.BoostPackageSubscription(subscribeBoostPackage).subscribe(function (data) {
               if (data.Status) {
-                _this66.showPayment = true;
-                _this66.orderId = data.Data.Id;
+                _this67.showPayment = true;
+                _this67.orderId = data.Data.Id;
 
-                _this66.genricUtlitis.showMessageToast(data.Message, true, 'Success!');
+                _this67.genricUtlitis.showMessageToast(data.Message, true, 'Success!');
               } else {
-                _this66.genricUtlitis.showMessageToast(data.Message, false, 'Error!');
+                _this67.genricUtlitis.showMessageToast(data.Message, false, 'Error!');
               }
             });
           } else {
@@ -12390,7 +12488,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       _createClass(PosttripComponent, [{
         key: "ngOnInit",
         value: function ngOnInit() {
-          var _this67 = this;
+          var _this68 = this;
 
           // 2020-05-10
           this.today = new Date();
@@ -12406,8 +12504,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           this.loadCategories();
           this.loadUserPromo();
           this.getCountries(function () {
-            if (_this67.draftTripId > 0) {
-              _this67.loadAllDraftTrips(_this67.draftTripId);
+            if (_this68.draftTripId > 0) {
+              _this68.loadAllDraftTrips(_this68.draftTripId);
             }
           });
           console.log('------post trip ng on init------');
@@ -12415,12 +12513,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "getCountries",
         value: function getCountries(callback) {
-          var _this68 = this;
+          var _this69 = this;
 
           this.tripUtilites.GetCountry().subscribe(function (data) {
             if (data.Status) {
-              _this68.fromCountries = data.Data;
-              _this68.toCountries = data.Data;
+              _this69.fromCountries = data.Data;
+              _this69.toCountries = data.Data;
               callback();
             }
           });
@@ -12428,20 +12526,20 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "onFromCountryChange",
         value: function onFromCountryChange() {
-          var _this69 = this;
+          var _this70 = this;
 
           this.postForm.controls.FromCity.setValue('');
           this.postForm.controls.FromVistId.setValue('');
           var selectedCountry = this.fromCountries.find(function (c) {
-            return c.Name === _this69.postForm.value.FromCountry;
+            return c.Name === _this70.postForm.value.FromCountry;
           });
 
           if (selectedCountry) {
             this.tripUtilites.GetVisitPlace(selectedCountry.Id).subscribe(function (data) {
               if (data.Status) {
-                _this69.fromCities = data.Data;
+                _this70.fromCities = data.Data;
               } else {
-                _this69.fromCities = [];
+                _this70.fromCities = [];
               }
             });
           } else {
@@ -12451,20 +12549,20 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "onToCountryChange",
         value: function onToCountryChange() {
-          var _this70 = this;
+          var _this71 = this;
 
           this.postForm.controls.ToCity.setValue('');
           this.postForm.controls.ToVistId.setValue('');
           var selectedCountry = this.toCountries.find(function (c) {
-            return c.Name === _this70.postForm.value.ToCountry;
+            return c.Name === _this71.postForm.value.ToCountry;
           });
 
           if (selectedCountry) {
             this.tripUtilites.GetVisitPlace(selectedCountry.Id).subscribe(function (data) {
               if (data.Status) {
-                _this70.toCities = data.Data;
+                _this71.toCities = data.Data;
               } else {
-                _this70.toCities = [];
+                _this71.toCities = [];
               }
             });
           } else {
@@ -12595,7 +12693,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "preview",
         value: function preview(files) {
-          var _this71 = this;
+          var _this72 = this;
 
           if (files.length === 0) {
             return;
@@ -12613,19 +12711,19 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           reader.readAsDataURL(files[0]);
 
           reader.onload = function (_event) {
-            _this71.imgURL = reader.result;
-            _this71.TempTripImagesList = [];
-            _this71.TempTripImages = new _classes_trip_TripModel__WEBPACK_IMPORTED_MODULE_5__["TempTripImagesList"]();
-            _this71.TempTripImages.ImageString = _this71.imgURL;
+            _this72.imgURL = reader.result;
+            _this72.TempTripImagesList = [];
+            _this72.TempTripImages = new _classes_trip_TripModel__WEBPACK_IMPORTED_MODULE_5__["TempTripImagesList"]();
+            _this72.TempTripImages.ImageString = _this72.imgURL;
 
-            _this71.TempTripImagesList.push(_this71.TempTripImages);
+            _this72.TempTripImagesList.push(_this72.TempTripImages);
 
-            _this71.tripSerivce.AddTempTripImages(_this71.TempTripImagesList).subscribe(function (data) {
+            _this72.tripSerivce.AddTempTripImages(_this72.TempTripImagesList).subscribe(function (data) {
               if (data.Status) {
                 // tslint:disable-next-line: prefer-for-of
-                _this71.tripModel.TripBasicInfo.FeaturesImage = data.Data[0];
-                _this71.TempTripImages.ImageString = '';
-                _this71.imgURL = _this71.baseImgURL + data.Data[0];
+                _this72.tripModel.TripBasicInfo.FeaturesImage = data.Data[0];
+                _this72.TempTripImages.ImageString = '';
+                _this72.imgURL = _this72.baseImgURL + data.Data[0];
               }
             });
           };
@@ -12633,7 +12731,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "loadItineraryInfo",
         value: function loadItineraryInfo() {
-          var _this72 = this;
+          var _this73 = this;
 
           this.ItineraryInfo.clear();
           var factory = this.componentFactoryResolver.resolveComponentFactory(_TripItinerary_ItineraryPlane_ItineraryPlane_component__WEBPACK_IMPORTED_MODULE_2__["ItineraryPlaneComponent"]);
@@ -12642,14 +12740,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
           if (!!this.cmpRef.instance.childEmitter) {
             this.cmpRef.instance.childEmitter.subscribe(function (data) {
-              _this72.updateButtonStatus(data);
+              _this73.updateButtonStatus(data);
             });
           }
         }
       }, {
         key: "loadFaclitiesInfo",
         value: function loadFaclitiesInfo() {
-          var _this73 = this;
+          var _this74 = this;
 
           this.FacilitiesInfo.clear();
           var factory = this.componentFactoryResolver.resolveComponentFactory(_TripItinerary_Facilities_facilities_trip_facilities_trip_component__WEBPACK_IMPORTED_MODULE_3__["FacilitiesTripComponent"]);
@@ -12659,14 +12757,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
           if (!!this.cmpRef.instance.childEmitter) {
             this.cmpRef.instance.childEmitter.subscribe(function (data) {
-              _this73.updateButtonStatus(data);
+              _this74.updateButtonStatus(data);
             });
           }
         }
       }, {
         key: "loadTripImages",
         value: function loadTripImages() {
-          var _this74 = this;
+          var _this75 = this;
 
           this.TripImagesInfo.clear();
           var factory = this.componentFactoryResolver.resolveComponentFactory(_TripItinerary_TripImages_tripImages_tripImages_component__WEBPACK_IMPORTED_MODULE_4__["TripImagesComponent"]);
@@ -12674,14 +12772,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
           if (!!this.cmpRef.instance.childEmitter) {
             this.cmpRef.instance.childEmitter.subscribe(function (data) {
-              _this74.updateButtonStatus(data);
+              _this75.updateButtonStatus(data);
             });
           } // Add this subscription
 
 
           if (!!this.cmpRef.instance.hasImagesChange) {
             this.cmpRef.instance.hasImagesChange.subscribe(function (status) {
-              _this74.photosStepCompleted = status;
+              _this75.photosStepCompleted = status;
             });
           }
         }
@@ -12699,37 +12797,37 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "loadCategories",
         value: function loadCategories() {
-          var _this75 = this;
+          var _this76 = this;
 
           this.tripSerivce.GetTripCategories().subscribe(function (data) {
             if (data.Status) {
-              _this75.tripCategories = data.Data; // console.log(data);
+              _this76.tripCategories = data.Data; // console.log(data);
             }
           });
         }
       }, {
         key: "loadVisitPlaces",
         value: function loadVisitPlaces() {
-          var _this76 = this;
+          var _this77 = this;
 
           this.tripSerivce.GetTripVisitPlaces().subscribe(function (data) {
             if (data) {
-              _this76.tripVisitPlaces = data.Data;
+              _this77.tripVisitPlaces = data.Data;
             }
           });
         }
       }, {
         key: "loadUserPromo",
         value: function loadUserPromo() {
-          var _this77 = this;
+          var _this78 = this;
 
           this.tripPromoService.GetPromosByUser().subscribe(function (data) {
             if (data && data.Status) {
-              _this77.usersPromoList = data.Data;
+              _this78.usersPromoList = data.Data;
 
-              for (var i = 0; i < _this77.usersPromoList.length; i++) {
-                if (_this77.usersPromoList[i].ISExpire == 0) {
-                  _this77.promoExist = true;
+              for (var i = 0; i < _this78.usersPromoList.length; i++) {
+                if (_this78.usersPromoList[i].ISExpire == 0) {
+                  _this78.promoExist = true;
                 }
               } // console.log(this.promoExist);
 
@@ -12771,7 +12869,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "sumbiteTripsBasicInfo",
         value: function sumbiteTripsBasicInfo() {
-          var _this78 = this;
+          var _this79 = this;
 
           console.log('sumbiteTripsBasicInfo called');
           debugger;
@@ -12790,7 +12888,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           if (this.postForm.invalid) {
             var errorMessages = 'Please correct the following errors:\n';
             Object.keys(this.postForm.controls).forEach(function (key) {
-              var controlErrors = _this78.postForm.get(key).errors;
+              var controlErrors = _this79.postForm.get(key).errors;
 
               if (controlErrors != null) {
                 errorMessages += "- ".concat(key, ": ").concat(JSON.stringify(controlErrors), "\n");
@@ -12875,14 +12973,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           this.settingUtitls.setDraftTrip = this.DefultTrip;
           this.tripSerivce.AddTripdefult(this.DefultTrip).subscribe(function (data) {
             if (data.Status) {
-              _this78.DefultTrip.Id = data.Data.Id;
+              _this79.DefultTrip.Id = data.Data.Id;
 
-              _this78.genricUtlitis.showMessageToast('Trip Basic Info saved as draft', true, _Services_Utilities_genaric_service__WEBPACK_IMPORTED_MODULE_11__["PrintMedia"].Conformation);
+              _this79.genricUtlitis.showMessageToast('Trip Basic Info saved as draft', true, _Services_Utilities_genaric_service__WEBPACK_IMPORTED_MODULE_11__["PrintMedia"].Conformation);
 
-              if (_this78.DefultTrip.Id && _this78.DefultTrip.Id > 0) {
-                _this78.showNextStep();
+              if (_this79.DefultTrip.Id && _this79.DefultTrip.Id > 0) {
+                _this79.showNextStep();
 
-                _this78.loadItineraryInfo();
+                _this79.loadItineraryInfo();
               }
             }
           });
@@ -12945,72 +13043,72 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "loadAllDraftTrips",
         value: function loadAllDraftTrips(Id) {
-          var _this79 = this;
+          var _this80 = this;
 
           this.tripSerivce.GetDraftTripById(Id).subscribe(function (data) {
             if (data && data.Status) {
-              _this79.DefultTrip = data.Data;
-              _this79.tripModel = JSON.parse(_this79.DefultTrip.TripString);
-              console.log('Loaded draft trip model:', _this79.tripModel);
-              _this79.imgURL = _this79.tripModel.TripBasicInfo.BaseStringFeaturesImages && _this79.tripModel.TripBasicInfo.BaseStringFeaturesImages;
-              _this79.settingUtitls.setDraftTrip = _this79.DefultTrip;
+              _this80.DefultTrip = data.Data;
+              _this80.tripModel = JSON.parse(_this80.DefultTrip.TripString);
+              console.log('Loaded draft trip model:', _this80.tripModel);
+              _this80.imgURL = _this80.tripModel.TripBasicInfo.BaseStringFeaturesImages && _this80.tripModel.TripBasicInfo.BaseStringFeaturesImages;
+              _this80.settingUtitls.setDraftTrip = _this80.DefultTrip;
 
-              _this79.postForm.controls.CurrentAmount.setValue(_this79.tripModel.tripPrices.CurrentAmount);
+              _this80.postForm.controls.CurrentAmount.setValue(_this80.tripModel.tripPrices.CurrentAmount);
 
-              _this79.postForm.controls.Title.setValue(_this79.tripModel.TripBasicInfo.Title);
+              _this80.postForm.controls.Title.setValue(_this80.tripModel.TripBasicInfo.Title);
 
-              _this79.postForm.controls.Details.setValue(_this79.tripModel.TripBasicInfo.Details);
+              _this80.postForm.controls.Details.setValue(_this80.tripModel.TripBasicInfo.Details);
 
-              _this79.postForm.controls.CategoriesId.setValue(_this79.tripModel.TripBasicInfo.CategoriesId);
+              _this80.postForm.controls.CategoriesId.setValue(_this80.tripModel.TripBasicInfo.CategoriesId);
 
-              _this79.postForm.controls.StartDate.setValue(_this79.tripModel.TripBasicInfo.StartDateTime);
+              _this80.postForm.controls.StartDate.setValue(_this80.tripModel.TripBasicInfo.StartDateTime);
 
-              _this79.postForm.controls.EndDateTime.setValue(_this79.tripModel.TripBasicInfo.EndDateTime);
+              _this80.postForm.controls.EndDateTime.setValue(_this80.tripModel.TripBasicInfo.EndDateTime);
 
-              _this79.postForm.controls.ActualAmount.setValue(_this79.tripModel.tripPrices.ActualAmount);
+              _this80.postForm.controls.ActualAmount.setValue(_this80.tripModel.tripPrices.ActualAmount);
 
-              _this79.postForm.controls.DiscountPercentage.setValue(_this79.tripModel.tripPrices.DiscountPercentage);
+              _this80.postForm.controls.DiscountPercentage.setValue(_this80.tripModel.tripPrices.DiscountPercentage);
 
-              _this79.postForm.controls.HavePromo.setValue(_this79.tripModel.tripPrices.HavePromo);
+              _this80.postForm.controls.HavePromo.setValue(_this80.tripModel.tripPrices.HavePromo);
 
-              _this79.postForm.controls.Promo_Key.setValue(_this79.tripModel.tripPrices.PromoCode);
+              _this80.postForm.controls.Promo_Key.setValue(_this80.tripModel.tripPrices.PromoCode);
 
-              _this79.applyDiscount();
+              _this80.applyDiscount();
 
               var cityLoadingObservables = [];
               var fromCountryId;
               var toCountryId;
-              console.log('FromCountry:', _this79.tripModel.TripBasicInfo.FromCountry);
+              console.log('FromCountry:', _this80.tripModel.TripBasicInfo.FromCountry);
 
-              if (_this79.tripModel.TripBasicInfo.FromCountry) {
-                var fromCountry = _this79.fromCountries.find(function (c) {
-                  return c.Id == _this79.tripModel.TripBasicInfo.FromCountry;
+              if (_this80.tripModel.TripBasicInfo.FromCountry) {
+                var fromCountry = _this80.fromCountries.find(function (c) {
+                  return c.Id == _this80.tripModel.TripBasicInfo.FromCountry;
                 });
 
                 console.log('Found fromCountry:', fromCountry);
 
                 if (fromCountry) {
-                  _this79.postForm.controls.FromCountry.setValue(fromCountry.Name);
+                  _this80.postForm.controls.FromCountry.setValue(fromCountry.Name);
 
                   fromCountryId = fromCountry.Id;
-                  cityLoadingObservables.push(_this79.tripUtilites.GetVisitPlace(fromCountry.Id));
+                  cityLoadingObservables.push(_this80.tripUtilites.GetVisitPlace(fromCountry.Id));
                 }
               }
 
-              console.log('ToCountry:', _this79.tripModel.TripBasicInfo.ToCountry);
+              console.log('ToCountry:', _this80.tripModel.TripBasicInfo.ToCountry);
 
-              if (_this79.tripModel.TripBasicInfo.ToCountry) {
-                var toCountry = _this79.toCountries.find(function (c) {
-                  return c.Id == _this79.tripModel.TripBasicInfo.ToCountry;
+              if (_this80.tripModel.TripBasicInfo.ToCountry) {
+                var toCountry = _this80.toCountries.find(function (c) {
+                  return c.Id == _this80.tripModel.TripBasicInfo.ToCountry;
                 });
 
                 console.log('Found toCountry:', toCountry);
 
                 if (toCountry) {
-                  _this79.postForm.controls.ToCountry.setValue(toCountry.Name);
+                  _this80.postForm.controls.ToCountry.setValue(toCountry.Name);
 
                   toCountryId = toCountry.Id;
-                  cityLoadingObservables.push(_this79.tripUtilites.GetVisitPlace(toCountry.Id));
+                  cityLoadingObservables.push(_this80.tripUtilites.GetVisitPlace(toCountry.Id));
                 }
               }
 
@@ -13030,49 +13128,49 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                   }
 
                   if (fromCityData.length > 0) {
-                    _this79.fromCities = fromCityData;
-                    console.log("Loaded fromCities:", _this79.fromCities);
-                    console.log("FromVistId:", _this79.tripModel.TripBasicInfo.FromVistId);
+                    _this80.fromCities = fromCityData;
+                    console.log("Loaded fromCities:", _this80.fromCities);
+                    console.log("FromVistId:", _this80.tripModel.TripBasicInfo.FromVistId);
 
-                    if (_this79.tripModel.TripBasicInfo.FromVistId) {
-                      var fromCity = _this79.fromCities.find(function (c) {
-                        return c.Id == _this79.tripModel.TripBasicInfo.FromVistId;
+                    if (_this80.tripModel.TripBasicInfo.FromVistId) {
+                      var fromCity = _this80.fromCities.find(function (c) {
+                        return c.Id == _this80.tripModel.TripBasicInfo.FromVistId;
                       });
 
                       console.log("Found fromCity:", fromCity);
 
                       if (fromCity) {
-                        _this79.postForm.controls.FromVistId.setValue(_this79.tripModel.TripBasicInfo.FromVistId);
+                        _this80.postForm.controls.FromVistId.setValue(_this80.tripModel.TripBasicInfo.FromVistId);
 
-                        _this79.postForm.controls.FromCity.setValue(fromCity.PartialVisitPlace);
+                        _this80.postForm.controls.FromCity.setValue(fromCity.PartialVisitPlace);
                       }
                     }
                   }
 
                   if (toCityData.length > 0) {
-                    _this79.toCities = toCityData;
-                    console.log("Loaded toCities:", _this79.toCities);
-                    console.log("ToVistId:", _this79.tripModel.TripBasicInfo.ToVistId);
+                    _this80.toCities = toCityData;
+                    console.log("Loaded toCities:", _this80.toCities);
+                    console.log("ToVistId:", _this80.tripModel.TripBasicInfo.ToVistId);
 
-                    if (_this79.tripModel.TripBasicInfo.ToVistId) {
-                      var toCity = _this79.toCities.find(function (c) {
-                        return c.Id == _this79.tripModel.TripBasicInfo.ToVistId;
+                    if (_this80.tripModel.TripBasicInfo.ToVistId) {
+                      var toCity = _this80.toCities.find(function (c) {
+                        return c.Id == _this80.tripModel.TripBasicInfo.ToVistId;
                       });
 
                       console.log("Found toCity:", toCity);
 
                       if (toCity) {
-                        _this79.postForm.controls.ToVistId.setValue(_this79.tripModel.TripBasicInfo.ToVistId);
+                        _this80.postForm.controls.ToVistId.setValue(_this80.tripModel.TripBasicInfo.ToVistId);
 
-                        _this79.postForm.controls.ToCity.setValue(toCity.PartialVisitPlace);
+                        _this80.postForm.controls.ToCity.setValue(toCity.PartialVisitPlace);
                       }
                     }
                   }
 
-                  _this79.finalizeDraftLoading();
+                  _this80.finalizeDraftLoading();
                 });
               } else {
-                _this79.finalizeDraftLoading();
+                _this80.finalizeDraftLoading();
               }
             }
           });
@@ -13352,14 +13450,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "getCountries",
         value: function getCountries() {
-          var _this80 = this;
+          var _this81 = this;
 
           this.tripUtilites.GetCountry().subscribe(function (data) {
             if (data.Status) {
-              _this80.countries = data.Data;
+              _this81.countries = data.Data;
 
-              if (_this80.user.Country) {
-                _this80.onCountryChange();
+              if (_this81.user.Country) {
+                _this81.onCountryChange();
               }
             }
           });
@@ -13367,16 +13465,16 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "onCountryChange",
         value: function onCountryChange() {
-          var _this81 = this;
+          var _this82 = this;
 
           var selectedCountry = this.countries.find(function (c) {
-            return c.Name === _this81.user.Country;
+            return c.Name === _this82.user.Country;
           });
 
           if (selectedCountry) {
             this.tripUtilites.GetCity(selectedCountry.Id).subscribe(function (data) {
               if (data.Status) {
-                _this81.cities = data.Data;
+                _this82.cities = data.Data;
               }
             });
           }
@@ -13455,7 +13553,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "updateImage",
         value: function updateImage() {
-          var _this82 = this;
+          var _this83 = this;
 
           this.imgSubmit = true;
 
@@ -13468,20 +13566,20 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             this.user.ImageProfileString = this.imgURL.split(",")[1];
             this.userService.updateimage(this.user).subscribe(function (data) {
               if (data.Status) {
-                _this82.imgSubmit = false;
+                _this83.imgSubmit = false;
 
-                _this82.genricUtlitis.showMessageToast("Image updated successfully!", true, _Services_Utilities_genaric_service__WEBPACK_IMPORTED_MODULE_7__["PrintMedia"].Conformation);
+                _this83.genricUtlitis.showMessageToast("Image updated successfully!", true, _Services_Utilities_genaric_service__WEBPACK_IMPORTED_MODULE_7__["PrintMedia"].Conformation);
 
-                _this82.userService.GetUser().subscribe(function (data) {
+                _this83.userService.GetUser().subscribe(function (data) {
                   if (data) {
                     localStorage.setItem("UserProfile", JSON.stringify(data.Data));
                   }
 
-                  _this82.router.navigate(["/profile"]); // window.location.href = '/profile';
+                  _this83.router.navigate(["/profile"]); // window.location.href = '/profile';
 
                 });
               } else {
-                _this82.genricUtlitis.showMessageToast("Image could not be updated!", false, _Services_Utilities_genaric_service__WEBPACK_IMPORTED_MODULE_7__["PrintMedia"].Conformation);
+                _this83.genricUtlitis.showMessageToast("Image could not be updated!", false, _Services_Utilities_genaric_service__WEBPACK_IMPORTED_MODULE_7__["PrintMedia"].Conformation);
               }
             });
           }
@@ -13489,7 +13587,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "updateProfile",
         value: function updateProfile() {
-          var _this83 = this;
+          var _this84 = this;
 
           this.submitted = true;
 
@@ -13505,7 +13603,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             userToUpdate.PhoneNumber = this.selectedPhoneCode + "-" + this.user.PhoneNumber;
             userToUpdate.ContactNumber = this.selectedContactCode + "-" + this.user.ContactNumber;
             var selectedCountry = this.countries.find(function (c) {
-              return c.Name === _this83.user.Country;
+              return c.Name === _this84.user.Country;
             });
 
             if (selectedCountry) {
@@ -13513,7 +13611,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             }
 
             var selectedCity = this.cities.find(function (c) {
-              return c.Name === _this83.user.City;
+              return c.Name === _this84.user.City;
             });
 
             if (selectedCity) {
@@ -13524,19 +13622,19 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             delete userToUpdate.City;
             this.userService.updateuser(userToUpdate).subscribe(function (data) {
               if (data.Status) {
-                _this83.submitted = false;
+                _this84.submitted = false;
 
-                _this83.genricUtlitis.showMessageToast('Profile updated successfully', true, _Services_Utilities_genaric_service__WEBPACK_IMPORTED_MODULE_7__["PrintMedia"].Conformation);
+                _this84.genricUtlitis.showMessageToast('Profile updated successfully', true, _Services_Utilities_genaric_service__WEBPACK_IMPORTED_MODULE_7__["PrintMedia"].Conformation);
 
-                _this83.userService.GetUser().subscribe(function (data) {
+                _this84.userService.GetUser().subscribe(function (data) {
                   if (data) {
                     localStorage.setItem('UserProfile', JSON.stringify(data.Data));
                   }
 
-                  _this83.router.navigate(['/profile']);
+                  _this84.router.navigate(['/profile']);
                 });
               } else {
-                _this83.genricUtlitis.showMessageToast(data.Message, true, _Services_Utilities_genaric_service__WEBPACK_IMPORTED_MODULE_7__["PrintMedia"].Conformation);
+                _this84.genricUtlitis.showMessageToast(data.Message, true, _Services_Utilities_genaric_service__WEBPACK_IMPORTED_MODULE_7__["PrintMedia"].Conformation);
               }
             });
           }
@@ -13544,7 +13642,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "preview",
         value: function preview(files, type) {
-          var _this84 = this;
+          var _this85 = this;
 
           console.log(files);
 
@@ -13565,11 +13663,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
           reader.onload = function (_event) {
             if (type === "verify") {
-              _this84.verifyImgURL = reader.result;
+              _this85.verifyImgURL = reader.result;
             } else {
-              _this84.imgURL = reader.result;
+              _this85.imgURL = reader.result;
 
-              _this84.updateImage();
+              _this85.updateImage();
             }
           }; // console.log(this.imgURL)
 
@@ -13577,7 +13675,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "updatePassword",
         value: function updatePassword() {
-          var _this85 = this;
+          var _this86 = this;
 
           // debugger;
           this.psubmitted = true;
@@ -13594,20 +13692,20 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           if (this.UserPassword && this.passwordForm.valid) {
             this.userService.changePass(this.UserPassword).subscribe(function (data) {
               if (data.Status) {
-                _this85.psubmitted = false;
+                _this86.psubmitted = false;
                 localStorage.clear();
 
-                _this85.router.navigate(["/login"]);
+                _this86.router.navigate(["/login"]);
               }
 
-              _this85.genricUtlitis.showMessageToast(data.Message, data.Status, _Services_Utilities_genaric_service__WEBPACK_IMPORTED_MODULE_7__["PrintMedia"].Conformation);
+              _this86.genricUtlitis.showMessageToast(data.Message, data.Status, _Services_Utilities_genaric_service__WEBPACK_IMPORTED_MODULE_7__["PrintMedia"].Conformation);
             });
           }
         }
       }, {
         key: "verifyAccount",
         value: function verifyAccount() {
-          var _this86 = this;
+          var _this87 = this;
 
           // debugger;
           this.vsubmitted = true;
@@ -13630,21 +13728,21 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             this.userService.updateuserLicenece(this.user.Licence).subscribe(function (data) {
               if (data.Status) {
                 debugger;
-                _this86.vsubmitted = false;
+                _this87.vsubmitted = false;
 
-                _this86.genricUtlitis.showMessageToast("Licence updated successfully", true, _Services_Utilities_genaric_service__WEBPACK_IMPORTED_MODULE_7__["PrintMedia"].Conformation);
+                _this87.genricUtlitis.showMessageToast("Licence updated successfully", true, _Services_Utilities_genaric_service__WEBPACK_IMPORTED_MODULE_7__["PrintMedia"].Conformation);
 
-                _this86.userService.GetUser().subscribe(function (data) {
+                _this87.userService.GetUser().subscribe(function (data) {
                   if (data) {
                     localStorage.setItem("UserProfile", JSON.stringify(data.Data));
                   }
 
-                  _this86.router.navigate(["/profile"]); // window.location.href = '/profile';
+                  _this87.router.navigate(["/profile"]); // window.location.href = '/profile';
 
                 }); // });
 
               } else {
-                _this86.genricUtlitis.showMessageToast(data.Message, true, _Services_Utilities_genaric_service__WEBPACK_IMPORTED_MODULE_7__["PrintMedia"].Conformation);
+                _this87.genricUtlitis.showMessageToast(data.Message, true, _Services_Utilities_genaric_service__WEBPACK_IMPORTED_MODULE_7__["PrintMedia"].Conformation);
               }
             });
           }
@@ -13652,41 +13750,41 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "deactivateAccount",
         value: function deactivateAccount() {
-          var _this87 = this;
+          var _this88 = this;
 
           this.userService.deactive().subscribe(function (data) {
             if (data.Status) {
-              _this87.genricUtlitis.showMessageToast("Account deactivated", true, _Services_Utilities_genaric_service__WEBPACK_IMPORTED_MODULE_7__["PrintMedia"].Conformation);
+              _this88.genricUtlitis.showMessageToast("Account deactivated", true, _Services_Utilities_genaric_service__WEBPACK_IMPORTED_MODULE_7__["PrintMedia"].Conformation);
 
               localStorage.removeItem("UserProfile");
               localStorage.removeItem("token");
 
-              _this87.router.navigate(["/login"]);
+              _this88.router.navigate(["/login"]);
             }
           });
         }
       }, {
         key: "loadBankDetails",
         value: function loadBankDetails() {
-          var _this88 = this;
+          var _this89 = this;
 
           this.bankService.GetOptBankDetails().subscribe(function (data) {
             if (data.Result && data.Result.Status && data.Result.Data) {
-              _this88.bankDetails = data.Result.Data;
+              _this89.bankDetails = data.Result.Data;
             } else {
-              _this88.bankDetails = null;
+              _this89.bankDetails = null;
             }
           });
         }
       }, {
         key: "loadBanks",
         value: function loadBanks() {
-          var _this89 = this;
+          var _this90 = this;
 
           this.bankService.GetBanks().subscribe(function (data) {
             if (data.Result && data.Result.Status && data.Result.Data) {
-              _this89.banks = data.Result.Data;
-              _this89.filteredBanks = _this89.banks;
+              _this90.banks = data.Result.Data;
+              _this90.filteredBanks = _this90.banks;
             }
           });
         }
@@ -13725,7 +13823,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "saveBank",
         value: function saveBank() {
-          var _this90 = this;
+          var _this91 = this;
 
           this.bankSubmitted = true;
 
@@ -13741,16 +13839,16 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           };
           this.bankService.AddUpdateUserBank(bankData).subscribe(function (data) {
             if (data.Result && data.Result.Status) {
-              _this90.bankSubmitted = false;
+              _this91.bankSubmitted = false;
 
-              _this90.genricUtlitis.showMessageToast(data.Result.Message || "Bank information saved successfully", true, _Services_Utilities_genaric_service__WEBPACK_IMPORTED_MODULE_7__["PrintMedia"].Conformation); // Close modal using jQuery/Bootstrap
+              _this91.genricUtlitis.showMessageToast(data.Result.Message || "Bank information saved successfully", true, _Services_Utilities_genaric_service__WEBPACK_IMPORTED_MODULE_7__["PrintMedia"].Conformation); // Close modal using jQuery/Bootstrap
 
 
               $('#bankModal').modal('hide');
 
-              _this90.loadBankDetails();
+              _this91.loadBankDetails();
             } else {
-              _this90.genricUtlitis.showMessageToast(data.Result && data.Result.Message || "Failed to save bank information", false, _Services_Utilities_genaric_service__WEBPACK_IMPORTED_MODULE_7__["PrintMedia"].Error);
+              _this91.genricUtlitis.showMessageToast(data.Result && data.Result.Message || "Failed to save bank information", false, _Services_Utilities_genaric_service__WEBPACK_IMPORTED_MODULE_7__["PrintMedia"].Error);
             }
           });
         }
@@ -13915,14 +14013,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "getPromo",
         value: function getPromo() {
-          var _this91 = this;
+          var _this92 = this;
 
           this.promoService.GetPromosByUser().subscribe(function (data) {
             if (data && data.Data) {
-              _this91.UserPromo = data.Data.filter(function (promo) {
+              _this92.UserPromo = data.Data.filter(function (promo) {
                 return !(promo.ISExpire > 0);
               });
-              _this91.ExpirePromo = data.Data.filter(function (promo) {
+              _this92.ExpirePromo = data.Data.filter(function (promo) {
                 return promo.ISExpire > 0;
               });
             }
@@ -13975,22 +14073,22 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "AddPromo",
         value: function AddPromo() {
-          var _this92 = this;
+          var _this93 = this;
 
           if (this.aFormGroup.valid) {
             this.showFormError = false;
             this.promoService.AddPromoByUser(this.promo).subscribe(function (data) {
               if (data) {
-                _this92.response = data;
+                _this93.response = data;
 
-                if (_this92.response.Status) {
-                  _this92.toastr.success(_this92.response.Message, 'Notification');
+                if (_this93.response.Status) {
+                  _this93.toastr.success(_this93.response.Message, 'Notification');
 
-                  _this92.getPromo();
+                  _this93.getPromo();
 
                   $('#expireModal').modal('hide');
                 } else {
-                  _this92.toastr.error(_this92.response.Message, 'Notification');
+                  _this93.toastr.error(_this93.response.Message, 'Notification');
                 }
               }
             });
@@ -14122,12 +14220,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "loadAllTrips",
         value: function loadAllTrips() {
-          var _this93 = this;
+          var _this94 = this;
 
           this.tripSerivce.GetAllCompTripsByUsers().subscribe(function (data) {
             if (data) {
               if (data.Status) {
-                _this93.tripModalList = data.Data;
+                _this94.tripModalList = data.Data;
               }
             }
           });
@@ -14135,18 +14233,18 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "report",
         value: function report(id) {
-          var _this94 = this;
+          var _this95 = this;
 
           this.tripSerivce.GetTripReport(id).subscribe(function (data) {
             if (data) {
               if (data.Status) {
-                _this94.genricUtlitis.showMessageToast(data.Message, true, "Success!"); //  console.log(data);
+                _this95.genricUtlitis.showMessageToast(data.Message, true, "Success!"); //  console.log(data);
 
               } else {
-                _this94.genricUtlitis.showMessageToast(data.Message, false, "Error!");
+                _this95.genricUtlitis.showMessageToast(data.Message, false, "Error!");
               }
             } else {
-              _this94.genricUtlitis.showMessageToast("There was some error.", false, "Error!");
+              _this95.genricUtlitis.showMessageToast("There was some error.", false, "Error!");
             }
           });
         }
@@ -14298,19 +14396,19 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "resetPassword",
         value: function resetPassword() {
-          var _this95 = this;
+          var _this96 = this;
 
           if (this.resetPasswordFrom.invalid) return;
 
           this._authservice.ResetPassword(this.resetPasswordModel).subscribe(function (data) {
             if (data.Status) {
-              _this95._toaster.success(data.Message);
+              _this96._toaster.success(data.Message);
 
               setTimeout(function () {
                 window.location.href = '/login';
               }, 1000);
             } else {
-              _this95._toaster.info(data.Message);
+              _this96._toaster.info(data.Message);
             }
           });
         }
@@ -14726,17 +14824,17 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "submit",
         value: function submit() {
-          var _this96 = this;
+          var _this97 = this;
 
           if (this.singUpFrom.invalid) return;
           this.user.RoleId = 3;
           this.authService.SingUp(this.user).subscribe(function (data) {
             if (data.Status) {
-              _this96.toastr.success("You have seccessfuly registered", 'Notification');
+              _this97.toastr.success("You have seccessfuly registered", 'Notification');
 
-              _this96.routers.navigate(['/login']);
+              _this97.routers.navigate(['/login']);
             } else {
-              _this96.toastr.error(data.Message, 'Notification');
+              _this97.toastr.error(data.Message, 'Notification');
             }
           });
         }
@@ -14886,13 +14984,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "loadTripDetail",
         value: function loadTripDetail() {
-          var _this97 = this;
+          var _this98 = this;
 
           this.tripSerivce.GetAllTripDetailById(this.tripId).subscribe(function (data) {
             if (data) {
               if (data.Status) {
-                _this97.tripDetail = data.Data;
-                _this97.tripDetail.Faclities.Facalities = JSON.parse(_this97.tripDetail.Faclities.Facalities); // share
+                _this98.tripDetail = data.Data;
+                _this98.tripDetail.Faclities.Facalities = JSON.parse(_this98.tripDetail.Faclities.Facalities); // share
                 // var picUrl = environment.DomainUrl + this.tripDetail.TripBasicInfo.FeaturesImage;
                 // var triptitle =  this.tripDetail.TripBasicInfo.Title;
                 // var dexcription =  this.tripDetail.TripBasicInfo.Details;
@@ -14901,11 +14999,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                 // var returnUrl = window.location.href;
                 // console.log(returnUrl)
 
-                var url = _environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].shareTripBasePath + _this97.tripDetail.TripBasicInfo.Id;
-                _this97.shareFB = "https://www.facebook.com/dialog/feed?app_id=962780807415498&redirect_uri=" + url + "&link=" + url + "}"; // this.shareFB = "https://www.facebook.com/dialog/feed?app_id=962780807415498&redirect_uri="+url+"&link="+url+"&picture="+picUrl+"&caption="+triptitle+"&description="+dexcription+"&properties={from:'value1',To:'value2'}";
+                var url = _environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].shareTripBasePath + _this98.tripDetail.TripBasicInfo.Id;
+                _this98.shareFB = "https://www.facebook.com/dialog/feed?app_id=962780807415498&redirect_uri=" + url + "&link=" + url + "}"; // this.shareFB = "https://www.facebook.com/dialog/feed?app_id=962780807415498&redirect_uri="+url+"&link="+url+"&picture="+picUrl+"&caption="+triptitle+"&description="+dexcription+"&properties={from:'value1',To:'value2'}";
 
-                _this97.shareTwitter = "https://twitter.com/intent/tweet?url=" + url;
-                _this97.shareLinkedIn = "https://www.linkedin.com/sharing/share-offsite/?url=" + url;
+                _this98.shareTwitter = "https://twitter.com/intent/tweet?url=" + url;
+                _this98.shareLinkedIn = "https://www.linkedin.com/sharing/share-offsite/?url=" + url;
               }
             }
           });
@@ -14913,11 +15011,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "getReviewIdForSpam",
         value: function getReviewIdForSpam(id) {
-          var _this98 = this;
+          var _this99 = this;
 
           this.reViewId = id;
           this.reviewSpamComment = this.tripDetail.TripReviews.find(function (x) {
-            return x.ReviewId === _this98.reViewId;
+            return x.ReviewId === _this99.reViewId;
           }).Comment;
         }
       }, {
@@ -14929,7 +15027,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "AddCommentReply",
         value: function AddCommentReply(inputEvent) {
-          var _this99 = this;
+          var _this100 = this;
 
           if (inputEvent && inputEvent.value) {
             this.tripCommentsReply = new _classes_trip_TripModel__WEBPACK_IMPORTED_MODULE_2__["TripReplyComments"]();
@@ -14937,7 +15035,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             this.tripCommentsReply.ReplyComments = inputEvent.value;
             this.tripSerivce.AddTripCommentReply(this.tripCommentsReply).subscribe(function (data) {
               if (data.Status) {
-                _this99.getTripsComments();
+                _this100.getTripsComments();
 
                 $('#modal-info-replyCommentBox').modal('hide');
               }
@@ -14949,11 +15047,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "getTripsComments",
         value: function getTripsComments() {
-          var _this100 = this;
+          var _this101 = this;
 
           this.tripSerivce.GetAllTripCommentsById(this.tripId).subscribe(function (data) {
             if (data.Status) {
-              _this100.TripComments = data.Data;
+              _this101.TripComments = data.Data;
             }
           });
         }
@@ -14966,7 +15064,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "UpdateCommentAsSpam",
         value: function UpdateCommentAsSpam() {
-          var _this101 = this;
+          var _this102 = this;
 
           var tripCommentsSpam = new _classes_trip_TripModel__WEBPACK_IMPORTED_MODULE_2__["TripComments"]();
           tripCommentsSpam.CommentId = this.tripcommentId;
@@ -14976,7 +15074,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             if (data.Status) {
               $('#modal-info-markasspan-comment').modal('hide');
 
-              _this101.getTripsComments();
+              _this102.getTripsComments();
             }
           });
         }
@@ -14996,7 +15094,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "UpdateTripStatus",
         value: function UpdateTripStatus(id) {
-          var _this102 = this;
+          var _this103 = this;
 
           var isStartBooking = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
 
@@ -15006,7 +15104,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             this.tripStatusModal.StatusId = id;
             this.tripSerivce.UpdateTripStatus(this.tripStatusModal).subscribe(function (data) {
               if (data.Status) {
-                _this102.loadTripDetail();
+                _this103.loadTripDetail();
               } else {
                 alert(data.Message);
               }
@@ -15017,7 +15115,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             trip.NO_MORE_BOOKING = isStartBooking === 'ST' ? false : true;
             this.tripSerivce.UpdateTripNoMoreTripStatus(trip).subscribe(function (data) {
               if (data.Status) {
-                _this102.loadTripDetail();
+                _this103.loadTripDetail();
               } else {
                 alert(data.Message);
               }
@@ -15033,18 +15131,18 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "report",
         value: function report(id) {
-          var _this103 = this;
+          var _this104 = this;
 
           this.tripSerivce.GetTripReport(id).subscribe(function (data) {
             if (data) {
               if (data.Status) {
-                _this103.genricUtlitis.showMessageToast(data.Message, true, "Success!"); //  console.log(data);
+                _this104.genricUtlitis.showMessageToast(data.Message, true, "Success!"); //  console.log(data);
 
               } else {
-                _this103.genricUtlitis.showMessageToast(data.Message, false, "Error!");
+                _this104.genricUtlitis.showMessageToast(data.Message, false, "Error!");
               }
             } else {
-              _this103.genricUtlitis.showMessageToast("There was some error.", false, "Error!");
+              _this104.genricUtlitis.showMessageToast("There was some error.", false, "Error!");
             }
           });
         }
@@ -15191,7 +15289,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "updateProfile",
         value: function updateProfile() {
-          var _this104 = this;
+          var _this105 = this;
 
           // debugger;
           this.submitted = true;
@@ -15207,15 +15305,15 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             this.userService.changePass(this.UserPassword).subscribe(function (data) {
               if (data.Status) {
                 // debugger
-                _this104.submitted = false; // this.genricUtlitis.showMessageToast('Password changed successfully', true, PrintMedia.Conformation);
+                _this105.submitted = false; // this.genricUtlitis.showMessageToast('Password changed successfully', true, PrintMedia.Conformation);
 
-                _this104.router.navigate(['/profile']);
+                _this105.router.navigate(['/profile']);
               } // } else {
               //   this.genricUtlitis.showMessageToast(data.Message, data.Status, PrintMedia.Conformation);
               // }
 
 
-              _this104.genricUtlitis.showMessageToast(data.Message, data.Status, _Services_Utilities_genaric_service__WEBPACK_IMPORTED_MODULE_5__["PrintMedia"].Conformation);
+              _this105.genricUtlitis.showMessageToast(data.Message, data.Status, _Services_Utilities_genaric_service__WEBPACK_IMPORTED_MODULE_5__["PrintMedia"].Conformation);
             });
           }
         }
@@ -15360,7 +15458,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "updateProfile",
         value: function updateProfile() {
-          var _this105 = this;
+          var _this106 = this;
 
           // debugger;
           this.submitted = true;
@@ -15382,21 +15480,21 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             this.userService.updateuser(this.user).subscribe(function (data) {
               if (data.Status) {
                 // debugger
-                _this105.submitted = false;
+                _this106.submitted = false;
 
-                _this105.genricUtlitis.showMessageToast('Profile updated successfully', true, _Services_Utilities_genaric_service__WEBPACK_IMPORTED_MODULE_4__["PrintMedia"].Conformation);
+                _this106.genricUtlitis.showMessageToast('Profile updated successfully', true, _Services_Utilities_genaric_service__WEBPACK_IMPORTED_MODULE_4__["PrintMedia"].Conformation);
 
-                _this105.userService.GetUser().subscribe(function (data) {
+                _this106.userService.GetUser().subscribe(function (data) {
                   if (data) {
                     localStorage.setItem('UserProfile', JSON.stringify(data.Data));
                   }
 
-                  _this105.router.navigate(['/profile']); // window.location.href = '/profile';
+                  _this106.router.navigate(['/profile']); // window.location.href = '/profile';
 
                 }); // });
 
               } else {
-                _this105.genricUtlitis.showMessageToast(data.Message, true, _Services_Utilities_genaric_service__WEBPACK_IMPORTED_MODULE_4__["PrintMedia"].Conformation);
+                _this106.genricUtlitis.showMessageToast(data.Message, true, _Services_Utilities_genaric_service__WEBPACK_IMPORTED_MODULE_4__["PrintMedia"].Conformation);
               }
             });
           }
@@ -15404,7 +15502,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "preview",
         value: function preview(files) {
-          var _this106 = this;
+          var _this107 = this;
 
           if (files.length === 0) {
             return;
@@ -15422,7 +15520,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           reader.readAsDataURL(files[0]);
 
           reader.onload = function (_event) {
-            _this106.imgURL = reader.result;
+            _this107.imgURL = reader.result;
           };
         }
       }]);
@@ -15486,10 +15584,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     var environment = {
       production: false,
       //DomainUrl: 'http://api2.tripjero.com/api/'
-      //  DomainUrl: 'http://localhost:54593/api/',
-      //  domainToken: 'http://localhost:54593/',
-      DomainUrl: "https://services.tripjero.com/api/",
-      domainToken: "https://services.tripjero.com/",
+      DomainUrl: 'http://localhost:54593/api/',
+      domainToken: 'http://localhost:54593/',
+      // DomainUrl: "https://services.tripjero.com/api/",
+      // domainToken: "https://services.tripjero.com/",
       shareTripBasePath: "https://trip.tripjero.com/callback/share/trip/"
     };
     /*
