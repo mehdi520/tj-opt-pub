@@ -302098,7 +302098,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     !*** ./node_modules/ngx-dropzone/fesm2015/ngx-dropzone.js ***!
     \************************************************************/
 
-  /*! exports provided: NgxDropzoneModule, NgxDropzoneComponent, NgxDropzonePreviewComponent, NgxDropzoneImagePreviewComponent, NgxDropzoneVideoPreviewComponent, NgxDropzoneRemoveBadgeComponent, ɵb, ɵa */
+  /*! exports provided: NgxDropzoneComponent, NgxDropzoneImagePreviewComponent, NgxDropzoneModule, NgxDropzonePreviewComponent, NgxDropzoneRemoveBadgeComponent, NgxDropzoneVideoPreviewComponent, ɵa, ɵb */
 
   /***/
   function node_modulesNgxDropzoneFesm2015NgxDropzoneJs(module, __webpack_exports__, __webpack_require__) {
@@ -302108,20 +302108,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony export (binding) */
 
 
-    __webpack_require__.d(__webpack_exports__, "NgxDropzoneModule", function () {
-      return NgxDropzoneModule;
-    });
-    /* harmony export (binding) */
-
-
     __webpack_require__.d(__webpack_exports__, "NgxDropzoneComponent", function () {
       return NgxDropzoneComponent;
-    });
-    /* harmony export (binding) */
-
-
-    __webpack_require__.d(__webpack_exports__, "NgxDropzonePreviewComponent", function () {
-      return NgxDropzonePreviewComponent;
     });
     /* harmony export (binding) */
 
@@ -302132,8 +302120,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony export (binding) */
 
 
-    __webpack_require__.d(__webpack_exports__, "NgxDropzoneVideoPreviewComponent", function () {
-      return NgxDropzoneVideoPreviewComponent;
+    __webpack_require__.d(__webpack_exports__, "NgxDropzoneModule", function () {
+      return NgxDropzoneModule;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "NgxDropzonePreviewComponent", function () {
+      return NgxDropzonePreviewComponent;
     });
     /* harmony export (binding) */
 
@@ -302144,14 +302138,20 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony export (binding) */
 
 
-    __webpack_require__.d(__webpack_exports__, "ɵb", function () {
-      return NgxDropzoneLabelDirective;
+    __webpack_require__.d(__webpack_exports__, "NgxDropzoneVideoPreviewComponent", function () {
+      return NgxDropzoneVideoPreviewComponent;
     });
     /* harmony export (binding) */
 
 
     __webpack_require__.d(__webpack_exports__, "ɵa", function () {
       return NgxDropzoneService;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "ɵb", function () {
+      return NgxDropzoneLabelDirective;
     });
     /* harmony import */
 
@@ -302162,26 +302162,21 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony import */
 
 
-    var tslib__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-    /*! tslib */
-    "./node_modules/tslib/tslib.es6.js");
-    /* harmony import */
-
-
-    var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-    /*! @angular/platform-browser */
-    "./node_modules/@angular/platform-browser/fesm2015/platform-browser.js");
-    /* harmony import */
-
-
-    var _angular_common__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    var _angular_common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
     /*! @angular/common */
     "./node_modules/@angular/common/fesm2015/common.js");
-    /**
-     * @fileoverview added by tsickle
-     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
-     */
+    /* harmony import */
 
+
+    var tslib__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! tslib */
+    "./node_modules/ngx-dropzone/node_modules/tslib/tslib.es6.js");
+    /* harmony import */
+
+
+    var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! @angular/platform-browser */
+    "./node_modules/@angular/platform-browser/fesm2015/platform-browser.js");
 
     var NgxDropzoneLabelDirective = function NgxDropzoneLabelDirective() {
       _classCallCheck(this, NgxDropzoneLabelDirective);
@@ -302194,15 +302189,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }]
     }];
     /**
-     * @fileoverview added by tsickle
-     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
-     */
-
-    /**
      * Coerces a data-bound value (typically a string) to a boolean.
      * Taken from https://github.com/angular/components/blob/master/src/cdk/coercion/boolean-property.ts
-     * @param {?} value
-     * @return {?}
      */
 
     function coerceBooleanProperty(value) {
@@ -302211,8 +302199,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /**
      * Whether the provided value is considered a number.
      * Taken from https://github.com/angular/components/blob/master/src/cdk/coercion/number-property.ts
-     * @param {?} value
-     * @return {?}
      */
 
 
@@ -302220,69 +302206,50 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       // parseFloat(value) handles most of the cases we're interested in (it treats null, empty string,
       // and other non-number values as NaN, where Number just uses 0) but it considers the string
       // '123hello' to be a valid number. Therefore we also check if Number(value) is NaN.
-      return !isNaN(parseFloat(
-      /** @type {?} */
-      value)) && !isNaN(Number(value)) ? Number(value) : null;
+      return !isNaN(parseFloat(value)) && !isNaN(Number(value)) ? Number(value) : null;
     }
-    /**
-     * @fileoverview added by tsickle
-     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
-     */
 
-    /** @enum {number} */
+    var KEY_CODE;
 
-
-    var KEY_CODE = {
-      BACKSPACE: 8,
-      DELETE: 46
-    };
-    KEY_CODE[KEY_CODE.BACKSPACE] = 'BACKSPACE';
-    KEY_CODE[KEY_CODE.DELETE] = 'DELETE';
+    (function (KEY_CODE) {
+      KEY_CODE[KEY_CODE["BACKSPACE"] = 8] = "BACKSPACE";
+      KEY_CODE[KEY_CODE["DELETE"] = 46] = "DELETE";
+    })(KEY_CODE || (KEY_CODE = {}));
 
     var NgxDropzonePreviewComponent = /*#__PURE__*/function () {
-      /**
-       * @param {?} sanitizer
-       */
       function NgxDropzonePreviewComponent(sanitizer) {
         _classCallCheck(this, NgxDropzonePreviewComponent);
 
         this.sanitizer = sanitizer;
         this._removable = false;
-        /**
-         * Emitted when the element should be removed.
-         */
+        /** Emitted when the element should be removed. */
 
         this.removed = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
-        /**
-         * Make the preview item focusable using the tab key.
-         */
+        /** Make the preview item focusable using the tab key. */
 
         this.tabIndex = 0;
       }
-      /**
-       * Allow the user to remove files.
-       * @return {?}
-       */
+      /** The file to preview. */
 
 
       _createClass2(NgxDropzonePreviewComponent, [{
+        key: "file",
+        get: function get() {
+          return this._file;
+        }
+        /** Allow the user to remove files. */
+        ,
+        set: function set(value) {
+          this._file = value;
+        }
+      }, {
         key: "removable",
         get: function get() {
           return this._removable;
-        }
-        /**
-         * @param {?} value
-         * @return {?}
-         */
-        ,
+        },
         set: function set(value) {
           this._removable = coerceBooleanProperty(value);
         }
-        /**
-         * @param {?} event
-         * @return {?}
-         */
-
       }, {
         key: "keyEvent",
         value: function keyEvent(event) {
@@ -302296,23 +302263,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               break;
           }
         }
-        /**
-         * We use the HostBinding to pass these common styles to child components.
-         * @return {?}
-         */
+        /** We use the HostBinding to pass these common styles to child components. */
 
       }, {
         key: "hostStyle",
         get: function get() {
-          /** @type {?} */
           var styles = "\n\t\t\tdisplay: flex;\n\t\t\theight: 140px;\n\t\t\tmin-height: 140px;\n\t\t\tmin-width: 180px;\n\t\t\tmax-width: 180px;\n\t\t\tjustify-content: center;\n\t\t\talign-items: center;\n\t\t\tpadding: 0 20px;\n\t\t\tmargin: 10px;\n\t\t\tborder-radius: 5px;\n\t\t\tposition: relative;\n\t\t";
           return this.sanitizer.bypassSecurityTrustStyle(styles);
         }
-        /**
-         * Remove method to be used from the template.
-         * @param {?} event
-         * @return {?}
-         */
+        /** Remove method to be used from the template. */
 
       }, {
         key: "_remove",
@@ -302320,10 +302279,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           event.stopPropagation();
           this.remove();
         }
-        /**
-         * Remove the preview item (use from component code).
-         * @return {?}
-         */
+        /** Remove the preview item (use from component code). */
 
       }, {
         key: "remove",
@@ -302332,48 +302288,24 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             this.removed.next(this.file);
           }
         }
-        /**
-         * @protected
-         * @return {?}
-         */
-
       }, {
         key: "readFile",
         value: function readFile() {
-          return Object(tslib__WEBPACK_IMPORTED_MODULE_1__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+          return Object(tslib__WEBPACK_IMPORTED_MODULE_2__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
             var _this672 = this;
 
             return regeneratorRuntime.wrap(function _callee$(_context5) {
               while (1) {
                 switch (_context5.prev = _context5.next) {
                   case 0:
-                    return _context5.abrupt("return", new Promise(
-                    /**
-                    * @param {?} resolve
-                    * @param {?} reject
-                    * @return {?}
-                    */
-                    function (resolve, reject) {
-                      /** @type {?} */
+                    return _context5.abrupt("return", new Promise(function (resolve, reject) {
                       var reader = new FileReader();
 
-                      reader.onload =
-                      /**
-                      * @param {?} e
-                      * @return {?}
-                      */
-                      function (e) {
-                        resolve(
-                        /** @type {?} */
-                        e.target.result);
+                      reader.onload = function (e) {
+                        resolve(e.target.result);
                       };
 
-                      reader.onerror =
-                      /**
-                      * @param {?} e
-                      * @return {?}
-                      */
-                      function (e) {
+                      reader.onerror = function (e) {
                         console.error("FileReader failed on file ".concat(_this672.file.name, "."));
                         reject(e);
                       };
@@ -302403,14 +302335,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       args: [{
         selector: 'ngx-dropzone-preview',
         template: "\n\t\t<ng-content select=\"ngx-dropzone-label\"></ng-content>\n\t\t<ngx-dropzone-remove-badge *ngIf=\"removable\" (click)=\"_remove($event)\">\n\t\t</ngx-dropzone-remove-badge>\n\t",
-        styles: [":host(){background-image:linear-gradient(to top,#ededed,#efefef,#f1f1f1,#f4f4f4,#f6f6f6)}:host():focus,:host():hover{background-image:linear-gradient(to top,#e3e3e3,#ebeaea,#e8e7e7,#ebeaea,#f4f4f4);outline:0}:host():focus ngx-dropzone-remove-badge,:host():hover ngx-dropzone-remove-badge{opacity:1}:host() ngx-dropzone-remove-badge{opacity:0}:host() ::ng-deep ngx-dropzone-label{overflow-wrap:break-word}"]
+        styles: [":host{background-image:linear-gradient(0deg,#ededed,#efefef,#f1f1f1,#f4f4f4,#f6f6f6)}:host:focus,:host:hover{background-image:linear-gradient(0deg,#e3e3e3,#ebeaea,#e8e7e7,#ebeaea,#f4f4f4);outline:0}:host:focus ngx-dropzone-remove-badge,:host:hover ngx-dropzone-remove-badge{opacity:1}:host ngx-dropzone-remove-badge{opacity:0}:host ::ng-deep ngx-dropzone-label{overflow-wrap:break-word}"]
       }]
     }];
-    /** @nocollapse */
 
     NgxDropzonePreviewComponent.ctorParameters = function () {
       return [{
-        type: _angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__["DomSanitizer"]
+        type: _angular_platform_browser__WEBPACK_IMPORTED_MODULE_3__["DomSanitizer"]
       }];
     };
 
@@ -302438,11 +302369,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }]
     };
     /**
-     * @fileoverview added by tsickle
-     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
-     */
-
-    /**
      * This service contains the filtering logic to be applied to
      * any dropped or selected file. If a file matches all criteria
      * like maximum size or accept type, it will be emitted in the
@@ -302456,23 +302382,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
       _createClass2(NgxDropzoneService, [{
         key: "parseFileList",
-        value:
-        /**
-         * @param {?} files
-         * @param {?} accept
-         * @param {?} maxFileSize
-         * @param {?} multiple
-         * @return {?}
-         */
-        function parseFileList(files, accept, maxFileSize, multiple) {
-          /** @type {?} */
+        value: function parseFileList(files, accept, maxFileSize, multiple) {
           var addedFiles = [];
-          /** @type {?} */
-
           var rejectedFiles = [];
 
           for (var i = 0; i < files.length; i++) {
-            /** @type {?} */
             var file = files.item(i);
 
             if (!this.isAccepted(file, accept)) {
@@ -302492,8 +302406,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
             addedFiles.push(file);
           }
-          /** @type {?} */
-
 
           var result = {
             addedFiles: addedFiles,
@@ -302501,44 +302413,19 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           };
           return result;
         }
-        /**
-         * @private
-         * @param {?} file
-         * @param {?} accept
-         * @return {?}
-         */
-
       }, {
         key: "isAccepted",
         value: function isAccepted(file, accept) {
           if (accept === '*') {
             return true;
           }
-          /** @type {?} */
 
-
-          var acceptFiletypes = accept.split(',').map(
-          /**
-          * @param {?} it
-          * @return {?}
-          */
-          function (it) {
+          var acceptFiletypes = accept.split(',').map(function (it) {
             return it.toLowerCase().trim();
           });
-          /** @type {?} */
-
           var filetype = file.type.toLowerCase();
-          /** @type {?} */
-
           var filename = file.name.toLowerCase();
-          /** @type {?} */
-
-          var matchedFileType = acceptFiletypes.find(
-          /**
-          * @param {?} acceptFiletype
-          * @return {?}
-          */
-          function (acceptFiletype) {
+          var matchedFileType = acceptFiletypes.find(function (acceptFiletype) {
             // check for wildcard mimetype (e.g. image/*)
             if (acceptFiletype.endsWith('/*')) {
               return filetype.split('/')[0] === acceptFiletype.split('/')[0];
@@ -302554,21 +302441,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           });
           return !!matchedFileType;
         }
-        /**
-         * @private
-         * @param {?} rejectedFiles
-         * @param {?} file
-         * @param {?} reason
-         * @return {?}
-         */
-
       }, {
         key: "rejectFile",
         value: function rejectFile(rejectedFiles, file, reason) {
-          /** @type {?} */
-          var rejectedFile =
-          /** @type {?} */
-          file;
+          var rejectedFile = file;
           rejectedFile.reason = reason;
           rejectedFiles.push(rejectedFile);
         }
@@ -302580,27 +302456,16 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     NgxDropzoneService.decorators = [{
       type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"]
     }];
-    /**
-     * @fileoverview added by tsickle
-     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
-     */
 
     var NgxDropzoneComponent = /*#__PURE__*/function () {
-      /**
-       * @param {?} service
-       */
       function NgxDropzoneComponent(service) {
         _classCallCheck(this, NgxDropzoneComponent);
 
         this.service = service;
-        /**
-         * Emitted when any files were added or rejected.
-         */
+        /** Emitted when any files were added or rejected. */
 
         this.change = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
-        /**
-         * Set the accepted file types. Defaults to '*'.
-         */
+        /** Set the accepted file types. Defaults to '*'. */
 
         this.accept = '*';
         this._disabled = false;
@@ -302610,31 +302475,19 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         this._disableClick = false;
         this._isHovered = false;
       }
-      /**
-       * @return {?}
-       */
-
 
       _createClass2(NgxDropzoneComponent, [{
         key: "_hasPreviews",
         get: function get() {
           return !!this._previewChildren.length;
         }
-        /**
-         * Disable any user interaction with the component.
-         * @return {?}
-         */
+        /** Disable any user interaction with the component. */
 
       }, {
         key: "disabled",
         get: function get() {
           return this._disabled;
-        }
-        /**
-         * @param {?} value
-         * @return {?}
-         */
-        ,
+        },
         set: function set(value) {
           this._disabled = coerceBooleanProperty(value);
 
@@ -302642,82 +302495,47 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             this._isHovered = false;
           }
         }
-        /**
-         * Allow the selection of multiple files.
-         * @return {?}
-         */
+        /** Allow the selection of multiple files. */
 
       }, {
         key: "multiple",
         get: function get() {
           return this._multiple;
-        }
-        /**
-         * @param {?} value
-         * @return {?}
-         */
-        ,
+        },
         set: function set(value) {
           this._multiple = coerceBooleanProperty(value);
         }
-        /**
-         * Set the maximum size a single file may have.
-         * @return {?}
-         */
+        /** Set the maximum size a single file may have. */
 
       }, {
         key: "maxFileSize",
         get: function get() {
           return this._maxFileSize;
-        }
-        /**
-         * @param {?} value
-         * @return {?}
-         */
-        ,
+        },
         set: function set(value) {
           this._maxFileSize = coerceNumberProperty(value);
         }
-        /**
-         * Allow the dropzone container to expand vertically.
-         * @return {?}
-         */
+        /** Allow the dropzone container to expand vertically. */
 
       }, {
         key: "expandable",
         get: function get() {
           return this._expandable;
-        }
-        /**
-         * @param {?} value
-         * @return {?}
-         */
-        ,
+        },
         set: function set(value) {
           this._expandable = coerceBooleanProperty(value);
         }
-        /**
-         * Open the file selector on click.
-         * @return {?}
-         */
+        /** Open the file selector on click. */
 
       }, {
         key: "disableClick",
         get: function get() {
           return this._disableClick;
-        }
-        /**
-         * @param {?} value
-         * @return {?}
-         */
-        ,
+        },
         set: function set(value) {
           this._disableClick = coerceBooleanProperty(value);
         }
-        /**
-         * Show the native OS file explorer to select files.
-         * @return {?}
-         */
+        /** Show the native OS file explorer to select files. */
 
       }, {
         key: "_onClick",
@@ -302726,11 +302544,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             this.showFileSelector();
           }
         }
-        /**
-         * @param {?} event
-         * @return {?}
-         */
-
       }, {
         key: "_onDragOver",
         value: function _onDragOver(event) {
@@ -302741,20 +302554,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           this.preventDefault(event);
           this._isHovered = true;
         }
-        /**
-         * @return {?}
-         */
-
       }, {
         key: "_onDragLeave",
         value: function _onDragLeave() {
           this._isHovered = false;
         }
-        /**
-         * @param {?} event
-         * @return {?}
-         */
-
       }, {
         key: "_onDrop",
         value: function _onDrop(event) {
@@ -302766,27 +302570,16 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           this._isHovered = false;
           this.handleFileDrop(event.dataTransfer.files);
         }
-        /**
-         * @return {?}
-         */
-
       }, {
         key: "showFileSelector",
         value: function showFileSelector() {
           if (!this.disabled) {
-            /** @type {?} */
             this._fileInput.nativeElement.click();
           }
         }
-        /**
-         * @param {?} event
-         * @return {?}
-         */
-
       }, {
         key: "_onFilesSelected",
         value: function _onFilesSelected(event) {
-          /** @type {?} */
           var files = event.target.files;
           this.handleFileDrop(files); // Reset the native file input element to allow selecting the same file again
 
@@ -302794,16 +302587,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
           this.preventDefault(event);
         }
-        /**
-         * @private
-         * @param {?} files
-         * @return {?}
-         */
-
       }, {
         key: "handleFileDrop",
         value: function handleFileDrop(files) {
-          /** @type {?} */
           var result = this.service.parseFileList(files, this.accept, this.maxFileSize, this.multiple);
           this.change.next({
             addedFiles: result.addedFiles,
@@ -302811,12 +302597,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             source: this
           });
         }
-        /**
-         * @private
-         * @param {?} event
-         * @return {?}
-         */
-
       }, {
         key: "preventDefault",
         value: function preventDefault(event) {
@@ -302833,11 +302613,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       args: [{
         selector: 'ngx-dropzone, [ngx-dropzone]',
         template: "<input #fileInput type=\"file\" [id]=\"id\" [multiple]=\"multiple\" [accept]=\"accept\" [disabled]=\"disabled\"\n  (change)=\"_onFilesSelected($event)\" [attr.aria-label]=\"ariaLabel\" [attr.aria-labelledby]=\"ariaLabelledby\"\n  [attr.aria-describedby]=\"ariaDescribedBy\">\n<ng-content select=\"ngx-dropzone-label\" *ngIf=\"!_hasPreviews\"></ng-content>\n<ng-content select=\"ngx-dropzone-preview\"></ng-content>\n<ng-content></ng-content>\n",
-        styles: [":host(){display:flex;align-items:center;height:180px;background:#fff;cursor:pointer;color:#717386;border:2px dashed #717386;border-radius:5px;font-size:16px;overflow-x:auto}:host().ngx-dz-hovered{border-style:solid}:host().ngx-dz-disabled{opacity:.5;cursor:no-drop;pointer-events:none}:host().expandable{overflow:hidden;height:unset;min-height:180px;flex-wrap:wrap}:host().unclickable{cursor:default}:host() ::ng-deep ngx-dropzone-label{text-align:center;z-index:10;margin:10px auto}:host() input{width:.1px;height:.1px;opacity:0;overflow:hidden;position:absolute;z-index:-1}:host() input:focus+::ng-deep ngx-dropzone-label{outline:#000 dotted 1px;outline:-webkit-focus-ring-color auto 5px}"],
-        providers: [NgxDropzoneService]
+        providers: [NgxDropzoneService],
+        styles: [":host{align-items:center;background:#fff;border:2px dashed #717386;border-radius:5px;color:#717386;cursor:pointer;display:flex;font-size:16px;height:180px;overflow-x:auto}:host.ngx-dz-hovered{border-style:solid}:host.ngx-dz-disabled{cursor:no-drop;opacity:.5;pointer-events:none}:host.expandable{flex-wrap:wrap;height:unset;min-height:180px;overflow:hidden}:host.unclickable{cursor:default}:host ::ng-deep ngx-dropzone-label{margin:10px auto;text-align:center;z-index:10}:host input{height:.1px;opacity:0;overflow:hidden;position:absolute;width:.1px;z-index:-1}:host input:focus+::ng-deep ngx-dropzone-label{outline:1px dotted #000;outline:5px auto -webkit-focus-ring-color}"]
       }]
     }];
-    /** @nocollapse */
 
     NgxDropzoneComponent.ctorParameters = function () {
       return [{
@@ -302857,7 +302636,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }],
       _fileInput: [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"],
-        args: ['fileInput']
+        args: ['fileInput', {
+          "static": true
+        }]
       }],
       change: [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"]
@@ -302925,62 +302706,51 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         args: ['drop', ['$event']]
       }]
     };
-    /**
-     * @fileoverview added by tsickle
-     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
-     */
 
     var NgxDropzoneImagePreviewComponent = /*#__PURE__*/function (_NgxDropzonePreviewCo) {
       _inherits(NgxDropzoneImagePreviewComponent, _NgxDropzonePreviewCo);
 
       var _super234 = _createSuper(NgxDropzoneImagePreviewComponent);
 
-      /**
-       * @param {?} sanitizer
-       */
       function NgxDropzoneImagePreviewComponent(sanitizer) {
         var _this673;
 
         _classCallCheck(this, NgxDropzoneImagePreviewComponent);
 
         _this673 = _super234.call(this, sanitizer);
-        /**
-         * The image data source.
-         */
+        /** The image data source. */
 
-        _this673.defualtImgLoading = 'data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiBzdHlsZT0ibWFyZ2luOiBhdXRvOyBiYWNrZ3JvdW5kOiByZ2IoMjQxLCAyNDIsIDI0Mykgbm9uZSByZXBlYXQgc2Nyb2xsIDAlIDAlOyBkaXNwbGF5OiBibG9jazsgc2hhcGUtcmVuZGVyaW5nOiBhdXRvOyIgd2lkdGg9IjIyNHB4IiBoZWlnaHQ9IjIyNHB4IiB2aWV3Qm94PSIwIDAgMTAwIDEwMCIgcHJlc2VydmVBc3BlY3RSYXRpbz0ieE1pZFlNaWQiPgo8Y2lyY2xlIGN4PSI1MCIgY3k9IjUwIiByPSIxNCIgc3Ryb2tlLXdpZHRoPSIzIiBzdHJva2U9IiM4NWEyYjYiIHN0cm9rZS1kYXNoYXJyYXk9IjIxLjk5MTE0ODU3NTEyODU1MiAyMS45OTExNDg1NzUxMjg1NTIiIGZpbGw9Im5vbmUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCI+CiAgPGFuaW1hdGVUcmFuc2Zvcm0gYXR0cmlidXRlTmFtZT0idHJhbnNmb3JtIiB0eXBlPSJyb3RhdGUiIGR1cj0iMS4xNjI3OTA2OTc2NzQ0MTg0cyIgcmVwZWF0Q291bnQ9ImluZGVmaW5pdGUiIGtleVRpbWVzPSIwOzEiIHZhbHVlcz0iMCA1MCA1MDszNjAgNTAgNTAiPjwvYW5pbWF0ZVRyYW5zZm9ybT4KPC9jaXJjbGU+CjxjaXJjbGUgY3g9IjUwIiBjeT0iNTAiIHI9IjEwIiBzdHJva2Utd2lkdGg9IjMiIHN0cm9rZT0iI2JiY2VkZCIgc3Ryb2tlLWRhc2hhcnJheT0iMTUuNzA3OTYzMjY3OTQ4OTY2IDE1LjcwNzk2MzI2Nzk0ODk2NiIgc3Ryb2tlLWRhc2hvZmZzZXQ9IjE1LjcwNzk2MzI2Nzk0ODk2NiIgZmlsbD0ibm9uZSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIj4KICA8YW5pbWF0ZVRyYW5zZm9ybSBhdHRyaWJ1dGVOYW1lPSJ0cmFuc2Zvcm0iIHR5cGU9InJvdGF0ZSIgZHVyPSIxLjE2Mjc5MDY5NzY3NDQxODRzIiByZXBlYXRDb3VudD0iaW5kZWZpbml0ZSIga2V5VGltZXM9IjA7MSIgdmFsdWVzPSIwIDUwIDUwOy0zNjAgNTAgNTAiPjwvYW5pbWF0ZVRyYW5zZm9ybT4KPC9jaXJjbGU+CjwhLS0gW2xkaW9dIGdlbmVyYXRlZCBieSBodHRwczovL2xvYWRpbmcuaW8vIC0tPjwvc3ZnPg==';
-        _this673.imageSrc = _this673.sanitizer.bypassSecurityTrustUrl(_this673.defualtImgLoading);
+        _this673.defaultImgLoading = 'data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiBzdHlsZT0ibWFyZ2luOiBhdXRvOyBiYWNrZ3JvdW5kOiByZ2IoMjQxLCAyNDIsIDI0Mykgbm9uZSByZXBlYXQgc2Nyb2xsIDAlIDAlOyBkaXNwbGF5OiBibG9jazsgc2hhcGUtcmVuZGVyaW5nOiBhdXRvOyIgd2lkdGg9IjIyNHB4IiBoZWlnaHQ9IjIyNHB4IiB2aWV3Qm94PSIwIDAgMTAwIDEwMCIgcHJlc2VydmVBc3BlY3RSYXRpbz0ieE1pZFlNaWQiPgo8Y2lyY2xlIGN4PSI1MCIgY3k9IjUwIiByPSIxNCIgc3Ryb2tlLXdpZHRoPSIzIiBzdHJva2U9IiM4NWEyYjYiIHN0cm9rZS1kYXNoYXJyYXk9IjIxLjk5MTE0ODU3NTEyODU1MiAyMS45OTExNDg1NzUxMjg1NTIiIGZpbGw9Im5vbmUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCI+CiAgPGFuaW1hdGVUcmFuc2Zvcm0gYXR0cmlidXRlTmFtZT0idHJhbnNmb3JtIiB0eXBlPSJyb3RhdGUiIGR1cj0iMS4xNjI3OTA2OTc2NzQ0MTg0cyIgcmVwZWF0Q291bnQ9ImluZGVmaW5pdGUiIGtleVRpbWVzPSIwOzEiIHZhbHVlcz0iMCA1MCA1MDszNjAgNTAgNTAiPjwvYW5pbWF0ZVRyYW5zZm9ybT4KPC9jaXJjbGU+CjxjaXJjbGUgY3g9IjUwIiBjeT0iNTAiIHI9IjEwIiBzdHJva2Utd2lkdGg9IjMiIHN0cm9rZT0iI2JiY2VkZCIgc3Ryb2tlLWRhc2hhcnJheT0iMTUuNzA3OTYzMjY3OTQ4OTY2IDE1LjcwNzk2MzI2Nzk0ODk2NiIgc3Ryb2tlLWRhc2hvZmZzZXQ9IjE1LjcwNzk2MzI2Nzk0ODk2NiIgZmlsbD0ibm9uZSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIj4KICA8YW5pbWF0ZVRyYW5zZm9ybSBhdHRyaWJ1dGVOYW1lPSJ0cmFuc2Zvcm0iIHR5cGU9InJvdGF0ZSIgZHVyPSIxLjE2Mjc5MDY5NzY3NDQxODRzIiByZXBlYXRDb3VudD0iaW5kZWZpbml0ZSIga2V5VGltZXM9IjA7MSIgdmFsdWVzPSIwIDUwIDUwOy0zNjAgNTAgNTAiPjwvYW5pbWF0ZVRyYW5zZm9ybT4KPC9jaXJjbGU+CjwhLS0gW2xkaW9dIGdlbmVyYXRlZCBieSBodHRwczovL2xvYWRpbmcuaW8vIC0tPjwvc3ZnPg==';
+        _this673.imageSrc = _this673.sanitizer.bypassSecurityTrustUrl(_this673.defaultImgLoading);
         return _this673;
       }
-      /**
-       * @return {?}
-       */
+      /** The file to preview. */
 
 
       _createClass2(NgxDropzoneImagePreviewComponent, [{
+        key: "file",
+        get: function get() {
+          return this._file;
+        },
+        set: function set(value) {
+          this._file = value;
+          this.renderImage();
+        }
+      }, {
         key: "ngOnInit",
         value: function ngOnInit() {
+          this.renderImage();
+        }
+      }, {
+        key: "renderImage",
+        value: function renderImage() {
           var _this674 = this;
 
-          this.readFile().then(
-          /**
-          * @param {?} img
-          * @return {?}
-          */
-          function (img) {
-            return setTimeout(
-            /**
-            * @return {?}
-            */
-            function () {
+          this.readFile().then(function (img) {
+            return setTimeout(function () {
               return _this674.imageSrc = img;
             });
-          })["catch"](
-          /**
-          * @param {?} err
-          * @return {?}
-          */
-          function (err) {
+          })["catch"](function (err) {
             return console.error(err);
           });
         }
@@ -302994,25 +302764,25 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       args: [{
         selector: 'ngx-dropzone-image-preview',
         template: "\n    <img [src]=\"imageSrc\" />\n\t\t<ng-content select=\"ngx-dropzone-label\"></ng-content>\n    <ngx-dropzone-remove-badge *ngIf=\"removable\" (click)=\"_remove($event)\">\n    </ngx-dropzone-remove-badge>\n\t",
-        styles: [":host(){min-width:unset!important;max-width:unset!important;padding:0!important}:host():focus img,:host():hover img{opacity:.7}:host():focus ngx-dropzone-remove-badge,:host():hover ngx-dropzone-remove-badge{opacity:1}:host() ngx-dropzone-remove-badge{opacity:0}:host() img{max-height:100%;border-radius:5px;opacity:.8}:host() ::ng-deep ngx-dropzone-label{position:absolute;overflow-wrap:break-word}"],
         providers: [{
           provide: NgxDropzonePreviewComponent,
           useExisting: NgxDropzoneImagePreviewComponent
-        }]
+        }],
+        styles: [":host{max-width:unset!important;min-width:unset!important;padding:0!important}:host:focus img,:host:hover img{opacity:.7}:host:focus ngx-dropzone-remove-badge,:host:hover ngx-dropzone-remove-badge{opacity:1}:host ngx-dropzone-remove-badge{opacity:0}:host img{border-radius:5px;max-height:100%;opacity:.8}:host ::ng-deep ngx-dropzone-label{overflow-wrap:break-word;position:absolute}"]
       }]
     }];
-    /** @nocollapse */
 
     NgxDropzoneImagePreviewComponent.ctorParameters = function () {
       return [{
-        type: _angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__["DomSanitizer"]
+        type: _angular_platform_browser__WEBPACK_IMPORTED_MODULE_3__["DomSanitizer"]
       }];
     };
-    /**
-     * @fileoverview added by tsickle
-     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
-     */
 
+    NgxDropzoneImagePreviewComponent.propDecorators = {
+      file: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+      }]
+    };
 
     var NgxDropzoneRemoveBadgeComponent = function NgxDropzoneRemoveBadgeComponent() {
       _classCallCheck(this, NgxDropzoneRemoveBadgeComponent);
@@ -303023,31 +302793,20 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       args: [{
         selector: 'ngx-dropzone-remove-badge',
         template: "\n    <svg>\n      <line x1=\"0\" y1=\"0\" x2=\"10\" y2=\"10\" />\n      <line x1=\"0\" y1=\"10\" x2=\"10\" y2=\"0\" />\n    </svg>\n  ",
-        styles: [":host(){display:flex;justify-content:center;align-items:center;height:22px;width:22px;position:absolute;top:5px;right:5px;border-radius:50%;background:#bbb;color:#333;cursor:pointer}:host():hover{background:#aeaeae}:host()>svg{height:10px;width:10px}:host()>svg>line{stroke-width:2px;stroke:#fff}"]
+        styles: [":host{align-items:center;background:#bbb;border-radius:50%;color:#333;cursor:pointer;display:flex;height:22px;justify-content:center;position:absolute;right:5px;top:5px;width:22px}:host:hover{background:#aeaeae}:host>svg{height:10px;width:10px}:host>svg>line{stroke:#fff;stroke-width:2px}"]
       }]
     }];
-    /**
-     * @fileoverview added by tsickle
-     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
-     */
 
     var NgxDropzoneVideoPreviewComponent = /*#__PURE__*/function (_NgxDropzonePreviewCo2) {
       _inherits(NgxDropzoneVideoPreviewComponent, _NgxDropzonePreviewCo2);
 
       var _super235 = _createSuper(NgxDropzoneVideoPreviewComponent);
 
-      /**
-       * @param {?} sanitizer
-       */
       function NgxDropzoneVideoPreviewComponent(sanitizer) {
         _classCallCheck(this, NgxDropzoneVideoPreviewComponent);
 
         return _super235.call(this, sanitizer);
       }
-      /**
-       * @return {?}
-       */
-
 
       _createClass2(NgxDropzoneVideoPreviewComponent, [{
         key: "ngOnInit",
@@ -303065,10 +302824,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           this.videoSrc = URL.createObjectURL(this.file);
           this.sanitizedVideoSrc = this.sanitizer.bypassSecurityTrustUrl(this.videoSrc);
         }
-        /**
-         * @return {?}
-         */
-
       }, {
         key: "ngOnDestroy",
         value: function ngOnDestroy() {
@@ -303084,25 +302839,19 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       args: [{
         selector: 'ngx-dropzone-video-preview',
         template: "\n    <video *ngIf=\"sanitizedVideoSrc\" controls (click)=\"$event.stopPropagation()\">\n      <source [src]=\"sanitizedVideoSrc\" />\n    </video>\n    <ng-content select=\"ngx-dropzone-label\"></ng-content>\n    <ngx-dropzone-remove-badge *ngIf=\"removable\" (click)=\"_remove($event)\">\n    </ngx-dropzone-remove-badge>\n\t",
-        styles: [":host(){min-width:unset!important;max-width:unset!important;padding:0!important}:host():focus video,:host():hover video{opacity:.7}:host():focus ngx-dropzone-remove-badge,:host():hover ngx-dropzone-remove-badge{opacity:1}:host() ngx-dropzone-remove-badge{opacity:0}:host() video{max-height:100%;border-radius:5px}:host() ::ng-deep ngx-dropzone-label{position:absolute;overflow-wrap:break-word}"],
         providers: [{
           provide: NgxDropzonePreviewComponent,
           useExisting: NgxDropzoneVideoPreviewComponent
-        }]
+        }],
+        styles: [":host{max-width:unset!important;min-width:unset!important;padding:0!important}:host:focus video,:host:hover video{opacity:.7}:host:focus ngx-dropzone-remove-badge,:host:hover ngx-dropzone-remove-badge{opacity:1}:host ngx-dropzone-remove-badge{opacity:0}:host video{border-radius:5px;max-height:100%}:host ::ng-deep ngx-dropzone-label{overflow-wrap:break-word;position:absolute}"]
       }]
     }];
-    /** @nocollapse */
 
     NgxDropzoneVideoPreviewComponent.ctorParameters = function () {
       return [{
-        type: _angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__["DomSanitizer"]
+        type: _angular_platform_browser__WEBPACK_IMPORTED_MODULE_3__["DomSanitizer"]
       }];
     };
-    /**
-     * @fileoverview added by tsickle
-     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
-     */
-
 
     var NgxDropzoneModule = function NgxDropzoneModule() {
       _classCallCheck(this, NgxDropzoneModule);
@@ -303111,23 +302860,658 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     NgxDropzoneModule.decorators = [{
       type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"],
       args: [{
-        imports: [_angular_common__WEBPACK_IMPORTED_MODULE_3__["CommonModule"]],
+        imports: [_angular_common__WEBPACK_IMPORTED_MODULE_1__["CommonModule"]],
         declarations: [NgxDropzoneComponent, NgxDropzoneLabelDirective, NgxDropzonePreviewComponent, NgxDropzoneImagePreviewComponent, NgxDropzoneRemoveBadgeComponent, NgxDropzoneVideoPreviewComponent],
         exports: [NgxDropzoneComponent, NgxDropzoneLabelDirective, NgxDropzonePreviewComponent, NgxDropzoneImagePreviewComponent, NgxDropzoneRemoveBadgeComponent, NgxDropzoneVideoPreviewComponent]
       }]
     }];
-    /**
-     * @fileoverview added by tsickle
-     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+    /*
+     * Public API Surface of ngx-dropzone
      */
 
     /**
-     * @fileoverview added by tsickle
-     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     * Generated bundle index. Do not edit.
      */
-    //# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoibmd4LWRyb3B6b25lLmpzLm1hcCIsInNvdXJjZXMiOlsibmc6Ly9uZ3gtZHJvcHpvbmUvbGliL25neC1kcm9wem9uZS1sYWJlbC5kaXJlY3RpdmUudHMiLCJuZzovL25neC1kcm9wem9uZS9saWIvaGVscGVycy50cyIsIm5nOi8vbmd4LWRyb3B6b25lL2xpYi9uZ3gtZHJvcHpvbmUtcHJldmlldy9uZ3gtZHJvcHpvbmUtcHJldmlldy5jb21wb25lbnQudHMiLCJuZzovL25neC1kcm9wem9uZS9saWIvbmd4LWRyb3B6b25lLnNlcnZpY2UudHMiLCJuZzovL25neC1kcm9wem9uZS9saWIvbmd4LWRyb3B6b25lL25neC1kcm9wem9uZS5jb21wb25lbnQudHMiLCJuZzovL25neC1kcm9wem9uZS9saWIvbmd4LWRyb3B6b25lLXByZXZpZXcvbmd4LWRyb3B6b25lLWltYWdlLXByZXZpZXcvbmd4LWRyb3B6b25lLWltYWdlLXByZXZpZXcuY29tcG9uZW50LnRzIiwibmc6Ly9uZ3gtZHJvcHpvbmUvbGliL25neC1kcm9wem9uZS1wcmV2aWV3L25neC1kcm9wem9uZS1yZW1vdmUtYmFkZ2Uvbmd4LWRyb3B6b25lLXJlbW92ZS1iYWRnZS5jb21wb25lbnQudHMiLCJuZzovL25neC1kcm9wem9uZS9saWIvbmd4LWRyb3B6b25lLXByZXZpZXcvbmd4LWRyb3B6b25lLXZpZGVvLXByZXZpZXcvbmd4LWRyb3B6b25lLXZpZGVvLXByZXZpZXcuY29tcG9uZW50LnRzIiwibmc6Ly9uZ3gtZHJvcHpvbmUvbGliL25neC1kcm9wem9uZS5tb2R1bGUudHMiXSwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHsgRGlyZWN0aXZlIH0gZnJvbSAnQGFuZ3VsYXIvY29yZSc7XG5cbkBEaXJlY3RpdmUoe1xuXHRzZWxlY3RvcjogJ25neC1kcm9wem9uZS1sYWJlbCdcbn0pXG5leHBvcnQgY2xhc3MgTmd4RHJvcHpvbmVMYWJlbERpcmVjdGl2ZSB7IH1cbiIsIlxuLyoqXG4gKiBDb2VyY2VzIGEgZGF0YS1ib3VuZCB2YWx1ZSAodHlwaWNhbGx5IGEgc3RyaW5nKSB0byBhIGJvb2xlYW4uXG4gKiBUYWtlbiBmcm9tIGh0dHBzOi8vZ2l0aHViLmNvbS9hbmd1bGFyL2NvbXBvbmVudHMvYmxvYi9tYXN0ZXIvc3JjL2Nkay9jb2VyY2lvbi9ib29sZWFuLXByb3BlcnR5LnRzXG4gKi9cbmV4cG9ydCBmdW5jdGlvbiBjb2VyY2VCb29sZWFuUHJvcGVydHkodmFsdWU6IGFueSk6IGJvb2xlYW5cbntcblx0cmV0dXJuIHZhbHVlICE9IG51bGwgJiYgYCR7dmFsdWV9YCAhPT0gJ2ZhbHNlJztcbn1cblxuLyoqXG4gKiBXaGV0aGVyIHRoZSBwcm92aWRlZCB2YWx1ZSBpcyBjb25zaWRlcmVkIGEgbnVtYmVyLlxuICogVGFrZW4gZnJvbSBodHRwczovL2dpdGh1Yi5jb20vYW5ndWxhci9jb21wb25lbnRzL2Jsb2IvbWFzdGVyL3NyYy9jZGsvY29lcmNpb24vbnVtYmVyLXByb3BlcnR5LnRzXG4gKi9cbmV4cG9ydCBmdW5jdGlvbiBjb2VyY2VOdW1iZXJQcm9wZXJ0eSh2YWx1ZTogYW55KTogbnVtYmVyXG57XG5cdC8vIHBhcnNlRmxvYXQodmFsdWUpIGhhbmRsZXMgbW9zdCBvZiB0aGUgY2FzZXMgd2UncmUgaW50ZXJlc3RlZCBpbiAoaXQgdHJlYXRzIG51bGwsIGVtcHR5IHN0cmluZyxcblx0Ly8gYW5kIG90aGVyIG5vbi1udW1iZXIgdmFsdWVzIGFzIE5hTiwgd2hlcmUgTnVtYmVyIGp1c3QgdXNlcyAwKSBidXQgaXQgY29uc2lkZXJzIHRoZSBzdHJpbmdcblx0Ly8gJzEyM2hlbGxvJyB0byBiZSBhIHZhbGlkIG51bWJlci4gVGhlcmVmb3JlIHdlIGFsc28gY2hlY2sgaWYgTnVtYmVyKHZhbHVlKSBpcyBOYU4uXG5cdHJldHVybiAoIWlzTmFOKHBhcnNlRmxvYXQodmFsdWUgYXMgYW55KSkgJiYgIWlzTmFOKE51bWJlcih2YWx1ZSkpKSA/IE51bWJlcih2YWx1ZSkgOiBudWxsO1xufVxuIiwiaW1wb3J0IHsgQ29tcG9uZW50LCBJbnB1dCwgT3V0cHV0LCBFdmVudEVtaXR0ZXIsIEhvc3RCaW5kaW5nLCBIb3N0TGlzdGVuZXIgfSBmcm9tICdAYW5ndWxhci9jb3JlJztcbmltcG9ydCB7IGNvZXJjZUJvb2xlYW5Qcm9wZXJ0eSB9IGZyb20gJy4uL2hlbHBlcnMnO1xuaW1wb3J0IHsgU2FmZVN0eWxlLCBEb21TYW5pdGl6ZXIgfSBmcm9tICdAYW5ndWxhci9wbGF0Zm9ybS1icm93c2VyJztcblxuZW51bSBLRVlfQ09ERSB7XG5cdEJBQ0tTUEFDRSA9IDgsXG5cdERFTEVURSA9IDQ2XG59XG5cbkBDb21wb25lbnQoe1xuXHRzZWxlY3RvcjogJ25neC1kcm9wem9uZS1wcmV2aWV3Jyxcblx0dGVtcGxhdGU6IGBcblx0XHQ8bmctY29udGVudCBzZWxlY3Q9XCJuZ3gtZHJvcHpvbmUtbGFiZWxcIj48L25nLWNvbnRlbnQ+XG5cdFx0PG5neC1kcm9wem9uZS1yZW1vdmUtYmFkZ2UgKm5nSWY9XCJyZW1vdmFibGVcIiAoY2xpY2spPVwiX3JlbW92ZSgkZXZlbnQpXCI+XG5cdFx0PC9uZ3gtZHJvcHpvbmUtcmVtb3ZlLWJhZGdlPlxuXHRgLFxuXHRzdHlsZXM6IFtgOmhvc3QoKXtiYWNrZ3JvdW5kLWltYWdlOmxpbmVhci1ncmFkaWVudCh0byB0b3AsI2VkZWRlZCwjZWZlZmVmLCNmMWYxZjEsI2Y0ZjRmNCwjZjZmNmY2KX06aG9zdCgpOmZvY3VzLDpob3N0KCk6aG92ZXJ7YmFja2dyb3VuZC1pbWFnZTpsaW5lYXItZ3JhZGllbnQodG8gdG9wLCNlM2UzZTMsI2ViZWFlYSwjZThlN2U3LCNlYmVhZWEsI2Y0ZjRmNCk7b3V0bGluZTowfTpob3N0KCk6Zm9jdXMgbmd4LWRyb3B6b25lLXJlbW92ZS1iYWRnZSw6aG9zdCgpOmhvdmVyIG5neC1kcm9wem9uZS1yZW1vdmUtYmFkZ2V7b3BhY2l0eToxfTpob3N0KCkgbmd4LWRyb3B6b25lLXJlbW92ZS1iYWRnZXtvcGFjaXR5OjB9Omhvc3QoKSA6Om5nLWRlZXAgbmd4LWRyb3B6b25lLWxhYmVse292ZXJmbG93LXdyYXA6YnJlYWstd29yZH1gXVxufSlcbmV4cG9ydCBjbGFzcyBOZ3hEcm9wem9uZVByZXZpZXdDb21wb25lbnQge1xuXG5cdGNvbnN0cnVjdG9yKFxuXHRcdHByb3RlY3RlZCBzYW5pdGl6ZXI6IERvbVNhbml0aXplclxuXHQpIHsgfVxuXG5cdC8qKiBUaGUgZmlsZSB0byBwcmV2aWV3LiAqL1xuXHRASW5wdXQoKSBmaWxlOiBGaWxlO1xuXG5cdC8qKiBBbGxvdyB0aGUgdXNlciB0byByZW1vdmUgZmlsZXMuICovXG5cdEBJbnB1dCgpXG5cdGdldCByZW1vdmFibGUoKTogYm9vbGVhbiB7XG5cdFx0cmV0dXJuIHRoaXMuX3JlbW92YWJsZTtcblx0fVxuXHRzZXQgcmVtb3ZhYmxlKHZhbHVlOiBib29sZWFuKSB7XG5cdFx0dGhpcy5fcmVtb3ZhYmxlID0gY29lcmNlQm9vbGVhblByb3BlcnR5KHZhbHVlKTtcblx0fVxuXHRwcm90ZWN0ZWQgX3JlbW92YWJsZSA9IGZhbHNlO1xuXG5cdC8qKiBFbWl0dGVkIHdoZW4gdGhlIGVsZW1lbnQgc2hvdWxkIGJlIHJlbW92ZWQuICovXG5cdEBPdXRwdXQoKSByZWFkb25seSByZW1vdmVkID0gbmV3IEV2ZW50RW1pdHRlcjxGaWxlPigpO1xuXG5cdEBIb3N0TGlzdGVuZXIoJ2tleXVwJywgWyckZXZlbnQnXSlcblx0a2V5RXZlbnQoZXZlbnQ6IEtleWJvYXJkRXZlbnQpIHtcblx0XHRzd2l0Y2ggKGV2ZW50LmtleUNvZGUpIHtcblx0XHRcdGNhc2UgS0VZX0NPREUuQkFDS1NQQUNFOlxuXHRcdFx0Y2FzZSBLRVlfQ09ERS5ERUxFVEU6XG5cdFx0XHRcdHRoaXMucmVtb3ZlKCk7XG5cdFx0XHRcdGJyZWFrO1xuXHRcdFx0ZGVmYXVsdDpcblx0XHRcdFx0YnJlYWs7XG5cdFx0fVxuXHR9XG5cblx0LyoqIFdlIHVzZSB0aGUgSG9zdEJpbmRpbmcgdG8gcGFzcyB0aGVzZSBjb21tb24gc3R5bGVzIHRvIGNoaWxkIGNvbXBvbmVudHMuICovXG5cdEBIb3N0QmluZGluZygnc3R5bGUnKVxuXHRnZXQgaG9zdFN0eWxlKCk6IFNhZmVTdHlsZSB7XG5cdFx0Y29uc3Qgc3R5bGVzID0gYFxuXHRcdFx0ZGlzcGxheTogZmxleDtcblx0XHRcdGhlaWdodDogMTQwcHg7XG5cdFx0XHRtaW4taGVpZ2h0OiAxNDBweDtcblx0XHRcdG1pbi13aWR0aDogMTgwcHg7XG5cdFx0XHRtYXgtd2lkdGg6IDE4MHB4O1xuXHRcdFx0anVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG5cdFx0XHRhbGlnbi1pdGVtczogY2VudGVyO1xuXHRcdFx0cGFkZGluZzogMCAyMHB4O1xuXHRcdFx0bWFyZ2luOiAxMHB4O1xuXHRcdFx0Ym9yZGVyLXJhZGl1czogNXB4O1xuXHRcdFx0cG9zaXRpb246IHJlbGF0aXZlO1xuXHRcdGA7XG5cblx0XHRyZXR1cm4gdGhpcy5zYW5pdGl6ZXIuYnlwYXNzU2VjdXJpdHlUcnVzdFN0eWxlKHN0eWxlcyk7XG5cdH1cblxuXHQvKiogTWFrZSB0aGUgcHJldmlldyBpdGVtIGZvY3VzYWJsZSB1c2luZyB0aGUgdGFiIGtleS4gKi9cblx0QEhvc3RCaW5kaW5nKCd0YWJpbmRleCcpIHRhYkluZGV4ID0gMDtcblxuXHQvKiogUmVtb3ZlIG1ldGhvZCB0byBiZSB1c2VkIGZyb20gdGhlIHRlbXBsYXRlLiAqL1xuXHRfcmVtb3ZlKGV2ZW50KSB7XG5cdFx0ZXZlbnQuc3RvcFByb3BhZ2F0aW9uKCk7XG5cdFx0dGhpcy5yZW1vdmUoKTtcblx0fVxuXG5cdC8qKiBSZW1vdmUgdGhlIHByZXZpZXcgaXRlbSAodXNlIGZyb20gY29tcG9uZW50IGNvZGUpLiAqL1xuXHRyZW1vdmUoKSB7XG5cdFx0aWYgKHRoaXMuX3JlbW92YWJsZSkge1xuXHRcdFx0dGhpcy5yZW1vdmVkLm5leHQodGhpcy5maWxlKTtcblx0XHR9XG5cdH1cblxuXHRwcm90ZWN0ZWQgYXN5bmMgcmVhZEZpbGUoKTogUHJvbWlzZTxzdHJpbmcgfCBBcnJheUJ1ZmZlcj4ge1xuXHRcdHJldHVybiBuZXcgUHJvbWlzZTxzdHJpbmcgfCBBcnJheUJ1ZmZlcj4oKHJlc29sdmUsIHJlamVjdCkgPT4ge1xuXHRcdFx0Y29uc3QgcmVhZGVyID0gbmV3IEZpbGVSZWFkZXIoKTtcblxuXHRcdFx0cmVhZGVyLm9ubG9hZCA9IGUgPT4ge1xuXHRcdFx0XHRyZXNvbHZlKChlLnRhcmdldCBhcyBGaWxlUmVhZGVyKS5yZXN1bHQpO1xuXHRcdFx0fTtcblxuXHRcdFx0cmVhZGVyLm9uZXJyb3IgPSBlID0+IHtcblx0XHRcdFx0Y29uc29sZS5lcnJvcihgRmlsZVJlYWRlciBmYWlsZWQgb24gZmlsZSAke3RoaXMuZmlsZS5uYW1lfS5gKTtcblx0XHRcdFx0cmVqZWN0KGUpO1xuXHRcdFx0fTtcblxuXHRcdFx0aWYgKCF0aGlzLmZpbGUpIHtcblx0XHRcdFx0cmV0dXJuIHJlamVjdCgnTm8gZmlsZSB0byByZWFkLiBQbGVhc2UgcHJvdmlkZSBhIGZpbGUgdXNpbmcgdGhlIFtmaWxlXSBJbnB1dCBwcm9wZXJ0eS4nKTtcblx0XHRcdH1cblxuXHRcdFx0cmVhZGVyLnJlYWRBc0RhdGFVUkwodGhpcy5maWxlKTtcblx0XHR9KTtcblx0fVxufVxuIiwiaW1wb3J0IHsgSW5qZWN0YWJsZSB9IGZyb20gJ0Bhbmd1bGFyL2NvcmUnO1xuXG5leHBvcnQgaW50ZXJmYWNlIEZpbGVTZWxlY3RSZXN1bHQge1xuXG5cdC8qKiBUaGUgYWRkZWQgZmlsZXMsIGVtaXR0ZWQgaW4gdGhlIGZpbGVzQWRkZWQgZXZlbnQuICovXG5cdGFkZGVkRmlsZXM6IEZpbGVbXTtcblxuXHQvKiogVGhlIHJlamVjdGVkIGZpbGVzLCBlbWl0dGVkIGluIHRoZSBmaWxlc1JlamVjdGVkIGV2ZW50LiAqL1xuXHRyZWplY3RlZEZpbGVzOiBSZWplY3RlZEZpbGVbXTtcbn1cblxuZXhwb3J0IGludGVyZmFjZSBSZWplY3RlZEZpbGUgZXh0ZW5kcyBGaWxlIHtcblxuXHQvKiogVGhlIHJlYXNvbiB0aGUgZmlsZSB3YXMgcmVqZWN0ZWQuICovXG5cdHJlYXNvbj86IFJlamVjdFJlYXNvbjtcbn1cblxuZXhwb3J0IHR5cGUgUmVqZWN0UmVhc29uID0gJ3R5cGUnIHwgJ3NpemUnIHwgJ25vX211bHRpcGxlJztcblxuLyoqXG4gKiBUaGlzIHNlcnZpY2UgY29udGFpbnMgdGhlIGZpbHRlcmluZyBsb2dpYyB0byBiZSBhcHBsaWVkIHRvXG4gKiBhbnkgZHJvcHBlZCBvciBzZWxlY3RlZCBmaWxlLiBJZiBhIGZpbGUgbWF0Y2hlcyBhbGwgY3JpdGVyaWFcbiAqIGxpa2UgbWF4aW11bSBzaXplIG9yIGFjY2VwdCB0eXBlLCBpdCB3aWxsIGJlIGVtaXR0ZWQgaW4gdGhlXG4gKiBhZGRlZEZpbGVzIGFycmF5LCBvdGhlcndpc2UgaW4gdGhlIHJlamVjdGVkRmlsZXMgYXJyYXkuXG4gKi9cbkBJbmplY3RhYmxlKClcbmV4cG9ydCBjbGFzcyBOZ3hEcm9wem9uZVNlcnZpY2Uge1xuXG5cdHBhcnNlRmlsZUxpc3QoZmlsZXM6IEZpbGVMaXN0LCBhY2NlcHQ6IHN0cmluZywgbWF4RmlsZVNpemU6IG51bWJlciwgbXVsdGlwbGU6IGJvb2xlYW4pOiBGaWxlU2VsZWN0UmVzdWx0IHtcblxuXHRcdGNvbnN0IGFkZGVkRmlsZXM6IEZpbGVbXSA9IFtdO1xuXHRcdGNvbnN0IHJlamVjdGVkRmlsZXM6IFJlamVjdGVkRmlsZVtdID0gW107XG5cblx0XHRmb3IgKGxldCBpID0gMDsgaSA8IGZpbGVzLmxlbmd0aDsgaSsrKSB7XG5cdFx0XHRjb25zdCBmaWxlID0gZmlsZXMuaXRlbShpKTtcblxuXHRcdFx0aWYgKCF0aGlzLmlzQWNjZXB0ZWQoZmlsZSwgYWNjZXB0KSkge1xuXHRcdFx0XHR0aGlzLnJlamVjdEZpbGUocmVqZWN0ZWRGaWxlcywgZmlsZSwgJ3R5cGUnKTtcblx0XHRcdFx0Y29udGludWU7XG5cdFx0XHR9XG5cblx0XHRcdGlmIChtYXhGaWxlU2l6ZSAmJiBmaWxlLnNpemUgPiBtYXhGaWxlU2l6ZSkge1xuXHRcdFx0XHR0aGlzLnJlamVjdEZpbGUocmVqZWN0ZWRGaWxlcywgZmlsZSwgJ3NpemUnKTtcblx0XHRcdFx0Y29udGludWU7XG5cdFx0XHR9XG5cblx0XHRcdGlmICghbXVsdGlwbGUgJiYgYWRkZWRGaWxlcy5sZW5ndGggPj0gMSkge1xuXHRcdFx0XHR0aGlzLnJlamVjdEZpbGUocmVqZWN0ZWRGaWxlcywgZmlsZSwgJ25vX211bHRpcGxlJyk7XG5cdFx0XHRcdGNvbnRpbnVlO1xuXHRcdFx0fVxuXG5cdFx0XHRhZGRlZEZpbGVzLnB1c2goZmlsZSk7XG5cdFx0fVxuXG5cdFx0Y29uc3QgcmVzdWx0OiBGaWxlU2VsZWN0UmVzdWx0ID0ge1xuXHRcdFx0YWRkZWRGaWxlcyxcblx0XHRcdHJlamVjdGVkRmlsZXNcblx0XHR9O1xuXG5cdFx0cmV0dXJuIHJlc3VsdDtcblx0fVxuXG5cdHByaXZhdGUgaXNBY2NlcHRlZChmaWxlOiBGaWxlLCBhY2NlcHQ6IHN0cmluZyk6IGJvb2xlYW4ge1xuXG5cdFx0aWYgKGFjY2VwdCA9PT0gJyonKSB7XG5cdFx0XHRyZXR1cm4gdHJ1ZTtcblx0XHR9XG5cblx0XHRjb25zdCBhY2NlcHRGaWxldHlwZXMgPSBhY2NlcHQuc3BsaXQoJywnKS5tYXAoaXQgPT4gaXQudG9Mb3dlckNhc2UoKS50cmltKCkpO1xuXHRcdGNvbnN0IGZpbGV0eXBlID0gZmlsZS50eXBlLnRvTG93ZXJDYXNlKCk7XG5cdFx0Y29uc3QgZmlsZW5hbWUgPSBmaWxlLm5hbWUudG9Mb3dlckNhc2UoKTtcblxuXHRcdGNvbnN0IG1hdGNoZWRGaWxlVHlwZSA9IGFjY2VwdEZpbGV0eXBlcy5maW5kKGFjY2VwdEZpbGV0eXBlID0+IHtcblxuXHRcdFx0Ly8gY2hlY2sgZm9yIHdpbGRjYXJkIG1pbWV0eXBlIChlLmcuIGltYWdlLyopXG5cdFx0XHRpZiAoYWNjZXB0RmlsZXR5cGUuZW5kc1dpdGgoJy8qJykpIHtcblx0XHRcdFx0cmV0dXJuIGZpbGV0eXBlLnNwbGl0KCcvJylbMF0gPT09IGFjY2VwdEZpbGV0eXBlLnNwbGl0KCcvJylbMF07XG5cdFx0XHR9XG5cblx0XHRcdC8vIGNoZWNrIGZvciBmaWxlIGV4dGVuc2lvbiAoZS5nLiAuY3N2KVxuXHRcdFx0aWYgKGFjY2VwdEZpbGV0eXBlLnN0YXJ0c1dpdGgoXCIuXCIpKSB7XG5cdFx0XHRcdHJldHVybiBmaWxlbmFtZS5lbmRzV2l0aChhY2NlcHRGaWxldHlwZSk7XG5cdFx0XHR9XG5cblx0XHRcdC8vIGNoZWNrIGZvciBleGFjdCBtaW1ldHlwZSBtYXRjaCAoZS5nLiBpbWFnZS9qcGVnKVxuXHRcdFx0cmV0dXJuIGFjY2VwdEZpbGV0eXBlID09IGZpbGV0eXBlO1xuXHRcdH0pO1xuXG5cdFx0cmV0dXJuICEhbWF0Y2hlZEZpbGVUeXBlO1xuXHR9XG5cblx0cHJpdmF0ZSByZWplY3RGaWxlKHJlamVjdGVkRmlsZXM6IFJlamVjdGVkRmlsZVtdLCBmaWxlOiBGaWxlLCByZWFzb246IFJlamVjdFJlYXNvbikge1xuXG5cdFx0Y29uc3QgcmVqZWN0ZWRGaWxlID0gZmlsZSBhcyBSZWplY3RlZEZpbGU7XG5cdFx0cmVqZWN0ZWRGaWxlLnJlYXNvbiA9IHJlYXNvbjtcblxuXHRcdHJlamVjdGVkRmlsZXMucHVzaChyZWplY3RlZEZpbGUpO1xuXHR9XG59XG4iLCJpbXBvcnQgeyBDb21wb25lbnQsIE9uSW5pdCwgRXZlbnRFbWl0dGVyLCBPdXRwdXQsIElucHV0LCBWaWV3Q2hpbGQsIENvbnRlbnRDaGlsZHJlbiwgUXVlcnlMaXN0LCBIb3N0QmluZGluZywgSG9zdExpc3RlbmVyLCBTZWxmLCBFbGVtZW50UmVmIH0gZnJvbSAnQGFuZ3VsYXIvY29yZSc7XG5pbXBvcnQgeyBOZ3hEcm9wem9uZVNlcnZpY2UsIEZpbGVTZWxlY3RSZXN1bHQgfSBmcm9tICcuLi9uZ3gtZHJvcHpvbmUuc2VydmljZSc7XG5pbXBvcnQgeyBjb2VyY2VCb29sZWFuUHJvcGVydHksIGNvZXJjZU51bWJlclByb3BlcnR5IH0gZnJvbSAnLi4vaGVscGVycyc7XG5pbXBvcnQgeyBOZ3hEcm9wem9uZVByZXZpZXdDb21wb25lbnQgfSBmcm9tICcuLi9uZ3gtZHJvcHpvbmUtcHJldmlldy9uZ3gtZHJvcHpvbmUtcHJldmlldy5jb21wb25lbnQnO1xuXG5leHBvcnQgaW50ZXJmYWNlIE5neERyb3B6b25lQ2hhbmdlRXZlbnQge1xuICBzb3VyY2U6IE5neERyb3B6b25lQ29tcG9uZW50O1xuICBhZGRlZEZpbGVzOiBGaWxlW107XG4gIHJlamVjdGVkRmlsZXM6IEZpbGVbXTtcbn1cblxuQENvbXBvbmVudCh7XG4gIHNlbGVjdG9yOiAnbmd4LWRyb3B6b25lLCBbbmd4LWRyb3B6b25lXScsXG4gIHRlbXBsYXRlOiBgPGlucHV0ICNmaWxlSW5wdXQgdHlwZT1cImZpbGVcIiBbaWRdPVwiaWRcIiBbbXVsdGlwbGVdPVwibXVsdGlwbGVcIiBbYWNjZXB0XT1cImFjY2VwdFwiIFtkaXNhYmxlZF09XCJkaXNhYmxlZFwiXG4gIChjaGFuZ2UpPVwiX29uRmlsZXNTZWxlY3RlZCgkZXZlbnQpXCIgW2F0dHIuYXJpYS1sYWJlbF09XCJhcmlhTGFiZWxcIiBbYXR0ci5hcmlhLWxhYmVsbGVkYnldPVwiYXJpYUxhYmVsbGVkYnlcIlxuICBbYXR0ci5hcmlhLWRlc2NyaWJlZGJ5XT1cImFyaWFEZXNjcmliZWRCeVwiPlxuPG5nLWNvbnRlbnQgc2VsZWN0PVwibmd4LWRyb3B6b25lLWxhYmVsXCIgKm5nSWY9XCIhX2hhc1ByZXZpZXdzXCI+PC9uZy1jb250ZW50PlxuPG5nLWNvbnRlbnQgc2VsZWN0PVwibmd4LWRyb3B6b25lLXByZXZpZXdcIj48L25nLWNvbnRlbnQ+XG48bmctY29udGVudD48L25nLWNvbnRlbnQ+XG5gLFxuICBzdHlsZXM6IFtgOmhvc3QoKXtkaXNwbGF5OmZsZXg7YWxpZ24taXRlbXM6Y2VudGVyO2hlaWdodDoxODBweDtiYWNrZ3JvdW5kOiNmZmY7Y3Vyc29yOnBvaW50ZXI7Y29sb3I6IzcxNzM4Njtib3JkZXI6MnB4IGRhc2hlZCAjNzE3Mzg2O2JvcmRlci1yYWRpdXM6NXB4O2ZvbnQtc2l6ZToxNnB4O292ZXJmbG93LXg6YXV0b306aG9zdCgpLm5neC1kei1ob3ZlcmVke2JvcmRlci1zdHlsZTpzb2xpZH06aG9zdCgpLm5neC1kei1kaXNhYmxlZHtvcGFjaXR5Oi41O2N1cnNvcjpuby1kcm9wO3BvaW50ZXItZXZlbnRzOm5vbmV9Omhvc3QoKS5leHBhbmRhYmxle292ZXJmbG93OmhpZGRlbjtoZWlnaHQ6dW5zZXQ7bWluLWhlaWdodDoxODBweDtmbGV4LXdyYXA6d3JhcH06aG9zdCgpLnVuY2xpY2thYmxle2N1cnNvcjpkZWZhdWx0fTpob3N0KCkgOjpuZy1kZWVwIG5neC1kcm9wem9uZS1sYWJlbHt0ZXh0LWFsaWduOmNlbnRlcjt6LWluZGV4OjEwO21hcmdpbjoxMHB4IGF1dG99Omhvc3QoKSBpbnB1dHt3aWR0aDouMXB4O2hlaWdodDouMXB4O29wYWNpdHk6MDtvdmVyZmxvdzpoaWRkZW47cG9zaXRpb246YWJzb2x1dGU7ei1pbmRleDotMX06aG9zdCgpIGlucHV0OmZvY3VzKzo6bmctZGVlcCBuZ3gtZHJvcHpvbmUtbGFiZWx7b3V0bGluZTojMDAwIGRvdHRlZCAxcHg7b3V0bGluZTotd2Via2l0LWZvY3VzLXJpbmctY29sb3IgYXV0byA1cHh9YF0sXG4gIHByb3ZpZGVyczogW05neERyb3B6b25lU2VydmljZV1cbn0pXG5leHBvcnQgY2xhc3MgTmd4RHJvcHpvbmVDb21wb25lbnQge1xuXG4gIGNvbnN0cnVjdG9yKFxuICAgIEBTZWxmKCkgcHJpdmF0ZSBzZXJ2aWNlOiBOZ3hEcm9wem9uZVNlcnZpY2VcbiAgKSB7IH1cblxuICAvKiogQSBsaXN0IG9mIHRoZSBjb250ZW50LXByb2plY3RlZCBwcmV2aWV3IGNoaWxkcmVuLiAqL1xuICBAQ29udGVudENoaWxkcmVuKE5neERyb3B6b25lUHJldmlld0NvbXBvbmVudCwgeyBkZXNjZW5kYW50czogdHJ1ZSB9KVxuICBfcHJldmlld0NoaWxkcmVuOiBRdWVyeUxpc3Q8Tmd4RHJvcHpvbmVQcmV2aWV3Q29tcG9uZW50PjtcblxuICBnZXQgX2hhc1ByZXZpZXdzKCk6IGJvb2xlYW4ge1xuICAgIHJldHVybiAhIXRoaXMuX3ByZXZpZXdDaGlsZHJlbi5sZW5ndGg7XG4gIH1cblxuICAvKiogQSB0ZW1wbGF0ZSByZWZlcmVuY2UgdG8gdGhlIG5hdGl2ZSBmaWxlIGlucHV0IGVsZW1lbnQuICovXG4gIEBWaWV3Q2hpbGQoJ2ZpbGVJbnB1dCcpIF9maWxlSW5wdXQ6IEVsZW1lbnRSZWY7XG5cbiAgLyoqIEVtaXR0ZWQgd2hlbiBhbnkgZmlsZXMgd2VyZSBhZGRlZCBvciByZWplY3RlZC4gKi9cbiAgQE91dHB1dCgpIHJlYWRvbmx5IGNoYW5nZSA9IG5ldyBFdmVudEVtaXR0ZXI8Tmd4RHJvcHpvbmVDaGFuZ2VFdmVudD4oKTtcblxuICAvKiogU2V0IHRoZSBhY2NlcHRlZCBmaWxlIHR5cGVzLiBEZWZhdWx0cyB0byAnKicuICovXG4gIEBJbnB1dCgpIGFjY2VwdCA9ICcqJztcblxuICAvKiogRGlzYWJsZSBhbnkgdXNlciBpbnRlcmFjdGlvbiB3aXRoIHRoZSBjb21wb25lbnQuICovXG4gIEBJbnB1dCgpXG4gIEBIb3N0QmluZGluZygnY2xhc3Mubmd4LWR6LWRpc2FibGVkJylcbiAgZ2V0IGRpc2FibGVkKCk6IGJvb2xlYW4ge1xuICAgIHJldHVybiB0aGlzLl9kaXNhYmxlZDtcbiAgfVxuICBzZXQgZGlzYWJsZWQodmFsdWU6IGJvb2xlYW4pIHtcbiAgICB0aGlzLl9kaXNhYmxlZCA9IGNvZXJjZUJvb2xlYW5Qcm9wZXJ0eSh2YWx1ZSk7XG5cbiAgICBpZiAodGhpcy5faXNIb3ZlcmVkKSB7XG4gICAgICB0aGlzLl9pc0hvdmVyZWQgPSBmYWxzZTtcbiAgICB9XG4gIH1cbiAgcHJpdmF0ZSBfZGlzYWJsZWQgPSBmYWxzZTtcblxuICAvKiogQWxsb3cgdGhlIHNlbGVjdGlvbiBvZiBtdWx0aXBsZSBmaWxlcy4gKi9cbiAgQElucHV0KClcbiAgZ2V0IG11bHRpcGxlKCk6IGJvb2xlYW4ge1xuICAgIHJldHVybiB0aGlzLl9tdWx0aXBsZTtcbiAgfVxuICBzZXQgbXVsdGlwbGUodmFsdWU6IGJvb2xlYW4pIHtcbiAgICB0aGlzLl9tdWx0aXBsZSA9IGNvZXJjZUJvb2xlYW5Qcm9wZXJ0eSh2YWx1ZSk7XG4gIH1cbiAgcHJpdmF0ZSBfbXVsdGlwbGUgPSB0cnVlO1xuXG4gIC8qKiBTZXQgdGhlIG1heGltdW0gc2l6ZSBhIHNpbmdsZSBmaWxlIG1heSBoYXZlLiAqL1xuICBASW5wdXQoKVxuICBnZXQgbWF4RmlsZVNpemUoKTogbnVtYmVyIHtcbiAgICByZXR1cm4gdGhpcy5fbWF4RmlsZVNpemU7XG4gIH1cbiAgc2V0IG1heEZpbGVTaXplKHZhbHVlOiBudW1iZXIpIHtcbiAgICB0aGlzLl9tYXhGaWxlU2l6ZSA9IGNvZXJjZU51bWJlclByb3BlcnR5KHZhbHVlKTtcbiAgfVxuICBwcml2YXRlIF9tYXhGaWxlU2l6ZTogbnVtYmVyID0gdW5kZWZpbmVkO1xuXG4gIC8qKiBBbGxvdyB0aGUgZHJvcHpvbmUgY29udGFpbmVyIHRvIGV4cGFuZCB2ZXJ0aWNhbGx5LiAqL1xuICBASW5wdXQoKVxuICBASG9zdEJpbmRpbmcoJ2NsYXNzLmV4cGFuZGFibGUnKVxuICBnZXQgZXhwYW5kYWJsZSgpOiBib29sZWFuIHtcbiAgICByZXR1cm4gdGhpcy5fZXhwYW5kYWJsZTtcbiAgfVxuICBzZXQgZXhwYW5kYWJsZSh2YWx1ZTogYm9vbGVhbikge1xuICAgIHRoaXMuX2V4cGFuZGFibGUgPSBjb2VyY2VCb29sZWFuUHJvcGVydHkodmFsdWUpO1xuICB9XG4gIHByaXZhdGUgX2V4cGFuZGFibGU6IGJvb2xlYW4gPSBmYWxzZTtcblxuICAvKiogT3BlbiB0aGUgZmlsZSBzZWxlY3RvciBvbiBjbGljay4gKi9cbiAgQElucHV0KClcbiAgQEhvc3RCaW5kaW5nKCdjbGFzcy51bmNsaWNrYWJsZScpXG4gIGdldCBkaXNhYmxlQ2xpY2soKTogYm9vbGVhbiB7XG4gICAgcmV0dXJuIHRoaXMuX2Rpc2FibGVDbGljaztcbiAgfVxuICBzZXQgZGlzYWJsZUNsaWNrKHZhbHVlOiBib29sZWFuKSB7XG4gICAgdGhpcy5fZGlzYWJsZUNsaWNrID0gY29lcmNlQm9vbGVhblByb3BlcnR5KHZhbHVlKTtcbiAgfVxuICBwcml2YXRlIF9kaXNhYmxlQ2xpY2sgPSBmYWxzZTtcblxuICAvKiogRXhwb3NlIHRoZSBpZCwgYXJpYS1sYWJlbCwgYXJpYS1sYWJlbGxlZGJ5IGFuZCBhcmlhLWRlc2NyaWJlZGJ5IG9mIHRoZSBuYXRpdmUgZmlsZSBpbnB1dCBmb3IgcHJvcGVyIGFjY2Vzc2liaWxpdHkuICovXG4gIEBJbnB1dCgpIGlkOiBzdHJpbmc7XG4gIEBJbnB1dCgnYXJpYS1sYWJlbCcpIGFyaWFMYWJlbDogc3RyaW5nO1xuICBASW5wdXQoJ2FyaWEtbGFiZWxsZWRieScpIGFyaWFMYWJlbGxlZGJ5OiBzdHJpbmc7XG4gIEBJbnB1dCgnYXJpYS1kZXNjcmliZWRieScpIGFyaWFEZXNjcmliZWRCeTogc3RyaW5nO1xuXG4gIEBIb3N0QmluZGluZygnY2xhc3Mubmd4LWR6LWhvdmVyZWQnKVxuICBfaXNIb3ZlcmVkID0gZmFsc2U7XG5cbiAgLyoqIFNob3cgdGhlIG5hdGl2ZSBPUyBmaWxlIGV4cGxvcmVyIHRvIHNlbGVjdCBmaWxlcy4gKi9cbiAgQEhvc3RMaXN0ZW5lcignY2xpY2snKVxuICBfb25DbGljaygpIHtcbiAgICBpZiAoIXRoaXMuZGlzYWJsZUNsaWNrKSB7XG4gICAgICB0aGlzLnNob3dGaWxlU2VsZWN0b3IoKTtcbiAgICB9IFxuICB9XG5cbiAgQEhvc3RMaXN0ZW5lcignZHJhZ292ZXInLCBbJyRldmVudCddKVxuICBfb25EcmFnT3ZlcihldmVudCkge1xuICAgIGlmICh0aGlzLmRpc2FibGVkKSB7XG4gICAgICByZXR1cm47XG4gICAgfVxuXG4gICAgdGhpcy5wcmV2ZW50RGVmYXVsdChldmVudCk7XG4gICAgdGhpcy5faXNIb3ZlcmVkID0gdHJ1ZTtcbiAgfVxuXG4gIEBIb3N0TGlzdGVuZXIoJ2RyYWdsZWF2ZScpXG4gIF9vbkRyYWdMZWF2ZSgpIHtcbiAgICB0aGlzLl9pc0hvdmVyZWQgPSBmYWxzZTtcbiAgfVxuXG4gIEBIb3N0TGlzdGVuZXIoJ2Ryb3AnLCBbJyRldmVudCddKVxuICBfb25Ecm9wKGV2ZW50KSB7XG4gICAgaWYgKHRoaXMuZGlzYWJsZWQpIHtcbiAgICAgIHJldHVybjtcbiAgICB9XG5cbiAgICB0aGlzLnByZXZlbnREZWZhdWx0KGV2ZW50KTtcbiAgICB0aGlzLl9pc0hvdmVyZWQgPSBmYWxzZTtcbiAgICB0aGlzLmhhbmRsZUZpbGVEcm9wKGV2ZW50LmRhdGFUcmFuc2Zlci5maWxlcyk7XG4gIH1cbiAgXG4gIHNob3dGaWxlU2VsZWN0b3IoKSB7XG4gICAgaWYgKCF0aGlzLmRpc2FibGVkKSB7XG4gICAgICAodGhpcy5fZmlsZUlucHV0Lm5hdGl2ZUVsZW1lbnQgYXMgSFRNTElucHV0RWxlbWVudCkuY2xpY2soKTtcbiAgICB9XG4gIH1cblxuICBfb25GaWxlc1NlbGVjdGVkKGV2ZW50KSB7XG4gICAgY29uc3QgZmlsZXM6IEZpbGVMaXN0ID0gZXZlbnQudGFyZ2V0LmZpbGVzO1xuICAgIHRoaXMuaGFuZGxlRmlsZURyb3AoZmlsZXMpO1xuXG4gICAgLy8gUmVzZXQgdGhlIG5hdGl2ZSBmaWxlIGlucHV0IGVsZW1lbnQgdG8gYWxsb3cgc2VsZWN0aW5nIHRoZSBzYW1lIGZpbGUgYWdhaW5cbiAgICB0aGlzLl9maWxlSW5wdXQubmF0aXZlRWxlbWVudC52YWx1ZSA9ICcnO1xuXG4gICAgLy8gZml4KCMzMik6IFByZXZlbnQgdGhlIGRlZmF1bHQgZXZlbnQgYmVoYXZpb3VyIHdoaWNoIGNhdXNlZCB0aGUgY2hhbmdlIGV2ZW50IHRvIGVtaXQgdHdpY2UuXG4gICAgdGhpcy5wcmV2ZW50RGVmYXVsdChldmVudCk7XG4gIH1cblxuICBwcml2YXRlIGhhbmRsZUZpbGVEcm9wKGZpbGVzOiBGaWxlTGlzdCkge1xuICAgIGNvbnN0IHJlc3VsdCA9IHRoaXMuc2VydmljZS5wYXJzZUZpbGVMaXN0KGZpbGVzLCB0aGlzLmFjY2VwdCwgdGhpcy5tYXhGaWxlU2l6ZSwgdGhpcy5tdWx0aXBsZSk7XG5cbiAgICB0aGlzLmNoYW5nZS5uZXh0KHtcbiAgICAgIGFkZGVkRmlsZXM6IHJlc3VsdC5hZGRlZEZpbGVzLFxuICAgICAgcmVqZWN0ZWRGaWxlczogcmVzdWx0LnJlamVjdGVkRmlsZXMsXG4gICAgICBzb3VyY2U6IHRoaXNcbiAgICB9KTtcbiAgfVxuXG4gIHByaXZhdGUgcHJldmVudERlZmF1bHQoZXZlbnQ6IERyYWdFdmVudCkge1xuICAgIGV2ZW50LnByZXZlbnREZWZhdWx0KCk7XG4gICAgZXZlbnQuc3RvcFByb3BhZ2F0aW9uKCk7XG4gIH1cbn1cbiIsImltcG9ydCB7IENvbXBvbmVudCwgT25Jbml0LCBIb3N0QmluZGluZyB9IGZyb20gJ0Bhbmd1bGFyL2NvcmUnO1xuaW1wb3J0IHsgTmd4RHJvcHpvbmVQcmV2aWV3Q29tcG9uZW50IH0gZnJvbSAnLi4vbmd4LWRyb3B6b25lLXByZXZpZXcuY29tcG9uZW50JztcbmltcG9ydCB7IERvbVNhbml0aXplciwgU2FmZVN0eWxlIH0gZnJvbSAnQGFuZ3VsYXIvcGxhdGZvcm0tYnJvd3Nlcic7XG5cbkBDb21wb25lbnQoe1xuICBzZWxlY3RvcjogJ25neC1kcm9wem9uZS1pbWFnZS1wcmV2aWV3JyxcbiAgdGVtcGxhdGU6IGBcbiAgICA8aW1nIFtzcmNdPVwiaW1hZ2VTcmNcIiAvPlxuXHRcdDxuZy1jb250ZW50IHNlbGVjdD1cIm5neC1kcm9wem9uZS1sYWJlbFwiPjwvbmctY29udGVudD5cbiAgICA8bmd4LWRyb3B6b25lLXJlbW92ZS1iYWRnZSAqbmdJZj1cInJlbW92YWJsZVwiIChjbGljayk9XCJfcmVtb3ZlKCRldmVudClcIj5cbiAgICA8L25neC1kcm9wem9uZS1yZW1vdmUtYmFkZ2U+XG5cdGAsXG4gIHN0eWxlczogW2A6aG9zdCgpe21pbi13aWR0aDp1bnNldCFpbXBvcnRhbnQ7bWF4LXdpZHRoOnVuc2V0IWltcG9ydGFudDtwYWRkaW5nOjAhaW1wb3J0YW50fTpob3N0KCk6Zm9jdXMgaW1nLDpob3N0KCk6aG92ZXIgaW1ne29wYWNpdHk6Ljd9Omhvc3QoKTpmb2N1cyBuZ3gtZHJvcHpvbmUtcmVtb3ZlLWJhZGdlLDpob3N0KCk6aG92ZXIgbmd4LWRyb3B6b25lLXJlbW92ZS1iYWRnZXtvcGFjaXR5OjF9Omhvc3QoKSBuZ3gtZHJvcHpvbmUtcmVtb3ZlLWJhZGdle29wYWNpdHk6MH06aG9zdCgpIGltZ3ttYXgtaGVpZ2h0OjEwMCU7Ym9yZGVyLXJhZGl1czo1cHg7b3BhY2l0eTouOH06aG9zdCgpIDo6bmctZGVlcCBuZ3gtZHJvcHpvbmUtbGFiZWx7cG9zaXRpb246YWJzb2x1dGU7b3ZlcmZsb3ctd3JhcDpicmVhay13b3JkfWBdLFxuICBwcm92aWRlcnM6IFtcbiAgICB7XG4gICAgICBwcm92aWRlOiBOZ3hEcm9wem9uZVByZXZpZXdDb21wb25lbnQsXG4gICAgICB1c2VFeGlzdGluZzogTmd4RHJvcHpvbmVJbWFnZVByZXZpZXdDb21wb25lbnRcbiAgICB9XG4gIF1cbn0pXG5leHBvcnQgY2xhc3MgTmd4RHJvcHpvbmVJbWFnZVByZXZpZXdDb21wb25lbnQgZXh0ZW5kcyBOZ3hEcm9wem9uZVByZXZpZXdDb21wb25lbnQgaW1wbGVtZW50cyBPbkluaXQge1xuXG4gIGNvbnN0cnVjdG9yKFxuICAgIHNhbml0aXplcjogRG9tU2FuaXRpemVyXG4gICkge1xuICAgIHN1cGVyKHNhbml0aXplcik7XG4gIH1cblxuICAvKiogVGhlIGltYWdlIGRhdGEgc291cmNlLiAqL1xuICAgZGVmdWFsdEltZ0xvYWRpbmcgPSAnZGF0YTppbWFnZS9zdmcreG1sO2Jhc2U2NCxQRDk0Yld3Z2RtVnljMmx2YmowaU1TNHdJaUJsYm1OdlpHbHVaejBpZFhSbUxUZ2lQejRLUEhOMlp5QjRiV3h1Y3owaWFIUjBjRG92TDNkM2R5NTNNeTV2Y21jdk1qQXdNQzl6ZG1jaUlIaHRiRzV6T25oc2FXNXJQU0pvZEhSd09pOHZkM2QzTG5jekxtOXlaeTh4T1RrNUwzaHNhVzVySWlCemRIbHNaVDBpYldGeVoybHVPaUJoZFhSdk95QmlZV05yWjNKdmRXNWtPaUJ5WjJJb01qUXhMQ0F5TkRJc0lESTBNeWtnYm05dVpTQnlaWEJsWVhRZ2MyTnliMnhzSURBbElEQWxPeUJrYVhOd2JHRjVPaUJpYkc5amF6c2djMmhoY0dVdGNtVnVaR1Z5YVc1bk9pQmhkWFJ2T3lJZ2QybGtkR2c5SWpJeU5IQjRJaUJvWldsbmFIUTlJakl5TkhCNElpQjJhV1YzUW05NFBTSXdJREFnTVRBd0lERXdNQ0lnY0hKbGMyVnlkbVZCYzNCbFkzUlNZWFJwYnowaWVFMXBaRmxOYVdRaVBnbzhZMmx5WTJ4bElHTjRQU0kxTUNJZ1kzazlJalV3SWlCeVBTSXhOQ0lnYzNSeWIydGxMWGRwWkhSb1BTSXpJaUJ6ZEhKdmEyVTlJaU00TldFeVlqWWlJSE4wY205clpTMWtZWE5vWVhKeVlYazlJakl4TGprNU1URTBPRFUzTlRFeU9EVTFNaUF5TVM0NU9URXhORGcxTnpVeE1qZzFOVElpSUdacGJHdzlJbTV2Ym1VaUlITjBjbTlyWlMxc2FXNWxZMkZ3UFNKeWIzVnVaQ0krQ2lBZ1BHRnVhVzFoZEdWVWNtRnVjMlp2Y20wZ1lYUjBjbWxpZFhSbFRtRnRaVDBpZEhKaGJuTm1iM0p0SWlCMGVYQmxQU0p5YjNSaGRHVWlJR1IxY2owaU1TNHhOakkzT1RBMk9UYzJOelEwTVRnMGN5SWdjbVZ3WldGMFEyOTFiblE5SW1sdVpHVm1hVzVwZEdVaUlHdGxlVlJwYldWelBTSXdPekVpSUhaaGJIVmxjejBpTUNBMU1DQTFNRHN6TmpBZ05UQWdOVEFpUGp3dllXNXBiV0YwWlZSeVlXNXpabTl5YlQ0S1BDOWphWEpqYkdVK0NqeGphWEpqYkdVZ1kzZzlJalV3SWlCamVUMGlOVEFpSUhJOUlqRXdJaUJ6ZEhKdmEyVXRkMmxrZEdnOUlqTWlJSE4wY205clpUMGlJMkppWTJWa1pDSWdjM1J5YjJ0bExXUmhjMmhoY25KaGVUMGlNVFV1TnpBM09UWXpNalkzT1RRNE9UWTJJREUxTGpjd056azJNekkyTnprME9EazJOaUlnYzNSeWIydGxMV1JoYzJodlptWnpaWFE5SWpFMUxqY3dOemsyTXpJMk56azBPRGsyTmlJZ1ptbHNiRDBpYm05dVpTSWdjM1J5YjJ0bExXeHBibVZqWVhBOUluSnZkVzVrSWo0S0lDQThZVzVwYldGMFpWUnlZVzV6Wm05eWJTQmhkSFJ5YVdKMWRHVk9ZVzFsUFNKMGNtRnVjMlp2Y20waUlIUjVjR1U5SW5KdmRHRjBaU0lnWkhWeVBTSXhMakUyTWpjNU1EWTVOelkzTkRReE9EUnpJaUJ5WlhCbFlYUkRiM1Z1ZEQwaWFXNWtaV1pwYm1sMFpTSWdhMlY1VkdsdFpYTTlJakE3TVNJZ2RtRnNkV1Z6UFNJd0lEVXdJRFV3T3kwek5qQWdOVEFnTlRBaVBqd3ZZVzVwYldGMFpWUnlZVzV6Wm05eWJUNEtQQzlqYVhKamJHVStDandoTFMwZ1cyeGthVzlkSUdkbGJtVnlZWFJsWkNCaWVTQm9kSFJ3Y3pvdkwyeHZZV1JwYm1jdWFXOHZJQzB0UGp3dmMzWm5QZz09JztcbiAgaW1hZ2VTcmM6IGFueSA9IHRoaXMuc2FuaXRpemVyLmJ5cGFzc1NlY3VyaXR5VHJ1c3RVcmwodGhpcy5kZWZ1YWx0SW1nTG9hZGluZyk7IFxuXG4gIG5nT25Jbml0KCkge1xuICAgIHRoaXMucmVhZEZpbGUoKVxuICAgICAgLnRoZW4oaW1nID0+IHNldFRpbWVvdXQoKCkgPT4gdGhpcy5pbWFnZVNyYyA9IGltZykpXG4gICAgICAuY2F0Y2goZXJyID0+IGNvbnNvbGUuZXJyb3IoZXJyKSk7XG4gIH1cbn1cbiIsImltcG9ydCB7IENvbXBvbmVudCB9IGZyb20gJ0Bhbmd1bGFyL2NvcmUnO1xuXG5AQ29tcG9uZW50KHtcbiAgc2VsZWN0b3I6ICduZ3gtZHJvcHpvbmUtcmVtb3ZlLWJhZGdlJyxcbiAgdGVtcGxhdGU6IGBcbiAgICA8c3ZnPlxuICAgICAgPGxpbmUgeDE9XCIwXCIgeTE9XCIwXCIgeDI9XCIxMFwiIHkyPVwiMTBcIiAvPlxuICAgICAgPGxpbmUgeDE9XCIwXCIgeTE9XCIxMFwiIHgyPVwiMTBcIiB5Mj1cIjBcIiAvPlxuICAgIDwvc3ZnPlxuICBgLFxuICBzdHlsZXM6IFtgOmhvc3QoKXtkaXNwbGF5OmZsZXg7anVzdGlmeS1jb250ZW50OmNlbnRlcjthbGlnbi1pdGVtczpjZW50ZXI7aGVpZ2h0OjIycHg7d2lkdGg6MjJweDtwb3NpdGlvbjphYnNvbHV0ZTt0b3A6NXB4O3JpZ2h0OjVweDtib3JkZXItcmFkaXVzOjUwJTtiYWNrZ3JvdW5kOiNiYmI7Y29sb3I6IzMzMztjdXJzb3I6cG9pbnRlcn06aG9zdCgpOmhvdmVye2JhY2tncm91bmQ6I2FlYWVhZX06aG9zdCgpPnN2Z3toZWlnaHQ6MTBweDt3aWR0aDoxMHB4fTpob3N0KCk+c3ZnPmxpbmV7c3Ryb2tlLXdpZHRoOjJweDtzdHJva2U6I2ZmZn1gXVxufSlcbmV4cG9ydCBjbGFzcyBOZ3hEcm9wem9uZVJlbW92ZUJhZGdlQ29tcG9uZW50IHsgfVxuIiwiaW1wb3J0IHsgQ29tcG9uZW50LCBPbkluaXQsIE9uRGVzdHJveSB9IGZyb20gJ0Bhbmd1bGFyL2NvcmUnO1xuaW1wb3J0IHsgTmd4RHJvcHpvbmVQcmV2aWV3Q29tcG9uZW50IH0gZnJvbSAnLi4vbmd4LWRyb3B6b25lLXByZXZpZXcuY29tcG9uZW50JztcbmltcG9ydCB7IERvbVNhbml0aXplciwgU2FmZVVybCB9IGZyb20gJ0Bhbmd1bGFyL3BsYXRmb3JtLWJyb3dzZXInO1xuXG5AQ29tcG9uZW50KHtcbiAgc2VsZWN0b3I6ICduZ3gtZHJvcHpvbmUtdmlkZW8tcHJldmlldycsXG4gIHRlbXBsYXRlOiBgXG4gICAgPHZpZGVvICpuZ0lmPVwic2FuaXRpemVkVmlkZW9TcmNcIiBjb250cm9scyAoY2xpY2spPVwiJGV2ZW50LnN0b3BQcm9wYWdhdGlvbigpXCI+XG4gICAgICA8c291cmNlIFtzcmNdPVwic2FuaXRpemVkVmlkZW9TcmNcIiAvPlxuICAgIDwvdmlkZW8+XG4gICAgPG5nLWNvbnRlbnQgc2VsZWN0PVwibmd4LWRyb3B6b25lLWxhYmVsXCI+PC9uZy1jb250ZW50PlxuICAgIDxuZ3gtZHJvcHpvbmUtcmVtb3ZlLWJhZGdlICpuZ0lmPVwicmVtb3ZhYmxlXCIgKGNsaWNrKT1cIl9yZW1vdmUoJGV2ZW50KVwiPlxuICAgIDwvbmd4LWRyb3B6b25lLXJlbW92ZS1iYWRnZT5cblx0YCxcbiAgc3R5bGVzOiBbYDpob3N0KCl7bWluLXdpZHRoOnVuc2V0IWltcG9ydGFudDttYXgtd2lkdGg6dW5zZXQhaW1wb3J0YW50O3BhZGRpbmc6MCFpbXBvcnRhbnR9Omhvc3QoKTpmb2N1cyB2aWRlbyw6aG9zdCgpOmhvdmVyIHZpZGVve29wYWNpdHk6Ljd9Omhvc3QoKTpmb2N1cyBuZ3gtZHJvcHpvbmUtcmVtb3ZlLWJhZGdlLDpob3N0KCk6aG92ZXIgbmd4LWRyb3B6b25lLXJlbW92ZS1iYWRnZXtvcGFjaXR5OjF9Omhvc3QoKSBuZ3gtZHJvcHpvbmUtcmVtb3ZlLWJhZGdle29wYWNpdHk6MH06aG9zdCgpIHZpZGVve21heC1oZWlnaHQ6MTAwJTtib3JkZXItcmFkaXVzOjVweH06aG9zdCgpIDo6bmctZGVlcCBuZ3gtZHJvcHpvbmUtbGFiZWx7cG9zaXRpb246YWJzb2x1dGU7b3ZlcmZsb3ctd3JhcDpicmVhay13b3JkfWBdLFxuICBwcm92aWRlcnM6IFtcbiAgICB7XG4gICAgICBwcm92aWRlOiBOZ3hEcm9wem9uZVByZXZpZXdDb21wb25lbnQsXG4gICAgICB1c2VFeGlzdGluZzogTmd4RHJvcHpvbmVWaWRlb1ByZXZpZXdDb21wb25lbnRcbiAgICB9XG4gIF1cbn0pXG5leHBvcnQgY2xhc3MgTmd4RHJvcHpvbmVWaWRlb1ByZXZpZXdDb21wb25lbnQgZXh0ZW5kcyBOZ3hEcm9wem9uZVByZXZpZXdDb21wb25lbnQgaW1wbGVtZW50cyBPbkluaXQsIE9uRGVzdHJveSB7XG5cbiAgY29uc3RydWN0b3IoXG4gICAgc2FuaXRpemVyOiBEb21TYW5pdGl6ZXJcbiAgKSB7XG4gICAgc3VwZXIoc2FuaXRpemVyKTtcbiAgfVxuXG4gIC8qKiBUaGUgdmlkZW8gZGF0YSBzb3VyY2UuICovXG4gIHNhbml0aXplZFZpZGVvU3JjOiBTYWZlVXJsO1xuXG4gIHByaXZhdGUgdmlkZW9TcmM6IHN0cmluZztcblxuICBuZ09uSW5pdCgpIHtcbiAgICBpZiAoIXRoaXMuZmlsZSkge1xuICAgICAgY29uc29sZS5lcnJvcignTm8gZmlsZSB0byByZWFkLiBQbGVhc2UgcHJvdmlkZSBhIGZpbGUgdXNpbmcgdGhlIFtmaWxlXSBJbnB1dCBwcm9wZXJ0eS4nKTtcbiAgICAgIHJldHVybjtcbiAgICB9XG5cbiAgICAvKipcbiAgICAgKiBXZSBzYW5pdGl6ZSB0aGUgVVJMIGhlcmUgdG8gZW5hYmxlIHRoZSBwcmV2aWV3LlxuICAgICAqIFBsZWFzZSBub3RlIHRoYXQgdGhpcyBjb3VsZCBjYXVzZSBzZWN1cml0eSBpc3N1ZXMhXG4gICAgICoqL1xuICAgIHRoaXMudmlkZW9TcmMgPSBVUkwuY3JlYXRlT2JqZWN0VVJMKHRoaXMuZmlsZSk7XG4gICAgdGhpcy5zYW5pdGl6ZWRWaWRlb1NyYyA9IHRoaXMuc2FuaXRpemVyLmJ5cGFzc1NlY3VyaXR5VHJ1c3RVcmwodGhpcy52aWRlb1NyYyk7XG4gIH1cblxuICBuZ09uRGVzdHJveSgpIHtcbiAgICBVUkwucmV2b2tlT2JqZWN0VVJMKHRoaXMudmlkZW9TcmMpO1xuICB9XG59XG4iLCJpbXBvcnQgeyBOZ01vZHVsZSB9IGZyb20gJ0Bhbmd1bGFyL2NvcmUnO1xuaW1wb3J0IHsgQ29tbW9uTW9kdWxlIH0gZnJvbSAnQGFuZ3VsYXIvY29tbW9uJztcbmltcG9ydCB7IE5neERyb3B6b25lTGFiZWxEaXJlY3RpdmUgfSBmcm9tICcuL25neC1kcm9wem9uZS1sYWJlbC5kaXJlY3RpdmUnO1xuaW1wb3J0IHsgTmd4RHJvcHpvbmVQcmV2aWV3Q29tcG9uZW50IH0gZnJvbSAnLi9uZ3gtZHJvcHpvbmUtcHJldmlldy9uZ3gtZHJvcHpvbmUtcHJldmlldy5jb21wb25lbnQnO1xuaW1wb3J0IHsgTmd4RHJvcHpvbmVDb21wb25lbnQgfSBmcm9tICcuL25neC1kcm9wem9uZS9uZ3gtZHJvcHpvbmUuY29tcG9uZW50JztcbmltcG9ydCB7IE5neERyb3B6b25lSW1hZ2VQcmV2aWV3Q29tcG9uZW50IH0gZnJvbSAnLi9uZ3gtZHJvcHpvbmUtcHJldmlldy9uZ3gtZHJvcHpvbmUtaW1hZ2UtcHJldmlldy9uZ3gtZHJvcHpvbmUtaW1hZ2UtcHJldmlldy5jb21wb25lbnQnO1xuaW1wb3J0IHsgTmd4RHJvcHpvbmVSZW1vdmVCYWRnZUNvbXBvbmVudCB9IGZyb20gJy4vbmd4LWRyb3B6b25lLXByZXZpZXcvbmd4LWRyb3B6b25lLXJlbW92ZS1iYWRnZS9uZ3gtZHJvcHpvbmUtcmVtb3ZlLWJhZGdlLmNvbXBvbmVudCc7XG5pbXBvcnQgeyBOZ3hEcm9wem9uZVZpZGVvUHJldmlld0NvbXBvbmVudCB9IGZyb20gJy4vbmd4LWRyb3B6b25lLXByZXZpZXcvbmd4LWRyb3B6b25lLXZpZGVvLXByZXZpZXcvbmd4LWRyb3B6b25lLXZpZGVvLXByZXZpZXcuY29tcG9uZW50JztcblxuQE5nTW9kdWxlKHtcblx0aW1wb3J0czogW1xuXHRcdENvbW1vbk1vZHVsZVxuXHRdLFxuXHRkZWNsYXJhdGlvbnM6IFtcblx0XHROZ3hEcm9wem9uZUNvbXBvbmVudCxcblx0XHROZ3hEcm9wem9uZUxhYmVsRGlyZWN0aXZlLFxuXHRcdE5neERyb3B6b25lUHJldmlld0NvbXBvbmVudCxcblx0XHROZ3hEcm9wem9uZUltYWdlUHJldmlld0NvbXBvbmVudCxcblx0XHROZ3hEcm9wem9uZVJlbW92ZUJhZGdlQ29tcG9uZW50LFxuXHRcdE5neERyb3B6b25lVmlkZW9QcmV2aWV3Q29tcG9uZW50LFxuXHRdLFxuXHRleHBvcnRzOiBbXG5cdFx0Tmd4RHJvcHpvbmVDb21wb25lbnQsXG5cdFx0Tmd4RHJvcHpvbmVMYWJlbERpcmVjdGl2ZSxcblx0XHROZ3hEcm9wem9uZVByZXZpZXdDb21wb25lbnQsXG5cdFx0Tmd4RHJvcHpvbmVJbWFnZVByZXZpZXdDb21wb25lbnQsXG5cdFx0Tmd4RHJvcHpvbmVSZW1vdmVCYWRnZUNvbXBvbmVudCxcblx0XHROZ3hEcm9wem9uZVZpZGVvUHJldmlld0NvbXBvbmVudCxcblx0XVxufSlcbmV4cG9ydCBjbGFzcyBOZ3hEcm9wem9uZU1vZHVsZSB7IH1cbiJd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
+    //# sourceMappingURL=ngx-dropzone.js.map
 
     /***/
+  },
+
+  /***/
+  "./node_modules/ngx-dropzone/node_modules/tslib/tslib.es6.js":
+  /*!*******************************************************************!*\
+    !*** ./node_modules/ngx-dropzone/node_modules/tslib/tslib.es6.js ***!
+    \*******************************************************************/
+
+  /*! exports provided: __extends, __assign, __rest, __decorate, __param, __metadata, __awaiter, __generator, __createBinding, __exportStar, __values, __read, __spread, __spreadArrays, __spreadArray, __await, __asyncGenerator, __asyncDelegator, __asyncValues, __makeTemplateObject, __importStar, __importDefault, __classPrivateFieldGet, __classPrivateFieldSet */
+
+  /***/
+  function node_modulesNgxDropzoneNode_modulesTslibTslibEs6Js(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "__extends", function () {
+      return __extends;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "__assign", function () {
+      return _assign;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "__rest", function () {
+      return __rest;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "__decorate", function () {
+      return __decorate;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "__param", function () {
+      return __param;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "__metadata", function () {
+      return __metadata;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "__awaiter", function () {
+      return __awaiter;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "__generator", function () {
+      return __generator;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "__createBinding", function () {
+      return __createBinding;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "__exportStar", function () {
+      return __exportStar;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "__values", function () {
+      return __values;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "__read", function () {
+      return __read;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "__spread", function () {
+      return __spread;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "__spreadArrays", function () {
+      return __spreadArrays;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "__spreadArray", function () {
+      return __spreadArray;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "__await", function () {
+      return __await;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "__asyncGenerator", function () {
+      return __asyncGenerator;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "__asyncDelegator", function () {
+      return __asyncDelegator;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "__asyncValues", function () {
+      return __asyncValues;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "__makeTemplateObject", function () {
+      return __makeTemplateObject;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "__importStar", function () {
+      return __importStar;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "__importDefault", function () {
+      return __importDefault;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "__classPrivateFieldGet", function () {
+      return __classPrivateFieldGet;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "__classPrivateFieldSet", function () {
+      return __classPrivateFieldSet;
+    });
+    /*! *****************************************************************************
+    Copyright (c) Microsoft Corporation.
+    
+    Permission to use, copy, modify, and/or distribute this software for any
+    purpose with or without fee is hereby granted.
+    
+    THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
+    REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
+    AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
+    INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
+    LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
+    OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+    PERFORMANCE OF THIS SOFTWARE.
+    ***************************************************************************** */
+
+    /* global Reflect, Promise */
+
+
+    var _extendStatics = function extendStatics(d, b) {
+      _extendStatics = Object.setPrototypeOf || {
+        __proto__: []
+      } instanceof Array && function (d, b) {
+        d.__proto__ = b;
+      } || function (d, b) {
+        for (var p in b) {
+          if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p];
+        }
+      };
+
+      return _extendStatics(d, b);
+    };
+
+    function __extends(d, b) {
+      if (typeof b !== "function" && b !== null) throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+
+      _extendStatics(d, b);
+
+      function __() {
+        this.constructor = d;
+      }
+
+      d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    }
+
+    var _assign = function __assign() {
+      _assign = Object.assign || function __assign(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+          s = arguments[i];
+
+          for (var p in s) {
+            if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
+          }
+        }
+
+        return t;
+      };
+
+      return _assign.apply(this, arguments);
+    };
+
+    function __rest(s, e) {
+      var t = {};
+
+      for (var p in s) {
+        if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0) t[p] = s[p];
+      }
+
+      if (s != null && typeof Object.getOwnPropertySymbols === "function") for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+        if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i])) t[p[i]] = s[p[i]];
+      }
+      return t;
+    }
+
+    function __decorate(decorators, target, key, desc) {
+      var c = arguments.length,
+          r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
+          d;
+      if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) {
+        if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+      }
+      return c > 3 && r && Object.defineProperty(target, key, r), r;
+    }
+
+    function __param(paramIndex, decorator) {
+      return function (target, key) {
+        decorator(target, key, paramIndex);
+      };
+    }
+
+    function __metadata(metadataKey, metadataValue) {
+      if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(metadataKey, metadataValue);
+    }
+
+    function __awaiter(thisArg, _arguments, P, generator) {
+      function adopt(value) {
+        return value instanceof P ? value : new P(function (resolve) {
+          resolve(value);
+        });
+      }
+
+      return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) {
+          try {
+            step(generator.next(value));
+          } catch (e) {
+            reject(e);
+          }
+        }
+
+        function rejected(value) {
+          try {
+            step(generator["throw"](value));
+          } catch (e) {
+            reject(e);
+          }
+        }
+
+        function step(result) {
+          result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
+        }
+
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+      });
+    }
+
+    function __generator(thisArg, body) {
+      var _ = {
+        label: 0,
+        sent: function sent() {
+          if (t[0] & 1) throw t[1];
+          return t[1];
+        },
+        trys: [],
+        ops: []
+      },
+          f,
+          y,
+          t,
+          g;
+      return g = {
+        next: verb(0),
+        "throw": verb(1),
+        "return": verb(2)
+      }, typeof Symbol === "function" && (g[Symbol.iterator] = function () {
+        return this;
+      }), g;
+
+      function verb(n) {
+        return function (v) {
+          return step([n, v]);
+        };
+      }
+
+      function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+
+        while (_) {
+          try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
+
+            switch (op[0]) {
+              case 0:
+              case 1:
+                t = op;
+                break;
+
+              case 4:
+                _.label++;
+                return {
+                  value: op[1],
+                  done: false
+                };
+
+              case 5:
+                _.label++;
+                y = op[1];
+                op = [0];
+                continue;
+
+              case 7:
+                op = _.ops.pop();
+
+                _.trys.pop();
+
+                continue;
+
+              default:
+                if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) {
+                  _ = 0;
+                  continue;
+                }
+
+                if (op[0] === 3 && (!t || op[1] > t[0] && op[1] < t[3])) {
+                  _.label = op[1];
+                  break;
+                }
+
+                if (op[0] === 6 && _.label < t[1]) {
+                  _.label = t[1];
+                  t = op;
+                  break;
+                }
+
+                if (t && _.label < t[2]) {
+                  _.label = t[2];
+
+                  _.ops.push(op);
+
+                  break;
+                }
+
+                if (t[2]) _.ops.pop();
+
+                _.trys.pop();
+
+                continue;
+            }
+
+            op = body.call(thisArg, _);
+          } catch (e) {
+            op = [6, e];
+            y = 0;
+          } finally {
+            f = t = 0;
+          }
+        }
+
+        if (op[0] & 5) throw op[1];
+        return {
+          value: op[0] ? op[1] : void 0,
+          done: true
+        };
+      }
+    }
+
+    var __createBinding = Object.create ? function (o, m, k, k2) {
+      if (k2 === undefined) k2 = k;
+      Object.defineProperty(o, k2, {
+        enumerable: true,
+        get: function get() {
+          return m[k];
+        }
+      });
+    } : function (o, m, k, k2) {
+      if (k2 === undefined) k2 = k;
+      o[k2] = m[k];
+    };
+
+    function __exportStar(m, o) {
+      for (var p in m) {
+        if (p !== "default" && !Object.prototype.hasOwnProperty.call(o, p)) __createBinding(o, m, p);
+      }
+    }
+
+    function __values(o) {
+      var s = typeof Symbol === "function" && Symbol.iterator,
+          m = s && o[s],
+          i = 0;
+      if (m) return m.call(o);
+      if (o && typeof o.length === "number") return {
+        next: function next() {
+          if (o && i >= o.length) o = void 0;
+          return {
+            value: o && o[i++],
+            done: !o
+          };
+        }
+      };
+      throw new TypeError(s ? "Object is not iterable." : "Symbol.iterator is not defined.");
+    }
+
+    function __read(o, n) {
+      var m = typeof Symbol === "function" && o[Symbol.iterator];
+      if (!m) return o;
+      var i = m.call(o),
+          r,
+          ar = [],
+          e;
+
+      try {
+        while ((n === void 0 || n-- > 0) && !(r = i.next()).done) {
+          ar.push(r.value);
+        }
+      } catch (error) {
+        e = {
+          error: error
+        };
+      } finally {
+        try {
+          if (r && !r.done && (m = i["return"])) m.call(i);
+        } finally {
+          if (e) throw e.error;
+        }
+      }
+
+      return ar;
+    }
+    /** @deprecated */
+
+
+    function __spread() {
+      for (var ar = [], i = 0; i < arguments.length; i++) {
+        ar = ar.concat(__read(arguments[i]));
+      }
+
+      return ar;
+    }
+    /** @deprecated */
+
+
+    function __spreadArrays() {
+      for (var s = 0, i = 0, il = arguments.length; i < il; i++) {
+        s += arguments[i].length;
+      }
+
+      for (var r = Array(s), k = 0, i = 0; i < il; i++) {
+        for (var a = arguments[i], j = 0, jl = a.length; j < jl; j++, k++) {
+          r[k] = a[j];
+        }
+      }
+
+      return r;
+    }
+
+    function __spreadArray(to, from) {
+      for (var i = 0, il = from.length, j = to.length; i < il; i++, j++) {
+        to[j] = from[i];
+      }
+
+      return to;
+    }
+
+    function __await(v) {
+      return this instanceof __await ? (this.v = v, this) : new __await(v);
+    }
+
+    function __asyncGenerator(thisArg, _arguments, generator) {
+      if (!Symbol.asyncIterator) throw new TypeError("Symbol.asyncIterator is not defined.");
+      var g = generator.apply(thisArg, _arguments || []),
+          i,
+          q = [];
+      return i = {}, verb("next"), verb("throw"), verb("return"), i[Symbol.asyncIterator] = function () {
+        return this;
+      }, i;
+
+      function verb(n) {
+        if (g[n]) i[n] = function (v) {
+          return new Promise(function (a, b) {
+            q.push([n, v, a, b]) > 1 || resume(n, v);
+          });
+        };
+      }
+
+      function resume(n, v) {
+        try {
+          step(g[n](v));
+        } catch (e) {
+          settle(q[0][3], e);
+        }
+      }
+
+      function step(r) {
+        r.value instanceof __await ? Promise.resolve(r.value.v).then(fulfill, reject) : settle(q[0][2], r);
+      }
+
+      function fulfill(value) {
+        resume("next", value);
+      }
+
+      function reject(value) {
+        resume("throw", value);
+      }
+
+      function settle(f, v) {
+        if (f(v), q.shift(), q.length) resume(q[0][0], q[0][1]);
+      }
+    }
+
+    function __asyncDelegator(o) {
+      var i, p;
+      return i = {}, verb("next"), verb("throw", function (e) {
+        throw e;
+      }), verb("return"), i[Symbol.iterator] = function () {
+        return this;
+      }, i;
+
+      function verb(n, f) {
+        i[n] = o[n] ? function (v) {
+          return (p = !p) ? {
+            value: __await(o[n](v)),
+            done: n === "return"
+          } : f ? f(v) : v;
+        } : f;
+      }
+    }
+
+    function __asyncValues(o) {
+      if (!Symbol.asyncIterator) throw new TypeError("Symbol.asyncIterator is not defined.");
+      var m = o[Symbol.asyncIterator],
+          i;
+      return m ? m.call(o) : (o = typeof __values === "function" ? __values(o) : o[Symbol.iterator](), i = {}, verb("next"), verb("throw"), verb("return"), i[Symbol.asyncIterator] = function () {
+        return this;
+      }, i);
+
+      function verb(n) {
+        i[n] = o[n] && function (v) {
+          return new Promise(function (resolve, reject) {
+            v = o[n](v), settle(resolve, reject, v.done, v.value);
+          });
+        };
+      }
+
+      function settle(resolve, reject, d, v) {
+        Promise.resolve(v).then(function (v) {
+          resolve({
+            value: v,
+            done: d
+          });
+        }, reject);
+      }
+    }
+
+    function __makeTemplateObject(cooked, raw) {
+      if (Object.defineProperty) {
+        Object.defineProperty(cooked, "raw", {
+          value: raw
+        });
+      } else {
+        cooked.raw = raw;
+      }
+
+      return cooked;
+    }
+
+    ;
+
+    var __setModuleDefault = Object.create ? function (o, v) {
+      Object.defineProperty(o, "default", {
+        enumerable: true,
+        value: v
+      });
+    } : function (o, v) {
+      o["default"] = v;
+    };
+
+    function __importStar(mod) {
+      if (mod && mod.__esModule) return mod;
+      var result = {};
+      if (mod != null) for (var k in mod) {
+        if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+      }
+
+      __setModuleDefault(result, mod);
+
+      return result;
+    }
+
+    function __importDefault(mod) {
+      return mod && mod.__esModule ? mod : {
+        "default": mod
+      };
+    }
+
+    function __classPrivateFieldGet(receiver, state, kind, f) {
+      if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a getter");
+      if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot read private member from an object whose class did not declare it");
+      return kind === "m" ? f : kind === "a" ? f.call(receiver) : f ? f.value : state.get(receiver);
+    }
+
+    function __classPrivateFieldSet(receiver, state, value, kind, f) {
+      if (kind === "m") throw new TypeError("Private method is not writable");
+      if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a setter");
+      if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot write private member to an object whose class did not declare it");
+      return kind === "a" ? f.call(receiver, value) : f ? f.value = value : state.set(receiver, value), value;
+    }
+    /***/
+
   },
 
   /***/
